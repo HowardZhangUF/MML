@@ -1,0 +1,7 @@
+<!-- launch file for MML demo in simulation with realtime matplotlib visualizations -->
+<launch>
+
+	<node pkg="mml_guidance" type="mml_pf_visualization.py" name="mml_pf_visualization" output="screen">
+		<remap from="odom" to="/robot0/odom"/>
+	</node>
+</launch>

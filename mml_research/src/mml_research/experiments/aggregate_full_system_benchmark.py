@@ -1,0 +1,233 @@
+#!/usr/bin/env python3
+"""Aggregate paired MultiPFVel/MultiPFTra benchmark runs.
+
+The input directory is produced by .run.sh. Each simulation writes one
+``*_benchmark.csv`` row. This script validates run counts and paired seeds,
+writes per-run and aggregate CSV files, and renders a LaTeX table containing
+the four supplied reference rows plus the two new full-system baseline rows.
+"""
+
+from __future__ import annotations
+
+from mml_core.config import project_root, motion_resource_dir, research_data_dir
+
+
+import argparse
+from pathlib import Path
+
+import numpy as np
+import pandas as pd
+
+
+METHODS = ("MultiPFVel", "MultiPFTra")
+DISPLAY_NAMES = {
+    "MultiPFVel": r"PF+CV (MultiPFVel)$^\dagger$",
+    "MultiPFTra": r"PF+DMMN (offline MultiPFTra)$^\dagger$",
+}
+METRICS = (
+    "rmse_all",
+    "rmse_visible",
+    "rmse_occluded",
+    "recovery_steps",
+    "ms_per_step",
+    "matched_target_fraction",
+)
+
+
+def load_rows(root: Path) -> pd.DataFrame:
+    files = sorted(root.rglob("*_benchmark.csv"))
+    if not files:
+        raise FileNotFoundError(f"No *_benchmark.csv files found under {root}")
+
+    frames = []
+    for path in files:
+        frame = pd.read_csv(path)
+        if len(frame) != 1:
+            raise ValueError(f"Expected one row in {path}, found {len(frame)}")
+        frame["source_file"] = str(path)
+        frames.append(frame)
+    return pd.concat(frames, ignore_index=True)
+
+
+def validate_rows(rows: pd.DataFrame, expected_runs: int) -> pd.DataFrame:
+    required = {"tracker", "run", "seed", *METRICS}
+    missing_columns = sorted(required - set(rows.columns))
+    if missing_columns:
+        raise ValueError(f"Benchmark rows are missing columns: {missing_columns}")
+
+    rows = rows[rows["tracker"].isin(METHODS)].copy()
+    duplicates = rows.duplicated(["tracker", "run"], keep=False)
+    if duplicates.any():
+        bad = rows.loc[duplicates, ["tracker", "run", "source_file"]]
+        raise ValueError(f"Duplicate tracker/run rows found:\n{bad.to_string(index=False)}")
+
+    expected_ids = set(range(expected_runs))
+    for method in METHODS:
+        method_rows = rows[rows["tracker"] == method]
+        run_ids = set(method_rows["run"].astype(int))
+        if run_ids != expected_ids:
+            missing = sorted(expected_ids - run_ids)
+            extra = sorted(run_ids - expected_ids)
+            raise ValueError(
+                f"{method}: expected runs 0..{expected_runs - 1}; "
+                f"missing={missing}, extra={extra}"
+            )
+
+    seed_maps = {
+        method: dict(
+            zip(
+                rows.loc[rows["tracker"] == method, "run"].astype(int),
+                rows.loc[rows["tracker"] == method, "seed"].astype(int),
+            )
+        )
+        for method in METHODS
+    }
+    if seed_maps[METHODS[0]] != seed_maps[METHODS[1]]:
+        raise ValueError("MultiPFVel and MultiPFTra do not use paired run seeds.")
+
+    return rows.sort_values(["tracker", "run"]).reset_index(drop=True)
+
+
+def aggregate(rows: pd.DataFrame) -> pd.DataFrame:
+    output = []
+    for method in METHODS:
+        subset = rows[rows["tracker"] == method]
+        row = {
+            "tracker": method,
+            "n_runs": len(subset),
+            "protocol": "info_mml_main.py/MultiPFInfo full-system",
+            "comparison_warning": (
+                "Do not treat these rows as directly comparable to standalone "
+                "filter-only rows unless every method uses the same protocol."
+            ),
+        }
+        for metric in METRICS:
+            values = pd.to_numeric(subset[metric], errors="coerce").dropna().to_numpy()
+            row[f"{metric}_mean"] = float(np.mean(values)) if len(values) else np.nan
+            row[f"{metric}_std"] = (
+                float(np.std(values, ddof=1)) if len(values) > 1 else 0.0
+            )
+            row[f"{metric}_n"] = int(len(values))
+        output.append(row)
+    return pd.DataFrame(output)
+
+
+def pm(mean, std, digits=3):
+    if not np.isfinite(mean):
+        return r"--"
+    return rf"${mean:.{digits}f} \pm {std:.{digits}f}$"
+
+
+def scalar(value, digits=2):
+    if not np.isfinite(value):
+        return r"--"
+    return rf"${value:.{digits}f}$"
+
+
+def generated_row(stats: pd.Series) -> str:
+    name = DISPLAY_NAMES[stats["tracker"]]
+    return "\n".join(
+        [
+            name,
+            f"& {pm(stats['rmse_all_mean'], stats['rmse_all_std'])}",
+            f"& {pm(stats['rmse_visible_mean'], stats['rmse_visible_std'])}",
+            f"& {pm(stats['rmse_occluded_mean'], stats['rmse_occluded_std'])}",
+            f"& {scalar(stats['recovery_steps_mean'])}",
+            f"& {scalar(stats['ms_per_step_mean'])} " + r"\\",
+        ]
+    )
+
+
+def write_latex(summary: pd.DataFrame, path: Path, n_runs: int, n_steps: int) -> None:
+    by_method = {row["tracker"]: row for _, row in summary.iterrows()}
+    cv_row = generated_row(by_method["MultiPFVel"])
+    dmmn_row = generated_row(by_method["MultiPFTra"])
+    latex = rf"""% Generated by scripts/aggregate_full_system_benchmark.py.
+% The dagger rows use info_mml_main.py/MultiPFInfo and are not directly
+% comparable to the four filter-only reference rows until all methods share
+% one execution protocol.
+\begin{{table*}}[t]
+\centering
+\caption{{Benchmark results over {n_runs} seeded runs of {n_steps} steps. RMSE values
+are reported as mean $\pm$ run-to-run standard deviation. All metrics are
+lower-is-better.}}
+\label{{tab:filter_benchmark}}
+\resizebox{{\textwidth}}{{!}}{{%
+\begin{{tabular}}{{lccccc}}
+\hline
+\textbf{{Tracker}}
+& \textbf{{RMSE all (m)}}
+& \textbf{{RMSE visible (m)}}
+& \textbf{{RMSE occluded (m)}}
+& \textbf{{Recovery (steps)}}
+& \textbf{{Runtime (ms/step)}} \\
+\hline
+PF+CFM (fixed $\sigma=1.0$)
+& $0.578 \pm 0.196$ & $0.030 \pm 0.018$ & $0.816 \pm 0.188$ & $0.19$ & $11.5$ \\
+PF+CFM-AS (adaptive $\sigma$)
+& $0.461 \pm 0.187$ & $\mathbf{{0.024 \pm 0.005}}$ & $0.643 \pm 0.183$ & $\mathbf{{0.02}}$ & $11.9$ \\
+PF+NF
+& $0.461 \pm 0.295$ & $0.029 \pm 0.019$ & $0.624 \pm 0.325$ & $0.16$ & $11.2$ \\
+DiffPF
+& $0.626 \pm 0.190$ & $0.621 \pm 0.217$ & $0.622 \pm 0.252$ & $6.92$ & $7.6$ \\
+\hline
+{cv_row}
+
+{dmmn_row}
+\hline
+\multicolumn{{6}}{{l}}{{\footnotesize $\dagger$ Full MultiPFInfo simulation; see protocol warning in the generated CSV.}} \\
+\end{{tabular}}%
+}}
+\end{{table*}}
+"""
+    path.write_text(latex, encoding="ascii")
+
+
+def print_summary(summary: pd.DataFrame) -> None:
+    print("\nFull-system benchmark summary")
+    print("=" * 105)
+    print(
+        f"{'tracker':<12}{'RMSE all':>18}{'RMSE visible':>18}"
+        f"{'RMSE occluded':>18}{'recovery':>15}{'ms/step':>14}{'matched':>10}"
+    )
+    for _, row in summary.iterrows():
+        print(
+            f"{row['tracker']:<12}"
+            f"{row['rmse_all_mean']:>9.3f} +/- {row['rmse_all_std']:<6.3f}"
+            f"{row['rmse_visible_mean']:>9.3f} +/- {row['rmse_visible_std']:<6.3f}"
+            f"{row['rmse_occluded_mean']:>9.3f} +/- {row['rmse_occluded_std']:<6.3f}"
+            f"{row['recovery_steps_mean']:>15.2f}"
+            f"{row['ms_per_step_mean']:>14.2f}"
+            f"{row['matched_target_fraction_mean']:>10.1%}"
+        )
+    print("=" * 105)
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--input", type=Path, required=True)
+    parser.add_argument("--expected-runs", type=int, default=100)
+    args = parser.parse_args()
+
+    root = args.input.resolve()
+    rows = validate_rows(load_rows(root), args.expected_runs)
+    step_counts = set(pd.to_numeric(rows["n_steps"], errors="raise").astype(int))
+    if len(step_counts) != 1:
+        raise ValueError(f"Runs use inconsistent step counts: {sorted(step_counts)}")
+    n_steps = step_counts.pop()
+    summary = aggregate(rows)
+
+    per_run_path = root / "full_system_benchmark_per_run.csv"
+    summary_path = root / "full_system_benchmark_summary.csv"
+    latex_path = root / "filter_benchmark_table.tex"
+    rows.drop(columns=["source_file"]).to_csv(per_run_path, index=False)
+    summary.to_csv(summary_path, index=False)
+    write_latex(summary, latex_path, args.expected_runs, n_steps)
+    print_summary(summary)
+    print(f"\nPer-run CSV : {per_run_path}")
+    print(f"Summary CSV : {summary_path}")
+    print(f"LaTeX table : {latex_path}")
+
+
+if __name__ == "__main__":
+    main()

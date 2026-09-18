@@ -1,0 +1,157 @@
+[0.396s] Invoking command in '/home/basestation/mml_python_sim/src/mml_guidance': PYTHONPATH=/home/basestation/mml_python_sim/build/mml_guidance/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mml_guidance build --build-base /home/basestation/mml_python_sim/build/mml_guidance/build install --record /home/basestation/mml_python_sim/build/mml_guidance/install.log --single-version-externally-managed install_data
+[0.486s] /home/basestation/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:289: UserWarning: Unknown distribution option: 'tests_require'
+[0.486s]   warnings.warn(msg)
+[0.553s] running egg_info
+[0.563s] creating ../../build/mml_guidance/mml_guidance.egg-info
+[0.563s] writing ../../build/mml_guidance/mml_guidance.egg-info/PKG-INFO
+[0.563s] writing dependency_links to ../../build/mml_guidance/mml_guidance.egg-info/dependency_links.txt
+[0.563s] writing entry points to ../../build/mml_guidance/mml_guidance.egg-info/entry_points.txt
+[0.563s] writing requirements to ../../build/mml_guidance/mml_guidance.egg-info/requires.txt
+[0.563s] writing top-level names to ../../build/mml_guidance/mml_guidance.egg-info/top_level.txt
+[0.563s] writing manifest file '../../build/mml_guidance/mml_guidance.egg-info/SOURCES.txt'
+[0.607s] ERROR setuptools_scm._file_finders.git listing git files failed - pretending there aren't any
+[0.607s] reading manifest file '../../build/mml_guidance/mml_guidance.egg-info/SOURCES.txt'
+[0.608s] writing manifest file '../../build/mml_guidance/mml_guidance.egg-info/SOURCES.txt'
+[0.608s] running build
+[0.608s] running build_py
+[0.608s] creating /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.608s] copying mml_guidance/guidance.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.608s] copying mml_guidance/rl_offboard_tracker.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.608s] copying mml_guidance/realsense_pose_tag_node.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.608s] copying mml_guidance/particle_filter_gnn_associator.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.608s] copying mml_guidance/kf.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.608s] copying mml_guidance/Sim_turtle.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.608s] copying mml_guidance/particle_filter_ros_wrapper.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.608s] copying mml_guidance/gnn_associator.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.608s] copying mml_guidance/ParticleFilter.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/plot_data_run.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/turtlebot_pid_controller.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/spaguetti.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/mml_pf_visualization.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/summarize_joined_runs.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/main_guidance_node.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/ppo_guidance.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/sim_uav_tracker.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/analyze_hardware_data.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/go_here_square.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/boundary_safety_test.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/go_here.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/plot_data_all_runs.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/ros2bag_csv.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/__init__.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/lawnmower.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/boundary_visualization.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] copying mml_guidance/markov_goal_pose.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance
+[0.609s] creating /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network
+[0.609s] copying mml_guidance/mml_network/train.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network
+[0.609s] copying mml_guidance/mml_network/transformer.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network
+[0.610s] copying mml_guidance/mml_network/convert_data.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network
+[0.610s] copying mml_guidance/mml_network/simple_dnn.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network
+[0.610s] copying mml_guidance/mml_network/scratch_transformer.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network
+[0.610s] copying mml_guidance/mml_network/__init__.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network
+[0.610s] copying mml_guidance/mml_network/motion_model_network.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network
+[0.610s] copying mml_guidance/mml_network/visualize_graph.py -> /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network
+[0.610s] running install
+[0.612s] running install_lib
+[0.623s] creating /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/guidance.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/rl_offboard_tracker.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/realsense_pose_tag_node.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/particle_filter_gnn_associator.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/kf.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/Sim_turtle.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/particle_filter_ros_wrapper.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/gnn_associator.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/ParticleFilter.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/plot_data_run.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/turtlebot_pid_controller.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/spaguetti.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_pf_visualization.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/summarize_joined_runs.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/main_guidance_node.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/ppo_guidance.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/sim_uav_tracker.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/analyze_hardware_data.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/go_here_square.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/boundary_safety_test.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.623s] creating /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network/train.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network/transformer.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network/convert_data.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network
+[0.623s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network/simple_dnn.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network
+[0.624s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network/scratch_transformer.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network
+[0.624s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network/__init__.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network
+[0.624s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network/motion_model_network.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network
+[0.624s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/mml_network/visualize_graph.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network
+[0.624s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/go_here.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.624s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/plot_data_all_runs.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.624s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/ros2bag_csv.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.624s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/__init__.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.624s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/lawnmower.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.624s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/boundary_visualization.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.624s] copying /home/basestation/mml_python_sim/build/mml_guidance/build/lib/mml_guidance/markov_goal_pose.py -> /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance
+[0.624s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/guidance.py to guidance.cpython-310.pyc
+[0.627s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/rl_offboard_tracker.py to rl_offboard_tracker.cpython-310.pyc
+[0.628s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/realsense_pose_tag_node.py to realsense_pose_tag_node.cpython-310.pyc
+[0.629s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/particle_filter_gnn_associator.py to particle_filter_gnn_associator.cpython-310.pyc
+[0.630s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/kf.py to kf.cpython-310.pyc
+[0.630s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/Sim_turtle.py to Sim_turtle.cpython-310.pyc
+[0.631s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/particle_filter_ros_wrapper.py to particle_filter_ros_wrapper.cpython-310.pyc
+[0.631s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/gnn_associator.py to gnn_associator.cpython-310.pyc
+[0.632s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/ParticleFilter.py to ParticleFilter.cpython-310.pyc
+[0.634s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/plot_data_run.py to plot_data_run.cpython-310.pyc
+[0.634s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/turtlebot_pid_controller.py to turtlebot_pid_controller.cpython-310.pyc
+[0.635s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/spaguetti.py to spaguetti.cpython-310.pyc
+[0.635s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_pf_visualization.py to mml_pf_visualization.cpython-310.pyc
+[0.637s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/summarize_joined_runs.py to summarize_joined_runs.cpython-310.pyc
+[0.637s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/main_guidance_node.py to main_guidance_node.cpython-310.pyc
+[0.638s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/ppo_guidance.py to ppo_guidance.cpython-310.pyc
+[0.638s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/sim_uav_tracker.py to sim_uav_tracker.cpython-310.pyc
+[0.640s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/analyze_hardware_data.py to analyze_hardware_data.cpython-310.pyc
+[0.641s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/go_here_square.py to go_here_square.cpython-310.pyc
+[0.642s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/boundary_safety_test.py to boundary_safety_test.cpython-310.pyc
+[0.643s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network/train.py to train.cpython-310.pyc
+[0.644s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network/transformer.py to transformer.cpython-310.pyc
+[0.645s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network/convert_data.py to convert_data.cpython-310.pyc
+[0.645s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network/simple_dnn.py to simple_dnn.cpython-310.pyc
+[0.646s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network/scratch_transformer.py to scratch_transformer.cpython-310.pyc
+[0.646s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network/__init__.py to __init__.cpython-310.pyc
+[0.646s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network/motion_model_network.py to motion_model_network.cpython-310.pyc
+[0.647s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/mml_network/visualize_graph.py to visualize_graph.cpython-310.pyc
+[0.648s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/go_here.py to go_here.cpython-310.pyc
+[0.648s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/plot_data_all_runs.py to plot_data_all_runs.cpython-310.pyc
+[0.649s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/ros2bag_csv.py to ros2bag_csv.cpython-310.pyc
+[0.649s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/__init__.py to __init__.cpython-310.pyc
+[0.649s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/lawnmower.py to lawnmower.cpython-310.pyc
+[0.650s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/boundary_visualization.py to boundary_visualization.cpython-310.pyc
+[0.651s] byte-compiling /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance/markov_goal_pose.py to markov_goal_pose.cpython-310.pyc
+[0.652s] running install_data
+[0.652s] creating /home/basestation/mml_python_sim/install/mml_guidance/share/ament_index/resource_index/packages
+[0.652s] copying resource/mml_guidance -> /home/basestation/mml_python_sim/install/mml_guidance/share/ament_index/resource_index/packages
+[0.652s] copying package.xml -> /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance
+[0.652s] creating /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/launch
+[0.652s] copying launch/boundary_test.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/launch
+[0.652s] copying launch/track_hardware.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/launch
+[0.652s] copying launch/april_hardware.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/launch
+[0.652s] copying launch/waypoint_with_safety.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/launch
+[0.653s] copying launch/rl_tracker.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/launch
+[0.653s] copying launch/mml_sim_estimator.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/launch
+[0.653s] copying launch/square_pattern.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/launch
+[0.653s] copying launch/sim_uav_test.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/launch
+[0.653s] copying launch/rl_pattern_tracker.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/launch
+[0.653s] running install_egg_info
+[0.663s] Copying ../../build/mml_guidance/mml_guidance.egg-info to /home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages/mml_guidance-0.0.1-py3.10.egg-info
+[0.664s] running install_scripts
+[0.685s] Installing boundary_safety_test script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[0.685s] Installing boundary_visualization script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[0.685s] Installing go_here script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[0.685s] Installing go_here_square script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[0.685s] Installing guidance script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[0.685s] Installing markov_goal_pose script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[0.685s] Installing mml_pf_visualization script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[0.685s] Installing rl_tracker script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[0.685s] Installing simulated_turtlebot script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[0.685s] Installing simulated_uav_tracker script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[0.685s] Installing turtlebot_pid_controller script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[0.686s] writing list of installed files to '/home/basestation/mml_python_sim/build/mml_guidance/install.log'
+[0.697s] Invoked command in '/home/basestation/mml_python_sim/src/mml_guidance' returned '0': PYTHONPATH=/home/basestation/mml_python_sim/build/mml_guidance/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/mml_guidance build --build-base /home/basestation/mml_python_sim/build/mml_guidance/build install --record /home/basestation/mml_python_sim/build/mml_guidance/install.log --single-version-externally-managed install_data

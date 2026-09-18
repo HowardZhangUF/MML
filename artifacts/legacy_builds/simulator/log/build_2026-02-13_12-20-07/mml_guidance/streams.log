@@ -1,0 +1,49 @@
+[0.007s] Invoking command in '/home/basestation/mml_python_sim/build/mml_guidance': /usr/bin/cmake /home/basestation/mml_python_sim/src/mml_guidance -DCMAKE_INSTALL_PREFIX=/home/basestation/mml_python_sim/install/mml_guidance
+[0.043s] -- The C compiler identification is GNU 11.4.0
+[0.084s] -- The CXX compiler identification is GNU 11.4.0
+[0.088s] -- Detecting C compiler ABI info
+[0.126s] -- Detecting C compiler ABI info - done
+[0.135s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.136s] -- Detecting C compile features
+[0.136s] -- Detecting C compile features - done
+[0.144s] -- Detecting CXX compiler ABI info
+[0.187s] -- Detecting CXX compiler ABI info - done
+[0.195s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.195s] -- Detecting CXX compile features
+[0.196s] -- Detecting CXX compile features - done
+[0.201s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.316s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter
+[0.383s] -- Found rclpy: 3.3.19 (/opt/ros/humble/share/rclpy/cmake)
+[0.384s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.388s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.393s] -- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.426s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.449s] -- Found std_msgs: 4.9.0 (/opt/ros/humble/share/std_msgs/cmake)
+[0.469s] -- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.674s] Error parsing '/home/basestation/mml_python_sim/src/mml_guidance/package.xml':
+[0.698s] Traceback (most recent call last):
+[0.698s]   File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 150, in <module>
+[0.698s]     main()
+[0.698s]   File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 53, in main
+[0.698s]     raise e
+[0.698s]   File "/opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py", line 49, in main
+[0.698s]     package = parse_package_string(
+[0.699s]   File "/usr/lib/python3/dist-packages/catkin_pkg/package.py", line 786, in parse_package_string
+[0.700s]     raise InvalidPackage('Error(s):%s' % (''.join(['\n- %s' % e for e in errors])), filename)
+[0.700s] catkin_pkg.package.InvalidPackage: Error(s) in package '/home/basestation/mml_python_sim/src/mml_guidance/package.xml':
+[0.700s] Error(s):
+[0.700s] - The generic dependency on 'geometry_msgs' is redundant with: exec_depend
+[0.708s] [31mCMake Error at /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:95 (message):
+[0.709s]   execute_process(/usr/bin/python3
+[0.709s]   /opt/ros/humble/share/ament_cmake_core/cmake/core/package_xml_2_cmake.py
+[0.709s]   /home/basestation/mml_python_sim/src/mml_guidance/package.xml
+[0.709s]   /home/basestation/mml_python_sim/build/mml_guidance/ament_cmake_core/package.cmake)
+[0.709s]   returned error code 1
+[0.709s] Call Stack (most recent call first):
+[0.709s]   /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_package_xml.cmake:49 (_ament_package_xml)
+[0.709s]   /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:226 (ament_package_xml)
+[0.709s]   CMakeLists.txt:17 (rosidl_generate_interfaces)
+[0.709s] 
+[0.709s] [0m
+[0.709s] -- Configuring incomplete, errors occurred!
+[0.715s] Invoked command in '/home/basestation/mml_python_sim/build/mml_guidance' returned '1': /usr/bin/cmake /home/basestation/mml_python_sim/src/mml_guidance -DCMAKE_INSTALL_PREFIX=/home/basestation/mml_python_sim/install/mml_guidance

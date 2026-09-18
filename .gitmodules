@@ -1,0 +1,3 @@
+[submodule "Stone-Soup"]
+	path = Stone-Soup
+	url = https://github.com/dstl/Stone-Soup.git

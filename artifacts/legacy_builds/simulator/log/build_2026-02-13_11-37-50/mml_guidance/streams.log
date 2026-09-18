@@ -1,0 +1,92 @@
+[0.006s] Invoking command in '/home/basestation/mml_python_sim/build/mml_guidance': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/basestation/mml_python_sim/install/markov_package:/home/basestation/base_ws/install/ros2_shared:/home/basestation/base_ws/install/robot_pid:/home/basestation/base_ws/install/mocap_fake_radar:/home/basestation/base_ws/install/magnav_viz:/home/basestation/base_ws/install/magnav_pf:/home/basestation/base_ws/install/magnav_entmap:/home/basestation/base_ws/install/mag_mapping:/home/basestation/base_ws/install/info_magnav:/home/basestation/base_ws/install/homography_node:/home/basestation/base_ws/install/drone_launch:/home/basestation/base_ws/install/camera_detector:/home/basestation/base_ws/install/base_launch:/home/basestation/magnav_sim_ws/install/nn_data_collector:/home/basestation/magnav_sim_ws/install/magnav_nn_sim:/opt/ros/humble /usr/bin/cmake /home/basestation/mml_python_sim/src/mml_guidance -DCMAKE_INSTALL_PREFIX=/home/basestation/mml_python_sim/install/mml_guidance
+[0.040s] -- The C compiler identification is GNU 11.4.0
+[0.075s] -- The CXX compiler identification is GNU 11.4.0
+[0.079s] -- Detecting C compiler ABI info
+[0.114s] -- Detecting C compiler ABI info - done
+[0.122s] -- Check for working C compiler: /usr/bin/cc - skipped
+[0.122s] -- Detecting C compile features
+[0.123s] -- Detecting C compile features - done
+[0.131s] -- Detecting CXX compiler ABI info
+[0.173s] -- Detecting CXX compiler ABI info - done
+[0.185s] -- Check for working CXX compiler: /usr/bin/c++ - skipped
+[0.185s] -- Detecting CXX compile features
+[0.185s] -- Detecting CXX compile features - done
+[0.192s] -- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)
+[0.301s] -- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter
+[0.379s] -- Found rclpy: 3.3.19 (/opt/ros/humble/share/rclpy/cmake)
+[0.382s] -- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)
+[0.386s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[0.392s] -- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)
+[0.428s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[0.455s] -- Found std_msgs: 4.9.0 (/opt/ros/humble/share/std_msgs/cmake)
+[0.476s] -- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)
+[0.814s] -- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)
+[1.193s] -- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c
+[1.654s] -- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp
+[1.655s] [33mCMake Warning (dev) at /opt/ros/humble/share/rosidl_generator_py/cmake/rosidl_generator_py_generate_interfaces.cmake:20 (find_package):
+[1.655s]   Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+[1.655s]   are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+[1.655s]   the cmake_policy command to set the policy and suppress this warning.
+[1.655s] 
+[1.655s] Call Stack (most recent call first):
+[1.655s]   /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_execute_extensions.cmake:48 (include)
+[1.655s]   /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:286 (ament_execute_extensions)
+[1.655s]   CMakeLists.txt:17 (rosidl_generate_interfaces)
+[1.655s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[1.655s] [0m
+[1.673s] -- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6")
+[1.675s] -- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)
+[1.675s] [33mCMake Warning (dev) at /opt/ros/humble/share/python_cmake_module/cmake/Modules/FindPythonExtra.cmake:52 (find_package):
+[1.675s]   Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+[1.676s]   are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+[1.676s]   the cmake_policy command to set the policy and suppress this warning.
+[1.676s] 
+[1.676s] Call Stack (most recent call first):
+[1.676s]   /opt/ros/humble/share/rosidl_generator_py/cmake/rosidl_generator_py_generate_interfaces.cmake:23 (find_package)
+[1.676s]   /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_execute_extensions.cmake:48 (include)
+[1.676s]   /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:286 (ament_execute_extensions)
+[1.676s]   CMakeLists.txt:17 (rosidl_generate_interfaces)
+[1.676s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[1.676s] [0m
+[1.693s] [33mCMake Warning (dev) at /opt/ros/humble/share/python_cmake_module/cmake/Modules/FindPythonExtra.cmake:140 (find_package):
+[1.693s]   Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules
+[1.693s]   are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use
+[1.693s]   the cmake_policy command to set the policy and suppress this warning.
+[1.693s] 
+[1.693s] Call Stack (most recent call first):
+[1.693s]   /opt/ros/humble/share/rosidl_generator_py/cmake/rosidl_generator_py_generate_interfaces.cmake:23 (find_package)
+[1.693s]   /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_execute_extensions.cmake:48 (include)
+[1.693s]   /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:286 (ament_execute_extensions)
+[1.693s]   CMakeLists.txt:17 (rosidl_generate_interfaces)
+[1.693s] This warning is for project developers.  Use -Wno-dev to suppress it.
+[1.693s] [0m
+[1.699s] -- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5")
+[1.699s] -- Using PYTHON_EXECUTABLE: /usr/bin/python3
+[1.699s] -- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10
+[1.699s] -- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so
+[1.714s] -- Found PythonExtra: .so
+[1.756s] [31mCMake Error at /opt/ros/humble/share/ament_cmake_python/cmake/ament_python_install_package.cmake:122 (add_custom_target):
+[1.756s]   add_custom_target cannot create target
+[1.756s]   "ament_cmake_python_copy_mml_guidance" because another target with the same
+[1.756s]   name already exists.  The existing target is a custom target created in
+[1.756s]   source directory "/home/basestation/mml_python_sim/src/mml_guidance".  See
+[1.756s]   documentation for policy CMP0002 for more details.
+[1.756s] Call Stack (most recent call first):
+[1.757s]   /opt/ros/humble/share/ament_cmake_python/cmake/ament_python_install_package.cmake:39 (_ament_cmake_python_install_package)
+[1.757s]   CMakeLists.txt:24 (ament_python_install_package)
+[1.757s] 
+[1.757s] [0m
+[1.757s] [31mCMake Error at /opt/ros/humble/share/ament_cmake_python/cmake/ament_python_install_package.cmake:141 (add_custom_target):
+[1.757s]   add_custom_target cannot create target
+[1.757s]   "ament_cmake_python_build_mml_guidance_egg" because another target with the
+[1.757s]   same name already exists.  The existing target is a custom target created
+[1.757s]   in source directory "/home/basestation/mml_python_sim/src/mml_guidance".
+[1.757s]   See documentation for policy CMP0002 for more details.
+[1.757s] Call Stack (most recent call first):
+[1.757s]   /opt/ros/humble/share/ament_cmake_python/cmake/ament_python_install_package.cmake:39 (_ament_cmake_python_install_package)
+[1.757s]   CMakeLists.txt:24 (ament_python_install_package)
+[1.757s] 
+[1.757s] [0m
+[1.758s] -- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)
+[1.790s] -- Configuring incomplete, errors occurred!
+[1.795s] Invoked command in '/home/basestation/mml_python_sim/build/mml_guidance' returned '1': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/basestation/mml_python_sim/install/markov_package:/home/basestation/base_ws/install/ros2_shared:/home/basestation/base_ws/install/robot_pid:/home/basestation/base_ws/install/mocap_fake_radar:/home/basestation/base_ws/install/magnav_viz:/home/basestation/base_ws/install/magnav_pf:/home/basestation/base_ws/install/magnav_entmap:/home/basestation/base_ws/install/mag_mapping:/home/basestation/base_ws/install/info_magnav:/home/basestation/base_ws/install/homography_node:/home/basestation/base_ws/install/drone_launch:/home/basestation/base_ws/install/camera_detector:/home/basestation/base_ws/install/base_launch:/home/basestation/magnav_sim_ws/install/nn_data_collector:/home/basestation/magnav_sim_ws/install/magnav_nn_sim:/opt/ros/humble /usr/bin/cmake /home/basestation/mml_python_sim/src/mml_guidance -DCMAKE_INSTALL_PREFIX=/home/basestation/mml_python_sim/install/mml_guidance

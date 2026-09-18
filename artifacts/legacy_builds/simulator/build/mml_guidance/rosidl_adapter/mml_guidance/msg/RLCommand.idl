@@ -1,0 +1,69 @@
+// generated from rosidl_adapter/resource/msg.idl.em
+// with input from mml_guidance/msg/RLCommand.msg
+// generated code does not contain a copyright notice
+
+#include "std_msgs/msg/Header.idl"
+
+module mml_guidance {
+  module msg {
+    typedef float float__4[4];
+    @verbatim (language="comment", text=
+      "Custom message for RL policy commands" "\n"
+      "Used to communicate between rl_policy_node and drone_commander")
+    struct RLCommand {
+      std_msgs::msg::Header header;
+
+      @verbatim (language="comment", text=
+        "Control mode selection" "\n"
+        "\"velocity\" or \"position\"")
+      string control_mode;
+
+      @verbatim (language="comment", text=
+        "RL velocity output (always present from model)" "\n"
+        "Velocity X (m/s)")
+      float vx;
+
+      @verbatim (language="comment", text=
+        "Velocity Y (m/s)")
+      float vy;
+
+      @verbatim (language="comment", text=
+        "Velocity Z (m/s) - usually 0.0 from RL")
+      float vz;
+
+      @verbatim (language="comment", text=
+        "Yaw rate (rad/s) - ignored in current implementation")
+      float omega;
+
+      @verbatim (language="comment", text=
+        "Integrated position (only valid when control_mode=\"position\")" "\n"
+        "meters (NaN if velocity mode)")
+      float target_x;
+
+      @verbatim (language="comment", text=
+        "meters (NaN if velocity mode)")
+      float target_y;
+
+      @verbatim (language="comment", text=
+        "meters (altitude)")
+      float target_z;
+
+      @verbatim (language="comment", text=
+        "Metadata for debugging and monitoring" "\n"
+        "Distance to target (m)")
+      float tracking_error;
+
+      @verbatim (language="comment", text=
+        "Integration time step (s) - only for position mode")
+      float dt;
+
+      @verbatim (language="comment", text=
+        "[x, y, vx, vy] - agent state")
+      float__4 agent_state;
+
+      @verbatim (language="comment", text=
+        "[rel_x, rel_y, rel_vx, rel_vy] - relative target state")
+      float__4 target_state;
+    };
+  };
+};

@@ -1,0 +1,16 @@
+[console_scripts]
+Sim_turtle = mml_guidance.Sim_turtle:main
+boundary_safety_test = mml_guidance.boundary_safety_test:main
+boundary_visualization = mml_guidance.boundary_visualization:main
+drone_commander = mml_guidance.drone_commander:main
+go_here = mml_guidance.go_here:main
+go_here_square = mml_guidance.go_here_square:main
+guidance = mml_guidance.guidance:main
+markov_goal_pose = mml_guidance.markov_goal_pose:main
+mml_pf_visualization = mml_guidance.mml_pf_visualization:main
+monitor_tracking = mml_guidance.monitor_tracking:main
+rl_policy_node = mml_guidance.rl_policy_node:main
+rl_tracker = mml_guidance.rl_offboard_tracker:main
+simulated_turtlebot = mml_guidance.Sim_turtle:main
+simulated_uav_tracker = mml_guidance.sim_uav_tracker:main
+turtlebot_pid_controller = mml_guidance.turtlebot_pid_controller:main

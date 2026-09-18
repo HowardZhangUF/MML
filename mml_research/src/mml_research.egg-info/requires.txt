@@ -1,0 +1,10 @@
+mml-core==0.1.0
+numpy
+scipy
+torch>=2.4.1
+matplotlib
+pandas
+seaborn
+
+[simulation]
+mml-python-sim==0.1.0

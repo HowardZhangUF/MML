@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mml-research"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = ["mml-core==0.1.0", "numpy", "scipy", "torch>=2.4.1", "matplotlib", "pandas", "seaborn"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[project.optional-dependencies]
+simulation = ["mml-python-sim==0.1.0"]
+
+[project.scripts]
+mml-experiment-1 = "mml_research.experiments.run_experiment1_distribution:main"
+mml-experiment-2 = "mml_research.experiments.run_experiment2_occlusion:main"
+mml-experiment-3 = "mml_research.experiments.run_experiment3_runtime:main"
+mml-experiment-4 = "mml_research.experiments.run_experiment4_active:main"

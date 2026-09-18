@@ -1,0 +1,15 @@
+# /home/andrespulido/.config/tmuxinator/visualization.yml
+
+name: visualization
+root: ~/mml_ws
+
+windows:
+  - guidance_viz:
+      layout: even-vertical 
+      panes:
+        - topic_check: 
+          - source devel/setup.bash && cd src/mml_guidance
+        - roslaunch:
+          - source devel/setup.bash && cd src/mml_guidance
+        - sim_helper:
+          - source devel/setup.bash && roscd sim_helper && python scripts/Master.py

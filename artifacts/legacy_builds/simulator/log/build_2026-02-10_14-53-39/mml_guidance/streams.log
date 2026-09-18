@@ -1,0 +1,10 @@
+[0.428s] Invoking command in '/home/basestation/mml_python_sim/build/mml_guidance': PYTHONPATH=/home/basestation/mml_python_sim/build/mml_guidance/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/basestation/mml_python_sim/build/mml_guidance/build --no-deps symlink_data --force
+[0.520s] /home/basestation/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:289: UserWarning: Unknown distribution option: 'tests_require'
+[0.520s]   warnings.warn(msg)
+[0.558s] usage: setup.py [global_opts] cmd1 [cmd1_opts] [cmd2 [cmd2_opts] ...]
+[0.558s]    or: setup.py --help [cmd1 cmd2 ...]
+[0.558s]    or: setup.py --help-commands
+[0.558s]    or: setup.py cmd --help
+[0.558s] 
+[0.558s] error: option --editable not recognized
+[0.568s] Invoked command in '/home/basestation/mml_python_sim/build/mml_guidance' returned '1': PYTHONPATH=/home/basestation/mml_python_sim/build/mml_guidance/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --editable --build-directory /home/basestation/mml_python_sim/build/mml_guidance/build --no-deps symlink_data --force

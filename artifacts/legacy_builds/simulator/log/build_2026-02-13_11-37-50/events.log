@@ -1,0 +1,117 @@
+[0.000000] (-) TimerEvent: {}
+[0.000404] (-) JobUnselected: {'identifier': 'markov_package'}
+[0.000436] (mml_guidance) JobQueued: {'identifier': 'mml_guidance', 'dependencies': OrderedDict()}
+[0.000457] (mml_guidance) JobStarted: {'identifier': 'mml_guidance'}
+[0.005703] (mml_guidance) JobProgress: {'identifier': 'mml_guidance', 'progress': 'cmake'}
+[0.006066] (mml_guidance) Command: {'cmd': ['/usr/bin/cmake', '/home/basestation/mml_python_sim/src/mml_guidance', '-DCMAKE_INSTALL_PREFIX=/home/basestation/mml_python_sim/install/mml_guidance'], 'cwd': '/home/basestation/mml_python_sim/build/mml_guidance', 'env': OrderedDict([('LESSOPEN', '| /usr/bin/lesspipe %s'), ('PYTHONWARNINGS', 'ignore:setup.py install is deprecated::setuptools.command.install'), ('USER', 'basestation'), ('XDG_SESSION_TYPE', 'x11'), ('ISAACSIM_PATH', '/home/basestation/isaacsim'), ('SHLVL', '1'), ('LD_LIBRARY_PATH', '/home/basestation/mml_python_sim/install/mml_guidance/lib:/home/basestation/base_ws/install/opencv_cam/lib:/home/basestation/base_ws/install/mml_guidance_msgs/lib:/home/basestation/base_ws/install/crazyflie_interfaces/lib:/usr/lib/x86_64-linux-gnu/gazebo-11/plugins:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib:/home/basestation/isaacsim/exts/omni.isaac.ros2_bridge/humble/lib'), ('HOME', '/home/basestation'), ('CONDA_SHLVL', '0'), ('CYCLONEDDS_URI', '/etc/turtlebot4_discovery/cyclonedds_pc.xml'), ('DESKTOP_SESSION', 'ubuntu'), ('ROS_PYTHON_VERSION', '3'), ('GNOME_SHELL_SESSION_MODE', 'ubuntu'), ('GTK_MODULES', 'gail:atk-bridge'), ('SYSTEMD_EXEC_PID', '5280'), ('DBUS_SESSION_BUS_ADDRESS', 'unix:path=/run/user/1001/bus'), ('COLORTERM', 'truecolor'), ('_CE_M', ''), ('MANDATORY_PATH', '/usr/share/gconf/ubuntu.mandatory.path'), ('IM_CONFIG_PHASE', '1'), ('COLCON_PREFIX_PATH', '/home/basestation/mml_python_sim/install:/home/basestation/base_ws/install:/home/basestation/magnav_sim_ws/install'), ('ROS_DISTRO', 'humble'), ('GTK_IM_MODULE', 'ibus'), ('LOGNAME', 'basestation'), ('_', '/usr/bin/colcon'), ('ROS_VERSION', '2'), ('XDG_SESSION_CLASS', 'user'), ('DEFAULTS_PATH', '/usr/share/gconf/ubuntu.default.path'), ('ROS_SUPER_CLIENT', 'True'), ('USERNAME', 'basestation'), ('TERM', 'xterm-256color'), ('GNOME_DESKTOP_SESSION_ID', 'this-is-deprecated'), ('_CE_CONDA', ''), ('ROS_LOCALHOST_ONLY', '0'), ('WINDOWPATH', '2'), ('PATH', '/opt/ros/humble/bin:/home/basestation/miniconda3/condabin:/home/basestation/.local/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin:/opt/xtensa-esp-elf/bin/'), ('SESSION_MANAGER', 'local/MAE-JS-GCLK2Z3:@/tmp/.ICE-unix/3068,unix/MAE-JS-GCLK2Z3:/tmp/.ICE-unix/3068'), ('XDG_MENU_PREFIX', 'gnome-'), ('GNOME_TERMINAL_SCREEN', '/org/gnome/Terminal/screen/ec39674a_7556_4842_8ecb_17870a343b92'), ('XDG_RUNTIME_DIR', '/run/user/1001'), ('MAMBA_ROOT_PREFIX', '/home/basestation/micromamba'), ('DISPLAY', ':1'), ('LANG', 'en_US.UTF-8'), ('XDG_CURRENT_DESKTOP', 'ubuntu:GNOME'), ('RMW_IMPLEMENTATION', 'rmw_fastrtps_cpp'), ('XMODIFIERS', '@im=ibus'), ('XDG_SESSION_DESKTOP', 'ubuntu'), ('XAUTHORITY', '/run/user/1001/gdm/Xauthority'), ('LS_COLORS', 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:'), ('GNOME_TERMINAL_SERVICE', ':1.102'), ('SSH_AGENT_LAUNCHER', 'gnome-keyring'), ('SSH_AUTH_SOCK', '/run/user/1001/keyring/ssh'), ('ROS_DOMAIN_ID', '1'), ('AMENT_PREFIX_PATH', '/home/basestation/mml_python_sim/install/mml_guidance:/home/basestation/mml_python_sim/install/markov_package:/home/basestation/base_ws/install/opencv_cam:/home/basestation/base_ws/install/ros2_shared:/home/basestation/base_ws/install/robot_pid:/home/basestation/base_ws/install/mocap_transform:/home/basestation/base_ws/install/mocap_fake_radar:/home/basestation/base_ws/install/mml_guidance_msgs:/home/basestation/base_ws/install/magnav_viz:/home/basestation/base_ws/install/magnav_pf:/home/basestation/base_ws/install/magnav_entmap:/home/basestation/base_ws/install/mag_mapping:/home/basestation/base_ws/install/info_magnav:/home/basestation/base_ws/install/homography_node:/home/basestation/base_ws/install/drone_launch:/home/basestation/base_ws/install/crazyflie_interfaces:/home/basestation/base_ws/install/camera_detector:/home/basestation/base_ws/install/base_launch:/home/basestation/magnav_sim_ws/install/nn_data_collector:/home/basestation/magnav_sim_ws/install/magnav_nn_sim:/opt/ros/humble'), ('CONDA_PYTHON_EXE', '/home/basestation/miniconda3/bin/python'), ('SHELL', '/bin/bash'), ('ROS_DISCOVERY_SERVER', '192.168.0.107:11811;192.168.0.101:11811;192.168.0.104:11811;'), ('QT_ACCESSIBILITY', '1'), ('GDMSESSION', 'ubuntu'), ('LESSCLOSE', '/usr/bin/lesspipe %s %s'), ('ISAACSIM_PYTHON', '/home/basestation/isaacsim/python.sh'), ('GPG_AGENT_INFO', '/run/user/1001/gnupg/S.gpg-agent:0:1'), ('MAMBA_EXE', '/home/basestation/.local/bin/micromamba'), ('QT_IM_MODULE', 'ibus'), ('PWD', '/home/basestation/mml_python_sim/build/mml_guidance'), ('TURTLEBOT3_MODEL', 'burger'), ('LC_ALL', 'en_US.UTF-8'), ('XDG_CONFIG_DIRS', '/etc/xdg/xdg-ubuntu:/etc/xdg'), ('CONDA_EXE', '/home/basestation/miniconda3/bin/conda'), ('XDG_DATA_DIRS', '/usr/share/ubuntu:/usr/share/gnome:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop'), ('PYTHONPATH', '/home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages:/home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages:/home/basestation/mml_python_sim/install/markov_package/lib/python3.10/site-packages:/home/basestation/base_ws/install/robot_pid/lib/python3.10/site-packages:/home/basestation/base_ws/install/mocap_fake_radar/lib/python3.10/site-packages:/home/basestation/base_ws/install/mml_guidance_msgs/local/lib/python3.10/dist-packages:/home/basestation/base_ws/install/magnav_viz/lib/python3.10/site-packages:/home/basestation/base_ws/install/magnav_pf/lib/python3.10/site-packages:/home/basestation/base_ws/install/magnav_entmap/lib/python3.10/site-packages:/home/basestation/base_ws/install/mag_mapping/lib/python3.10/site-packages:/home/basestation/base_ws/install/info_magnav/lib/python3.10/site-packages:/home/basestation/base_ws/install/homography_node/lib/python3.10/site-packages:/home/basestation/base_ws/install/drone_launch/lib/python3.10/site-packages:/home/basestation/base_ws/install/crazyflie_interfaces/local/lib/python3.10/dist-packages:/home/basestation/base_ws/install/camera_detector/lib/python3.10/site-packages:/home/basestation/base_ws/install/base_launch/lib/python3.10/site-packages:/home/basestation/magnav_sim_ws/build/nn_data_collector:/home/basestation/magnav_sim_ws/install/nn_data_collector/lib/python3.10/site-packages:/home/basestation/magnav_sim_ws/build/magnav_nn_sim:/home/basestation/magnav_sim_ws/install/magnav_nn_sim/lib/python3.10/site-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages'), ('COLCON', '1'), ('VTE_VERSION', '6800'), ('CMAKE_PREFIX_PATH', '/home/basestation/mml_python_sim/install/mml_guidance:/home/basestation/base_ws/install/opencv_cam:/home/basestation/base_ws/install/mocap_transform:/home/basestation/base_ws/install/mml_guidance_msgs:/home/basestation/base_ws/install/crazyflie_interfaces:/home/basestation/mml_python_sim/install/markov_package:/home/basestation/base_ws/install/ros2_shared:/home/basestation/base_ws/install/robot_pid:/home/basestation/base_ws/install/mocap_fake_radar:/home/basestation/base_ws/install/magnav_viz:/home/basestation/base_ws/install/magnav_pf:/home/basestation/base_ws/install/magnav_entmap:/home/basestation/base_ws/install/mag_mapping:/home/basestation/base_ws/install/info_magnav:/home/basestation/base_ws/install/homography_node:/home/basestation/base_ws/install/drone_launch:/home/basestation/base_ws/install/camera_detector:/home/basestation/base_ws/install/base_launch:/home/basestation/magnav_sim_ws/install/nn_data_collector:/home/basestation/magnav_sim_ws/install/magnav_nn_sim:/opt/ros/humble'), ('ISAACSIM', '/home/basestation/isaacsim/isaac-sim.sh')]), 'shell': False}
+[0.040040] (mml_guidance) StdoutLine: {'line': b'-- The C compiler identification is GNU 11.4.0\n'}
+[0.075318] (mml_guidance) StdoutLine: {'line': b'-- The CXX compiler identification is GNU 11.4.0\n'}
+[0.079519] (mml_guidance) StdoutLine: {'line': b'-- Detecting C compiler ABI info\n'}
+[0.099909] (-) TimerEvent: {}
+[0.114224] (mml_guidance) StdoutLine: {'line': b'-- Detecting C compiler ABI info - done\n'}
+[0.122599] (mml_guidance) StdoutLine: {'line': b'-- Check for working C compiler: /usr/bin/cc - skipped\n'}
+[0.122867] (mml_guidance) StdoutLine: {'line': b'-- Detecting C compile features\n'}
+[0.123171] (mml_guidance) StdoutLine: {'line': b'-- Detecting C compile features - done\n'}
+[0.131083] (mml_guidance) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info\n'}
+[0.172891] (mml_guidance) StdoutLine: {'line': b'-- Detecting CXX compiler ABI info - done\n'}
+[0.185186] (mml_guidance) StdoutLine: {'line': b'-- Check for working CXX compiler: /usr/bin/c++ - skipped\n'}
+[0.185402] (mml_guidance) StdoutLine: {'line': b'-- Detecting CXX compile features\n'}
+[0.185898] (mml_guidance) StdoutLine: {'line': b'-- Detecting CXX compile features - done\n'}
+[0.192407] (mml_guidance) StdoutLine: {'line': b'-- Found ament_cmake: 1.3.12 (/opt/ros/humble/share/ament_cmake/cmake)\n'}
+[0.199970] (-) TimerEvent: {}
+[0.300168] (-) TimerEvent: {}
+[0.301498] (mml_guidance) StdoutLine: {'line': b'-- Found Python3: /usr/bin/python3 (found version "3.10.12") found components: Interpreter\n'}
+[0.379153] (mml_guidance) StdoutLine: {'line': b'-- Found rclpy: 3.3.19 (/opt/ros/humble/share/rclpy/cmake)\n'}
+[0.382352] (mml_guidance) StdoutLine: {'line': b'-- Found rosidl_default_generators: 1.2.0 (/opt/ros/humble/share/rosidl_default_generators/cmake)\n'}
+[0.386102] (mml_guidance) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[0.392277] (mml_guidance) StdoutLine: {'line': b'-- Found rosidl_adapter: 3.1.8 (/opt/ros/humble/share/rosidl_adapter/cmake)\n'}
+[0.400228] (-) TimerEvent: {}
+[0.428520] (mml_guidance) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[0.455421] (mml_guidance) StdoutLine: {'line': b'-- Found std_msgs: 4.9.0 (/opt/ros/humble/share/std_msgs/cmake)\n'}
+[0.476173] (mml_guidance) StdoutLine: {'line': b'-- Found geometry_msgs: 4.9.0 (/opt/ros/humble/share/geometry_msgs/cmake)\n'}
+[0.500320] (-) TimerEvent: {}
+[0.600567] (-) TimerEvent: {}
+[0.700809] (-) TimerEvent: {}
+[0.801083] (-) TimerEvent: {}
+[0.813937] (mml_guidance) StdoutLine: {'line': b'-- Found ament_cmake_ros: 0.10.0 (/opt/ros/humble/share/ament_cmake_ros/cmake)\n'}
+[0.901181] (-) TimerEvent: {}
+[1.001509] (-) TimerEvent: {}
+[1.101835] (-) TimerEvent: {}
+[1.193507] (mml_guidance) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_c: rosidl_typesupport_fastrtps_c;rosidl_typesupport_introspection_c\n'}
+[1.201933] (-) TimerEvent: {}
+[1.302116] (-) TimerEvent: {}
+[1.402391] (-) TimerEvent: {}
+[1.502665] (-) TimerEvent: {}
+[1.603091] (-) TimerEvent: {}
+[1.654655] (mml_guidance) StdoutLine: {'line': b'-- Using all available rosidl_typesupport_cpp: rosidl_typesupport_fastrtps_cpp;rosidl_typesupport_introspection_cpp\n'}
+[1.655626] (mml_guidance) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/rosidl_generator_py/cmake/rosidl_generator_py_generate_interfaces.cmake:20 (find_package):\n'}
+[1.655673] (mml_guidance) StderrLine: {'line': b'  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules\n'}
+[1.655697] (mml_guidance) StderrLine: {'line': b'  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use\n'}
+[1.655722] (mml_guidance) StderrLine: {'line': b'  the cmake_policy command to set the policy and suppress this warning.\n'}
+[1.655744] (mml_guidance) StderrLine: {'line': b'\n'}
+[1.655764] (mml_guidance) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.655785] (mml_guidance) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_execute_extensions.cmake:48 (include)\n'}
+[1.655806] (mml_guidance) StderrLine: {'line': b'  /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:286 (ament_execute_extensions)\n'}
+[1.655826] (mml_guidance) StderrLine: {'line': b'  CMakeLists.txt:17 (rosidl_generate_interfaces)\n'}
+[1.655846] (mml_guidance) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[1.655866] (mml_guidance) StderrLine: {'line': b'\x1b[0m\n'}
+[1.673537] (mml_guidance) StdoutLine: {'line': b'-- Found PythonInterp: /usr/bin/python3 (found suitable version "3.10.12", minimum required is "3.6")\n'}
+[1.675511] (mml_guidance) StdoutLine: {'line': b'-- Found python_cmake_module: 0.10.0 (/opt/ros/humble/share/python_cmake_module/cmake)\n'}
+[1.675876] (mml_guidance) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/python_cmake_module/cmake/Modules/FindPythonExtra.cmake:52 (find_package):\n'}
+[1.675935] (mml_guidance) StderrLine: {'line': b'  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules\n'}
+[1.675962] (mml_guidance) StderrLine: {'line': b'  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use\n'}
+[1.675990] (mml_guidance) StderrLine: {'line': b'  the cmake_policy command to set the policy and suppress this warning.\n'}
+[1.676010] (mml_guidance) StderrLine: {'line': b'\n'}
+[1.676031] (mml_guidance) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.676051] (mml_guidance) StderrLine: {'line': b'  /opt/ros/humble/share/rosidl_generator_py/cmake/rosidl_generator_py_generate_interfaces.cmake:23 (find_package)\n'}
+[1.676071] (mml_guidance) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_execute_extensions.cmake:48 (include)\n'}
+[1.676091] (mml_guidance) StderrLine: {'line': b'  /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:286 (ament_execute_extensions)\n'}
+[1.676112] (mml_guidance) StderrLine: {'line': b'  CMakeLists.txt:17 (rosidl_generate_interfaces)\n'}
+[1.676132] (mml_guidance) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[1.676152] (mml_guidance) StderrLine: {'line': b'\x1b[0m\n'}
+[1.692938] (mml_guidance) StderrLine: {'line': b'\x1b[33mCMake Warning (dev) at /opt/ros/humble/share/python_cmake_module/cmake/Modules/FindPythonExtra.cmake:140 (find_package):\n'}
+[1.693004] (mml_guidance) StderrLine: {'line': b'  Policy CMP0148 is not set: The FindPythonInterp and FindPythonLibs modules\n'}
+[1.693031] (mml_guidance) StderrLine: {'line': b'  are removed.  Run "cmake --help-policy CMP0148" for policy details.  Use\n'}
+[1.693054] (mml_guidance) StderrLine: {'line': b'  the cmake_policy command to set the policy and suppress this warning.\n'}
+[1.693081] (mml_guidance) StderrLine: {'line': b'\n'}
+[1.693102] (mml_guidance) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.693124] (mml_guidance) StderrLine: {'line': b'  /opt/ros/humble/share/rosidl_generator_py/cmake/rosidl_generator_py_generate_interfaces.cmake:23 (find_package)\n'}
+[1.693144] (mml_guidance) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_core/cmake/core/ament_execute_extensions.cmake:48 (include)\n'}
+[1.693164] (mml_guidance) StderrLine: {'line': b'  /opt/ros/humble/share/rosidl_cmake/cmake/rosidl_generate_interfaces.cmake:286 (ament_execute_extensions)\n'}
+[1.693184] (mml_guidance) StderrLine: {'line': b'  CMakeLists.txt:17 (rosidl_generate_interfaces)\n'}
+[1.693203] (mml_guidance) StderrLine: {'line': b'This warning is for project developers.  Use -Wno-dev to suppress it.\n'}
+[1.693225] (mml_guidance) StderrLine: {'line': b'\x1b[0m\n'}
+[1.699538] (mml_guidance) StdoutLine: {'line': b'-- Found PythonLibs: /usr/lib/x86_64-linux-gnu/libpython3.10.so (found suitable version "3.10.12", minimum required is "3.5")\n'}
+[1.699621] (mml_guidance) StdoutLine: {'line': b'-- Using PYTHON_EXECUTABLE: /usr/bin/python3\n'}
+[1.699649] (mml_guidance) StdoutLine: {'line': b'-- Using PYTHON_INCLUDE_DIRS: /usr/include/python3.10\n'}
+[1.699672] (mml_guidance) StdoutLine: {'line': b'-- Using PYTHON_LIBRARIES: /usr/lib/x86_64-linux-gnu/libpython3.10.so\n'}
+[1.703152] (-) TimerEvent: {}
+[1.714521] (mml_guidance) StdoutLine: {'line': b'-- Found PythonExtra: .so\n'}
+[1.756736] (mml_guidance) StderrLine: {'line': b'\x1b[31mCMake Error at /opt/ros/humble/share/ament_cmake_python/cmake/ament_python_install_package.cmake:122 (add_custom_target):\n'}
+[1.756827] (mml_guidance) StderrLine: {'line': b'  add_custom_target cannot create target\n'}
+[1.756855] (mml_guidance) StderrLine: {'line': b'  "ament_cmake_python_copy_mml_guidance" because another target with the same\n'}
+[1.756881] (mml_guidance) StderrLine: {'line': b'  name already exists.  The existing target is a custom target created in\n'}
+[1.756902] (mml_guidance) StderrLine: {'line': b'  source directory "/home/basestation/mml_python_sim/src/mml_guidance".  See\n'}
+[1.756922] (mml_guidance) StderrLine: {'line': b'  documentation for policy CMP0002 for more details.\n'}
+[1.756944] (mml_guidance) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.756964] (mml_guidance) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_python/cmake/ament_python_install_package.cmake:39 (_ament_cmake_python_install_package)\n'}
+[1.756985] (mml_guidance) StderrLine: {'line': b'  CMakeLists.txt:24 (ament_python_install_package)\n'}
+[1.757006] (mml_guidance) StderrLine: {'line': b'\n'}
+[1.757026] (mml_guidance) StderrLine: {'line': b'\x1b[0m\n'}
+[1.757046] (mml_guidance) StderrLine: {'line': b'\x1b[31mCMake Error at /opt/ros/humble/share/ament_cmake_python/cmake/ament_python_install_package.cmake:141 (add_custom_target):\n'}
+[1.757067] (mml_guidance) StderrLine: {'line': b'  add_custom_target cannot create target\n'}
+[1.757086] (mml_guidance) StderrLine: {'line': b'  "ament_cmake_python_build_mml_guidance_egg" because another target with the\n'}
+[1.757106] (mml_guidance) StderrLine: {'line': b'  same name already exists.  The existing target is a custom target created\n'}
+[1.757125] (mml_guidance) StderrLine: {'line': b'  in source directory "/home/basestation/mml_python_sim/src/mml_guidance".\n'}
+[1.757144] (mml_guidance) StderrLine: {'line': b'  See documentation for policy CMP0002 for more details.\n'}
+[1.757164] (mml_guidance) StderrLine: {'line': b'Call Stack (most recent call first):\n'}
+[1.757183] (mml_guidance) StderrLine: {'line': b'  /opt/ros/humble/share/ament_cmake_python/cmake/ament_python_install_package.cmake:39 (_ament_cmake_python_install_package)\n'}
+[1.757202] (mml_guidance) StderrLine: {'line': b'  CMakeLists.txt:24 (ament_python_install_package)\n'}
+[1.757221] (mml_guidance) StderrLine: {'line': b'\n'}
+[1.757239] (mml_guidance) StderrLine: {'line': b'\x1b[0m\n'}
+[1.758717] (mml_guidance) StdoutLine: {'line': b'-- Found ament_lint_auto: 0.12.14 (/opt/ros/humble/share/ament_lint_auto/cmake)\n'}
+[1.790487] (mml_guidance) StdoutLine: {'line': b'-- Configuring incomplete, errors occurred!\n'}
+[1.795091] (mml_guidance) CommandEnded: {'returncode': 1}
+[1.803627] (-) TimerEvent: {}
+[1.805092] (mml_guidance) JobEnded: {'identifier': 'mml_guidance', 'rc': 1}
+[1.815424] (-) EventReactorShutdown: {}

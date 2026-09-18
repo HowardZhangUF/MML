@@ -1,0 +1,5 @@
+Metadata-Version: 2.1
+Name: mml-research
+Version: 0.1.0
+Requires-Python: >=3.10
+Provides-Extra: simulation

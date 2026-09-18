@@ -1,0 +1,4 @@
+source;share/mml_guidance/local_setup.bash
+source;share/mml_guidance/local_setup.dsv
+source;share/mml_guidance/local_setup.sh
+source;share/mml_guidance/local_setup.zsh

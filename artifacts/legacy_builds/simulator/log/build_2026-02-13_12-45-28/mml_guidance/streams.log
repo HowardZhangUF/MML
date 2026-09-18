@@ -1,0 +1,264 @@
+[0.007s] Invoking command in '/home/basestation/mml_python_sim/build/mml_guidance': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/basestation/base_ws/install/ros2_shared:/home/basestation/base_ws/install/robot_pid:/home/basestation/base_ws/install/mocap_fake_radar:/home/basestation/base_ws/install/magnav_viz:/home/basestation/base_ws/install/magnav_pf:/home/basestation/base_ws/install/magnav_entmap:/home/basestation/base_ws/install/mag_mapping:/home/basestation/base_ws/install/info_magnav:/home/basestation/base_ws/install/homography_node:/home/basestation/base_ws/install/drone_launch:/home/basestation/base_ws/install/camera_detector:/home/basestation/base_ws/install/base_launch:/home/basestation/magnav_sim_ws/install/nn_data_collector:/home/basestation/magnav_sim_ws/install/magnav_nn_sim:/opt/ros/humble /usr/bin/cmake --build /home/basestation/mml_python_sim/build/mml_guidance -- -j24 -l24
+[0.028s] [  3%] Built target mml_guidance__cpp
+[0.029s] [ 12%] Built target mml_guidance__rosidl_generator_c
+[0.031s] [ 12%] Built target ament_cmake_python_copy_mml_guidance
+[0.036s] [ 22%] Built target mml_guidance__rosidl_typesupport_introspection_c
+[0.036s] [ 32%] Built target mml_guidance__rosidl_typesupport_fastrtps_c
+[0.037s] [ 41%] Built target mml_guidance__rosidl_typesupport_c
+[0.037s] [ 51%] Built target mml_guidance__rosidl_typesupport_fastrtps_cpp
+[0.037s] [ 61%] Built target mml_guidance__rosidl_typesupport_cpp
+[0.038s] [ 70%] Built target mml_guidance__rosidl_typesupport_introspection_cpp
+[0.045s] [ 70%] Built target mml_guidance
+[0.053s] [ 74%] Built target mml_guidance__py
+[0.062s] [ 80%] Built target mml_guidance__rosidl_generator_py
+[0.072s] [ 90%] Built target mml_guidance__rosidl_typesupport_fastrtps_c__pyext
+[0.072s] [ 93%] Built target mml_guidance__rosidl_typesupport_introspection_c__pyext
+[0.072s] [100%] Built target mml_guidance__rosidl_typesupport_c__pyext
+[0.166s] running egg_info
+[0.177s] writing mml_guidance.egg-info/PKG-INFO
+[0.177s] writing dependency_links to mml_guidance.egg-info/dependency_links.txt
+[0.177s] writing top-level names to mml_guidance.egg-info/top_level.txt
+[1.323s] reading manifest file 'mml_guidance.egg-info/SOURCES.txt'
+[1.324s] writing manifest file 'mml_guidance.egg-info/SOURCES.txt'
+[1.338s] [100%] Built target ament_cmake_python_build_mml_guidance_egg
+[1.342s] Invoked command in '/home/basestation/mml_python_sim/build/mml_guidance' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/basestation/base_ws/install/ros2_shared:/home/basestation/base_ws/install/robot_pid:/home/basestation/base_ws/install/mocap_fake_radar:/home/basestation/base_ws/install/magnav_viz:/home/basestation/base_ws/install/magnav_pf:/home/basestation/base_ws/install/magnav_entmap:/home/basestation/base_ws/install/mag_mapping:/home/basestation/base_ws/install/info_magnav:/home/basestation/base_ws/install/homography_node:/home/basestation/base_ws/install/drone_launch:/home/basestation/base_ws/install/camera_detector:/home/basestation/base_ws/install/base_launch:/home/basestation/magnav_sim_ws/install/nn_data_collector:/home/basestation/magnav_sim_ws/install/magnav_nn_sim:/opt/ros/humble /usr/bin/cmake --build /home/basestation/mml_python_sim/build/mml_guidance -- -j24 -l24
+[1.345s] Invoking command in '/home/basestation/mml_python_sim/build/mml_guidance': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/basestation/base_ws/install/ros2_shared:/home/basestation/base_ws/install/robot_pid:/home/basestation/base_ws/install/mocap_fake_radar:/home/basestation/base_ws/install/magnav_viz:/home/basestation/base_ws/install/magnav_pf:/home/basestation/base_ws/install/magnav_entmap:/home/basestation/base_ws/install/mag_mapping:/home/basestation/base_ws/install/info_magnav:/home/basestation/base_ws/install/homography_node:/home/basestation/base_ws/install/drone_launch:/home/basestation/base_ws/install/camera_detector:/home/basestation/base_ws/install/base_launch:/home/basestation/magnav_sim_ws/install/nn_data_collector:/home/basestation/magnav_sim_ws/install/magnav_nn_sim:/opt/ros/humble /usr/bin/cmake --install /home/basestation/mml_python_sim/build/mml_guidance
+[1.348s] -- Install configuration: ""
+[1.348s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/ament_index/resource_index/rosidl_interfaces/mml_guidance
+[1.348s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance
+[1.348s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg
+[1.348s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail
+[1.348s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail/rl_command__functions.c
+[1.348s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail/rl_command__functions.h
+[1.348s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail/rl_command__struct.h
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail/rl_command__type_support.h
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/rl_command.h
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/rosidl_generator_c__visibility_control.h
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/environment/library_path.sh
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/environment/library_path.dsv
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/lib/libmml_guidance__rosidl_generator_c.so
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail/rl_command__rosidl_typesupport_fastrtps_c.h
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/rosidl_typesupport_fastrtps_c__visibility_control.h
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/lib/libmml_guidance__rosidl_typesupport_fastrtps_c.so
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail/rl_command__rosidl_typesupport_introspection_c.h
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail/rl_command__type_support.c
+[1.349s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/rosidl_typesupport_introspection_c__visibility_control.h
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/lib/libmml_guidance__rosidl_typesupport_introspection_c.so
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/lib/libmml_guidance__rosidl_typesupport_c.so
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail/rl_command__builder.hpp
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail/rl_command__struct.hpp
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail/rl_command__type_support.hpp
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail/rl_command__traits.hpp
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/rl_command.hpp
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/rosidl_generator_cpp__visibility_control.hpp
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail/dds_fastrtps
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail/rl_command__rosidl_typesupport_fastrtps_cpp.hpp
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/rosidl_typesupport_fastrtps_cpp__visibility_control.h
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/lib/libmml_guidance__rosidl_typesupport_fastrtps_cpp.so
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail/rl_command__type_support.cpp
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/include/mml_guidance/mml_guidance/msg/detail/rl_command__rosidl_typesupport_introspection_cpp.hpp
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/lib/libmml_guidance__rosidl_typesupport_introspection_cpp.so
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/lib/libmml_guidance__rosidl_typesupport_cpp.so
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/environment/pythonpath.sh
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/environment/pythonpath.dsv
+[1.350s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance-0.0.0-py3.10.egg-info
+[1.350s] -- Installing: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance-0.0.0-py3.10.egg-info/PKG-INFO
+[1.351s] -- Installing: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance-0.0.0-py3.10.egg-info/SOURCES.txt
+[1.351s] -- Installing: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance-0.0.0-py3.10.egg-info/top_level.txt
+[1.351s] -- Installing: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance-0.0.0-py3.10.egg-info/dependency_links.txt
+[1.351s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance
+[1.351s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/msg
+[1.351s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/msg/_rl_command_s.c
+[1.351s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/msg/_rl_command.py
+[1.351s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/msg/__init__.py
+[1.351s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/_mml_guidance_s.ep.rosidl_typesupport_introspection_c.c
+[1.351s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/mml_guidance_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[1.351s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/libmml_guidance__rosidl_generator_py.so
+[1.351s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/_mml_guidance_s.ep.rosidl_typesupport_c.c
+[1.351s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/_mml_guidance_s.ep.rosidl_typesupport_fastrtps_c.c
+[1.351s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/mml_guidance_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[1.351s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/mml_guidance_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[1.351s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/__init__.py
+[1.374s] Listing '/home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance'...
+[1.374s] Listing '/home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/mml_network'...
+[1.374s] Listing '/home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/msg'...
+[1.376s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/mml_guidance_s__rosidl_typesupport_fastrtps_c.cpython-310-x86_64-linux-gnu.so
+[1.377s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/mml_guidance_s__rosidl_typesupport_introspection_c.cpython-310-x86_64-linux-gnu.so
+[1.377s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance/mml_guidance_s__rosidl_typesupport_c.cpython-310-x86_64-linux-gnu.so
+[1.377s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/lib/libmml_guidance__rosidl_generator_py.so
+[1.377s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/msg/RLCommand.idl
+[1.377s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/msg/RLCommand.msg
+[1.471s] /home/basestation/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:289: UserWarning: Unknown distribution option: 'tests_require'
+[1.471s]   warnings.warn(msg)
+[1.509s] running install
+[1.509s] /home/basestation/.local/lib/python3.10/site-packages/setuptools/_distutils/cmd.py:90: SetuptoolsDeprecationWarning: setup.py install is deprecated.
+[1.509s] !!
+[1.509s] 
+[1.509s]         ********************************************************************************
+[1.509s]         Please avoid running ``setup.py`` directly.
+[1.509s]         Instead, use pypa/build, pypa/installer or other
+[1.509s]         standards-based tools.
+[1.509s] 
+[1.509s]         This deprecation is overdue, please update your project and remove deprecated
+[1.509s]         calls to avoid build errors in the future.
+[1.509s] 
+[1.509s]         See https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html for details.
+[1.509s]         ********************************************************************************
+[1.510s] 
+[1.510s] !!
+[1.510s]   self.initialize_options()
+[1.523s] running build
+[1.523s] running build_py
+[1.534s] copying mml_guidance/guidance.py -> build/lib/mml_guidance
+[1.534s] copying mml_guidance/rl_offboard_tracker.py -> build/lib/mml_guidance
+[1.534s] copying mml_guidance/drone_commander.py -> build/lib/mml_guidance
+[1.535s] copying mml_guidance/rl_policy_node.py -> build/lib/mml_guidance
+[1.535s] copying mml_guidance/realsense_pose_tag_node.py -> build/lib/mml_guidance
+[1.535s] copying mml_guidance/particle_filter_gnn_associator.py -> build/lib/mml_guidance
+[1.535s] copying mml_guidance/monitor_tracking.py -> build/lib/mml_guidance
+[1.535s] copying mml_guidance/kf.py -> build/lib/mml_guidance
+[1.535s] copying mml_guidance/Sim_turtle.py -> build/lib/mml_guidance
+[1.535s] copying mml_guidance/particle_filter_ros_wrapper.py -> build/lib/mml_guidance
+[1.535s] copying mml_guidance/gnn_associator.py -> build/lib/mml_guidance
+[1.535s] copying mml_guidance/ParticleFilter.py -> build/lib/mml_guidance
+[1.535s] copying mml_guidance/plot_data_run.py -> build/lib/mml_guidance
+[1.536s] copying mml_guidance/turtlebot_pid_controller.py -> build/lib/mml_guidance
+[1.536s] copying mml_guidance/spaguetti.py -> build/lib/mml_guidance
+[1.536s] copying mml_guidance/mml_pf_visualization.py -> build/lib/mml_guidance
+[1.536s] copying mml_guidance/summarize_joined_runs.py -> build/lib/mml_guidance
+[1.536s] copying mml_guidance/main_guidance_node.py -> build/lib/mml_guidance
+[1.536s] copying mml_guidance/ppo_guidance.py -> build/lib/mml_guidance
+[1.536s] copying mml_guidance/sim_uav_tracker.py -> build/lib/mml_guidance
+[1.536s] copying mml_guidance/analyze_hardware_data.py -> build/lib/mml_guidance
+[1.536s] copying mml_guidance/go_here_square.py -> build/lib/mml_guidance
+[1.536s] copying mml_guidance/boundary_safety_test.py -> build/lib/mml_guidance
+[1.536s] copying mml_guidance/go_here.py -> build/lib/mml_guidance
+[1.537s] copying mml_guidance/plot_data_all_runs.py -> build/lib/mml_guidance
+[1.537s] copying mml_guidance/ros2bag_csv.py -> build/lib/mml_guidance
+[1.537s] copying mml_guidance/__init__.py -> build/lib/mml_guidance
+[1.537s] copying mml_guidance/lawnmower.py -> build/lib/mml_guidance
+[1.537s] copying mml_guidance/boundary_visualization.py -> build/lib/mml_guidance
+[1.537s] copying mml_guidance/markov_goal_pose.py -> build/lib/mml_guidance
+[1.537s] copying mml_guidance/mml_network/train.py -> build/lib/mml_guidance/mml_network
+[1.537s] copying mml_guidance/mml_network/transformer.py -> build/lib/mml_guidance/mml_network
+[1.537s] copying mml_guidance/mml_network/convert_data.py -> build/lib/mml_guidance/mml_network
+[1.537s] copying mml_guidance/mml_network/simple_dnn.py -> build/lib/mml_guidance/mml_network
+[1.538s] copying mml_guidance/mml_network/scratch_transformer.py -> build/lib/mml_guidance/mml_network
+[1.538s] copying mml_guidance/mml_network/__init__.py -> build/lib/mml_guidance/mml_network
+[1.538s] copying mml_guidance/mml_network/motion_model_network.py -> build/lib/mml_guidance/mml_network
+[1.538s] copying mml_guidance/mml_network/visualize_graph.py -> build/lib/mml_guidance/mml_network
+[1.538s] running install_lib
+[1.551s] running install_data
+[1.562s] copying resource/mml_guidance -> /home/basestation/mml_python_sim/install/mml_guidance/local/share/ament_index/resource_index/packages
+[1.562s] copying package.xml -> /home/basestation/mml_python_sim/install/mml_guidance/local/share/mml_guidance
+[1.562s] copying launch/boundary_test.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/local/share/mml_guidance/launch
+[1.562s] copying launch/track_hardware.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/local/share/mml_guidance/launch
+[1.562s] copying launch/april_hardware.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/local/share/mml_guidance/launch
+[1.563s] copying launch/waypoint_with_safety.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/local/share/mml_guidance/launch
+[1.563s] copying launch/rl_tracker.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/local/share/mml_guidance/launch
+[1.563s] copying launch/mml_sim_estimator.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/local/share/mml_guidance/launch
+[1.563s] copying launch/pure_rl_tracking.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/local/share/mml_guidance/launch
+[1.563s] copying launch/square_pattern.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/local/share/mml_guidance/launch
+[1.563s] copying launch/sim_uav_test.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/local/share/mml_guidance/launch
+[1.563s] copying launch/rl_pattern_tracker.launch.py -> /home/basestation/mml_python_sim/install/mml_guidance/local/share/mml_guidance/launch
+[1.563s] running install_egg_info
+[1.587s] running egg_info
+[1.598s] writing mml_guidance.egg-info/PKG-INFO
+[1.598s] writing dependency_links to mml_guidance.egg-info/dependency_links.txt
+[1.598s] writing entry points to mml_guidance.egg-info/entry_points.txt
+[1.598s] writing requirements to mml_guidance.egg-info/requires.txt
+[1.598s] writing top-level names to mml_guidance.egg-info/top_level.txt
+[2.731s] writing manifest file 'mml_guidance.egg-info/SOURCES.txt'
+[2.731s] removing '/home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance-0.0.1-py3.10.egg-info' (and everything under it)
+[2.731s] Copying mml_guidance.egg-info to /home/basestation/mml_python_sim/install/mml_guidance/local/lib/python3.10/dist-packages/mml_guidance-0.0.1-py3.10.egg-info
+[2.731s] running install_scripts
+[2.754s] Installing Sim_turtle script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[2.754s] Installing boundary_safety_test script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[2.754s] Installing boundary_visualization script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[2.754s] Installing drone_commander script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[2.754s] Installing go_here script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[2.754s] Installing go_here_square script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[2.754s] Installing guidance script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[2.755s] Installing markov_goal_pose script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[2.755s] Installing mml_pf_visualization script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[2.755s] Installing monitor_tracking script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[2.755s] Installing rl_policy_node script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[2.755s] Installing rl_tracker script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[2.755s] Installing simulated_turtlebot script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[2.755s] Installing simulated_uav_tracker script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[2.755s] Installing turtlebot_pid_controller script to /home/basestation/mml_python_sim/install/mml_guidance/lib/mml_guidance
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/sim_experiments.launch
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/aruco.launch
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/bag_sim.launch
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/boundary_test.launch.py
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/track_hardware.launch.py
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/april_hardware.launch.py
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/waypoint_with_safety.launch.py
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/track_hardware.launch
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/rl_tracker.launch.py
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/mml_sim_estimator.launch.py
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/hardware_visualization.launch
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/pure_rl_tracking.launch.py
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/turtlebot_hardware.launch
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/square_pattern.launch.py
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/sim_uav_test.launch.py
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/rl_pattern_tracker.launch.py
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/bag_hardware.launch
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/mml_sim_estimator.launch
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance//launch/visualization.launch
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/ament_index/resource_index/package_run_dependencies/mml_guidance
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/ament_index/resource_index/parent_prefix_path/mml_guidance
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/environment/ament_prefix_path.sh
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/environment/ament_prefix_path.dsv
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/environment/path.sh
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/environment/path.dsv
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/local_setup.bash
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/local_setup.sh
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/local_setup.zsh
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/local_setup.dsv
+[2.767s] -- Installing: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/package.dsv
+[2.767s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/ament_index/resource_index/packages/mml_guidance
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/export_mml_guidance__rosidl_generator_cExport.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/export_mml_guidance__rosidl_generator_cExport-noconfig.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/export_mml_guidance__rosidl_typesupport_fastrtps_cExport.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/export_mml_guidance__rosidl_typesupport_fastrtps_cExport-noconfig.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/mml_guidance__rosidl_typesupport_introspection_cExport.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/mml_guidance__rosidl_typesupport_introspection_cExport-noconfig.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/mml_guidance__rosidl_typesupport_cExport.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/mml_guidance__rosidl_typesupport_cExport-noconfig.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/export_mml_guidance__rosidl_generator_cppExport.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/export_mml_guidance__rosidl_typesupport_fastrtps_cppExport.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/export_mml_guidance__rosidl_typesupport_fastrtps_cppExport-noconfig.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/mml_guidance__rosidl_typesupport_introspection_cppExport.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/mml_guidance__rosidl_typesupport_introspection_cppExport-noconfig.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/mml_guidance__rosidl_typesupport_cppExport.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/mml_guidance__rosidl_typesupport_cppExport-noconfig.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/export_mml_guidance__rosidl_generator_pyExport.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/export_mml_guidance__rosidl_generator_pyExport-noconfig.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/rosidl_cmake-extras.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/ament_cmake_export_dependencies-extras.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/ament_cmake_export_include_directories-extras.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/ament_cmake_export_libraries-extras.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/ament_cmake_export_targets-extras.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/rosidl_cmake_export_typesupport_targets-extras.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/rosidl_cmake_export_typesupport_libraries-extras.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/mml_guidanceConfig.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/cmake/mml_guidanceConfig-version.cmake
+[2.768s] -- Up-to-date: /home/basestation/mml_python_sim/install/mml_guidance/share/mml_guidance/package.xml
+[2.769s] Invoked command in '/home/basestation/mml_python_sim/build/mml_guidance' returned '0': CMAKE_PREFIX_PATH=${CMAKE_PREFIX_PATH}:/home/basestation/base_ws/install/ros2_shared:/home/basestation/base_ws/install/robot_pid:/home/basestation/base_ws/install/mocap_fake_radar:/home/basestation/base_ws/install/magnav_viz:/home/basestation/base_ws/install/magnav_pf:/home/basestation/base_ws/install/magnav_entmap:/home/basestation/base_ws/install/mag_mapping:/home/basestation/base_ws/install/info_magnav:/home/basestation/base_ws/install/homography_node:/home/basestation/base_ws/install/drone_launch:/home/basestation/base_ws/install/camera_detector:/home/basestation/base_ws/install/base_launch:/home/basestation/magnav_sim_ws/install/nn_data_collector:/home/basestation/magnav_sim_ws/install/magnav_nn_sim:/opt/ros/humble /usr/bin/cmake --install /home/basestation/mml_python_sim/build/mml_guidance

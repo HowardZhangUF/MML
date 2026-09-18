@@ -1,0 +1,20 @@
+<!-- launch file for running the guidance and visualization nodes. Used mostly to not restart the whole sim -->
+<launch>
+	<arg name="is_visualization" default="true"/>
+	<arg name="is_simulation" default="true"/>
+
+  	<param name="is_viz" value="$(arg is_visualization)"/>
+	<param name="is_sim" value="$(arg is_simulation)"/>
+	<node pkg="mml_guidance" name="drone_guidance" type="guidance.py" output="screen"/>
+
+	<node pkg="mml_guidance" type="mml_pf_visualization.py" name="mml_pf_visualization" output="screen">
+		<remap from="odom" to="/robot0/odom"/>
+	</node>
+
+	<group ns="robot0">
+		<node pkg="mml_guidance" name="markov_goal_pose" type="markov_goal_pose.py" output="screen">
+			<remap from="/odom" to="/robot0/odom"/>
+			<remap from="/goal_pose" to="/robot0/goal_pose"/>
+		</node>
+	</group>
+</launch>

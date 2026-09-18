@@ -1,0 +1,19 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mml-core"
+version = "0.1.0"
+requires-python = ">=3.10"
+dependencies = ["numpy", "scipy", "PyYAML", "torch>=2.4.1", "Shapely>=2.0.7", "pandas", "matplotlib", "scikit-learn", "stonesoup>=0.4.0"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+mml_core = ["config.yaml"]
+
+[project.optional-dependencies]
+policy = ["stable-baselines3>=2", "sb3-contrib>=2"]
+online-training = ["mml-research==0.1.0"]

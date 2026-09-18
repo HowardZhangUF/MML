@@ -1,0 +1,11 @@
+source;share/mml_guidance/hook/cmake_prefix_path.ps1
+source;share/mml_guidance/hook/cmake_prefix_path.dsv
+source;share/mml_guidance/hook/cmake_prefix_path.sh
+source;share/mml_guidance/hook/ld_library_path_lib.ps1
+source;share/mml_guidance/hook/ld_library_path_lib.dsv
+source;share/mml_guidance/hook/ld_library_path_lib.sh
+source;share/mml_guidance/local_setup.bash
+source;share/mml_guidance/local_setup.dsv
+source;share/mml_guidance/local_setup.ps1
+source;share/mml_guidance/local_setup.sh
+source;share/mml_guidance/local_setup.zsh

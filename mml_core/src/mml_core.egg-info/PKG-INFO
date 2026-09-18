@@ -1,0 +1,6 @@
+Metadata-Version: 2.1
+Name: mml-core
+Version: 0.1.0
+Requires-Python: >=3.10
+Provides-Extra: policy
+Provides-Extra: online-training

@@ -1,0 +1,12 @@
+<!-- launch file for MML demo in simulation with realtime matplotlib visualizations -->
+<launch>
+	<arg name="is_sim" default="False"/>
+
+	<param name="is_sim" value="$(arg is_sim)"/>
+	<node pkg="mml_guidance" type="mml_pf_visualization.py" name="mml_pf_visualization" output="screen">
+		<remap if ="$(arg is_sim)" from="odom" to="/robot0/odom"/>
+		<remap unless="$(arg is_sim)" from="odom" to="/rail/nwu/pose_stamped"/>
+		<remap from="joy" to="/mmlCheck/joy"/>
+
+	</node>
+</launch>

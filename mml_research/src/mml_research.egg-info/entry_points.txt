@@ -1,0 +1,5 @@
+[console_scripts]
+mml-experiment-1 = mml_research.experiments.run_experiment1_distribution:main
+mml-experiment-2 = mml_research.experiments.run_experiment2_occlusion:main
+mml-experiment-3 = mml_research.experiments.run_experiment3_runtime:main
+mml-experiment-4 = mml_research.experiments.run_experiment4_active:main

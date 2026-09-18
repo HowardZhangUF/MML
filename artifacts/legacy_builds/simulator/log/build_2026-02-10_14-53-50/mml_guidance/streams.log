@@ -1,0 +1,10 @@
+[0.422s] Invoking command in '/home/basestation/mml_python_sim/build/mml_guidance': PYTHONPATH=/home/basestation/mml_python_sim/build/mml_guidance/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/basestation/mml_python_sim/build/mml_guidance/build
+[0.514s] /home/basestation/.local/lib/python3.10/site-packages/setuptools/_distutils/dist.py:289: UserWarning: Unknown distribution option: 'tests_require'
+[0.514s]   warnings.warn(msg)
+[0.552s] usage: setup.py [global_opts] cmd1 [cmd1_opts] [cmd2 [cmd2_opts] ...]
+[0.552s]    or: setup.py --help [cmd1 cmd2 ...]
+[0.552s]    or: setup.py --help-commands
+[0.552s]    or: setup.py cmd --help
+[0.552s] 
+[0.552s] error: option --uninstall not recognized
+[0.562s] Invoked command in '/home/basestation/mml_python_sim/build/mml_guidance' returned '1': PYTHONPATH=/home/basestation/mml_python_sim/build/mml_guidance/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/basestation/mml_python_sim/install/mml_guidance/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py develop --uninstall --editable --build-directory /home/basestation/mml_python_sim/build/mml_guidance/build

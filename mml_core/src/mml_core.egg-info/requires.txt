@@ -1,0 +1,16 @@
+numpy
+scipy
+PyYAML
+torch>=2.4.1
+Shapely>=2.0.7
+pandas
+matplotlib
+scikit-learn
+stonesoup>=0.4.0
+
+[online-training]
+mml-research==0.1.0
+
+[policy]
+stable-baselines3>=2
+sb3-contrib>=2

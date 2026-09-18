@@ -1,0 +1,6 @@
+{
+  "package_name": "mml_guidance",
+  "non_idl_tuples": [
+    "/home/basestation/mml_python_sim/src/mml_guidance:msg/RLCommand.msg"
+  ]
+}

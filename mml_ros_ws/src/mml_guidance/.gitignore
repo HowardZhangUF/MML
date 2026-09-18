@@ -1,0 +1,9 @@
+scripts/mml_network/models/*
+*.pyc
+*.csv
+data/data*
+data/rms_*
+__pycache__/
+hardware_data/*
+sim_data/*
+.vscode

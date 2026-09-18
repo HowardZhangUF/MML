@@ -1,0 +1,2 @@
+Invoking command in '/home/basestation/mml_python_sim/build/mml_guidance': /usr/bin/cmake /home/basestation/mml_python_sim/src/mml_guidance -DCMAKE_INSTALL_PREFIX=/home/basestation/mml_python_sim/install/mml_guidance
+Invoked command in '/home/basestation/mml_python_sim/build/mml_guidance' returned '1': /usr/bin/cmake /home/basestation/mml_python_sim/src/mml_guidance -DCMAKE_INSTALL_PREFIX=/home/basestation/mml_python_sim/install/mml_guidance
