@@ -40,18 +40,40 @@ export PYTHONPATH=mml_core/src:mml_research/src:baselines   # or: pip install -e
 export OMP_NUM_THREADS=1 MKL_NUM_THREADS=1 OPENBLAS_NUM_THREADS=1
 M=artifacts/motion/exit_benchmark
 
+# training (GPU; logs in $M/models/*_train.log)
 python -m mml_baselines.trajflow.train --out $M/models
 python -m mml_baselines.moflow.train   --out $M/models
 python -m mml_baselines.tcfm.train     --out $M/models
 
-# validation-run selection (runs 100-119)
-python -m mml_research.motion.sweep_process_noise --models-dir $M/models --out-dir $M/noise_sweep_new \
-    --trackers PF+TrajFlow PF+MoFlow PF+TCFM --workers 24
-python -m mml_research.motion.sweep_enff --models-dir $M/models --out-dir $M/enff_sweep --workers 24
+# selection on validation runs 100-119
+for T in TrajFlow MoFlow TCFM; do
+  python -m mml_research.motion.sweep_process_noise --models-dir $M/models \
+      --out-dir $M/noise_sweep_${T,,} --trackers PF+$T --workers 8
+done
+python -m mml_research.motion.sweep_enff --models-dir $M/models --out-dir $M/enff_sweep --workers 12
+python -m mml_research.motion.merge_noise_sweeps --root $M \
+    --add noise_sweep_trajflow noise_sweep_moflow noise_sweep_tcfm --enff enff_sweep
 
-# benchmark (runs 0-99) with every tracker, then the LaTeX tables
+# benchmark, runs 0-99 (EnFF lambda / sigma_min defaults are the selected values)
 python -m mml_research.motion.benchmark_exit_prediction --models-dir $M/models --out-dir $M/results \
-    --workers 24 --process_noise $(cat $M/noise_sweep/chosen_noise.txt) \
-    --enff_lambda <chosen> --enff_sigma_min <chosen>
-python -m mml_research.motion.make_benchmark_tables --root $M
+    --workers 25 --process_noise $(cat $M/noise_sweep/chosen_noise.txt) \
+    --trackers PF+CFM PF+CFM-AS PF+NF DiffPF PF+CV PF+DMMN PF+TrajFlow PF+MoFlow PF+TCFM EnFF
+python -m mml_research.motion.benchmark_exit_prediction --models-dir $M/models --out-dir $M/results_noise0.01 \
+    --workers 25 --process_noise all=0.01 \
+    --trackers PF+CFM PF+CFM-AS PF+NF DiffPF PF+CV PF+DMMN PF+TrajFlow PF+MoFlow PF+TCFM EnFF
+python -m mml_research.motion.make_benchmark_tables --root $M --tuned_workers 25 --shared_workers 25
 ```
+
+Selected on validation: PF+TrajFlow q = 0.07, PF+MoFlow q = 0.02, PF+TCFM q = 0.07, EnFF q = 0.005 with
+λ = 2.5e-4, σ_min = 0.01. TrajFlow and TCFM select the top of the shared q grid (as PF+CV selects its bottom).
+
+## Test-set forecast accuracy (chronological 30 % split, 2,000 samples)
+
+| Port | minADE (m) | minFDE (m) | first-step velocity RMSE (m/s) | modes |
+|---|---|---|---|---|
+| TrajFlow | 0.032 | 0.038 | 1.00 | 6 (NMS) |
+| MoFlow teacher (10 steps) | 0.032 | 0.028 | 1.28 | 20 |
+| MoFlow student (1 step) | 0.038 | 0.041 | 1.42 | 20 |
+| TCFM (10 steps) | 0.043 | 0.053 | 1.36 | 1 |
+
+The velocity RMSE is against noisy labels (measurement noise alone gives ≈ 0.86 m/s per label).

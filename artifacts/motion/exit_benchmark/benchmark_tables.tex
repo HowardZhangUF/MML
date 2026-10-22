@@ -18,40 +18,48 @@
 \toprule
 Tracker & Noise (m) & RMSE all (m) & RMSE visible (m) & RMSE occluded (m) & Exit top-1 (\%) & Exit $>$50\% (\%) & $P$(correct exit) & Runtime (ms/step) \\
 \midrule
-PF+CFM (fixed $\sigma{=}1.0$) & $0.045$ & $0.0742\pm0.00323$ & $0.0192\pm7.98\times10^{-5}$ & $0.182\pm0.00774$ & $45.5\pm3.7$ & $45.5\pm3.7$ & $0.421\pm0.0133$ & $24\pm1.68$ \\
-PF+CFM-AS (adaptive $\sigma$) & $0.032$ & $0.0737\pm0.0032$ & $0.0196\pm2.05\times10^{-4}$ & $0.18\pm0.00773$ & $2.3\pm1.1$ & $2.1\pm1.0$ & $0.31\pm0.0103$ & $23.8\pm1.72$ \\
+PF+CFM (fixed $\sigma{=}1.0$) & $0.045$ & $0.0742\pm0.00323$ & $0.0192\pm7.98\times10^{-5}$ & $0.182\pm0.00774$ & $45.5\pm3.7$ & $45.5\pm3.7$ & $0.421\pm0.0133$ & $34.9\pm0.67$ \\
+PF+CFM-AS (adaptive $\sigma$) & $0.032$ & $0.0737\pm0.0032$ & $0.0196\pm2.05\times10^{-4}$ & $0.18\pm0.00773$ & $2.3\pm1.1$ & $2.1\pm1.0$ & $0.31\pm0.0103$ & $33.4\pm0.631$ \\
+PF+NF & $0.032$ & $\mathbf{0.0623\pm0.00515}$ & $\mathbf{0.0151\pm1.89\times10^{-4}}$ & $\mathbf{0.153\pm0.013}$ & $\mathbf{91.0\pm2.2}$ & $90.3\pm2.3$ & $0.661\pm0.0204$ & $33.2\pm0.732$ \\
+DiffPF & -- & $0.355\pm0.00819$ & $0.24\pm0.00631$ & $0.703\pm0.0142$ & $45.2\pm3.8$ & $45.2\pm3.8$ & $0.452\pm0.0384$ & $4.27\pm0.195$ \\
+PF+CV & $0.005$ & $0.0656\pm0.00215$ & $0.0261\pm2\times10^{-4}$ & $0.154\pm0.00549$ & $1.1\pm0.8$ & $0.0\pm0.0$ & $0.219\pm0.00343$ & $\mathbf{0.206\pm0.0117}$ \\
+PF+DMMN & $0.045$ & $0.064\pm0.00629$ & $0.0186\pm8.87\times10^{-4}$ & $0.154\pm0.0158$ & $\mathbf{91.0\pm2.2}$ & $\mathbf{91.0\pm2.2}$ & $\mathbf{0.759\pm0.0182}$ & $21.8\pm0.586$ \\
 \midrule
-PF+NF & $0.032$ & $\mathbf{0.0623\pm0.00515}$ & $\mathbf{0.0151\pm1.89\times10^{-4}}$ & $\mathbf{0.153\pm0.013}$ & $\mathbf{91.0\pm2.2}$ & $90.3\pm2.3$ & $0.661\pm0.0204$ & $21.9\pm1.4$ \\
-DiffPF & -- & $0.355\pm0.00819$ & $0.24\pm0.00631$ & $0.703\pm0.0142$ & $45.2\pm3.8$ & $45.2\pm3.8$ & $0.452\pm0.0384$ & $2.47\pm0.287$ \\
-PF+CV & $0.005$ & $0.0656\pm0.00215$ & $0.0261\pm2\times10^{-4}$ & $0.154\pm0.00549$ & $1.1\pm0.8$ & $0.0\pm0.0$ & $0.219\pm0.00343$ & $\mathbf{0.126\pm0.00965}$ \\
-PF+DMMN & $0.045$ & $0.064\pm0.00629$ & $0.0186\pm8.87\times10^{-4}$ & $0.154\pm0.0158$ & $\mathbf{91.0\pm2.2}$ & $\mathbf{91.0\pm2.2}$ & $\mathbf{0.759\pm0.0182}$ & $11.9\pm0.839$ \\
+PF+TrajFlow & $0.07$ & $0.0647\pm0.005$ & $0.0207\pm9.29\times10^{-5}$ & $0.155\pm0.0127$ & $71.0\pm3.1$ & $49.5\pm3.8$ & $0.505\pm0.0119$ & $438\pm3.37$ \\
+PF+MoFlow & $0.02$ & $0.147\pm0.00333$ & $0.0256\pm0.00189$ & $0.368\pm0.00766$ & $50.2\pm3.9$ & $50.2\pm3.9$ & $0.477\pm0.0351$ & $189\pm2.9$ \\
+PF+TCFM & $0.07$ & $0.0979\pm0.0055$ & $0.0211\pm5.59\times10^{-5}$ & $0.242\pm0.0134$ & $\mathbf{91.0\pm2.2}$ & $\mathbf{91.0\pm2.2}$ & $0.71\pm0.0174$ & $337\pm5.68$ \\
+EnFF & $0.005$ & $0.0924\pm0.00251$ & $0.07\pm0.00127$ & $0.168\pm0.00579$ & $5.1\pm1.6$ & $0.0\pm0.0$ & $0.22\pm0.00557$ & $25.3\pm1.76$ \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
-\par\smallskip\parbox{0.95\linewidth}{\footnotesize Process noise $q$ (per-step position jitter, m) chosen for each particle filter by lowest RMSE all on separate validation runs 100--119 (Table~\ref{tab:noise-sweep-rmse}); DiffPF uses its built-in propagation noise. Exit top-1: the side of the box holding the largest share of particle mass, predicting without measurements until 10 steps after the target re-appears, is the side the target exits through; Exit $>$50\%: more than half the mass is beyond that side; $P$(correct exit): mean mass beyond that side. The approach-lane cue predicts the exit in 638/701 (91.0\%) events, the best achievable exit success; chance is 50\%. Runtime measured with 20 benchmark processes sharing the CPU, so it is comparable within this table only. Bold marks the best mean per column, not a statistically significant difference.}
+\par\smallskip\parbox{0.95\linewidth}{\footnotesize Process noise $q$ (per-step position jitter, m) chosen for each particle filter by lowest RMSE all on separate validation runs 100--119 (Table~\ref{tab:noise-sweep-rmse}); DiffPF uses its built-in propagation noise. EnFF (DAFM Ensemble Flow Filter) uses guidance scale $\lambda{=}0.00025$ and path width $\sigma_{\min}{=}0.01$, chosen with its $q$ by the same rule (Table~\ref{tab:enff-sweep}); its constant-velocity forecast plays the role of PF+CV's proposal. PF+TrajFlow, PF+MoFlow and PF+TCFM are ports of the open-source trajectory forecasters trained on the same measurement stream as the other learned models; each particle proposes the first step of one forecast drawn by the method's own mode probabilities. Exit top-1: the side of the box holding the largest share of particle mass, predicting without measurements until 10 steps after the target re-appears, is the side the target exits through; Exit $>$50\%: more than half the mass is beyond that side; $P$(correct exit): mean mass beyond that side. The approach-lane cue predicts the exit in 638/701 (91.0\%) events, the best achievable exit success; chance is 50\%. Runtime measured with 25 benchmark processes sharing the CPU, so it is comparable within this table only. Bold marks the best mean per column, not a statistically significant difference.}
 \end{table}
 
 \begin{table}[ht]
 \centering
 \small
-\caption{Same benchmark with one shared process noise $q{=}0.01$\,m for every particle filter (lower RMSE and runtime, higher exit metrics are better). 100 seeded runs of 2000 steps (runs 0--99), identical trajectories, measurement noise and filter seeds for every tracker; 500 particles per filter. Exit metrics are pooled over the 701 junction occlusions (occlusion box with two possible exits; Fig.~\ref{fig:road-network}). Mean $\pm$ 95\% CI: $t$-interval over runs for RMSE and runtime; run-level bootstrap for exit metrics.}
+\caption{Same benchmark with one shared process noise $q{=}0.01$\,m for every particle filter and EnFF (lower RMSE and runtime, higher exit metrics are better). 100 seeded runs of 2000 steps (runs 0--99), identical trajectories, measurement noise and filter seeds for every tracker; 500 particles per filter. Exit metrics are pooled over the 701 junction occlusions (occlusion box with two possible exits; Fig.~\ref{fig:road-network}). Mean $\pm$ 95\% CI: $t$-interval over runs for RMSE and runtime; run-level bootstrap for exit metrics.}
 \label{tab:exit-benchmark-shared}
 \begin{adjustbox}{max width=\linewidth}
 \begin{tabular}{lccccccc}
 \toprule
 Tracker & RMSE all (m) & RMSE visible (m) & RMSE occluded (m) & Exit top-1 (\%) & Exit $>$50\% (\%) & $P$(correct exit) & Runtime (ms/step) \\
 \midrule
-PF+CFM (fixed $\sigma{=}1.0$) & $0.103\pm0.00668$ & $0.063\pm0.00694$ & $0.212\pm0.00883$ & $\mathbf{91.0\pm2.2}$ & $\mathbf{91.0\pm2.2}$ & $0.801\pm0.02$ & $17.8\pm0.768$ \\
-PF+CFM-AS (adaptive $\sigma$) & $\mathbf{0.0823\pm0.0042}$ & $0.0394\pm0.003$ & $0.186\pm0.00814$ & $42.9\pm3.6$ & $42.8\pm3.6$ & $0.39\pm0.0125$ & $17.6\pm0.823$ \\
+PF+CFM (fixed $\sigma{=}1.0$) & $0.103\pm0.00668$ & $0.063\pm0.00694$ & $0.212\pm0.00883$ & $\mathbf{91.0\pm2.2}$ & $\mathbf{91.0\pm2.2}$ & $0.801\pm0.02$ & $32.3\pm1.1$ \\
+PF+CFM-AS (adaptive $\sigma$) & $\mathbf{0.0823\pm0.0042}$ & $0.0394\pm0.003$ & $0.186\pm0.00814$ & $42.9\pm3.6$ & $42.8\pm3.6$ & $0.39\pm0.0125$ & $32.8\pm1.06$ \\
+PF+NF & $0.126\pm0.023$ & $0.105\pm0.0266$ & $\mathbf{0.163\pm0.0131}$ & $\mathbf{91.0\pm2.2}$ & $\mathbf{91.0\pm2.2}$ & $0.766\pm0.0223$ & $35.9\pm1.04$ \\
+DiffPF & $0.355\pm0.00819$ & $0.24\pm0.00631$ & $0.703\pm0.0142$ & $45.2\pm3.8$ & $45.2\pm3.8$ & $0.452\pm0.0384$ & $4.45\pm0.213$ \\
+PF+CV & $0.0905\pm0.00174$ & $\mathbf{0.0211\pm8.56\times10^{-5}}$ & $0.224\pm0.00372$ & $80.5\pm2.7$ & $0.0\pm0.0$ & $0.268\pm0.00295$ & $\mathbf{0.214\pm0.0126}$ \\
+PF+DMMN & $0.674\pm0.0611$ & $0.709\pm0.0627$ & $0.37\pm0.0675$ & $81.9\pm5.2$ & $81.9\pm5.2$ & $0.819\pm0.0517$ & $21.3\pm0.704$ \\
 \midrule
-PF+NF & $0.126\pm0.023$ & $0.105\pm0.0266$ & $\mathbf{0.163\pm0.0131}$ & $\mathbf{91.0\pm2.2}$ & $\mathbf{91.0\pm2.2}$ & $0.766\pm0.0223$ & $17\pm0.676$ \\
-DiffPF & $0.355\pm0.00819$ & $0.24\pm0.00631$ & $0.703\pm0.0142$ & $45.2\pm3.8$ & $45.2\pm3.8$ & $0.452\pm0.0384$ & $1.95\pm0.191$ \\
-PF+CV & $0.0905\pm0.00174$ & $\mathbf{0.0211\pm8.56\times10^{-5}}$ & $0.224\pm0.00372$ & $80.5\pm2.7$ & $0.0\pm0.0$ & $0.268\pm0.00295$ & $\mathbf{0.108\pm0.00682}$ \\
-PF+DMMN & $0.674\pm0.0611$ & $0.709\pm0.0627$ & $0.37\pm0.0675$ & $81.9\pm5.2$ & $81.9\pm5.2$ & $\mathbf{0.819\pm0.0517}$ & $9.24\pm0.36$ \\
+PF+TrajFlow & $0.61\pm0.0568$ & $0.625\pm0.059$ & $0.449\pm0.0666$ & $85.3\pm3.7$ & $85.2\pm3.8$ & $0.7\pm0.0301$ & $414\pm5.41$ \\
+PF+MoFlow & $0.153\pm0.00488$ & $0.0556\pm0.00507$ & $0.363\pm0.00863$ & $50.2\pm3.9$ & $50.2\pm3.9$ & $0.491\pm0.0377$ & $167\pm5.24$ \\
+PF+TCFM & $0.12\pm0.0083$ & $0.0424\pm0.00671$ & $0.283\pm0.016$ & $\mathbf{91.0\pm2.2}$ & $\mathbf{91.0\pm2.2}$ & $\mathbf{0.87\pm0.0214}$ & $329\pm11$ \\
+EnFF & $0.106\pm0.00198$ & $0.0815\pm0.00107$ & $0.191\pm0.00418$ & $76.7\pm3.2$ & $0.0\pm0.0$ & $0.266\pm0.00365$ & $21.2\pm1.82$ \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
-\par\smallskip\parbox{0.95\linewidth}{\footnotesize PF+DMMN gives every particle the same velocity, so at $q{=}0.01$ the cloud cannot follow the target through the visible junction and loses track in most runs. Exit top-1: the side of the box holding the largest share of particle mass, predicting without measurements until 10 steps after the target re-appears, is the side the target exits through; Exit $>$50\%: more than half the mass is beyond that side; $P$(correct exit): mean mass beyond that side. The approach-lane cue predicts the exit in 638/701 (91.0\%) events, the best achievable exit success; chance is 50\%. Runtime measured with 12 benchmark processes sharing the CPU. Bold marks the best mean per column, not a statistically significant difference.}
+\par\smallskip\parbox{0.95\linewidth}{\footnotesize PF+DMMN gives every particle the same velocity, so at $q{=}0.01$ the cloud cannot follow the target through the visible junction and loses track in most runs. EnFF keeps its tuned $\lambda$ and $\sigma_{\min}$. Exit top-1: the side of the box holding the largest share of particle mass, predicting without measurements until 10 steps after the target re-appears, is the side the target exits through; Exit $>$50\%: more than half the mass is beyond that side; $P$(correct exit): mean mass beyond that side. The approach-lane cue predicts the exit in 638/701 (91.0\%) events, the best achievable exit success; chance is 50\%. Runtime measured with 25 benchmark processes sharing the CPU. Bold marks the best mean per column, not a statistically significant difference.}
 \end{table}
 
 \begin{table}[ht]
@@ -69,10 +77,15 @@ PF+CFM-AS (adaptive $\sigma$) & $0.0914\pm0.00991$ & $0.087\pm0.00939$ & $0.0791
 PF+NF & $0.18\pm0.0841$ & $0.137\pm0.057$ & $0.0765\pm0.0175$ & $\mathbf{0.0673\pm0.0128}$ & $0.0707\pm0.0105$ & $0.0996\pm0.00553$ \\
 PF+CV & $\mathbf{0.0658\pm0.00559}$ & $0.0928\pm0.00356$ & $0.154\pm0.005$ & $0.177\pm0.0057$ & $0.186\pm0.00575$ & $0.191\pm0.00599$ \\
 PF+DMMN & $1.2\pm0.183$ & $0.695\pm0.112$ & $0.108\pm0.0342$ & $0.0812\pm0.0189$ & $\mathbf{0.0719\pm0.0153}$ & $0.0791\pm0.00939$ \\
+\midrule
+PF+TrajFlow & $1.27\pm0.187$ & $0.629\pm0.122$ & $0.198\pm0.112$ & $0.0813\pm0.0121$ & $0.0748\pm0.0124$ & $\mathbf{0.0716\pm0.0116}$ \\
+PF+MoFlow & $0.168\pm0.0197$ & $0.155\pm0.0159$ & $\mathbf{0.148\pm0.0106}$ & $0.151\pm0.00811$ & $0.155\pm0.00625$ & $0.163\pm0.00549$ \\
+PF+TCFM & $0.126\pm0.0195$ & $0.124\pm0.0189$ & $0.12\pm0.018$ & $0.115\pm0.0166$ & $0.109\pm0.0147$ & $\mathbf{0.103\pm0.013}$ \\
+EnFF & $\mathbf{0.0949\pm0.00634}$ & $0.109\pm0.004$ & $0.169\pm0.00474$ & $0.198\pm0.00556$ & $0.213\pm0.00587$ & $0.233\pm0.00627$ \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
-\par\smallskip\parbox{0.95\linewidth}{\footnotesize Bold marks the lowest mean per row: the selection rule, fixed before the sweep, takes it; those values are used in Table~\ref{tab:exit-benchmark-tuned}. DiffPF has no process-noise parameter and is not swept.}
+\par\smallskip\parbox{0.95\linewidth}{\footnotesize Bold marks the lowest mean per row: the selection rule, fixed before the sweep, takes it; those values are used in Table~\ref{tab:exit-benchmark-tuned}. DiffPF has no process-noise parameter and is not swept; the EnFF row is at its selected $\lambda$ and $\sigma_{\min}$ (Table~\ref{tab:enff-sweep}).}
 \end{table}
 
 \begin{table}[ht]
@@ -90,6 +103,11 @@ PF+CFM-AS (adaptive $\sigma$) & $\mathbf{35.6\pm8.5}$ & $\mathbf{35.6\pm8.4}$ & 
 PF+NF & $\mathbf{88.1\pm4.5}$ & $\mathbf{88.1\pm4.5}$ & $\mathbf{88.1\pm4.5}$ & $\mathbf{88.1\pm4.5}$ & $54.1\pm9.7$ & $50.4\pm9.9$ \\
 PF+CV & $0.0\pm0.0$ & $0.0\pm0.0$ & $0.0\pm0.0$ & $0.0\pm0.0$ & $0.0\pm0.0$ & $0.0\pm0.0$ \\
 PF+DMMN & $57.0\pm10.0$ & $83.0\pm8.4$ & $\mathbf{88.1\pm4.5}$ & $\mathbf{88.1\pm4.5}$ & $\mathbf{88.1\pm4.5}$ & $86.7\pm4.9$ \\
+\midrule
+PF+TrajFlow & $57.8\pm11.6$ & $84.4\pm6.2$ & $\mathbf{85.9\pm5.5}$ & $79.3\pm5.9$ & $61.5\pm6.8$ & $40.7\pm9.0$ \\
+PF+MoFlow & $\mathbf{56.3\pm10.0}$ & $\mathbf{56.3\pm10.0}$ & $\mathbf{56.3\pm10.0}$ & $\mathbf{56.3\pm10.0}$ & $50.4\pm9.9$ & $5.9\pm3.3$ \\
+PF+TCFM & $88.1\pm4.5$ & $88.1\pm4.5$ & $88.1\pm4.5$ & $88.1\pm4.5$ & $88.1\pm4.5$ & $88.1\pm4.5$ \\
+EnFF & $0.0\pm0.0$ & $0.0\pm0.0$ & $0.0\pm0.0$ & $0.0\pm0.0$ & $0.0\pm0.0$ & $0.0\pm0.0$ \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
@@ -111,8 +129,31 @@ PF+CFM-AS (adaptive $\sigma$) & $0.362\pm0.0257$ & $\mathbf{0.366\pm0.0257}$ & $
 PF+NF & $\mathbf{0.768\pm0.0495}$ & $0.759\pm0.0511$ & $0.728\pm0.0528$ & $0.661\pm0.0487$ & $0.581\pm0.0419$ & $0.459\pm0.0309$ \\
 PF+CV & $0.222\pm0.00583$ & $\mathbf{0.265\pm0.00585}$ & $0.219\pm0.00605$ & $0.194\pm0.00588$ & $0.191\pm0.00547$ & $0.203\pm0.0044$ \\
 PF+DMMN & $0.568\pm0.1$ & $0.83\pm0.0836$ & $\mathbf{0.877\pm0.0452}$ & $0.832\pm0.0451$ & $0.748\pm0.0424$ & $0.579\pm0.0285$ \\
+\midrule
+PF+TrajFlow & $0.557\pm0.11$ & $\mathbf{0.687\pm0.0448}$ & $0.618\pm0.0325$ & $0.577\pm0.0301$ & $0.536\pm0.0291$ & $0.479\pm0.0234$ \\
+PF+MoFlow & $\mathbf{0.549\pm0.0966}$ & $0.546\pm0.0954$ & $0.53\pm0.0891$ & $0.47\pm0.0754$ & $0.4\pm0.057$ & $0.322\pm0.0314$ \\
+PF+TCFM & $\mathbf{0.841\pm0.043}$ & $0.838\pm0.0424$ & $0.822\pm0.0409$ & $0.791\pm0.0394$ & $0.755\pm0.0371$ & $0.677\pm0.0336$ \\
+EnFF & $0.224\pm0.00835$ & $\mathbf{0.267\pm0.00553}$ & $0.223\pm0.0048$ & $0.199\pm0.0053$ & $0.195\pm0.0056$ & $0.207\pm0.00501$ \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
 \par\smallskip\parbox{0.95\linewidth}{\footnotesize Not used for selection. Bold marks the best mean per row, not a statistically significant difference.}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\small
+\caption{EnFF hyperparameter selection on validation runs: mean RMSE over all steps (m, lower is better) for guidance scale $\lambda$ and probability-path width $\sigma_{\min}$ at the chosen process noise $q{=}0.005$\,m. Same runs as Table~\ref{tab:noise-sweep-rmse}.}
+\label{tab:enff-sweep}
+\begin{adjustbox}{max width=\linewidth}
+\begin{tabular}{lcccccc}
+\toprule
+EnFF & $\lambda{=}6.25\times10^{-5}$ & $\lambda{=}1.25\times10^{-4}$ & $\lambda{=}2.5\times10^{-4}$ & $\lambda{=}5\times10^{-4}$ & $\lambda{=}0.001$ & $\lambda{=}0.002$ \\
+\midrule
+$\sigma_{\min}{=}0.001$ & $0.171$ & $0.132$ & $0.099$ & $0.108$ & $0.117$ & $0.151$ \\
+$\sigma_{\min}{=}0.01$ & $0.18$ & $0.128$ & $\mathbf{0.0949}$ & $0.0998$ & $0.108$ & $0.141$ \\
+\bottomrule
+\end{tabular}
+\end{adjustbox}
+\par\smallskip\parbox{0.95\linewidth}{\footnotesize $q$, $\lambda$ and $\sigma_{\min}$ were searched jointly over 72 settings ($q$ grid as in Table~\ref{tab:noise-sweep-rmse}); bold marks the selected setting, the lowest mean RMSE all. EnFF integrates its flow with 4 Euler steps (sampling\_time\_step\_count 5, as in the DAFM benchmarks).}
 \end{table}

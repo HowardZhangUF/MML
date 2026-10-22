@@ -177,6 +177,8 @@ def sweep_table(runs, metric, caption, label, footnote, higher_is_better, percen
         b = best_set([means[name, q][0] for q in grid], higher_is_better)
         rows.append((LABELS[name], [cell(*means[name, q], bold=(j in b), percent=percent)
                                     for j, q in enumerate(grid)]))
+        if name in GROUP_ENDS and name != trackers[-1]:
+            rows.append(None)
     header = ["Tracker"] + [f"$q{{=}}{q:g}$" for q in grid]
     return table(caption, label, header, rows, footnote)
 
@@ -194,7 +196,7 @@ def enff_sweep_table(rows, chosen):
             v = r[np.isclose(r.enff_lambda, lam) & np.isclose(r.enff_sigma_min, smin)].rmse_all.iloc[0]
             cells.append(f"$\\mathbf{{{sig3(v)}}}$" if np.isclose(v, best) else f"${sig3(v)}$")
         body.append((f"$\\sigma_{{\\min}}{{=}}{smin:g}$", cells))
-    header = ["EnFF"] + [f"$\\lambda{{=}}{lam:g}$" for lam in lams]
+    header = ["EnFF"] + [f"$\\lambda{{=}}{sig3(lam)}$" for lam in lams]
     return table(
         f"EnFF hyperparameter selection on validation runs: mean RMSE over all steps (m, lower is "
         f"better) for guidance scale $\\lambda$ and probability-path width $\\sigma_{{\\min}}$ at the "
