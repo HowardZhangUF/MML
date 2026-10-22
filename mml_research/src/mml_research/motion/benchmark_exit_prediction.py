@@ -78,6 +78,7 @@ os.environ.setdefault("CUDA_VISIBLE_DEVICES", "")
 
 import argparse
 import csv
+import multiprocessing
 import time
 from concurrent.futures import ProcessPoolExecutor
 
@@ -494,6 +495,13 @@ def make_parser():
     return parser
 
 
+def worker_pool(n_workers):
+    """Process pool for run_group. Forked workers cannot use CUDA, so spawn them when a GPU is visible
+    (e.g. inside a SLURM GPU job, which sets CUDA_VISIBLE_DEVICES)."""
+    ctx = multiprocessing.get_context("spawn" if os.environ.get("CUDA_VISIBLE_DEVICES") else None)
+    return ProcessPoolExecutor(n_workers, mp_context=ctx)
+
+
 def run_parallel(args):
     """Run args.trackers on runs first_run .. first_run+n_runs-1; returns sorted (run_rows, event_rows)."""
     runs = list(range(args.first_run, args.first_run + args.n_runs))
@@ -502,7 +510,7 @@ def run_parallel(args):
     if len(groups) == 1:
         run_rows, event_rows = run_group(args, groups[0])
     else:
-        with ProcessPoolExecutor(len(groups)) as pool:
+        with worker_pool(len(groups)) as pool:
             for r, e in pool.map(run_group, [args] * len(groups), groups):
                 run_rows += r
                 event_rows += e

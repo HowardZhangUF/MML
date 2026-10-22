@@ -28,13 +28,12 @@ os.environ.setdefault("CUDA_VISIBLE_DEVICES", "")
 
 import argparse
 import copy
-from concurrent.futures import ProcessPoolExecutor
 
 import numpy as np
 import matplotlib.pyplot as plt
 
 from mml_research.motion.benchmark_exit_prediction import (
-    PF_TRACKERS, make_parser, parse_noise, run_group, write_csv,
+    PF_TRACKERS, make_parser, parse_noise, run_group, worker_pool, write_csv,
 )
 
 GRID = [0.005, 0.01, 0.02, 0.032, 0.045, 0.07]
@@ -58,7 +57,7 @@ def main():
     print(f"Noise sweep: {args.trackers} x grid {args.grid} on runs "
           f"{runs[0]}..{runs[-1]} ({len(jobs)} jobs, {args.workers} workers)")
     run_rows, event_rows = [], []
-    with ProcessPoolExecutor(args.workers) as pool:
+    with worker_pool(args.workers) as pool:
         for r, e in pool.map(run_group, *zip(*jobs)):
             run_rows += r
             event_rows += e
