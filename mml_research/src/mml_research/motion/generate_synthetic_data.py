@@ -3,7 +3,7 @@
 generate_synthetic_data.py
 ==========================
 Generates training data for the CFM motion model by simulating the
-8-node Markov graph from pygame_large_env.py.
+road graph of pygame_large_env.py (with a lane cue at the occluded T-junction).
 
 Fixes applied vs original:
   1. dt = 0.033 s  (matches pygame config.yaml 30 Hz) — was 1/3 (3 Hz) → 10x error
@@ -30,28 +30,41 @@ SPEED      = 0.03    # metres per simulation step (same as pygame_large_env)
 N_STEPS    = 2000    # steps per starting node (8 nodes × 2000 = 16 000 total)
 MAX_GAP    = 4.0     # drop windows with total time gap > 4 s (matches ParticleFilter)
 
-# ── Graph matching pygame_large_env.py exactly ───────────────────────────────
+# ── Road graph ───────────────────────────────────────────────────────────────
+# The 8-node layout of pygame_large_env.py, except that the approach road to
+# the T-junction (4 → 5 → 6) is split into two lanes.  The lane chosen at
+# node 4 signals the turn the target will take inside occlusion box 0:
+# north lane (y = +LANE_OFFSET) → mostly node 2, south lane → mostly node 7.
+# This makes the hidden branch choice predictable from the visible approach,
+# so exit-direction accuracy measures prediction rather than a coin flip.
+LANE_OFFSET     = 0.15   # metres either side of the old y = 0 approach road
+CUE_RELIABILITY = 0.9    # P(turn matches the lane) — Bayes-optimal exit accuracy
+
 NODE_POS = np.array([
-    [-1.5,  1.0],   # 0
-    [ 0.0,  1.0],   # 1
-    [ 2.1,  1.0],   # 2
-    [-1.5, -1.0],   # 3
-    [ 0.0, -1.0],   # 4
-    [ 0.3,  0.0],   # 5
-    [ 1.7,  0.0],   # 6  ← T-junction: splits to 2 or 7
-    [ 2.1, -1.0],   # 7
+    [-1.5,  1.0],          # 0
+    [ 0.0,  1.0],          # 1
+    [ 2.1,  1.0],          # 2
+    [-1.5, -1.0],          # 3
+    [ 0.0, -1.0],          # 4  ← picks north or south lane (50/50)
+    [ 0.3,  LANE_OFFSET],  # 5  north lane start
+    [ 1.7,  LANE_OFFSET],  # 6  north lane T-junction (inside box 0) → mostly 2
+    [ 2.1, -1.0],          # 7
+    [ 0.3, -LANE_OFFSET],  # 8  south lane start
+    [ 1.7, -LANE_OFFSET],  # 9  south lane T-junction (inside box 0) → mostly 7
 ], dtype=np.float32)
 
-TRANS_MATRIX = np.array([
-    [0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0],   # 0 → 4
-    [0.5, 0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0],   # 1 → 0 or 3
-    [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],   # 2 → 1
-    [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0],   # 3 → 0
-    [0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0],   # 4 → 5
-    [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 0.0],   # 5 → 6
-    [0.0, 0.0, 0.5, 0.0, 0.0, 0.0, 0.0, 0.5],   # 6 → 2 or 7
-    [0.0, 0.0, 0.0, 0.0, 1.0, 0.0, 0.0, 0.0],   # 7 → 4
-], dtype=np.float32)
+_r = CUE_RELIABILITY
+TRANS_MATRIX = np.zeros((len(NODE_POS), len(NODE_POS)), dtype=np.float32)
+TRANS_MATRIX[0, 4] = 1.0                          # 0 → 4
+TRANS_MATRIX[1, [0, 3]] = 0.5                     # 1 → 0 or 3
+TRANS_MATRIX[2, 1] = 1.0                          # 2 → 1
+TRANS_MATRIX[3, 0] = 1.0                          # 3 → 0
+TRANS_MATRIX[4, [5, 8]] = 0.5                     # 4 → north or south lane
+TRANS_MATRIX[5, 6] = 1.0                          # north lane
+TRANS_MATRIX[6, 2], TRANS_MATRIX[6, 7] = _r, 1 - _r
+TRANS_MATRIX[7, 4] = 1.0                          # 7 → 4
+TRANS_MATRIX[8, 9] = 1.0                          # south lane
+TRANS_MATRIX[9, 7], TRANS_MATRIX[9, 2] = _r, 1 - _r
 
 # ── Occlusion zones (metres) — must match info_mml_main.py ───────────────────
 OCC_CENTERS = np.array([[1.8, 0.0], [1.2, 0.8]])
@@ -66,41 +79,49 @@ def in_occlusion(pos: np.ndarray) -> bool:
     return False
 
 
+def walk_graph(start_node: int, n_steps: int, rng=np.random) -> np.ndarray:
+    """
+    Ground-truth positions of a target driving the road graph at SPEED.
+
+    The next node is drawn once, on arrival at a node (as in
+    pygame_large_env.step()).  Drawing it every step instead makes the target
+    dither between the branches of a junction.
+    """
+    n_nodes = len(NODE_POS)
+    pos = NODE_POS[start_node].copy()
+    nxt = rng.choice(n_nodes, p=TRANS_MATRIX[start_node])
+    positions = np.zeros((n_steps, 2), dtype=np.float32)
+
+    for i in range(n_steps):
+        d = NODE_POS[nxt] - pos
+        dist = np.linalg.norm(d)
+        if dist < SPEED:
+            pos = NODE_POS[nxt].copy()
+            nxt = rng.choice(n_nodes, p=TRANS_MATRIX[nxt])
+        else:
+            pos += d / dist * SPEED
+        positions[i] = pos
+
+    return positions
+
+
 def simulate_from_node(start_node: int,
                         n_steps:   int   = N_STEPS,
-                        speed:     float = SPEED,
                         noise_std: float = NOISE_STD):
     """
-    Walk the Markov graph from start_node.
+    Walk the road graph from start_node.
     Returns only VISIBLE positions and their wall-clock timestamps
     (mirrors ParticleFilter.update_state_and_dt_buffer → is_update=True only).
     """
-    pos  = NODE_POS[start_node].copy()
-    node = start_node
-
     vis_positions = []   # only non-occluded positions
     vis_times     = []   # wall-clock time of each visible measurement
-    t             = 0.0
 
-    for _ in range(n_steps):
-        # Markov graph dynamics — same as pygame_large_env.step()
-        probs = TRANS_MATRIX[node]
-        nxt   = np.random.choice(8, p=probs) if probs.sum() > 0 else node
-        d     = NODE_POS[nxt] - pos
-        dist  = np.linalg.norm(d)
-        if dist < speed:
-            node = nxt
-            pos  = NODE_POS[node].copy()
-        else:
-            pos += d / dist * speed
-
-        t += DT   # advance wall clock every step
-
+    for i, pos in enumerate(walk_graph(start_node, n_steps)):
         # FIX 3: only record when NOT occluded (is_update=True equivalent)
         if not in_occlusion(pos):
             noisy = pos + np.random.randn(2) * noise_std
             vis_positions.append(noisy.copy())
-            vis_times.append(t)
+            vis_times.append((i + 1) * DT)
 
     return (np.array(vis_positions, dtype=np.float32),
             np.array(vis_times,     dtype=np.float32))
@@ -147,19 +168,25 @@ def build_dataset(vis_positions: np.ndarray,
 
 
 def main():
+    import argparse
+    parser = argparse.ArgumentParser(description="Generate the motion-model training CSV")
+    parser.add_argument("--out-dir", default=None,
+                        help="Directory for the CSV (default: research_data_dir())")
+    args = parser.parse_args()
+
     np.random.seed(42)
 
     print("=" * 60)
     print("Generating CFM training data — all improvements applied")
     print(f"  DT          = {DT} s  (30 Hz, matches pygame)")
     print(f"  N_th        = {N_TH}  (history window)")
-    print(f"  Nodes       = 8 × {N_STEPS} steps = {8 * N_STEPS} total")
+    print(f"  Nodes       = {len(NODE_POS)} × {N_STEPS} steps = {len(NODE_POS) * N_STEPS} total")
     print(f"  Occlusions  = {len(OCC_CENTERS)} zones (measurement gaps included)")
     print("=" * 60)
 
     all_X, all_y = [], []
 
-    for start_node in range(8):
+    for start_node in range(len(NODE_POS)):
         vis_pos, vis_t = simulate_from_node(start_node)
         X, y = build_dataset(vis_pos, vis_t)
         all_X.append(X)
@@ -184,7 +211,7 @@ def main():
 
     # Save — path relative to this script so it works from any directory
     this_dir = str(motion_resource_dir() / "mml_guidance/mml_network")
-    save_dir = os.path.normpath(
+    save_dir = args.out_dir or os.path.normpath(
         os.path.join(this_dir, "..", "sim_data", "training_data")
     )
     os.makedirs(save_dir, exist_ok=True)

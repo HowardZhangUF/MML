@@ -1,0 +1,33 @@
+[CFMMotionModel] loaded ← artifacts/motion/exit_benchmark/models/cfm_motion_model_anchor1.0.pth  (input_dim=2, block_size=5, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.033)
+Measurement pairs: 64000
+  [meas] epoch    1/300  loss=4.92160
+  [meas] epoch   50/300  loss=4.93693
+  [meas] epoch  100/300  loss=4.95774
+  [meas] epoch  150/300  loss=4.95939
+  [meas] epoch  200/300  loss=4.95117
+  [meas] epoch  250/300  loss=4.94716
+  [meas] epoch  300/300  loss=4.93402
+  trained in 10s
+[CFMMeasurementModel] saved → artifacts/motion/exit_benchmark/models/cfm_measurement_model.pth
+  measurement diagnostics: {'learned_residual_std': [0.019990496337413788, 0.0200553797185421], 'mean_log_prob_learned': 4.984865665435791, 'mean_log_prob_true_gaussian': 4.98500919342041, 'ray_monotone': True}  (sensor std 0.02)
+[load_training_csv] X: (16628, 10)  y: (16628, 2)
+  history run 200 (q=0.01) done, 26880 histories
+  history run 201 (q=0.045) done, 54240 histories
+  history run 202 (q=0.01) done, 81152 histories
+  history run 203 (q=0.045) done, 108480 histories
+  history run 204 (q=0.01) done, 135232 histories
+  history run 205 (q=0.045) done, 161472 histories
+  history run 206 (q=0.01) done, 188672 histories
+  history run 207 (q=0.045) done, 215840 histories
+Proposal contexts: 16628 CSV windows + 215840 PF histories
+  [proposal] epoch    1/150  loss=2.07706
+  [proposal] epoch   20/150  loss=1.39403
+  [proposal] epoch   40/150  loss=1.37565
+  [proposal] epoch   60/150  loss=1.37435
+  [proposal] epoch   80/150  loss=1.37486
+  [proposal] epoch  100/150  loss=1.36348
+  [proposal] epoch  120/150  loss=1.36770
+  [proposal] epoch  140/150  loss=1.37140
+  trained in 417s
+[CFMProposalModel] saved → artifacts/motion/exit_benchmark/models/cfm_proposal_model.pth
+  one-step ESS/N on 200 held-out model draws: bootstrap 0.409 (median 0.426), proposal 0.735 (median 0.760)

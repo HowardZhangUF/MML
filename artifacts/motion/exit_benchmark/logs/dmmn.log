@@ -1,0 +1,14 @@
+[load_training_csv] X: (16628, 10)  y: (16628, 2)
+Transformer input_dim:  2
+Transformer block_size:  5
+epoch   30  train=0.8166  test=0.8037  best=0.8001
+epoch   60  train=0.6769  test=0.7611  best=0.7574
+epoch   90  train=0.7325  test=0.7161  best=0.7145
+epoch  120  train=0.6617  test=0.6846  best=0.6722
+epoch  150  train=0.6365  test=0.6706  best=0.6481
+epoch  180  train=0.6149  test=0.6575  best=0.6388
+epoch  210  train=0.6206  test=0.6408  best=0.6330
+epoch  240  train=0.6401  test=0.6470  best=0.6324
+epoch  270  train=0.5819  test=0.6385  best=0.6255
+epoch  300  train=0.5884  test=0.6476  best=0.6184
+Best test MSE 0.6184 → artifacts/motion/exit_benchmark/models/dmmn_scratch_transformer.pth

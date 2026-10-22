@@ -396,6 +396,43 @@ class CFMMotionModel:
 
         return v
 
+    # ----------------------------------------------------------------------
+    # Exact density of the (unclipped) Euler sampler
+    # ----------------------------------------------------------------------
+
+    def velocity_field(self, emb: torch.Tensor):
+        """The learned vector field u(x, tau) for fixed context embeddings."""
+        from mml_core.motion.flow_density import MLPField
+
+        # VelocityHead concatenates [emb, x_tau, tau], the MLPField layout.
+        return MLPField(self.network.vel_head.net, emb)
+
+    def sample_with_log_prob(self, c_t: torch.Tensor, emb: torch.Tensor | None = None):
+        """
+        Velocity samples of the N_FE-step Euler sampler WITHOUT the MAX_SPEED
+        clip, with their exact log-density (see flow_density.py).
+        Returns (v, log_prob), both torch tensors.
+        """
+        from mml_core.motion.flow_density import euler_forward, gaussian_log_prob
+
+        emb = self.network.encode_context(c_t) if emb is None else emb
+        anchor = self._finite_difference_velocity(c_t)
+        x0 = anchor + self.anchor_sigma * torch.randn_like(anchor)
+        v, logdet = euler_forward(self.velocity_field(emb), x0, self.N_FE)
+        return v, gaussian_log_prob(x0, anchor, self.anchor_sigma) - logdet
+
+    def log_prob(self, c_t: torch.Tensor, v: torch.Tensor, emb: torch.Tensor | None = None):
+        """
+        Exact log-density of velocities v under the unclipped Euler sampler,
+        by Newton inversion of every step. Returns (log_prob, max residual).
+        """
+        from mml_core.motion.flow_density import euler_inverse, gaussian_log_prob
+
+        emb = self.network.encode_context(c_t) if emb is None else emb
+        anchor = self._finite_difference_velocity(c_t)
+        x0, logdet, resid = euler_inverse(self.velocity_field(emb), v, self.N_FE)
+        return gaussian_log_prob(x0, anchor, self.anchor_sigma) - logdet, resid
+
     @torch.no_grad()
     def propose_sequence(
         self,

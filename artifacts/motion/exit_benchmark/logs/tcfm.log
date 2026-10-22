@@ -1,0 +1,15 @@
+TCFM port: 53,810 params, train 11560 test 4968, config {'horizon': 12, 'dim': 8, 'dim_mults': [1, 2, 4], 'lstm_out_dim': 32, 'n_timesteps': 10}
+/home/zi/miniconda3/envs/env_isaaclab/lib/python3.11/site-packages/torch/nn/modules/rnn.py:1124: UserWarning: RNN module weights are not part of single contiguous chunk of memory. This means they need to be compacted at every call, possibly greatly increasing memory usage. To compact weights again call flatten_parameters(). (Triggered internally at /pytorch/aten/src/ATen/native/cudnn/RNN.cpp:1481.)
+  result = _VF.lstm(
+step   6000/60000  loss    0.4137      97s  test ADE 0.2482 FDE 0.3008 vel_rmse 6.447
+step  12000/60000  loss    0.2840     205s  test ADE 0.2379 FDE 0.2876 vel_rmse 6.491
+step  18000/60000  loss    0.2469     312s  test ADE 0.1887 FDE 0.2297 vel_rmse 6.394
+step  24000/60000  loss    0.1807     419s  test ADE 0.1258 FDE 0.1464 vel_rmse 5.651
+step  30000/60000  loss    0.1369     582s  test ADE 0.0708 FDE 0.0878 vel_rmse 3.043
+step  36000/60000  loss    0.1136     753s  test ADE 0.0543 FDE 0.0661 vel_rmse 2.043
+step  42000/60000  loss    0.1046     940s  test ADE 0.0500 FDE 0.0638 vel_rmse 1.763
+step  48000/60000  loss    0.1008    1105s  test ADE 0.0476 FDE 0.0595 vel_rmse 1.671
+step  54000/60000  loss    0.0983    1265s  test ADE 0.0448 FDE 0.0564 vel_rmse 1.539
+step  60000/60000  loss    0.0966    1444s  test ADE 0.0429 FDE 0.0524 vel_rmse 1.371
+final test: {'minADE': 0.04287166893482208, 'minFDE': 0.052948564291000366, 'vel_rmse': 1.3614226579666138, 'modes': 1}
+saved tcfm_motion_model.pth

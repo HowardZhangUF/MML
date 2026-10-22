@@ -1,0 +1,13 @@
+TrajFlow port: 160,600 params, train 11560 test 4968, config {'horizon': 12, 'd_model': 32, 'heads': 4, 'depth': 4, 'dropout': 0.1, 'num_motion_modes': 6, 'nms_dist': 0.05, 'num_inter_layers': 2, 'sampling_steps': 1, 'num_query': 16}
+step   3000/30000  loss  -60.6508     193s  test minADE 0.0743 minFDE 0.0948 vel_rmse 2.288
+step   6000/30000  loss  -88.7423     711s  test minADE 0.0393 minFDE 0.0504 vel_rmse 1.189
+step   9000/30000  loss  -93.6554    1505s  test minADE 0.0365 minFDE 0.0461 vel_rmse 1.141
+step  12000/30000  loss  -94.7867    2386s  test minADE 0.0349 minFDE 0.0433 vel_rmse 1.097
+step  15000/30000  loss  -97.4758    3231s  test minADE 0.0337 minFDE 0.0413 vel_rmse 1.052
+step  18000/30000  loss  -98.3413    4060s  test minADE 0.0331 minFDE 0.0399 vel_rmse 1.033
+step  21000/30000  loss  -97.2565    4876s  test minADE 0.0327 minFDE 0.0391 vel_rmse 1.020
+step  24000/30000  loss  -98.3298    5699s  test minADE 0.0324 minFDE 0.0387 vel_rmse 1.011
+step  27000/30000  loss  -99.7204    6522s  test minADE 0.0322 minFDE 0.0383 vel_rmse 1.002
+step  30000/30000  loss -101.4376    7254s  test minADE 0.0320 minFDE 0.0379 vel_rmse 0.996
+final (EMA) test: {'minADE': 0.031951822340488434, 'minFDE': 0.037901464849710464, 'vel_rmse': 0.9959216713905334, 'modes': 6}
+saved trajflow_motion_model.pth

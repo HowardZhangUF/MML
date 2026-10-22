@@ -1,0 +1,14 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "mml-baselines"
+version = "0.1.0"
+description = "Ports of open-source flow-matching trajectory / filtering methods for the MML exit benchmark"
+requires-python = ">=3.10"
+dependencies = ["mml-research==0.1.0", "numpy", "torch>=2.4.1"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["mml_baselines*"]
