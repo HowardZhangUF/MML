@@ -28,11 +28,10 @@ os.environ.setdefault("CUDA_VISIBLE_DEVICES", "")
 
 import copy
 import itertools
-from concurrent.futures import ProcessPoolExecutor
 
 import numpy as np
 
-from mml_research.motion.benchmark_exit_prediction import make_parser, parse_noise, run_group, write_csv
+from mml_research.motion.benchmark_exit_prediction import make_parser, parse_noise, run_group, worker_pool, write_csv
 from mml_research.motion.sweep_process_noise import GRID
 
 LAMBDAS = [6.25e-5, 1.25e-4, 2.5e-4, 5e-4, 1e-3, 2e-3]
@@ -62,7 +61,7 @@ def main():
           f"({len(jobs)} jobs, {args.workers} workers)")
 
     run_rows, event_rows = [], []
-    with ProcessPoolExecutor(args.workers) as pool:
+    with worker_pool(args.workers) as pool:
         for (q, lam, smin), (r, e) in zip(keys, pool.map(run_group, *zip(*jobs))):
             for row in r:
                 row.update(enff_lambda=lam, enff_sigma_min=smin)

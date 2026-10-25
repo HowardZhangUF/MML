@@ -279,6 +279,11 @@ def main():
                      f"$\\sigma_{{\\min}}{{=}}{enff_chosen.enff_sigma_min:g}$, chosen with its $q$ by the "
                      "same rule (Table~\\ref{tab:enff-sweep}); its constant-velocity forecast plays the "
                      "role of PF+CV's proposal. ")
+    cfm_note = ("PF+CFM-LM replaces the Gaussian likelihood with the learned CFM measurement model; "
+                "PF+CFM-P also draws velocities from the measurement-conditioned CFM proposal and weights "
+                "particles by $p(z|x)\\,f(v|C)/q(v|C,z)$ with the exact densities of the 10-step samplers; "
+                "PF+CFM-Pnaive is the same filter with likelihood-only weights (at PF+CFM-P's $q$). "
+                if any(t in trackers for t in ("PF+CFM-LM", "PF+CFM-P", "PF+CFM-Pnaive")) else "")
     new_note = ("PF+TrajFlow, PF+MoFlow and PF+TCFM are ports of the open-source trajectory forecasters "
                 "trained on the same measurement stream as the other learned models; each particle "
                 "proposes the first step of one forecast drawn by the method's own mode probabilities. "
@@ -296,7 +301,7 @@ def main():
             "Process noise $q$ (per-step position jitter, m) chosen for each particle filter by "
             f"lowest RMSE all on separate validation runs {v_runs.min()}--{v_runs.max()} "
             "(Table~\\ref{tab:noise-sweep-rmse}); DiffPF uses its built-in propagation noise. "
-            + enff_note + new_note + exit_def + ceiling +
+            + cfm_note + enff_note + new_note + exit_def + ceiling +
             f"Runtime measured with {args.tuned_workers} benchmark processes sharing the CPU, so it is "
             "comparable within this table only. " + bold_note,
             with_noise=True),
@@ -308,6 +313,7 @@ def main():
             "tab:exit-benchmark-shared",
             "PF+DMMN gives every particle the same velocity, so at $q{=}0.01$ the cloud cannot "
             "follow the target through the visible junction and loses track in most runs. "
+            + cfm_note
             + (f"EnFF keeps its tuned $\\lambda$ and $\\sigma_{{\\min}}$. " if enff_note else "")
             + exit_def + ceiling +
             f"Runtime measured with {args.shared_workers} benchmark processes sharing the CPU. " + bold_note,
