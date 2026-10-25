@@ -4,3 +4,4 @@
 [submodule "mml_python_sim"]
 	path = mml_python_sim
 	url = https://github.com/andrespulido8/mml_python_sim.git
+	branch = main
