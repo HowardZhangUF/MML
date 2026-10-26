@@ -1,0 +1,32 @@
+============================================================
+Training adapted DiffPF tracker
+============================================================
+T (DDPM steps)   : 10
+n_particles      : 100
+n_cond_particles : 20
+hidden_dim       : 128
+epochs           : 800  batch=512  lr=0.0005
+Parameters: 37,154
+
+Building teacher-forced dataset (full trajectories incl. occlusion)...
+[build_teacher_forced_dataset] 19966 examples (3090 occluded = 15.5%)
+
+Starting training for 800 epochs...
+  Epoch     1/800  loss=0.943190  lr=5.00e-04
+  Epoch    80/800  loss=0.005010  lr=4.88e-04
+  Epoch   160/800  loss=0.003429  lr=4.53e-04
+  Epoch   240/800  loss=0.003390  lr=3.98e-04
+  Epoch   320/800  loss=0.002757  lr=3.29e-04
+  Epoch   400/800  loss=0.002092  lr=2.52e-04
+  Epoch   480/800  loss=0.001765  lr=1.76e-04
+  Epoch   560/800  loss=0.001683  lr=1.07e-04
+  Epoch   640/800  loss=0.001743  lr=5.23e-05
+  Epoch   720/800  loss=0.001608  lr=1.71e-05
+  Epoch   800/800  loss=0.001832  lr=5.00e-06
+[DiffPFTracker] saved → artifacts/motion/exit_benchmark/models/diffpf_tracker.pth
+Loss curve → artifacts/motion/exit_benchmark/models/diffpf_training_loss.png
+
+============================================================
+Done.
+  model_path = r"/home/zi/MML/artifacts/motion/exit_benchmark/models/diffpf_tracker.pth"
+============================================================

@@ -1,0 +1,4 @@
+method,episodes,max_abs_d_rmse_all,max_abs_d_rmse_occluded,old_exit_success,new_exit_success,events_compared,events_disagree
+PF+CFM,100,9.71445146547012e-17,1.1102230246251565e-16,319,319,701,0
+PF+DMMN,100,0.0,1.1102230246251565e-16,638,638,701,0
+PF+NF,100,0.0,8.326672684688674e-17,638,638,701,0

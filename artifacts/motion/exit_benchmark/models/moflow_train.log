@@ -1,0 +1,26 @@
+MoFlow teacher: 184,537 params, config {'horizon': 12, 'num_query': 20, 'd_model': 32, 'social_hidden': 64, 'enc_layers': 2, 'dec_blocks': 2, 'heads': 4, 'dropout': 0.1, 'sampling_steps': 10, 'num_to_gen': 30}
+step   3000/30000  loss    2.8567      55s  test minADE 0.0362 minFDE 0.0301 vel_rmse 1.362
+step   6000/30000  loss    2.9576     110s  test minADE 0.0331 minFDE 0.0255 vel_rmse 1.286
+step   9000/30000  loss    2.9288     168s  test minADE 0.0311 minFDE 0.0236 vel_rmse 1.271
+step  12000/30000  loss    2.9071     230s  test minADE 0.0299 minFDE 0.0216 vel_rmse 1.253
+step  15000/30000  loss    2.8698     297s  test minADE 0.0301 minFDE 0.0226 vel_rmse 1.246
+step  18000/30000  loss    2.9219     371s  test minADE 0.0313 minFDE 0.0265 vel_rmse 1.249
+step  21000/30000  loss    3.0317     443s  test minADE 0.0317 minFDE 0.0259 vel_rmse 1.293
+step  24000/30000  loss    2.8439     525s  test minADE 0.0326 minFDE 0.0287 vel_rmse 1.308
+step  27000/30000  loss    2.8785     654s  test minADE 0.0322 minFDE 0.0279 vel_rmse 1.276
+step  30000/30000  loss    2.9323     860s  test minADE 0.0320 minFDE 0.0275 vel_rmse 1.271
+teacher final (EMA) test: {'minADE': 0.03200366348028183, 'minFDE': 0.02761051431298256, 'vel_rmse': 1.2750649452209473, 'modes': 20}
+teacher samples for distillation: (11560, 20, 12, 2)
+MoFlow IMLE student: 148,760 params
+step   3000/30000  loss    1.0286     647s  test minADE 0.0621 minFDE 0.0881 vel_rmse 1.444
+step   6000/30000  loss    0.3040    1228s  test minADE 0.0493 minFDE 0.0635 vel_rmse 1.481
+step   9000/30000  loss    0.2677    1801s  test minADE 0.0450 minFDE 0.0546 vel_rmse 1.453
+step  12000/30000  loss    0.2509    2372s  test minADE 0.0421 minFDE 0.0499 vel_rmse 1.428
+step  15000/30000  loss    0.2405    2943s  test minADE 0.0409 minFDE 0.0469 vel_rmse 1.444
+step  18000/30000  loss    0.2342    3514s  test minADE 0.0396 minFDE 0.0433 vel_rmse 1.421
+step  21000/30000  loss    0.2296    4081s  test minADE 0.0385 minFDE 0.0425 vel_rmse 1.422
+step  24000/30000  loss    0.2274    4651s  test minADE 0.0382 minFDE 0.0417 vel_rmse 1.423
+step  27000/30000  loss    0.2256    5220s  test minADE 0.0384 minFDE 0.0418 vel_rmse 1.436
+step  30000/30000  loss    0.2252    5789s  test minADE 0.0389 minFDE 0.0435 vel_rmse 1.409
+student final (EMA) test: {'minADE': 0.03836258873343468, 'minFDE': 0.040899794548749924, 'vel_rmse': 1.4221638441085815, 'modes': 20}
+saved moflow_teacher.pth, moflow_motion_model.pth

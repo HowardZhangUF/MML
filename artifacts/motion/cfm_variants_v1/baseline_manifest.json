@@ -1,0 +1,219 @@
+{
+  "commit": "78e214d26042f7d1f53bb90e77e714415437f504-dirty",
+  "producing_runner": "python -m mml_research.motion.benchmark_exit_prediction",
+  "producing_log_head": [
+    "Exit-prediction benchmark: runs 0..99 x 2000 steps, 25 workers, models from artifacts/motion/exit_benchmark/models",
+    "Process noise: PF+CFM 0.045, PF+CFM-AS 0.032, PF+CFM-LM 0.045, PF+CFM-P 0.045, PF+CFM-Pnaive 0.045, PF+NF 0.032, PF+CV 0.005, PF+DMMN 0.045, PF+TrajFlow 0.07, PF+MoFlow 0.02, PF+TCFM 0.07, EnFF 0.005"
+  ],
+  "producing_settings": {
+    "runs": "0..99",
+    "n_steps": 2000,
+    "pf_particles": 500,
+    "exit_horizon": 10,
+    "labels": [
+      "N",
+      "E",
+      "S",
+      "W",
+      "in"
+    ],
+    "meas_sigma_filter": 0.05,
+    "sensor_noise_std": 0.02,
+    "resampling": "systematic when ESS < N/2",
+    "estimate": "weighted mean"
+  },
+  "baseline_results_sha256": {
+    "results_all13/exit_benchmark_events.csv": "c8057ee982cb27e0f25d92e59f60a81ed538d81f4a46743da69ca0d8a9fcb835",
+    "results_all13/exit_benchmark_per_run.csv": "8224f2c24193f1c517b7d1441eee8ecb3c1a16e62d1f303766d894ddc76fdbdc",
+    "results_all13/exit_benchmark_summary.csv": "c0d650060a8f48f20b09d739b7818a2f041e77f73419a4a0c96893c86987725a",
+    "hpg/results_all13/exit_benchmark_events.csv": "c8057ee982cb27e0f25d92e59f60a81ed538d81f4a46743da69ca0d8a9fcb835",
+    "hpg/results_all13/exit_benchmark_per_run.csv": "8224f2c24193f1c517b7d1441eee8ecb3c1a16e62d1f303766d894ddc76fdbdc",
+    "hpg/results_all13/exit_benchmark_summary.csv": "c0d650060a8f48f20b09d739b7818a2f041e77f73419a4a0c96893c86987725a"
+  },
+  "checkpoints_sha256": {
+    "cfm_measurement_model.pth": "ab56feebed104f5dce644a77950cb23c2d1f405535f93be23f1ad11e43c4bada",
+    "cfm_motion_model_anchor1.0.pth": "0f35da455e7600eba5e0df132b1e33a7e22f563a1423031f32c4af0c35c2ff86",
+    "cfm_proposal_model.pth": "1c5e0a818ad1d9869dbeb6013ba5015f0da740216b26d31889e1e84bf23a62ce",
+    "diffpf_tracker.pth": "ccad0fc90c75c5c1f33ff231ebb00cb7179502bc038db58750a7feeb01a0e3fb",
+    "dmmn_scratch_transformer.pth": "0ce16486a01f9d504e6a9315424c1d256b553789a597929bc917eeea73c45b0e",
+    "moflow_motion_model.pth": "1689ac7d29aeea819aa61f68509d8383912de73b120ee55003640eadee2e2907",
+    "moflow_teacher.pth": "0390c21d787faf4e6a24d6d8dc9bcf905c470b00f9df30942588fd2cdcfae36e",
+    "nf_motion_model.pth": "727e59f08a5722bb3cf01f5ecedb2a2fe22a86b06748e0ceff70dcf2549b75ad",
+    "tcfm_motion_model.pth": "c20c9d417b92054bacc4cef066633949cdb46e32eeca9652a6549a1706748d0b",
+    "trajflow_motion_model.pth": "8672af24f7e59929f49496dbac19591a485e13924f8c329825dd46371b100990"
+  },
+  "metric_definitions": {
+    "process_noise": "std (m) of isotropic Gaussian position jitter added once per predict step; Q = q^2 I",
+    "exit top-1 (success)": "label with the largest weighted particle mass, EXIT_HORIZON steps after the target re-appears, predicted without measurements from the last occluded step, equals the side the target exits; labels N/E/S/W/in, 'in' never counts as an exit; ties -> first label in N,E,S,W,in order (np.argmax)",
+    "exit >50% (majority)": "more than half the weighted mass lies beyond the actual exit side",
+    "P(correct)": "weighted mass beyond the actual exit side (timed-region probability, not a route choice)",
+    "RMSE": "per-episode RMSE of the weighted particle mean after the step (post-resampling), averaged over episodes; +- in the old table = population std across episodes",
+    "scoring time": "fork at exit_step-1 (last occluded step), 1+EXIT_HORIZON predict-only steps; the returning measurement is never used",
+    "lane-cue reference": "events whose exit matches the approach lane (north lane -> N, south lane -> S)"
+  },
+  "config": {
+    "experiment": "cfm_four_variants_v1",
+    "filter": {
+      "particles": 500,
+      "history_steps": 5,
+      "dt_seconds": 0.033,
+      "sensor_noise_std": 0.02,
+      "measurement_sigma": 0.05,
+      "init_spread": 0.05,
+      "resampler": "systematic",
+      "ess_fraction": 0.5,
+      "baseline_process_noise": 0.045,
+      "nf_process_noise": 0.032
+    },
+    "cfm": {
+      "checkpoint": "cfm_motion_model_anchor1.0.pth",
+      "ode_solver": "euler",
+      "ode_steps": 10,
+      "source_std": 1.0,
+      "max_speed": 1.5,
+      "adaptive_gain": 0.05,
+      "sigma_max": 2.5
+    },
+    "dmmn_checkpoint": "dmmn_scratch_transformer.pth",
+    "nf_checkpoint": "nf_motion_model.pth",
+    "prepare": {
+      "rollout_trackers": [
+        [
+          "cfm",
+          0.045
+        ],
+        [
+          "dmmn",
+          0.045
+        ],
+        [
+          "cfm",
+          0.01
+        ],
+        [
+          "dmmn",
+          0.01
+        ]
+      ],
+      "every": 2,
+      "per_step": 16
+    },
+    "training": {
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "batch": 2048,
+      "steps": 20000,
+      "lr": 0.0005,
+      "arch": {
+        "n_embed": 32,
+        "n_head": 8,
+        "n_layer": 2,
+        "vel_hidden": 64,
+        "dropout": 0.1
+      }
+    },
+    "m1": {
+      "variants": {
+        "m1_control": [],
+        "m1_mask": [
+          "mask"
+        ],
+        "m1_time": [
+          "mask",
+          "time"
+        ],
+        "m1_full": [
+          "mask",
+          "time",
+          "cov"
+        ]
+      },
+      "target": "true_physical_velocity"
+    },
+    "m2": {
+      "grid": [
+        0.0,
+        0.005,
+        0.01,
+        0.02,
+        0.032,
+        0.045,
+        0.07
+      ],
+      "selection_split": "val",
+      "rmse_tolerance": 0.1
+    },
+    "m3": {
+      "proposal_family": "gaussian_full_cov",
+      "scale_floor": 0.05,
+      "hidden": 128,
+      "train_process_noise": 0.045
+    },
+    "m4": {
+      "residual_scale_floor": 0.05,
+      "residual_source": "standard_normal"
+    },
+    "evaluation": {
+      "energy_score_every": 10,
+      "recovery_threshold": 0.3,
+      "recovery_consecutive": 5,
+      "recovery_horizon": 100,
+      "exit_nll_floor": 0.001,
+      "bootstrap_resamples": 2000,
+      "clouds_saved_per_method": 20
+    }
+  },
+  "splits": {
+    "train": [
+      200,
+      247,
+      48
+    ],
+    "val": [
+      100,
+      139,
+      40
+    ],
+    "test": [
+      1000,
+      1099,
+      100
+    ],
+    "dev": [
+      0,
+      99,
+      100
+    ]
+  },
+  "split_overlaps": {
+    "train/val": {
+      "episodes": 0,
+      "seeds": 0
+    },
+    "train/test": {
+      "episodes": 0,
+      "seeds": 0
+    },
+    "train/dev": {
+      "episodes": 0,
+      "seeds": 0
+    },
+    "val/test": {
+      "episodes": 0,
+      "seeds": 0
+    },
+    "val/dev": {
+      "episodes": 0,
+      "seeds": 0
+    },
+    "test/dev": {
+      "episodes": 0,
+      "seeds": 0
+    }
+  },
+  "splits_disjoint": true,
+  "note": "dev = the preliminary table's episodes; test = new episodes 1000..1099 never used before"
+}

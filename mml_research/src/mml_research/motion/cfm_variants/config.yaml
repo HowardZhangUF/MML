@@ -1,0 +1,81 @@
+# Configuration contract for the four CFM variants (guide section 11.1).
+# Values marked "manifest" were recovered from the producing exit benchmark
+# (benchmark_exit_prediction.py defaults and logs/benchmark_all13_tuned.log).
+experiment: cfm_four_variants_v1
+
+filter:
+  particles: 500                 # manifest: --pf_particles default
+  history_steps: 5               # manifest: block_size of every checkpoint
+  dt_seconds: 0.033              # manifest: generate_synthetic_data.DT
+  sensor_noise_std: 0.02         # manifest: simulator NOISE_STD (m)
+  measurement_sigma: 0.05        # manifest: BootstrapPFTracker.meas_sigma (filter's R = 0.05^2 I)
+  init_spread: 0.05              # manifest
+  resampler: systematic          # manifest: BootstrapPFTracker._update
+  ess_fraction: 0.5              # manifest: resample if ESS < N/2
+  # process_noise is the STD (m) of an isotropic Gaussian position jitter
+  # added once per predict step, i.e. Q = q^2 I (BootstrapPFTracker._predict).
+  baseline_process_noise: 0.045  # manifest: chosen for PF+CFM and PF+DMMN on runs 100..119
+  nf_process_noise: 0.032        # manifest: chosen for PF+NF
+
+cfm:
+  checkpoint: cfm_motion_model_anchor1.0.pth
+  ode_solver: euler
+  ode_steps: 10                  # manifest: N_FE of the checkpoint
+  source_std: 1.0                # manifest: anchor_sigma of the checkpoint
+  max_speed: 1.5                 # deterministic clip, part of the generator G
+  adaptive_gain: 0.05            # PF+CFM-AS
+  sigma_max: 2.5
+
+dmmn_checkpoint: dmmn_scratch_transformer.pth
+nf_checkpoint: nf_motion_model.pth
+
+prepare:
+  # Causal PF rollouts on train runs; (tracker, process noise) cycles per run.
+  rollout_trackers: [[cfm, 0.045], [dmmn, 0.045], [cfm, 0.01], [dmmn, 0.01]]
+  every: 2                       # log every 2nd step
+  per_step: 16                   # particles logged per step, drawn by weight
+
+training:
+  seeds: [0, 1, 2]
+  batch: 2048
+  steps: 20000                   # declared optimizer-step budget per model
+  lr: 5.0e-4
+  arch: {n_embed: 32, n_head: 8, n_layer: 2, vel_hidden: 64, dropout: 0.1}
+
+m1:
+  variants:
+    m1_control: []
+    m1_mask: [mask]
+    m1_time: [mask, time]
+    m1_full: [mask, time, cov]
+  target: true_physical_velocity  # (x_true_k - x_true_{k-1}) / dt
+
+m2:
+  grid: [0.0, 0.005, 0.01, 0.02, 0.032, 0.045, 0.07]
+  selection_split: val
+  # Preregistered rule: lowest mean validation energy score among the grid
+  # values whose mean RMSE (all steps) is within 10% of the grid's best RMSE;
+  # ties go to the smaller noise.
+  rmse_tolerance: 0.10
+
+m3:
+  proposal_family: gaussian_full_cov
+  scale_floor: 0.05
+  hidden: 128
+  # Observation model for proposal training = the filter's likelihood
+  # N(z; x, measurement_sigma^2 I), so q approximates the posterior the
+  # importance weights target.
+  train_process_noise: 0.045
+
+m4:
+  residual_scale_floor: 0.05     # m/s
+  residual_source: standard_normal
+
+evaluation:
+  energy_score_every: 10         # steps between energy-score evaluations
+  recovery_threshold: 0.3        # m
+  recovery_consecutive: 5        # steps below threshold
+  recovery_horizon: 100          # steps after observation return; else censored
+  exit_nll_floor: 1.0e-3         # probability floor for ExitNLL (zero-mass rate reported)
+  bootstrap_resamples: 2000      # episode bootstrap for paired CIs
+  clouds_saved_per_method: 20

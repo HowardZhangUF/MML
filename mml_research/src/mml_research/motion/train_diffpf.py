@@ -38,35 +38,17 @@ import matplotlib.pyplot as plt
 
 from mml_core.tracking.diffpf_tracker import DiffPFTracker
 from mml_research.motion.generate_synthetic_data import (
-    NODE_POS, TRANS_MATRIX, DT, SPEED, NOISE_STD, in_occlusion,
+    NODE_POS, DT, NOISE_STD, in_occlusion, walk_graph,
 )
 
 
 def simulate_full_trajectory(start_node: int, n_steps: int, rng: np.random.Generator):
     """
-    Walk the Markov graph, returning ALL ground-truth positions plus a
+    Walk the road graph, returning ALL ground-truth positions plus a
     visibility flag per step (True = outside occlusion zones).
     """
-    pos = NODE_POS[start_node].copy()
-    node = start_node
-
-    positions = np.zeros((n_steps, 2), dtype=np.float32)
-    visible = np.zeros(n_steps, dtype=bool)
-
-    for i in range(n_steps):
-        probs = TRANS_MATRIX[node]
-        nxt = rng.choice(8, p=probs) if probs.sum() > 0 else node
-        d = NODE_POS[nxt] - pos
-        dist = np.linalg.norm(d)
-        if dist < SPEED:
-            node = nxt
-            pos = NODE_POS[node].copy()
-        else:
-            pos += d / dist * SPEED
-
-        positions[i] = pos
-        visible[i] = not in_occlusion(pos)
-
+    positions = walk_graph(start_node, n_steps, rng)
+    visible = np.array([not in_occlusion(p) for p in positions], dtype=bool)
     return positions, visible
 
 
@@ -93,7 +75,7 @@ def build_teacher_forced_dataset(
     meas_list, part_list, target_list = [], [], []
     n_occluded = 0
 
-    for start_node in range(8):
+    for start_node in range(len(NODE_POS)):
         positions, visible = simulate_full_trajectory(start_node, n_steps_per_node, rng)
 
         last_vis_pos = None    # last visible ground-truth position

@@ -1,0 +1,1 @@
+/etc/profile.d/debuginfod.sh: line 8: DEBUGINFOD_URLS: unbound variable

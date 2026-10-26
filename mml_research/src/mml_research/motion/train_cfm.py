@@ -168,10 +168,8 @@ def main():
     with torch.no_grad():
         Xt    = torch.tensor(X_test, dtype=torch.float32).to(device)
         yt    = torch.tensor(y_test, dtype=torch.float32).to(device)
-        # Anchored x0 for consistent test evaluation
-        last  = Xt[:, -2:]
-        prev  = Xt[:, -4:-2]
-        x0    = (last - prev) + args.anchor_sigma * torch.randn_like(yt)
+        # Anchored x0 exactly as in training: finite-difference velocity (m/s)
+        x0    = cfm._finite_difference_velocity(Xt) + args.anchor_sigma * torch.randn_like(yt)
         tau   = torch.rand(len(yt), 1, device=device)
         x_tau = (1 - tau) * x0 + tau * yt
         u_tgt = yt - x0

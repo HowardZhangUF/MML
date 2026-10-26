@@ -1,0 +1,64 @@
+Exit-prediction benchmark: runs 0..3 x 400 steps, 4 workers, models from artifacts/motion/exit_benchmark/models
+Process noise: PF+CFM 0.045, PF+CFM-AS 0.032, PF+CFM-LM 0.01, PF+CFM-P 0.01, PF+CFM-Pnaive 0.01, PF+NF 0.032, PF+CV 0.005, PF+DMMN 0.045, PF+TrajFlow 0.07, PF+MoFlow 0.02, PF+TCFM 0.07, EnFF 0.005
+[CFMMotionModel] loaded ← artifacts/motion/exit_benchmark/models/cfm_motion_model_anchor1.0.pth  (input_dim=2, block_size=5, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.033)
+[CFMMeasurementModel] loaded ← artifacts/motion/exit_benchmark/models/cfm_measurement_model.pth  (hidden=64, N_FE=10, scale=0.0200)
+[CFMProposalModel] loaded ← artifacts/motion/exit_benchmark/models/cfm_proposal_model.pth  (hidden=128, N_FE=10, source_sigma=1.0)
+[CFMMotionModel] loaded ← artifacts/motion/exit_benchmark/models/cfm_motion_model_anchor1.0.pth  (input_dim=2, block_size=5, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.033)
+[CFMMeasurementModel] loaded ← artifacts/motion/exit_benchmark/models/cfm_measurement_model.pth  (hidden=64, N_FE=10, scale=0.0200)
+[CFMMotionModel] loaded ← artifacts/motion/exit_benchmark/models/cfm_motion_model_anchor1.0.pth  (input_dim=2, block_size=5, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.033)
+[CFMProposalModel] loaded ← artifacts/motion/exit_benchmark/models/cfm_proposal_model.pth  (hidden=128, N_FE=10, source_sigma=1.0)
+[CFMMeasurementModel] loaded ← artifacts/motion/exit_benchmark/models/cfm_measurement_model.pth  (hidden=64, N_FE=10, scale=0.0200)
+[CFMProposalModel] loaded ← artifacts/motion/exit_benchmark/models/cfm_proposal_model.pth  (hidden=128, N_FE=10, source_sigma=1.0)
+[CFMMotionModel] loaded ← artifacts/motion/exit_benchmark/models/cfm_motion_model_anchor1.0.pth  (input_dim=2, block_size=5, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.033)
+[CFMMeasurementModel] loaded ← artifacts/motion/exit_benchmark/models/cfm_measurement_model.pth  (hidden=64, N_FE=10, scale=0.0200)
+[CFMProposalModel] loaded ← artifacts/motion/exit_benchmark/models/cfm_proposal_model.pth  (hidden=128, N_FE=10, source_sigma=1.0)
+[NFMotionModel] loaded ← artifacts/motion/exit_benchmark/models/nf_motion_model.pth  (input_dim=2, block_size=5, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.033)
+[NFMotionModel] loaded ← artifacts/motion/exit_benchmark/models/nf_motion_model.pth  (input_dim=2, block_size=5, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.033)
+[NFMotionModel] loaded ← artifacts/motion/exit_benchmark/models/nf_motion_model.pth  (input_dim=2, block_size=5, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.033)
+[NFMotionModel] loaded ← artifacts/motion/exit_benchmark/models/nf_motion_model.pth  (input_dim=2, block_size=5, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.033)
+[DiffPFTracker] loaded ← artifacts/motion/exit_benchmark/models/diffpf_tracker.pth  (n_particles=100, n_cond_particles=20, T=10, bounds=((-2.0, 2.6), (-1.5, 1.5)), dt=0.033)[DiffPFTracker] loaded ← artifacts/motion/exit_benchmark/models/diffpf_tracker.pth  (n_particles=100, n_cond_particles=20, T=10, bounds=((-2.0, 2.6), (-1.5, 1.5)), dt=0.033)
+[DiffPFTracker] loaded ← artifacts/motion/exit_benchmark/models/diffpf_tracker.pth  (n_particles=100, n_cond_particles=20, T=10, bounds=((-2.0, 2.6), (-1.5, 1.5)), dt=0.033)
+
+[DiffPFTracker] loaded ← artifacts/motion/exit_benchmark/models/diffpf_tracker.pth  (n_particles=100, n_cond_particles=20, T=10, bounds=((-2.0, 2.6), (-1.5, 1.5)), dt=0.033)
+/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/benchmark_cv_dmmn.py:112: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(self.checkpoint_path, map_location="cpu")
+/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/benchmark_cv_dmmn.py:112: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(self.checkpoint_path, map_location="cpu")
+/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/benchmark_cv_dmmn.py:112: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(self.checkpoint_path, map_location="cpu")
+/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/benchmark_cv_dmmn.py:112: FutureWarning: You are using `torch.load` with `weights_only=False` (the current default value), which uses the default pickle module implicitly. It is possible to construct malicious pickle data which will execute arbitrary code during unpickling (See https://github.com/pytorch/pytorch/blob/main/SECURITY.md#untrusted-models for more details). In a future release, the default value for `weights_only` will be flipped to `True`. This limits the functions that could be executed during unpickling. Arbitrary objects will no longer be allowed to be loaded via this mode unless they are explicitly allowlisted by the user via `torch.serialization.add_safe_globals`. We recommend you start setting `weights_only=True` for any use case where you don't have full control of the loaded file. Please open an issue on GitHub for any issues related to this experimental feature.
+  state = torch.load(self.checkpoint_path, map_location="cpu")
+[TrajFlowMotionModel] loaded <- artifacts/motion/exit_benchmark/models/trajflow_motion_model.pth  (160,600 params, config={"horizon": 12, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 6, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 16})[TrajFlowMotionModel] loaded <- artifacts/motion/exit_benchmark/models/trajflow_motion_model.pth  (160,600 params, config={"horizon": 12, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 6, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 16})
+[TrajFlowMotionModel] loaded <- artifacts/motion/exit_benchmark/models/trajflow_motion_model.pth  (160,600 params, config={"horizon": 12, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 6, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 16})
+
+[TrajFlowMotionModel] loaded <- artifacts/motion/exit_benchmark/models/trajflow_motion_model.pth  (160,600 params, config={"horizon": 12, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 6, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 16})
+[MoFlowMotionModel] loaded <- artifacts/motion/exit_benchmark/models/moflow_motion_model.pth  (148,760 params, config={"horizon": 12, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+[MoFlowMotionModel] loaded <- artifacts/motion/exit_benchmark/models/moflow_motion_model.pth  (148,760 params, config={"horizon": 12, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})[MoFlowMotionModel] loaded <- artifacts/motion/exit_benchmark/models/moflow_motion_model.pth  (148,760 params, config={"horizon": 12, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+
+[MoFlowMotionModel] loaded <- artifacts/motion/exit_benchmark/models/moflow_motion_model.pth  (148,760 params, config={"horizon": 12, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+[TCFMMotionModel] loaded <- artifacts/motion/exit_benchmark/models/tcfm_motion_model.pth  (53,810 params, config={"horizon": 12, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+[TCFMMotionModel] loaded <- artifacts/motion/exit_benchmark/models/tcfm_motion_model.pth  (53,810 params, config={"horizon": 12, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+[TCFMMotionModel] loaded <- artifacts/motion/exit_benchmark/models/tcfm_motion_model.pth  (53,810 params, config={"horizon": 12, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+[TCFMMotionModel] loaded <- artifacts/motion/exit_benchmark/models/tcfm_motion_model.pth  (53,810 params, config={"horizon": 12, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  run 3 done (1 exit events)
+  run 2 done (1 exit events)
+  run 1 done (1 exit events)
+  run 0 done (2 exit events)
+
+Tracker        noise        RMSE all        RMSE vis        RMSE occ          exit top-1  exit >50%  P(correct)  ms/step
+PF+CFM         0.045    0.060+-0.009    0.019+-0.001    0.156+-0.022     40.0% (  2/5)      40.0%       0.408    15.28
+PF+CFM-AS      0.032    0.058+-0.009    0.019+-0.001    0.153+-0.025      0.0% (  0/5)       0.0%       0.314    15.04
+PF+CFM-LM       0.01    0.062+-0.019    0.020+-0.001    0.155+-0.021    100.0% (  5/5)     100.0%       0.901    22.21
+PF+CFM-P        0.01    0.062+-0.018    0.020+-0.001    0.154+-0.021    100.0% (  5/5)     100.0%       0.897    69.00
+PF+CFM-Pnaive   0.01    0.062+-0.019    0.021+-0.000    0.152+-0.023    100.0% (  5/5)     100.0%       0.891    41.56
+PF+NF          0.032    0.038+-0.007    0.014+-0.000    0.101+-0.035    100.0% (  5/5)     100.0%       0.752    15.09
+DiffPF                  0.339+-0.110    0.234+-0.086    0.690+-0.134     60.0% (  3/5)      60.0%       0.600     2.41
+PF+CV          0.005    0.057+-0.003    0.027+-0.004    0.142+-0.027      0.0% (  0/5)       0.0%       0.237     0.15
+PF+DMMN        0.045    0.036+-0.007    0.017+-0.000    0.086+-0.012    100.0% (  5/5)     100.0%       0.847     9.28
+PF+TrajFlow     0.07    0.043+-0.011    0.020+-0.000    0.096+-0.022     60.0% (  3/5)      40.0%       0.528   104.66
+PF+MoFlow       0.02    0.135+-0.019    0.019+-0.001    0.366+-0.034     60.0% (  3/5)      60.0%       0.581    42.71
+PF+TCFM         0.07    0.072+-0.008    0.021+-0.000    0.194+-0.038    100.0% (  5/5)     100.0%       0.756   631.85
+EnFF           0.005    0.079+-0.010    0.064+-0.007    0.143+-0.017      0.0% (  0/5)       0.0%       0.236     7.32
+
+Lane-cue ceiling: 5/5 (100.0%), chance 50%
+Results written to /blue/jshin2/zhangzihao/mml_smoke/sbatch_test
