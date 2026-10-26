@@ -277,6 +277,64 @@ def regression(ep, ev, old_dir):
     return pd.DataFrame(rows)
 
 
+FAMILIES = [  # (label, color, methods) — color by experiment, fixed order
+    ("Baselines", GRAY, ["PF+CFM", "PF+CFM-AS", "PF+DMMN", "PF+NF"]),
+    ("M1 Context-CFM", SERIES[0], ["M1-control", "M1-mask", "M1-time", "M1-full"]),
+    ("M2 Calibrated-CFM", SERIES[1], ["M2-zero", "M2-calibrated"]),
+    ("M3 Observation-CFM", SERIES[2], ["M3", "M3-joint"]),
+    ("M4 DMMN-CFM", SERIES[3], ["DMMN+Gauss", "M4"]),
+]
+
+
+def plot_overview(s, lane, out):
+    """All methods x six metrics as horizontal bars, colored by experiment family."""
+    order = [m for _, _, ms in FAMILIES for m in ms if m in set(s.method)]
+    color = {m: c for _, c, ms in FAMILIES for m in ms}
+    s = s.set_index("method").loc[order]
+    y = np.arange(len(order))[::-1]
+    panels = [
+        ("rmse_all_mean", "RMSE all steps (m) ↓", ("rmse_all_ci_lo", "rmse_all_ci_hi"), "{:.3f}"),
+        ("rmse_occluded_mean", "RMSE occluded (m) ↓", ("rmse_occluded_ci_lo", "rmse_occluded_ci_hi"), "{:.3f}"),
+        ("exit_success_rate", "Exit success, top-1 ↑", None, "{:.1%}"),
+        ("p_correct", "P(correct exit) ↑", ("p_correct_ci_lo", "p_correct_ci_hi"), "{:.3f}"),
+        ("brier", "Exit Brier score ↓", None, "{:.3f}"),
+        ("ms_per_step_mean", "Runtime (ms / step) ↓", None, "{:.1f}"),
+    ]
+    fig, axes = plt.subplots(2, 3, figsize=(16, 10), sharey=True)
+    for ax, (key, title, ci, fmt) in zip(axes.flat, panels):
+        vals = s[key].to_numpy()
+        ax.barh(y, vals, height=0.7, color=[color[m] for m in order], edgecolor="white", linewidth=2)
+        ends = vals
+        if ci:
+            lo, hi = s[ci[0]].to_numpy(), s[ci[1]].to_numpy()
+            ax.errorbar(vals, y, xerr=[vals - lo, hi - vals], fmt="none", ecolor=INK2, elinewidth=1, capsize=2)
+            ends = np.maximum(vals, hi)
+        for yi, v, e in zip(y, vals, ends):   # label past the whisker so they never overlap
+            ax.text(e, yi, "  " + fmt.format(v), va="center", fontsize=7, color=INK2)
+        if key == "exit_success_rate":
+            ref = lane[0] / max(lane[1], 1)
+            ax.axvline(ref, color=INK, lw=1, ls="--")
+            ax.text(ref, y[0] + 0.9, f"lane cue {ref:.1%}", fontsize=7, color=INK, ha="right")
+        ax.set_xlim(0, vals.max() * 1.25)
+        ax.set_title(title, fontsize=10)
+        _style(ax)
+        ax.grid(axis="y", visible=False)
+    for ax in axes[:, 0]:
+        ax.set_yticks(y)
+        ax.set_yticklabels([f"{m} ×{int(s.loc[m, 'seeds'])}" if s.loc[m, "seeds"] > 1 else m for m in order],
+                           fontsize=8, color=INK)
+    handles = [plt.Rectangle((0, 0), 1, 1, color=c) for _, c, _ in FAMILIES]
+    fig.legend(handles, [f for f, _, _ in FAMILIES], loc="lower center", ncol=len(FAMILIES), frameon=False,
+               fontsize=9)
+    n_ev = int(s["exit_events"].iloc[0])
+    fig.suptitle(f"CFM variants for the particle filter — locked test set, {int(s['episodes'].iloc[0])} episodes, "
+                 f"{n_ev} exit events (bars: mean, whiskers: 95% episode-bootstrap CI; ×3 = mean of 3 seeds)",
+                 fontsize=11, color=INK)
+    fig.tight_layout(rect=(0, 0.04, 1, 0.97))
+    fig.savefig(os.path.join(out, "overview_all_methods.png"), dpi=150)
+    plt.close(fig)
+
+
 def main():
     p = argparse.ArgumentParser(description="Summarize a CFM-variant benchmark split")
     p.add_argument("--split", default="test")
@@ -311,6 +369,7 @@ def main():
     plot_occlusion(ev, plots)
     plot_reliability(ev, plots)
     plot_runtime(s, plots)
+    plot_overview(s, lane, plots)
     if args.old_results:
         reg = regression(ep, ev, args.old_results)
         reg.to_csv(os.path.join(d, "regression_vs_old.csv"), index=False)
