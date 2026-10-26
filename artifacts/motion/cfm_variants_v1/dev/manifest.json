@@ -1,0 +1,257 @@
+{
+  "commit": "78e214d26042f7d1f53bb90e77e714415437f504-dirty",
+  "command": "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/cfm_variants/run.py --split dev --methods PF+CFM PF+DMMN PF+NF --models-dir artifacts/motion/exit_benchmark/models --out-dir artifacts/motion/cfm_variants_v1 --workers 32",
+  "config": {
+    "experiment": "cfm_four_variants_v1",
+    "filter": {
+      "particles": 500,
+      "history_steps": 5,
+      "dt_seconds": 0.033,
+      "sensor_noise_std": 0.02,
+      "measurement_sigma": 0.05,
+      "init_spread": 0.05,
+      "resampler": "systematic",
+      "ess_fraction": 0.5,
+      "baseline_process_noise": 0.045,
+      "nf_process_noise": 0.032
+    },
+    "cfm": {
+      "checkpoint": "cfm_motion_model_anchor1.0.pth",
+      "ode_solver": "euler",
+      "ode_steps": 10,
+      "source_std": 1.0,
+      "max_speed": 1.5,
+      "adaptive_gain": 0.05,
+      "sigma_max": 2.5
+    },
+    "dmmn_checkpoint": "dmmn_scratch_transformer.pth",
+    "nf_checkpoint": "nf_motion_model.pth",
+    "prepare": {
+      "rollout_trackers": [
+        [
+          "cfm",
+          0.045
+        ],
+        [
+          "dmmn",
+          0.045
+        ],
+        [
+          "cfm",
+          0.01
+        ],
+        [
+          "dmmn",
+          0.01
+        ]
+      ],
+      "every": 2,
+      "per_step": 16
+    },
+    "training": {
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "batch": 2048,
+      "steps": 20000,
+      "lr": 0.0005,
+      "arch": {
+        "n_embed": 32,
+        "n_head": 8,
+        "n_layer": 2,
+        "vel_hidden": 64,
+        "dropout": 0.1
+      }
+    },
+    "m1": {
+      "variants": {
+        "m1_control": [],
+        "m1_mask": [
+          "mask"
+        ],
+        "m1_time": [
+          "mask",
+          "time"
+        ],
+        "m1_full": [
+          "mask",
+          "time",
+          "cov"
+        ]
+      },
+      "target": "true_physical_velocity"
+    },
+    "m2": {
+      "grid": [
+        0.0,
+        0.005,
+        0.01,
+        0.02,
+        0.032,
+        0.045,
+        0.07
+      ],
+      "selection_split": "val",
+      "rmse_tolerance": 0.1
+    },
+    "m3": {
+      "proposal_family": "gaussian_full_cov",
+      "scale_floor": 0.05,
+      "hidden": 128,
+      "train_process_noise": 0.045
+    },
+    "m4": {
+      "residual_scale_floor": 0.05,
+      "residual_source": "standard_normal"
+    },
+    "evaluation": {
+      "energy_score_every": 10,
+      "recovery_threshold": 0.3,
+      "recovery_consecutive": 5,
+      "recovery_horizon": 100,
+      "exit_nll_floor": 0.001,
+      "bootstrap_resamples": 2000,
+      "clouds_saved_per_method": 20
+    }
+  },
+  "config_sha256": "3c20df31e486bc88acb1487e31c0bb679f0f920e504c7aae56aea963d2eed463",
+  "checkpoints": {
+    "cfm": "artifacts/motion/exit_benchmark/models/cfm_motion_model_anchor1.0.pth",
+    "dmmn": "artifacts/motion/exit_benchmark/models/dmmn_scratch_transformer.pth",
+    "nf": "artifacts/motion/exit_benchmark/models/nf_motion_model.pth"
+  },
+  "checkpoint_sha256": {
+    "cfm": "0f35da455e7600eba5e0df132b1e33a7e22f563a1423031f32c4af0c35c2ff86",
+    "dmmn": "0ce16486a01f9d504e6a9315424c1d256b553789a597929bc917eeea73c45b0e",
+    "nf": "727e59f08a5722bb3cf01f5ecedb2a2fe22a86b06748e0ceff70dcf2549b75ad"
+  },
+  "split": "dev",
+  "runs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99
+  ],
+  "n_steps": 2000,
+  "seed_streams": {
+    "trajectory": "1000+run",
+    "measurement": "5000+run",
+    "filter_global_np_and_torch": "9000+run"
+  },
+  "process_noise": {
+    "PF+CFM": 0.045,
+    "PF+DMMN": 0.045,
+    "PF+NF": 0.032
+  },
+  "environment": {
+    "python": "3.10.19",
+    "torch": "2.5.1.post303",
+    "numpy": "2.2.6",
+    "platform": "Linux-5.14.0-687.48.1.el9_8.x86_64-x86_64-with-glibc2.34",
+    "cpu_count": 64,
+    "torch_threads_per_worker": 1,
+    "device": "cpu",
+    "precision": "float32 networks, float64 weights",
+    "slurm_job": "47748629",
+    "host": "c0713a-s1.ufhpc"
+  },
+  "wall_seconds": 308.50308203697205
+}

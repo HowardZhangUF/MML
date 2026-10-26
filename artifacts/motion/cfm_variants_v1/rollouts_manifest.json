@@ -1,0 +1,83 @@
+{
+  "commit": "78e214d26042f7d1f53bb90e77e714415437f504-dirty",
+  "runs": [
+    200,
+    201,
+    202,
+    203,
+    204,
+    205,
+    206,
+    207,
+    208,
+    209,
+    210,
+    211,
+    212,
+    213,
+    214,
+    215,
+    216,
+    217,
+    218,
+    219,
+    220,
+    221,
+    222,
+    223,
+    224,
+    225,
+    226,
+    227,
+    228,
+    229,
+    230,
+    231,
+    232,
+    233,
+    234,
+    235,
+    236,
+    237,
+    238,
+    239,
+    240,
+    241,
+    242,
+    243,
+    244,
+    245,
+    246,
+    247
+  ],
+  "rollout_trackers": [
+    [
+      "cfm",
+      0.045
+    ],
+    [
+      "dmmn",
+      0.045
+    ],
+    [
+      "cfm",
+      0.01
+    ],
+    [
+      "dmmn",
+      0.01
+    ]
+  ],
+  "n_steps": 2000,
+  "n_contexts": 766368,
+  "occluded_fraction": 0.15562236419057163,
+  "sha256": "4f675de038a7e1046027932e15fe2dc7acd39c80bb626ada1ac9f30d8960ba04",
+  "fields": {
+    "hist": "(H,2) particle positions x_{k-H}..x_{k-1}",
+    "mask": "(H,) measurement used",
+    "d": "seconds since last measurement",
+    "U": "cloud covariance summary at k-1",
+    "v": "true velocity (x_k - x_{k-1})/dt",
+    "vis": "z_k exists"
+  }
+}
