@@ -1,5 +1,9 @@
 {
     "python-envs.defaultEnvManager": "ms-python.python:conda",
     "python-envs.defaultPackageManager": "ms-python.python:conda",
+<<<<<<< HEAD
+    "cmake.sourceDirectory": "/home/user/MML/mml_python_sim/rl-tools"
+=======
     "cmake.sourceDirectory": "/home/zi/MML/mml_ros_ws/src/mml_guidance"
+>>>>>>> ebd0038d1fc44cd33492ab61de49c413798c8d0b
 }
