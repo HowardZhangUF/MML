@@ -1,0 +1,49 @@
+# ETH-UCY benchmark (fixed 2026-10-27, before any ethucy_v1 result existed).
+# SocialGAN leave-one-scene-out splits (MoFlow's data source); every model is retrained per
+# split under the fair_retrain protocol (shared rows, budget, seeds, selection rules).
+experiment: ethucy_v1
+base: ../fair_retrain/config.yaml      # optimizers, architectures, cfm_variants settings
+
+splits: [eth, hotel, univ, zara1, zara2]
+obs: 8                                 # observed frames (3.2 s), the standard protocol
+horizon: 12                            # future frames (4.8 s)
+frame_dt: 0.4
+scale: 2.0                             # model units = metres / scale, after translating to the last observed point
+
+# One recipe: annotated histories -> annotated futures (the standard ETH-UCY training data).
+# Train = the split's train/ files, checkpoint-selection holdout = its val/ files.
+models: [cfm, nf, dmmn, dmmn_gauss, m4, trajflow, moflow, tcfm]
+training_free: [PF+CV, EnFF]
+training:
+  seeds: [0, 1, 2]
+  steps: 10000
+  batch: 256
+  eval_every: 500
+  holdout_rows: 20000
+  moflow_student_steps: 3000           # IMLE cost; ~5 epochs of the largest split's training windows
+
+arch:
+  cfm: {block_size: 8}
+  nf: {block_size: 8}
+  dmmn: {block_size: 8}
+  # 20 modes for best-of-20; NMS radius 0.05 model units = 0.1 m
+  trajflow: {num_query: 32, num_motion_modes: 20, nms_dist: 0.05}
+
+forecast:
+  k: 20                                # best-of-20 minADE / minFDE (metres)
+  max_windows: null                    # all test windows
+
+tracking:
+  min_track_len: 20                    # frames (8 s)
+  meas_noise: 0.05                     # m, simulated sensor noise
+  filter_sigma: 0.10                   # m, PF likelihood std (inflated 2x, as the simulator benchmark's 0.05 vs 0.02)
+  particles: 500
+  init_spread: 0.05                    # m
+  # Occlusion schedule per track (seeded by split / part / track index): the first `obs` frames
+  # visible, then alternating visible runs U{4..10} and occluded runs U{3..8} frames (1.2-3.2 s).
+  visible_run: [4, 10]
+  occluded_run: [3, 8]
+  calibration_tracks: 300              # first n val tracks per split, seed-0 checkpoints
+  grid: [0.0, 0.01, 0.02, 0.05, 0.1, 0.15, 0.2, 0.3]   # q in model units (x scale = metres)
+  rmse_tolerance: 0.10                 # M2 rule, as fair_retrain
+  energy_every: 2

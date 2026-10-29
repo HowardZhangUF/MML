@@ -1,0 +1,256 @@
+job 47951699 on c0607a-s12.ufhpc, stages: data train, workers 8, commit ebd0038d1fc44cd33492ab61de49c413798c8d0b
+GPU 0: NVIDIA L4 (UUID: GPU-e5d45fee-681b-03dc-4f1d-4e8ee74b8fe4)
+
+===== data (2026-10-27 18:37:17) =====
+eth {'win_train': 30307, 'tracks_train': 1145, 'win_val': 5422, 'tracks_val': 251, 'win_test': 364, 'tracks_test': 44, 'train_speed_mean_mps': 0.5938611626625061, 'train_speed_p99_mps': 1.6418588161468506}
+hotel {'win_train': 29676, 'tracks_train': 1072, 'win_val': 5203, 'tracks_val': 249, 'win_test': 1197, 'tracks_test': 122, 'train_speed_mean_mps': 0.5982862114906311, 'train_speed_p99_mps': 1.6515319347381592}
+univ {'win_train': 9874, 'tracks_train': 544, 'win_val': 2800, 'tracks_val': 154, 'win_test': 24334, 'tracks_test': 722, 'train_speed_mean_mps': 0.7267446517944336, 'train_speed_p99_mps': 1.7552130222320557}
+zara1 {'win_train': 28577, 'tracks_train': 1047, 'win_val': 5184, 'tracks_val': 255, 'win_test': 2356, 'tracks_test': 142, 'train_speed_mean_mps': 0.5698515772819519, 'train_speed_p99_mps': 1.6567562818527222}
+zara2 {'win_train': 26076, 'tracks_train': 1013, 'win_val': 4262, 'tracks_val': 237, 'win_test': 5910, 'tracks_test': 189, 'train_speed_mean_mps': 0.6005616784095764, 'train_speed_p99_mps': 1.6547279357910156}
+
+===== train (2026-10-27 18:37:19) =====
+
+### eth: 30307 train / 5422 val windows; models ['dmmn', 'dmmn_gauss', 'm4', 'cfm', 'nf', 'trajflow', 'tcfm', 'moflow']
+
+== eth dmmn seed 0
+Transformer input_dim:  2
+Transformer block_size:  8
+    step    500  train   0.00845  holdout   0.00250  best   0.00250      7s
+    step   1000  train   0.00356  holdout   0.00260  best   0.00250     14s
+    step   1500  train   0.00314  holdout   0.00262  best   0.00250     21s
+    step   2000  train   0.00291  holdout   0.00227  best   0.00227     28s
+    step   2500  train   0.00282  holdout   0.00293  best   0.00227     34s
+    step   3000  train   0.00272  holdout   0.00238  best   0.00227     41s
+    step   3500  train   0.00262  holdout   0.00250  best   0.00227     48s
+    step   4000  train   0.00257  holdout   0.00247  best   0.00227     55s
+    step   4500  train   0.00257  holdout   0.00241  best   0.00227     62s
+    step   5000  train   0.00253  holdout   0.00272  best   0.00227     69s
+    step   5500  train   0.00247  holdout   0.00251  best   0.00227     76s
+    step   6000  train   0.00247  holdout   0.00221  best   0.00221     83s
+    step   6500  train   0.00244  holdout   0.00240  best   0.00221     89s
+    step   7000  train   0.00239  holdout   0.00223  best   0.00221     96s
+    step   7500  train   0.00237  holdout   0.00235  best   0.00221    103s
+    step   8000  train   0.00242  holdout   0.00255  best   0.00221    110s
+    step   8500  train   0.00234  holdout   0.00252  best   0.00221    117s
+    step   9000  train   0.00233  holdout   0.00273  best   0.00221    124s
+    step   9500  train   0.00229  holdout   0.00220  best   0.00220    130s
+    step  10000  train   0.00233  holdout   0.00222  best   0.00220    137s
+
+== eth dmmn seed 1
+Transformer input_dim:  2
+Transformer block_size:  8
+    step    500  train   0.00864  holdout   0.00286  best   0.00286      7s
+    step   1000  train   0.00344  holdout   0.00249  best   0.00249     14s
+    step   1500  train   0.00307  holdout   0.00276  best   0.00249     21s
+    step   2000  train   0.00293  holdout   0.00241  best   0.00241     28s
+    step   2500  train   0.00278  holdout   0.00234  best   0.00234     35s
+    step   3000  train   0.00271  holdout   0.00255  best   0.00234     42s
+    step   3500  train   0.00259  holdout   0.00243  best   0.00234     49s
+    step   4000  train   0.00258  holdout   0.00220  best   0.00220     56s
+    step   4500  train   0.00255  holdout   0.00249  best   0.00220     63s
+    step   5000  train   0.00254  holdout   0.00226  best   0.00220     71s
+    step   5500  train   0.00248  holdout   0.00244  best   0.00220     78s
+    step   6000  train   0.00246  holdout   0.00215  best   0.00215     86s
+    step   6500  train   0.00244  holdout   0.00238  best   0.00215     93s
+    step   7000  train   0.00242  holdout   0.00222  best   0.00215    101s
+    step   7500  train   0.00239  holdout   0.00215  best   0.00215    109s
+    step   8000  train   0.00239  holdout   0.00215  best   0.00215    116s
+    step   8500  train   0.00237  holdout   0.00214  best   0.00214    124s
+    step   9000  train   0.00236  holdout   0.00211  best   0.00211    132s
+    step   9500  train   0.00235  holdout   0.00228  best   0.00211    139s
+    step  10000  train   0.00233  holdout   0.00227  best   0.00211    147s
+
+== eth dmmn seed 2
+Transformer input_dim:  2
+Transformer block_size:  8
+    step    500  train   0.00852  holdout   0.00319  best   0.00319      8s
+    step   1000  train   0.00359  holdout   0.00235  best   0.00235     15s
+    step   1500  train   0.00310  holdout   0.00256  best   0.00235     22s
+    step   2000  train   0.00292  holdout   0.00230  best   0.00230     29s
+    step   2500  train   0.00278  holdout   0.00213  best   0.00213     37s
+    step   3000  train   0.00271  holdout   0.00221  best   0.00213     44s
+    step   3500  train   0.00261  holdout   0.00216  best   0.00213     52s
+    step   4000  train   0.00256  holdout   0.00237  best   0.00213     59s
+    step   4500  train   0.00251  holdout   0.00216  best   0.00213     66s
+    step   5000  train   0.00252  holdout   0.00223  best   0.00213     74s
+    step   5500  train   0.00244  holdout   0.00216  best   0.00213     81s
+    step   6000  train   0.00249  holdout   0.00244  best   0.00213     88s
+    step   6500  train   0.00242  holdout   0.00219  best   0.00213     96s
+    step   7000  train   0.00242  holdout   0.00209  best   0.00209    103s
+    step   7500  train   0.00237  holdout   0.00252  best   0.00209    110s
+    step   8000  train   0.00241  holdout   0.00220  best   0.00209    117s
+    step   8500  train   0.00235  holdout   0.00205  best   0.00205    125s
+    step   9000  train   0.00236  holdout   0.00242  best   0.00205    132s
+    step   9500  train   0.00234  holdout   0.00201  best   0.00201    139s
+    step  10000  train   0.00236  holdout   0.00207  best   0.00201    147s
+
+== eth dmmn_gauss seed 0
+
+== eth dmmn_gauss seed 1
+
+== eth dmmn_gauss seed 2
+
+== eth m4 seed 0
+    step    500  train   1.70384  holdout   1.59794  best   1.59794      7s
+    step   1000  train   1.43115  holdout   1.27272  best   1.27272     15s
+    step   1500  train   1.20083  holdout   1.18230  best   1.18230     22s
+    step   2000  train   1.16033  holdout   1.16400  best   1.16400     30s
+    step   2500  train   1.14578  holdout   1.15184  best   1.15184     37s
+    step   3000  train   1.12656  holdout   1.14316  best   1.14316     46s
+    step   3500  train   1.12665  holdout   1.13304  best   1.13304     54s
+    step   4000  train   1.11263  holdout   1.12724  best   1.12724     62s
+    step   4500  train   1.11645  holdout   1.11400  best   1.11400     71s
+    step   5000  train   1.11499  holdout   1.10566  best   1.10566     79s
+    step   5500  train   1.10258  holdout   1.10370  best   1.10370     87s
+    step   6000  train   1.09212  holdout   1.09323  best   1.09323     96s
+    step   6500  train   1.09551  holdout   1.08979  best   1.08979    104s
+    step   7000  train   1.07838  holdout   1.09760  best   1.08979    112s
+    step   7500  train   1.07880  holdout   1.09155  best   1.08979    120s
+    step   8000  train   1.07632  holdout   1.08776  best   1.08776    129s
+    step   8500  train   1.06895  holdout   1.08771  best   1.08771    137s
+    step   9000  train   1.06818  holdout   1.08563  best   1.08563    145s
+    step   9500  train   1.06916  holdout   1.08497  best   1.08497    153s
+    step  10000  train   1.08023  holdout   1.08363  best   1.08363    162s
+
+== eth m4 seed 1
+    step    500  train   1.70980  holdout   1.60901  best   1.60901      8s
+    step   1000  train   1.39998  holdout   1.25322  best   1.25322     17s
+    step   1500  train   1.16252  holdout   1.16642  best   1.16642     25s
+    step   2000  train   1.13815  holdout   1.13748  best   1.13748     34s
+    step   2500  train   1.11512  holdout   1.12821  best   1.12821     42s
+    step   3000  train   1.11159  holdout   1.12457  best   1.12457     50s
+    step   3500  train   1.09842  holdout   1.11224  best   1.11224     59s
+    step   4000  train   1.10618  holdout   1.11762  best   1.11224     67s
+    step   4500  train   1.09020  holdout   1.10383  best   1.10383     75s
+    step   5000  train   1.09429  holdout   1.10261  best   1.10261     84s
+    step   5500  train   1.08766  holdout   1.10103  best   1.10103     92s
+    step   6000  train   1.08526  holdout   1.09624  best   1.09624    100s
+    step   6500  train   1.06818  holdout   1.09021  best   1.09021    108s
+    step   7000  train   1.08333  holdout   1.09438  best   1.09021    117s
+    step   7500  train   1.06481  holdout   1.08761  best   1.08761    125s
+    step   8000  train   1.07135  holdout   1.08925  best   1.08761    133s
+    step   8500  train   1.05669  holdout   1.08517  best   1.08517    142s
+    step   9000  train   1.06608  holdout   1.08702  best   1.08517    150s
+    step   9500  train   1.06133  holdout   1.08659  best   1.08517    158s
+    step  10000  train   1.06390  holdout   1.08760  best   1.08517    166s
+
+== eth m4 seed 2
+    step    500  train   1.66337  holdout   1.45600  best   1.45600      8s
+    step   1000  train   1.25729  holdout   1.16708  best   1.16708     17s
+    step   1500  train   1.14578  holdout   1.14159  best   1.14159     25s
+    step   2000  train   1.14033  holdout   1.12898  best   1.12898     33s
+    step   2500  train   1.12547  holdout   1.11414  best   1.11414     41s
+    step   3000  train   1.11703  holdout   1.11834  best   1.11414     50s
+    step   3500  train   1.11137  holdout   1.11905  best   1.11414     58s
+    step   4000  train   1.10027  holdout   1.11376  best   1.11376     66s
+    step   4500  train   1.10316  holdout   1.11130  best   1.11130     74s
+    step   5000  train   1.09225  holdout   1.11250  best   1.11130     83s
+    step   5500  train   1.06946  holdout   1.10367  best   1.10367     91s
+    step   6000  train   1.09933  holdout   1.10109  best   1.10109     99s
+    step   6500  train   1.08094  holdout   1.09782  best   1.09782    108s
+    step   7000  train   1.08478  holdout   1.09314  best   1.09314    115s
+    step   7500  train   1.07902  holdout   1.09893  best   1.09314    122s
+    step   8000  train   1.08931  holdout   1.09087  best   1.09087    130s
+    step   8500  train   1.07573  holdout   1.09136  best   1.09087    137s
+    step   9000  train   1.07435  holdout   1.09027  best   1.09027    144s
+    step   9500  train   1.07588  holdout   1.09105  best   1.09027    151s
+    step  10000  train   1.07757  holdout   1.09133  best   1.09027    159s
+
+== eth cfm seed 0
+    step    500  train   0.39200  holdout   0.18153  best   0.18153      7s
+    step   1000  train   0.14681  holdout   0.10370  best   0.10370     14s
+    step   1500  train   0.10713  holdout   0.09074  best   0.09074     21s
+    step   2000  train   0.09509  holdout   0.07935  best   0.07935     29s
+    step   2500  train   0.09006  holdout   0.07857  best   0.07857     36s
+    step   3000  train   0.08651  holdout   0.07154  best   0.07154     43s
+    step   3500  train   0.08236  holdout   0.06809  best   0.06809     50s
+    step   4000  train   0.07993  holdout   0.07434  best   0.06809     58s
+    step   4500  train   0.07941  holdout   0.06862  best   0.06809     65s
+    step   5000  train   0.07657  holdout   0.06606  best   0.06606     72s
+    step   5500  train   0.07526  holdout   0.06686  best   0.06606     79s
+    step   6000  train   0.07719  holdout   0.06809  best   0.06606     86s
+    step   6500  train   0.07533  holdout   0.06499  best   0.06499     94s
+    step   7000  train   0.07338  holdout   0.06415  best   0.06415    101s
+    step   7500  train   0.07352  holdout   0.06368  best   0.06368    108s
+    step   8000  train   0.07308  holdout   0.06462  best   0.06368    115s
+    step   8500  train   0.07080  holdout   0.06303  best   0.06303    122s
+    step   9000  train   0.07006  holdout   0.06263  best   0.06263    130s
+    step   9500  train   0.07098  holdout   0.06232  best   0.06232    137s
+    step  10000  train   0.07133  holdout   0.06233  best   0.06232    144s
+[CFMMotionModel] saved → artifacts/motion/ethucy_v1/models/eth_cfm_s0.pth
+
+== eth cfm seed 1
+    step    500  train   0.38324  holdout   0.17781  best   0.17781      7s
+    step   1000  train   0.14222  holdout   0.10021  best   0.10021     14s
+    step   1500  train   0.10654  holdout   0.09302  best   0.09302     21s
+    step   2000  train   0.09768  holdout   0.08314  best   0.08314     29s
+    step   2500  train   0.08853  holdout   0.08744  best   0.08314     36s
+    step   3000  train   0.08560  holdout   0.07346  best   0.07346     43s
+    step   3500  train   0.08209  holdout   0.07079  best   0.07079     52s
+    step   4000  train   0.08200  holdout   0.06736  best   0.06736     60s
+    step   4500  train   0.07888  holdout   0.06645  best   0.06645     69s
+    step   5000  train   0.07600  holdout   0.06785  best   0.06645     78s
+    step   5500  train   0.07625  holdout   0.06614  best   0.06614     86s
+    step   6000  train   0.07556  holdout   0.06658  best   0.06614     95s
+    step   6500  train   0.07455  holdout   0.06482  best   0.06482    103s
+    step   7000  train   0.07456  holdout   0.06427  best   0.06427    112s
+    step   7500  train   0.07291  holdout   0.06457  best   0.06427    121s
+    step   8000  train   0.07195  holdout   0.06440  best   0.06427    129s
+    step   8500  train   0.07056  holdout   0.06429  best   0.06427    138s
+    step   9000  train   0.07218  holdout   0.06294  best   0.06294    146s
+    step   9500  train   0.07096  holdout   0.06298  best   0.06294    154s
+    step  10000  train   0.07068  holdout   0.06299  best   0.06294    162s
+[CFMMotionModel] saved → artifacts/motion/ethucy_v1/models/eth_cfm_s1.pth
+
+== eth cfm seed 2
+    step    500  train   0.39568  holdout   0.18090  best   0.18090      8s
+    step   1000  train   0.15498  holdout   0.11169  best   0.11169     16s
+    step   1500  train   0.10826  holdout   0.09314  best   0.09314     25s
+    step   2000  train   0.09717  holdout   0.08041  best   0.08041     33s
+    step   2500  train   0.09038  holdout   0.07698  best   0.07698     41s
+    step   3000  train   0.08447  holdout   0.07498  best   0.07498     49s
+    step   3500  train   0.08232  holdout   0.07264  best   0.07264     57s
+    step   4000  train   0.08205  holdout   0.06939  best   0.06939     65s
+    step   4500  train   0.07993  holdout   0.06828  best   0.06828     73s
+    step   5000  train   0.07764  holdout   0.08325  best   0.06828     81s
+    step   5500  train   0.07592  holdout   0.06671  best   0.06671     89s
+    step   6000  train   0.07772  holdout   0.06608  best   0.06608     97s
+    step   6500  train   0.07412  holdout   0.06421  best   0.06421    105s
+    step   7000  train   0.07382  holdout   0.06604  best   0.06421    113s
+    step   7500  train   0.07261  holdout   0.06426  best   0.06421    121s
+    step   8000  train   0.07243  holdout   0.06463  best   0.06421    129s
+    step   8500  train   0.07293  holdout   0.06371  best   0.06371    137s
+    step   9000  train   0.07242  holdout   0.06323  best   0.06323    145s
+    step   9500  train   0.07235  holdout   0.06293  best   0.06293    153s
+    step  10000  train   0.07272  holdout   0.06292  best   0.06292    161s
+[CFMMotionModel] saved → artifacts/motion/ethucy_v1/models/eth_cfm_s2.pth
+
+== eth nf seed 0
+    step    500  train  -2.81602  holdout  -3.19134  best  -3.19134      9s
+    step   1000  train  -3.35055  holdout  -3.60156  best  -3.60156     19s
+    step   1500  train  -3.47480  holdout  -3.29280  best  -3.60156     28s
+    step   2000  train  -3.52710  holdout  -3.69263  best  -3.69263     37s
+    step   2500  train  -3.67847  holdout  -3.76862  best  -3.76862     46s
+    step   3000  train  -3.76749  holdout  -3.25254  best  -3.76862     55s
+    step   3500  train  -3.80269  holdout  -3.97188  best  -3.97188     65s
+    step   4000  train  -3.85119  holdout  -3.21803  best  -3.97188     74s
+    step   4500  train  -3.84549  holdout  -3.45594  best  -3.97188     83s
+    step   5000  train  -3.93892  holdout  -4.01463  best  -4.01463     92s
+    step   5500  train  -4.03197  holdout  -3.71306  best  -4.01463    102s
+    step   6000  train  -4.03123  holdout  -3.84677  best  -4.01463    111s
+    step   6500  train  -4.12159  holdout  -3.96595  best  -4.01463    120s
+    step   7000  train  -4.12690  holdout  -3.93415  best  -4.01463    129s
+    step   7500  train  -4.15650  holdout  -3.52080  best  -4.01463    138s
+    step   8000  train  -4.21726  holdout  -3.00234  best  -4.01463    147s
+    step   8500  train  -4.24253  holdout  -3.24441  best  -4.01463    156s
+    step   9000  train  -4.30916  holdout  -3.07774  best  -4.01463    165s
+    step   9500  train  -4.23448  holdout  -3.16792  best  -4.01463    174s
+    step  10000  train  -4.21582  holdout  -2.82051  best  -4.01463    183s
+[NFMotionModel] saved → artifacts/motion/ethucy_v1/models/eth_nf_s0.pth
+
+== eth nf seed 1
+    step    500  train  -2.76478  holdout  -2.86561  best  -2.86561     10s
+    step   1000  train  -3.29007  holdout  -3.57696  best  -3.57696     20s
+    step   1500  train  -3.49047  holdout  -3.82578  best  -3.82578     29s
+    step   2000  train  -3.53654  holdout  -3.78190  best  -3.82578     39s
+    step   25[2026-10-27T23:49:33.623] error: *** JOB 47951699 ON c0607a-s12 CANCELLED AT 2026-10-27T23:49:33 DUE to SIGNAL Terminated ***

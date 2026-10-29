@@ -1,0 +1,217 @@
+job 48038801 on c0602a-s12.ufhpc, stages: train, workers 8, commit ebd0038d1fc44cd33492ab61de49c413798c8d0b
+GPU 0: NVIDIA L4 (UUID: GPU-7a0a90fe-4fa8-4f1a-2514-25b2ff93eb99)
+
+===== train (2026-10-27 23:49:46) =====
+
+### eth: 30307 train / 5422 val windows; models ['dmmn', 'dmmn_gauss', 'm4', 'cfm', 'nf', 'trajflow', 'tcfm', 'moflow']
+== eth dmmn seed 0: trained, skipping
+== eth dmmn seed 1: trained, skipping
+== eth dmmn seed 2: trained, skipping
+== eth dmmn_gauss seed 0: trained, skipping
+== eth dmmn_gauss seed 1: trained, skipping
+== eth dmmn_gauss seed 2: trained, skipping
+== eth m4 seed 0: trained, skipping
+== eth m4 seed 1: trained, skipping
+== eth m4 seed 2: trained, skipping
+== eth cfm seed 0: trained, skipping
+== eth cfm seed 1: trained, skipping
+== eth cfm seed 2: trained, skipping
+== eth nf seed 0: trained, skipping
+== eth nf seed 1: trained, skipping
+== eth nf seed 2: trained, skipping
+== eth trajflow seed 0: trained, skipping
+== eth trajflow seed 1: trained, skipping
+== eth trajflow seed 2: trained, skipping
+
+== eth tcfm seed 0
+    step    500  train   0.69750  holdout   0.43083  best   0.43083      6s
+    step   1000  train   0.31495  holdout   0.24217  best   0.24217     10s
+    step   1500  train   0.21658  holdout   0.19510  best   0.19510     14s
+    step   2000  train   0.18870  holdout   0.17991  best   0.17991     18s
+    step   2500  train   0.17774  holdout   0.17110  best   0.17110     21s
+    step   3000  train   0.17136  holdout   0.17372  best   0.17110     25s
+    step   3500  train   0.16721  holdout   0.16653  best   0.16653     29s
+    step   4000  train   0.16318  holdout   0.16104  best   0.16104     33s
+    step   4500  train   0.16041  holdout   0.15963  best   0.15963     37s
+    step   5000  train   0.15664  holdout   0.15171  best   0.15171     41s
+    step   5500  train   0.15216  holdout   0.15062  best   0.15062     45s
+    step   6000  train   0.14794  holdout   0.14736  best   0.14736     49s
+    step   6500  train   0.14527  holdout   0.14168  best   0.14168     53s
+    step   7000  train   0.14190  holdout   0.14137  best   0.14137     57s
+    step   7500  train   0.13937  holdout   0.13788  best   0.13788     61s
+    step   8000  train   0.13745  holdout   0.14136  best   0.13788     66s
+    step   8500  train   0.13559  holdout   0.13515  best   0.13515     70s
+    step   9000  train   0.13358  holdout   0.13063  best   0.13063     74s
+    step   9500  train   0.13128  holdout   0.13099  best   0.13063     78s
+    step  10000  train   0.12788  holdout   0.12416  best   0.12416     82s
+
+== eth tcfm seed 1
+    step    500  train   0.73591  holdout   0.49880  best   0.49880      4s
+    step   1000  train   0.31375  holdout   0.23029  best   0.23029      8s
+    step   1500  train   0.20879  holdout   0.19766  best   0.19766     12s
+    step   2000  train   0.18749  holdout   0.18570  best   0.18570     16s
+    step   2500  train   0.17738  holdout   0.17319  best   0.17319     20s
+    step   3000  train   0.17066  holdout   0.16878  best   0.16878     24s
+    step   3500  train   0.16579  holdout   0.16109  best   0.16109     28s
+    step   4000  train   0.16007  holdout   0.16134  best   0.16109     32s
+    step   4500  train   0.15482  holdout   0.15437  best   0.15437     36s
+    step   5000  train   0.15038  holdout   0.14667  best   0.14667     40s
+    step   5500  train   0.14703  holdout   0.14365  best   0.14365     43s
+    step   6000  train   0.14350  holdout   0.14104  best   0.14104     47s
+    step   6500  train   0.14137  holdout   0.14124  best   0.14104     51s
+    step   7000  train   0.13937  holdout   0.14080  best   0.14080     55s
+    step   7500  train   0.13811  holdout   0.13854  best   0.13854     59s
+    step   8000  train   0.13622  holdout   0.13428  best   0.13428     63s
+    step   8500  train   0.13482  holdout   0.13345  best   0.13345     67s
+    step   9000  train   0.13391  holdout   0.13359  best   0.13345     71s
+    step   9500  train   0.13211  holdout   0.13355  best   0.13345     75s
+    step  10000  train   0.13054  holdout   0.12903  best   0.12903     78s
+
+== eth tcfm seed 2
+    step    500  train   0.79754  holdout   0.50830  best   0.50830      4s
+    step   1000  train   0.35145  holdout   0.24148  best   0.24148      8s
+    step   1500  train   0.21490  holdout   0.19648  best   0.19648     12s
+    step   2000  train   0.18964  holdout   0.18885  best   0.18885     16s
+    step   2500  train   0.17945  holdout   0.17375  best   0.17375     19s
+    step   3000  train   0.17317  holdout   0.17336  best   0.17336     23s
+    step   3500  train   0.16970  holdout   0.17043  best   0.17043     27s
+    step   4000  train   0.16636  holdout   0.16120  best   0.16120     31s
+    step   4500  train   0.16068  holdout   0.16063  best   0.16063     35s
+    step   5000  train   0.15634  holdout   0.15566  best   0.15566     39s
+    step   5500  train   0.15304  holdout   0.15304  best   0.15304     43s
+    step   6000  train   0.14841  holdout   0.14328  best   0.14328     46s
+    step   6500  train   0.14484  holdout   0.14306  best   0.14306     50s
+    step   7000  train   0.14249  holdout   0.14217  best   0.14217     54s
+    step   7500  train   0.14034  holdout   0.13624  best   0.13624     58s
+    step   8000  train   0.13899  holdout   0.13706  best   0.13624     62s
+    step   8500  train   0.13737  holdout   0.13694  best   0.13624     66s
+    step   9000  train   0.13593  holdout   0.13690  best   0.13624     70s
+    step   9500  train   0.13445  holdout   0.13296  best   0.13296     74s
+    step  10000  train   0.13321  holdout   0.13373  best   0.13296     78s
+
+== eth moflow seed 0
+    MoFlow stage 1: flow-matching teacher
+    step    500  train  10.32111  holdout   7.96731  best   7.96731     13s
+    step   1000  train   4.70538  holdout   4.38577  best   4.38577     25s
+    step   1500  train   4.49291  holdout   4.17838  best   4.17838     37s
+    step   2000  train   4.39088  holdout   4.10499  best   4.10499     50s
+    step   2500  train   4.31423  holdout   4.04571  best   4.04571     62s
+    step   3000  train   4.25294  holdout   3.97714  best   3.97714     74s
+    step   3500  train   4.21290  holdout   3.94241  best   3.94241     86s
+    step   4000  train   4.17280  holdout   3.90620  best   3.90620     99s
+    step   4500  train   4.13094  holdout   3.88200  best   3.88200    111s
+    step   5000  train   4.11614  holdout   3.87574  best   3.87574    123s
+    step   5500  train   4.09091  holdout   3.85566  best   3.85566    135s
+    step   6000  train   4.08186  holdout   3.85132  best   3.85132    147s
+    step   6500  train   4.06059  holdout   3.84910  best   3.84910    160s
+    step   7000  train   4.05173  holdout   3.83540  best   3.83540    172s
+    step   7500  train   4.03453  holdout   3.82935  best   3.82935    184s
+    step   8000  train   4.03585  holdout   3.82529  best   3.82529    196s
+    step   8500  train   4.02261  holdout   3.82178  best   3.82178    209s
+    step   9000  train   4.01789  holdout   3.81821  best   3.81821    221s
+    step   9500  train   4.02002  holdout   3.82013  best   3.81821    233s
+    step  10000  train   4.01940  holdout   3.81898  best   3.81821    245s
+    MoFlow stage 2: IMLE student on teacher samples (35729, 20, 12, 2)
+    step    500  train   7.61610  holdout   4.60434  best   4.60434    232s
+    step   1000  train   2.27072  holdout   1.84520  best   1.84520    463s
+    step   1500  train   1.83361  holdout   1.35948  best   1.35948    694s
+    step   2000  train   1.62900  holdout   1.19027  best   1.19027    925s
+    step   2500  train   1.53069  holdout   1.12229  best   1.12229   1156s
+    step   3000  train   1.49872  holdout   1.10051  best   1.10051   1388s
+
+== eth moflow seed 1
+    MoFlow stage 1: flow-matching teacher
+    step    500  train   9.93335  holdout   7.62336  best   7.62336     12s
+    step   1000  train   4.67384  holdout   4.33227  best   4.33227     24s
+    step   1500  train   4.40177  holdout   4.10827  best   4.10827     37s
+    step   2000  train   4.28746  holdout   4.01377  best   4.01377     49s
+    step   2500  train   4.23093  holdout   3.97564  best   3.97564     61s
+    step   3000  train   4.20107  holdout   3.96687  best   3.96687     73s
+    step   3500  train   4.16641  holdout   3.93215  best   3.93215     86s
+    step   4000  train   4.14719  holdout   3.92585  best   3.92585     98s
+    step   4500  train   4.11733  holdout   3.92099  best   3.92099    110s
+    step   5000  train   4.10208  holdout   3.91075  best   3.91075    122s
+    step   5500  train   4.08894  holdout   3.89780  best   3.89780    135s
+    step   6000  train   4.07426  holdout   3.87409  best   3.87409    147s
+    step   6500  train   4.06019  holdout   3.86139  best   3.86139    159s
+    step   7000  train   4.05229  holdout   3.85877  best   3.85877    171s
+    step   7500  train   4.04521  holdout   3.84890  best   3.84890    184s
+    step   8000  train   4.02715  holdout   3.84947  best   3.84890    196s
+    step   8500  train   4.02490  holdout   3.84976  best   3.84890    208s
+    step   9000  train   4.03388  holdout   3.84758  best   3.84758    220s
+    step   9500  train   4.02544  holdout   3.83674  best   3.83674    232s
+    step  10000  train   4.02787  holdout   3.84125  best   3.83674    245s
+    MoFlow stage 2: IMLE student on teacher samples (35729, 20, 12, 2)
+    step    500  train   7.40503  holdout   4.95758  best   4.95758    231s
+    step   1000  train   2.18554  holdout   1.81927  best   1.81927    462s
+    step   1500  train   1.84181  holdout   1.44438  best   1.44438    694s
+    step   2000  train   1.67196  holdout   1.28852  best   1.28852    925s
+    step   2500  train   1.59371  holdout   1.22763  best   1.22763   1156s
+    step   3000  train   1.57304  holdout   1.20989  best   1.20989   1387s
+
+== eth moflow seed 2
+    MoFlow stage 1: flow-matching teacher
+    step    500  train   9.70549  holdout   7.25588  best   7.25588     12s
+    step   1000  train   4.75025  holdout   4.37751  best   4.37751     24s
+    step   1500  train   4.49187  holdout   4.16118  best   4.16118     37s
+    step   2000  train   4.34747  holdout   4.02505  best   4.02505     49s
+    step   2500  train   4.24327  holdout   3.95544  best   3.95544     61s
+    step   3000  train   4.18171  holdout   3.89881  best   3.89881     73s
+    step   3500  train   4.14386  holdout   3.87451  best   3.87451     86s
+    step   4000  train   4.10809  holdout   3.84841  best   3.84841     98s
+    step   4500  train   4.07848  holdout   3.83284  best   3.83284    110s
+    step   5000  train   4.07333  holdout   3.83072  best   3.83072    122s
+    step   5500  train   4.05128  holdout   3.83075  best   3.83072    134s
+    step   6000  train   4.02604  holdout   3.80199  best   3.80199    146s
+    step   6500  train   4.00841  holdout   3.78948  best   3.78948    159s
+    step   7000  train   4.00156  holdout   3.79461  best   3.78948    171s
+    step   7500  train   3.98800  holdout   3.79528  best   3.78948    183s
+    step   8000  train   3.98111  holdout   3.78510  best   3.78510    195s
+    step   8500  train   3.97004  holdout   3.78116  best   3.78116    207s
+    step   9000  train   3.97114  holdout   3.78293  best   3.78116    220s
+    step   9500  train   3.95340  holdout   3.77683  best   3.77683    232s
+    step  10000  train   3.95890  holdout   3.77339  best   3.77339    244s
+    MoFlow stage 2: IMLE student on teacher samples (35729, 20, 12, 2)
+    step    500  train   6.98641  holdout   3.89559  best   3.89559    231s
+    step   1000  train   2.23462  holdout   1.78343  best   1.78343    462s
+    step   1500  train   1.85112  holdout   1.36926  best   1.36926    693s
+    step   2000  train   1.67056  holdout   1.21699  best   1.21699    924s
+    step   2500  train   1.57990  holdout   1.15677  best   1.15677   1155s
+    step   3000  train   1.55518  holdout   1.13837  best   1.13837   1387s
+  forecast eth    dmmn       s0: minADE 1.337  minFDE 2.756
+  forecast eth    dmmn       s1: minADE 1.243  minFDE 2.552
+  forecast eth    dmmn       s2: minADE 1.115  minFDE 2.236
+  forecast eth    dmmn_gauss s0: minADE 0.859  minFDE 1.570
+  forecast eth    dmmn_gauss s1: minADE 0.841  minFDE 1.553
+  forecast eth    dmmn_gauss s2: minADE 0.773  minFDE 1.409
+Traceback (most recent call last):
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/ethucy/train.py", line 155, in <module>
+    main()
+  File "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/ethucy/train.py", line 149, in main
+    fc_rows += score_split(cfg, args.out_dir, split, models, seeds, log)
+  File "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/ethucy/train.py", line 93, in score_split
+    m = load_model(cfg, out_dir, split, model, seed)
+  File "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/fair_retrain/evaluate.py", line 103, in load_model
+    return (ResidualCFMMotionModel if model == "m4" else GaussianResidualMotionModel).load(path, mean)
+  File "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/cfm_variants/residual_model.py", line 89, in load
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 1368, in load
+    return _load(
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 1856, in _load
+    result = unpickler.load()
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 1820, in persistent_load
+    typed_storage = load_tensor(
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 1792, in load_tensor
+    wrap_storage=restore_location(storage, location),
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 1693, in restore_location
+    return default_restore_location(storage, map_location)
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 601, in default_restore_location
+    result = fn(storage, location)
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 539, in _deserialize
+    device = _validate_device(location, backend_name)
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 518, in _validate_device
+    raise RuntimeError(
+RuntimeError: Attempting to deserialize object on CUDA device 0 but torch.cuda.device_count() is 0. Please use torch.load with map_location to map your storages to an existing device.

@@ -1,0 +1,7 @@
+job 47961266 on c0701a-s22.ufhpc, stages: data, workers 16, commit ebd0038d1fc44cd33492ab61de49c413798c8d0b
+/var/spool/slurmd/job47961266/slurm_script: line 33: nvidia-smi: command not found
+
+===== data (2026-10-27 11:08:42) =====
+train {'agents': 218437, 'fully_valid': 136394, 'history_imputed': 21726, 'per_type': {'vehicle': 188600, 'pedestrian': 23462, 'cyclist': 6375}, 'rows': 136394, 'holdout_rows': 13630, 'speed_p99_mps': 21.906625747680664, 'speed_p999_mps': 30.7044677734375, 'clip_mps': 37.5, 'frac_above_clip': 4.994721175418273e-05}
+val {'agents': 192172, 'fully_valid': 117484, 'history_imputed': 20488, 'per_type': {'vehicle': 165676, 'pedestrian': 21068, 'cyclist': 5428}}
+all stages done 2026-10-27 11:09:33

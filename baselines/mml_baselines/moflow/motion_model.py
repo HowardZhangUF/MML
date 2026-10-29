@@ -9,7 +9,8 @@ from mml_baselines.moflow.model import MoFlowIMLE, MoFlowIMLENet, MoFlowTeacher,
 
 def _net_kwargs(c):
     return dict(num_query=c["num_query"], d=c["d_model"], social_hidden=c["social_hidden"],
-                enc_layers=c["enc_layers"], dec_blocks=c["dec_blocks"], heads=c["heads"], dropout=c["dropout"])
+                enc_layers=c["enc_layers"], dec_blocks=c["dec_blocks"], heads=c["heads"], dropout=c["dropout"],
+                past_frames=c.get("block_size", 5))
 
 
 def build_teacher(config: dict, q_norm: MinMax) -> MoFlowTeacher:

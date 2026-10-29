@@ -1,0 +1,547 @@
+job 48038802 on c0602a-s12.ufhpc, stages: train, workers 8, commit ebd0038d1fc44cd33492ab61de49c413798c8d0b
+GPU 0: NVIDIA L4 (UUID: GPU-7a0a90fe-4fa8-4f1a-2514-25b2ff93eb99)
+
+===== train (2026-10-28 01:17:19) =====
+
+### hotel: 29676 train / 5203 val windows; models ['dmmn', 'dmmn_gauss', 'm4', 'cfm', 'nf', 'trajflow', 'tcfm', 'moflow']
+
+== hotel dmmn seed 0
+Transformer input_dim:  2
+Transformer block_size:  8
+    step    500  train   0.00894  holdout   0.00353  best   0.00353      4s
+    step   1000  train   0.00365  holdout   0.00283  best   0.00283      8s
+    step   1500  train   0.00325  holdout   0.00268  best   0.00268     11s
+    step   2000  train   0.00318  holdout   0.00262  best   0.00262     15s
+    step   2500  train   0.00299  holdout   0.00240  best   0.00240     18s
+    step   3000  train   0.00284  holdout   0.00230  best   0.00230     22s
+    step   3500  train   0.00276  holdout   0.00236  best   0.00230     26s
+    step   4000  train   0.00274  holdout   0.00241  best   0.00230     29s
+    step   4500  train   0.00269  holdout   0.00236  best   0.00230     33s
+    step   5000  train   0.00266  holdout   0.00240  best   0.00230     36s
+    step   5500  train   0.00258  holdout   0.00227  best   0.00227     40s
+    step   6000  train   0.00265  holdout   0.00263  best   0.00227     43s
+    step   6500  train   0.00253  holdout   0.00219  best   0.00219     47s
+    step   7000  train   0.00251  holdout   0.00217  best   0.00217     51s
+    step   7500  train   0.00252  holdout   0.00253  best   0.00217     54s
+    step   8000  train   0.00254  holdout   0.00229  best   0.00217     58s
+    step   8500  train   0.00250  holdout   0.00232  best   0.00217     62s
+    step   9000  train   0.00249  holdout   0.00226  best   0.00217     65s
+    step   9500  train   0.00246  holdout   0.00227  best   0.00217     69s
+    step  10000  train   0.00250  holdout   0.00240  best   0.00217     72s
+
+== hotel dmmn seed 1
+Transformer input_dim:  2
+Transformer block_size:  8
+    step    500  train   0.00884  holdout   0.00357  best   0.00357      3s
+    step   1000  train   0.00363  holdout   0.00318  best   0.00318      6s
+    step   1500  train   0.00322  holdout   0.00282  best   0.00282      9s
+    step   2000  train   0.00301  holdout   0.00256  best   0.00256     12s
+    step   2500  train   0.00287  holdout   0.00261  best   0.00256     14s
+    step   3000  train   0.00280  holdout   0.00242  best   0.00242     17s
+    step   3500  train   0.00277  holdout   0.00242  best   0.00242     20s
+    step   4000  train   0.00266  holdout   0.00230  best   0.00230     23s
+    step   4500  train   0.00268  holdout   0.00282  best   0.00230     26s
+    step   5000  train   0.00262  holdout   0.00226  best   0.00226     29s
+    step   5500  train   0.00263  holdout   0.00236  best   0.00226     32s
+    step   6000  train   0.00254  holdout   0.00219  best   0.00219     35s
+    step   6500  train   0.00261  holdout   0.00215  best   0.00215     38s
+    step   7000  train   0.00256  holdout   0.00221  best   0.00215     40s
+    step   7500  train   0.00253  holdout   0.00236  best   0.00215     43s
+    step   8000  train   0.00256  holdout   0.00218  best   0.00215     46s
+    step   8500  train   0.00250  holdout   0.00218  best   0.00215     49s
+    step   9000  train   0.00246  holdout   0.00234  best   0.00215     52s
+    step   9500  train   0.00244  holdout   0.00243  best   0.00215     55s
+    step  10000  train   0.00247  holdout   0.00216  best   0.00215     57s
+
+== hotel dmmn seed 2
+Transformer input_dim:  2
+Transformer block_size:  8
+    step    500  train   0.00861  holdout   0.00307  best   0.00307      3s
+    step   1000  train   0.00363  holdout   0.00316  best   0.00307      6s
+    step   1500  train   0.00331  holdout   0.00271  best   0.00271      8s
+    step   2000  train   0.00299  holdout   0.00273  best   0.00271     11s
+    step   2500  train   0.00295  holdout   0.00250  best   0.00250     14s
+    step   3000  train   0.00279  holdout   0.00236  best   0.00236     17s
+    step   3500  train   0.00278  holdout   0.00285  best   0.00236     20s
+    step   4000  train   0.00276  holdout   0.00250  best   0.00236     22s
+    step   4500  train   0.00268  holdout   0.00260  best   0.00236     25s
+    step   5000  train   0.00258  holdout   0.00294  best   0.00236     28s
+    step   5500  train   0.00259  holdout   0.00269  best   0.00236     31s
+    step   6000  train   0.00265  holdout   0.00220  best   0.00220     34s
+    step   6500  train   0.00253  holdout   0.00232  best   0.00220     36s
+    step   7000  train   0.00256  holdout   0.00233  best   0.00220     39s
+    step   7500  train   0.00254  holdout   0.00219  best   0.00219     42s
+    step   8000  train   0.00249  holdout   0.00217  best   0.00217     45s
+    step   8500  train   0.00250  holdout   0.00249  best   0.00217     48s
+    step   9000  train   0.00250  holdout   0.00215  best   0.00215     50s
+    step   9500  train   0.00246  holdout   0.00232  best   0.00215     53s
+    step  10000  train   0.00244  holdout   0.00221  best   0.00215     56s
+
+== hotel dmmn_gauss seed 0
+
+== hotel dmmn_gauss seed 1
+
+== hotel dmmn_gauss seed 2
+
+== hotel m4 seed 0
+    step    500  train   1.73389  holdout   1.53517  best   1.53517      4s
+    step   1000  train   1.32224  holdout   1.24072  best   1.24072      7s
+    step   1500  train   1.18703  holdout   1.16144  best   1.16144     11s
+    step   2000  train   1.17480  holdout   1.12084  best   1.12084     14s
+    step   2500  train   1.18113  holdout   1.17035  best   1.12084     18s
+    step   3000  train   1.14494  holdout   1.10040  best   1.10040     21s
+    step   3500  train   1.13819  holdout   1.13437  best   1.10040     24s
+    step   4000  train   1.14194  holdout   1.15399  best   1.10040     27s
+    step   4500  train   1.13932  holdout   1.11082  best   1.10040     30s
+    step   5000  train   1.13669  holdout   1.08900  best   1.08900     33s
+    step   5500  train   1.11607  holdout   1.16758  best   1.08900     36s
+    step   6000  train   1.12195  holdout   1.11729  best   1.08900     39s
+    step   6500  train   1.12001  holdout   1.07624  best   1.07624     42s
+    step   7000  train   1.10808  holdout   1.04846  best   1.04846     45s
+    step   7500  train   1.11169  holdout   1.11419  best   1.04846     48s
+    step   8000  train   1.11012  holdout   1.11546  best   1.04846     51s
+    step   8500  train   1.11109  holdout   1.09006  best   1.04846     54s
+    step   9000  train   1.10562  holdout   1.08418  best   1.04846     57s
+    step   9500  train   1.10141  holdout   1.12509  best   1.04846     60s
+    step  10000  train   1.13598  holdout   1.03590  best   1.03590     63s
+
+== hotel m4 seed 1
+    step    500  train   1.72177  holdout   1.57995  best   1.57995      3s
+    step   1000  train   1.35772  holdout   1.17926  best   1.17926      6s
+    step   1500  train   1.20884  holdout   1.18466  best   1.17926      9s
+    step   2000  train   1.17758  holdout   1.17094  best   1.17094     12s
+    step   2500  train   1.16073  holdout   1.14908  best   1.14908     15s
+    step   3000  train   1.14415  holdout   1.12100  best   1.12100     18s
+    step   3500  train   1.14798  holdout   1.12451  best   1.12100     21s
+    step   4000  train   1.10907  holdout   1.12590  best   1.12100     24s
+    step   4500  train   1.12271  holdout   1.11213  best   1.11213     27s
+    step   5000  train   1.12329  holdout   1.13636  best   1.11213     30s
+    step   5500  train   1.11856  holdout   1.09714  best   1.09714     33s
+    step   6000  train   1.09474  holdout   1.09764  best   1.09714     36s
+    step   6500  train   1.10173  holdout   1.08589  best   1.08589     39s
+    step   7000  train   1.10462  holdout   1.09671  best   1.08589     42s
+    step   7500  train   1.09643  holdout   1.11589  best   1.08589     45s
+    step   8000  train   1.10127  holdout   1.12136  best   1.08589     48s
+    step   8500  train   1.09856  holdout   1.09212  best   1.08589     51s
+    step   9000  train   1.09170  holdout   1.15153  best   1.08589     53s
+    step   9500  train   1.09248  holdout   1.10139  best   1.08589     56s
+    step  10000  train   1.09841  holdout   1.03895  best   1.03895     59s
+
+== hotel m4 seed 2
+    step    500  train   1.67719  holdout   1.50621  best   1.50621      3s
+    step   1000  train   1.31363  holdout   1.18043  best   1.18043      6s
+    step   1500  train   1.18310  holdout   1.16774  best   1.16774      9s
+    step   2000  train   1.14122  holdout   1.13608  best   1.13608     12s
+    step   2500  train   1.14848  holdout   1.15211  best   1.13608     15s
+    step   3000  train   1.13823  holdout   1.10799  best   1.10799     18s
+    step   3500  train   1.13929  holdout   1.13913  best   1.10799     21s
+    step   4000  train   1.14157  holdout   1.09364  best   1.09364     24s
+    step   4500  train   1.12407  holdout   1.12110  best   1.09364     26s
+    step   5000  train   1.10066  holdout   1.08971  best   1.08971     29s
+    step   5500  train   1.10149  holdout   1.13485  best   1.08971     32s
+    step   6000  train   1.11829  holdout   1.09177  best   1.08971     35s
+    step   6500  train   1.10788  holdout   1.14008  best   1.08971     38s
+    step   7000  train   1.09590  holdout   1.10581  best   1.08971     41s
+    step   7500  train   1.10825  holdout   1.09317  best   1.08971     44s
+    step   8000  train   1.09312  holdout   1.13003  best   1.08971     47s
+    step   8500  train   1.08555  holdout   1.12707  best   1.08971     50s
+    step   9000  train   1.10150  holdout   1.10193  best   1.08971     53s
+    step   9500  train   1.08749  holdout   1.07555  best   1.07555     56s
+    step  10000  train   1.09254  holdout   1.10472  best   1.07555     59s
+
+== hotel cfm seed 0
+    step    500  train   0.39894  holdout   0.19229  best   0.19229      3s
+    step   1000  train   0.15106  holdout   0.11050  best   0.11050      6s
+    step   1500  train   0.10643  holdout   0.09322  best   0.09322      9s
+    step   2000  train   0.09735  holdout   0.08247  best   0.08247     12s
+    step   2500  train   0.09086  holdout   0.08492  best   0.08247     15s
+    step   3000  train   0.08894  holdout   0.08067  best   0.08067     18s
+    step   3500  train   0.08698  holdout   0.08271  best   0.08067     20s
+    step   4000  train   0.08547  holdout   0.07605  best   0.07605     23s
+    step   4500  train   0.08294  holdout   0.07656  best   0.07605     26s
+    step   5000  train   0.08104  holdout   0.08078  best   0.07605     29s
+    step   5500  train   0.07942  holdout   0.07708  best   0.07605     32s
+    step   6000  train   0.08162  holdout   0.07480  best   0.07480     35s
+    step   6500  train   0.07817  holdout   0.07164  best   0.07164     38s
+    step   7000  train   0.07603  holdout   0.06892  best   0.06892     41s
+    step   7500  train   0.07634  holdout   0.07045  best   0.06892     44s
+    step   8000  train   0.07519  holdout   0.06158  best   0.06158     47s
+    step   8500  train   0.07594  holdout   0.07285  best   0.06158     50s
+    step   9000  train   0.07406  holdout   0.07644  best   0.06158     53s
+    step   9500  train   0.07329  holdout   0.06623  best   0.06158     56s
+    step  10000  train   0.07342  holdout   0.06143  best   0.06143     59s
+[CFMMotionModel] saved → artifacts/motion/ethucy_v1/models/hotel_cfm_s0.pth
+
+== hotel cfm seed 1
+    step    500  train   0.41352  holdout   0.18737  best   0.18737      3s
+    step   1000  train   0.15065  holdout   0.10042  best   0.10042      6s
+    step   1500  train   0.10925  holdout   0.09451  best   0.09451      9s
+    step   2000  train   0.09893  holdout   0.08818  best   0.08818     12s
+    step   2500  train   0.09202  holdout   0.07816  best   0.07816     15s
+    step   3000  train   0.08850  holdout   0.07618  best   0.07618     17s
+    step   3500  train   0.08680  holdout   0.07090  best   0.07090     20s
+    step   4000  train   0.08302  holdout   0.07673  best   0.07090     23s
+    step   4500  train   0.08075  holdout   0.07444  best   0.07090     26s
+    step   5000  train   0.08038  holdout   0.08300  best   0.07090     29s
+    step   5500  train   0.08105  holdout   0.06857  best   0.06857     32s
+    step   6000  train   0.07882  holdout   0.06115  best   0.06115     35s
+    step   6500  train   0.07742  holdout   0.06660  best   0.06115     38s
+    step   7000  train   0.07512  holdout   0.06678  best   0.06115     41s
+    step   7500  train   0.07570  holdout   0.06533  best   0.06115     44s
+    step   8000  train   0.07668  holdout   0.08021  best   0.06115     47s
+    step   8500  train   0.07599  holdout   0.06911  best   0.06115     50s
+    step   9000  train   0.07295  holdout   0.07130  best   0.06115     53s
+    step   9500  train   0.07427  holdout   0.06660  best   0.06115     56s
+    step  10000  train   0.07304  holdout   0.06131  best   0.06115     59s
+[CFMMotionModel] saved → artifacts/motion/ethucy_v1/models/hotel_cfm_s1.pth
+
+== hotel cfm seed 2
+    step    500  train   0.38188  holdout   0.19917  best   0.19917      3s
+    step   1000  train   0.15564  holdout   0.11681  best   0.11681      6s
+    step   1500  train   0.11054  holdout   0.10061  best   0.10061      9s
+    step   2000  train   0.10051  holdout   0.08808  best   0.08808     12s
+    step   2500  train   0.09568  holdout   0.09256  best   0.08808     14s
+    step   3000  train   0.08969  holdout   0.08257  best   0.08257     17s
+    step   3500  train   0.08685  holdout   0.08304  best   0.08257     20s
+    step   4000  train   0.08674  holdout   0.07378  best   0.07378     23s
+    step   4500  train   0.08368  holdout   0.08115  best   0.07378     26s
+    step   5000  train   0.07980  holdout   0.07462  best   0.07378     29s
+    step   5500  train   0.07994  holdout   0.06516  best   0.06516     32s
+    step   6000  train   0.07944  holdout   0.08116  best   0.06516     35s
+    step   6500  train   0.07620  holdout   0.07517  best   0.06516     38s
+    step   7000  train   0.07674  holdout   0.07191  best   0.06516     41s
+    step   7500  train   0.07506  holdout   0.06286  best   0.06286     44s
+    step   8000  train   0.07509  holdout   0.07161  best   0.06286     46s
+    step   8500  train   0.07526  holdout   0.06740  best   0.06286     49s
+    step   9000  train   0.07512  holdout   0.06711  best   0.06286     52s
+    step   9500  train   0.07282  holdout   0.07092  best   0.06286     55s
+    step  10000  train   0.07298  holdout   0.06988  best   0.06286     58s
+[CFMMotionModel] saved → artifacts/motion/ethucy_v1/models/hotel_cfm_s2.pth
+
+== hotel nf seed 0
+    step    500  train  -2.72033  holdout  -3.30983  best  -3.30983      4s
+    step   1000  train  -3.21901  holdout  -3.46161  best  -3.46161      8s
+    step   1500  train  -3.39073  holdout  -3.87829  best  -3.87829     12s
+    step   2000  train  -3.39648  holdout  -3.92664  best  -3.92664     16s
+    step   2500  train  -3.56739  holdout  -4.05536  best  -4.05536     20s
+    step   3000  train  -3.59649  holdout  -3.95897  best  -4.05536     24s
+    step   3500  train  -3.66150  holdout  -3.97616  best  -4.05536     28s
+    step   4000  train  -3.68705  holdout  -3.48888  best  -4.05536     32s
+    step   4500  train  -3.83833  holdout  -3.19515  best  -4.05536     36s
+    step   5000  train  -3.90071  holdout  -3.81040  best  -4.05536     40s
+    step   5500  train  -3.97221  holdout  -3.17647  best  -4.05536     44s
+    step   6000  train  -3.99340  holdout  -3.43931  best  -4.05536     48s
+    step   6500  train  -4.09743  holdout  -0.53838  best  -4.05536     52s
+    step   7000  train  -4.16711  holdout  -3.15227  best  -4.05536     56s
+    step   7500  train  -4.22230  holdout  -0.24288  best  -4.05536     60s
+    step   8000  train  -4.20753  holdout  -2.55280  best  -4.05536     64s
+    step   8500  train  -4.21340  holdout  -1.88028  best  -4.05536     68s
+    step   9000  train  -4.23741  holdout  -2.09011  best  -4.05536     72s
+    step   9500  train  -4.28007  holdout  -1.81641  best  -4.05536     76s
+    step  10000  train  -4.26795  holdout  -0.81236  best  -4.05536     80s
+[NFMotionModel] saved → artifacts/motion/ethucy_v1/models/hotel_nf_s0.pth
+
+== hotel nf seed 1
+    step    500  train  -2.71069  holdout  -3.30303  best  -3.30303      4s
+    step   1000  train  -3.19461  holdout  -3.48162  best  -3.48162      8s
+    step   1500  train  -3.39067  holdout  -3.82799  best  -3.82799     12s
+    step   2000  train  -3.47349  holdout  -3.54372  best  -3.82799     16s
+    step   2500  train  -3.60575  holdout  -3.79466  best  -3.82799     20s
+    step   3000  train  -3.65250  holdout  -4.12789  best  -4.12789     23s
+    step   3500  train  -3.74469  holdout  -4.08894  best  -4.12789     27s
+    step   4000  train  -3.83264  holdout  -3.76971  best  -4.12789     31s
+    step   4500  train  -3.84465  holdout  -3.94295  best  -4.12789     35s
+    step   5000  train  -3.92505  holdout  -3.13983  best  -4.12789     39s
+    step   5500  train  -3.98919  holdout   0.17353  best  -4.12789     43s
+    step   6000  train  -4.03397  holdout   2.08707  best  -4.12789     47s
+    step   6500  train  -4.08624  holdout   0.35000  best  -4.12789     51s
+    step   7000  train  -4.15509  holdout   6.02661  best  -4.12789     55s
+    step   7500  train  -4.20235  holdout   4.41017  best  -4.12789     59s
+    step   8000  train  -4.20698  holdout   9.07644  best  -4.12789     63s
+    step   8500  train  -4.27038  holdout  11.54730  best  -4.12789     67s
+    step   9000  train  -4.27429  holdout  13.79611  best  -4.12789     71s
+    step   9500  train  -4.30308  holdout  15.98931  best  -4.12789     75s
+    step  10000  train  -4.15257  holdout  16.07255  best  -4.12789     78s
+[NFMotionModel] saved → artifacts/motion/ethucy_v1/models/hotel_nf_s1.pth
+
+== hotel nf seed 2
+    step    500  train  -2.68334  holdout  -3.44111  best  -3.44111      4s
+    step   1000  train  -3.24075  holdout  -3.62940  best  -3.62940      8s
+    step   1500  train  -3.44119  holdout  -3.79653  best  -3.79653     12s
+    step   2000  train  -3.52786  holdout  -3.35716  best  -3.79653     16s
+    step   2500  train  -3.63852  holdout  -3.63466  best  -3.79653     20s
+    step   3000  train  -3.71265  holdout  -3.85345  best  -3.85345     23s
+    step   3500  train  -3.78000  holdout  -2.54500  best  -3.85345     27s
+    step   4000  train  -3.80262  holdout  -2.42183  best  -3.85345     31s
+    step   4500  train  -3.97704  holdout  -1.51476  best  -3.85345     35s
+    step   5000  train  -3.98856  holdout  -1.62727  best  -3.85345     39s
+    step   5500  train  -4.08203  holdout  -0.10561  best  -3.85345     43s
+    step   6000  train  -4.08441  holdout   1.97256  best  -3.85345     47s
+    step   6500  train  -4.12695  holdout   3.24273  best  -3.85345     51s
+    step   7000  train  -4.16639  holdout   1.91487  best  -3.85345     55s
+    step   7500  train  -4.19246  holdout  -0.67721  best  -3.85345     59s
+    step   8000  train  -4.26836  holdout   1.67982  best  -3.85345     63s
+    step   8500  train  -4.26174  holdout   5.03400  best  -3.85345     67s
+    step   9000  train  -4.28590  holdout   5.49340  best  -3.85345     71s
+    step   9500  train  -4.32520  holdout   7.43089  best  -3.85345     75s
+    step  10000  train  -4.34679  holdout   8.40148  best  -3.85345     79s
+[NFMotionModel] saved → artifacts/motion/ethucy_v1/models/hotel_nf_s2.pth
+
+== hotel trajflow seed 0
+    step    500  train   7.82927  holdout  28.46275  best  28.46275     23s
+    step   1000  train -22.01130  holdout   8.92308  best   8.92308     46s
+    step   1500  train -38.90611  holdout  -3.78604  best  -3.78604     71s
+    step   2000  train -43.36289  holdout -15.30353  best -15.30353     97s
+    step   2500  train -47.98051  holdout -27.20511  best -27.20511    123s
+    step   3000  train -50.15508  holdout -37.14607  best -37.14607    149s
+    step   3500  train -52.89456  holdout -44.85419  best -44.85419    176s
+    step   4000  train -54.91607  holdout -50.53838  best -50.53838    202s
+    step   4500  train -55.29539  holdout -54.64533  best -54.64533    227s
+    step   5000  train -58.97544  holdout -57.63887  best -57.63887    253s
+    step   5500  train -59.82825  holdout -59.90296  best -59.90296    279s
+    step   6000  train -60.80505  holdout -61.77869  best -61.77869    304s
+    step   6500  train -62.30196  holdout -63.17617  best -63.17617    330s
+    step   7000  train -63.86051  holdout -64.21906  best -64.21906    356s
+    step   7500  train -65.19193  holdout -64.85127  best -64.85127    382s
+    step   8000  train -66.05927  holdout -64.65413  best -64.85127    408s
+    step   8500  train -67.64582  holdout -63.16046  best -64.85127    433s
+    step   9000  train -65.89117  holdout -60.73182  best -64.85127    458s
+    step   9500  train -68.59195  holdout -57.73294  best -64.85127    484s
+    step  10000  train -69.61200  holdout -53.86401  best -64.85127    510s
+
+== hotel trajflow seed 1
+    step    500  train   9.93722  holdout  30.94738  best  30.94738     22s
+    step   1000  train -22.09519  holdout  12.48729  best  12.48729     46s
+    step   1500  train -36.68221  holdout  -5.22164  best  -5.22164     70s
+    step   2000  train -41.52814  holdout -17.98341  best -17.98341     94s
+    step   2500  train -44.46929  holdout -27.75398  best -27.75398    119s
+    step   3000  train -46.74920  holdout -35.43584  best -35.43584    145s
+    step   3500  train -47.62615  holdout -40.82666  best -40.82666    170s
+    step   4000  train -49.44479  holdout -44.54303  best -44.54303    196s
+    step   4500  train -49.63747  holdout -47.58334  best -47.58334    222s
+    step   5000  train -49.68719  holdout -50.06131  best -50.06131    247s
+    step   5500  train -51.14105  holdout -52.14890  best -52.14890    272s
+    step   6000  train -53.03792  holdout -53.96427  best -53.96427    298s
+    step   6500  train -54.90188  holdout -55.40454  best -55.40454    323s
+    step   7000  train -56.44550  holdout -56.66204  best -56.66204    350s
+    step   7500  train -56.99277  holdout -57.54268  best -57.54268    375s
+    step   8000  train -60.32557  holdout -58.28779  best -58.28779    402s
+    step   8500  train -61.41255  holdout -58.37317  best -58.37317    428s
+    step   9000  train -60.36838  holdout -58.00197  best -58.37317    453s
+    step   9500  train -61.81071  holdout -57.62766  best -58.37317    479s
+    step  10000  train -61.66527  holdout -55.69393  best -58.37317    504s
+
+== hotel trajflow seed 2
+    step    500  train   8.65782  holdout  31.05710  best  31.05710     23s
+    step   1000  train -21.19069  holdout  13.72387  best  13.72387     47s
+    step   1500  train -34.68015  holdout   1.32614  best   1.32614     71s
+    step   2000  train -42.45396  holdout -10.27065  best -10.27065     96s
+    step   2500  train -44.47806  holdout -23.02651  best -23.02651    121s
+    step   3000  train -47.87379  holdout -33.35652  best -33.35652    147s
+    step   3500  train -48.58674  holdout -40.48185  best -40.48185    173s
+    step   4000  train -50.88738  holdout -45.77443  best -45.77443    199s
+    step   4500  train -52.67020  holdout -49.70430  best -49.70430    226s
+    step   5000  train -52.26315  holdout -52.65621  best -52.65621    251s
+    step   5500  train -56.20156  holdout -55.05196  best -55.05196    277s
+    step   6000  train -58.63645  holdout -56.86103  best -56.86103    303s
+    step   6500  train -60.19057  holdout -58.11893  best -58.11893    329s
+    step   7000  train -61.16350  holdout -58.74844  best -58.74844    355s
+    step   7500  train -62.34740  holdout -59.85495  best -59.85495    381s
+    step   8000  train -65.13129  holdout -59.79784  best -59.85495    407s
+    step   8500  train -63.59040  holdout -58.53744  best -59.85495    433s
+    step   9000  train -65.50269  holdout -56.39134  best -59.85495    458s
+    step   9500  train -67.46901  holdout -53.09765  best -59.85495    484s
+    step  10000  train -66.55383  holdout -49.84911  best -59.85495    509s
+
+== hotel tcfm seed 0
+    step    500  train   0.72360  holdout   0.45382  best   0.45382      5s
+    step   1000  train   0.32702  holdout   0.24792  best   0.24792      9s
+    step   1500  train   0.22121  holdout   0.21083  best   0.21083     13s
+    step   2000  train   0.19541  holdout   0.18964  best   0.18964     16s
+    step   2500  train   0.18415  holdout   0.17949  best   0.17949     20s
+    step   3000  train   0.17674  holdout   0.17528  best   0.17528     24s
+    step   3500  train   0.17020  holdout   0.16901  best   0.16901     28s
+    step   4000  train   0.16410  holdout   0.16227  best   0.16227     32s
+    step   4500  train   0.15730  holdout   0.15510  best   0.15510     36s
+    step   5000  train   0.15170  holdout   0.15175  best   0.15175     40s
+    step   5500  train   0.14643  holdout   0.14676  best   0.14676     43s
+    step   6000  train   0.14268  holdout   0.14366  best   0.14366     47s
+    step   6500  train   0.13974  holdout   0.13927  best   0.13927     51s
+    step   7000  train   0.13755  holdout   0.13811  best   0.13811     55s
+    step   7500  train   0.13534  holdout   0.13473  best   0.13473     59s
+    step   8000  train   0.13353  holdout   0.13240  best   0.13240     62s
+    step   8500  train   0.13149  holdout   0.13242  best   0.13240     66s
+    step   9000  train   0.12927  holdout   0.12893  best   0.12893     70s
+    step   9500  train   0.12562  holdout   0.12447  best   0.12447     74s
+    step  10000  train   0.12076  holdout   0.12137  best   0.12137     78s
+
+== hotel tcfm seed 1
+    step    500  train   0.73527  holdout   0.50354  best   0.50354      4s
+    step   1000  train   0.31391  holdout   0.24132  best   0.24132      8s
+    step   1500  train   0.20975  holdout   0.19278  best   0.19278     12s
+    step   2000  train   0.18608  holdout   0.18275  best   0.18275     15s
+    step   2500  train   0.17688  holdout   0.17534  best   0.17534     19s
+    step   3000  train   0.17178  holdout   0.17047  best   0.17047     23s
+    step   3500  train   0.16670  holdout   0.16721  best   0.16721     27s
+    step   4000  train   0.16167  holdout   0.15963  best   0.15963     31s
+    step   4500  train   0.15646  holdout   0.15667  best   0.15667     35s
+    step   5000  train   0.15159  holdout   0.14990  best   0.14990     38s
+    step   5500  train   0.14771  holdout   0.14349  best   0.14349     42s
+    step   6000  train   0.14329  holdout   0.14890  best   0.14349     46s
+    step   6500  train   0.14012  holdout   0.14142  best   0.14142     50s
+    step   7000  train   0.13926  holdout   0.13627  best   0.13627     53s
+    step   7500  train   0.13657  holdout   0.13914  best   0.13627     57s
+    step   8000  train   0.13412  holdout   0.13545  best   0.13545     61s
+    step   8500  train   0.13206  holdout   0.13228  best   0.13228     65s
+    step   9000  train   0.12949  holdout   0.12848  best   0.12848     69s
+    step   9500  train   0.12560  holdout   0.12539  best   0.12539     72s
+    step  10000  train   0.11926  holdout   0.11327  best   0.11327     76s
+
+== hotel tcfm seed 2
+    step    500  train   0.81011  holdout   0.50984  best   0.50984      4s
+    step   1000  train   0.34920  holdout   0.24507  best   0.24507      8s
+    step   1500  train   0.21241  holdout   0.19257  best   0.19257     11s
+    step   2000  train   0.18628  holdout   0.18304  best   0.18304     15s
+    step   2500  train   0.17716  holdout   0.17603  best   0.17603     19s
+    step   3000  train   0.17198  holdout   0.17059  best   0.17059     23s
+    step   3500  train   0.16803  holdout   0.16638  best   0.16638     26s
+    step   4000  train   0.16297  holdout   0.16574  best   0.16574     30s
+    step   4500  train   0.15974  holdout   0.15714  best   0.15714     34s
+    step   5000  train   0.15429  holdout   0.15616  best   0.15616     38s
+    step   5500  train   0.14997  holdout   0.14965  best   0.14965     41s
+    step   6000  train   0.14605  holdout   0.14839  best   0.14839     45s
+    step   6500  train   0.14248  holdout   0.14265  best   0.14265     49s
+    step   7000  train   0.13997  holdout   0.14134  best   0.14134     53s
+    step   7500  train   0.13805  holdout   0.13840  best   0.13840     57s
+    step   8000  train   0.13680  holdout   0.13756  best   0.13756     60s
+    step   8500  train   0.13517  holdout   0.13139  best   0.13139     64s
+    step   9000  train   0.13445  holdout   0.13560  best   0.13139     68s
+    step   9500  train   0.13261  holdout   0.13098  best   0.13098     72s
+    step  10000  train   0.13165  holdout   0.13316  best   0.13098     76s
+
+== hotel moflow seed 0
+    MoFlow stage 1: flow-matching teacher
+    step    500  train   9.55845  holdout   7.36916  best   7.36916     12s
+    step   1000  train   4.66222  holdout   4.38517  best   4.38517     24s
+    step   1500  train   4.43816  holdout   4.19033  best   4.19033     37s
+    step   2000  train   4.35054  holdout   4.12842  best   4.12842     49s
+    step   2500  train   4.28958  holdout   4.07549  best   4.07549     61s
+    step   3000  train   4.22651  holdout   4.03280  best   4.03280     73s
+    step   3500  train   4.19458  holdout   4.00287  best   4.00287     86s
+    step   4000  train   4.16865  holdout   3.97241  best   3.97241     98s
+    step   4500  train   4.14003  holdout   3.96197  best   3.96197    110s
+    step   5000  train   4.11669  holdout   3.94713  best   3.94713    122s
+    step   5500  train   4.10769  holdout   3.95049  best   3.94713    134s
+    step   6000  train   4.08612  holdout   3.92156  best   3.92156    147s
+    step   6500  train   4.06474  holdout   3.90839  best   3.90839    159s
+    step   7000  train   4.05862  holdout   3.90229  best   3.90229    171s
+    step   7500  train   4.04349  holdout   3.89341  best   3.89341    183s
+    step   8000  train   4.04882  holdout   3.89568  best   3.89341    196s
+    step   8500  train   4.03978  holdout   3.89551  best   3.89341    208s
+    step   9000  train   4.03403  holdout   3.89214  best   3.89214    220s
+    step   9500  train   4.03309  holdout   3.88859  best   3.88859    232s
+    step  10000  train   4.03409  holdout   3.89101  best   3.88859    245s
+    MoFlow stage 2: IMLE student on teacher samples (34879, 20, 12, 2)
+    step    500  train   7.10458  holdout   4.48285  best   4.48285    231s
+    step   1000  train   2.20934  holdout   1.85795  best   1.85795    462s
+    step   1500  train   1.78122  holdout   1.32879  best   1.32879    693s
+    step   2000  train   1.57363  holdout   1.14701  best   1.14701    924s
+    step   2500  train   1.47570  holdout   1.07932  best   1.07932   1154s
+    step   3000  train   1.43777  holdout   1.05871  best   1.05871   1385s
+
+== hotel moflow seed 1
+    MoFlow stage 1: flow-matching teacher
+    step    500  train   9.26868  holdout   7.07639  best   7.07639     12s
+    step   1000  train   4.73077  holdout   4.36524  best   4.36524     24s
+    step   1500  train   4.48293  holdout   4.20899  best   4.20899     37s
+    step   2000  train   4.39314  holdout   4.15705  best   4.15705     49s
+    step   2500  train   4.33557  holdout   4.09880  best   4.09880     61s
+    step   3000  train   4.28707  holdout   4.09437  best   4.09437     73s
+    step   3500  train   4.25489  holdout   4.05317  best   4.05317     85s
+    step   4000  train   4.20385  holdout   4.03384  best   4.03384     98s
+    step   4500  train   4.18261  holdout   4.02315  best   4.02315    110s
+    step   5000  train   4.16060  holdout   4.01672  best   4.01672    122s
+    step   5500  train   4.14121  holdout   3.99793  best   3.99793    134s
+    step   6000  train   4.12449  holdout   3.98011  best   3.98011    147s
+    step   6500  train   4.11761  holdout   3.97547  best   3.97547    159s
+    step   7000  train   4.11167  holdout   3.97191  best   3.97191    171s
+    step   7500  train   4.08775  holdout   3.96310  best   3.96310    183s
+    step   8000  train   4.08650  holdout   3.95703  best   3.95703    195s
+    step   8500  train   4.08537  holdout   3.95392  best   3.95392    208s
+    step   9000  train   4.07688  holdout   3.94708  best   3.94708    220s
+    step   9500  train   4.07195  holdout   3.94728  best   3.94708    232s
+    step  10000  train   4.07377  holdout   3.94638  best   3.94638    244s
+    MoFlow stage 2: IMLE student on teacher samples (34879, 20, 12, 2)
+    step    500  train   7.03873  holdout   4.74029  best   4.74029    231s
+    step   1000  train   2.16590  holdout   1.80977  best   1.80977    462s
+    step   1500  train   1.82806  holdout   1.41391  best   1.41391    693s
+    step   2000  train   1.67561  holdout   1.29164  best   1.29164    923s
+    step   2500  train   1.60684  holdout   1.23919  best   1.23919   1154s
+    step   3000  train   1.58190  holdout   1.22369  best   1.22369   1385s
+
+== hotel moflow seed 2
+    MoFlow stage 1: flow-matching teacher
+    step    500  train   9.49674  holdout   7.35696  best   7.35696     12s
+    step   1000  train   4.79996  holdout   4.50906  best   4.50906     25s
+    step   1500  train   4.54861  holdout   4.29604  best   4.29604     37s
+    step   2000  train   4.42007  holdout   4.20190  best   4.20190     49s
+    step   2500  train   4.33868  holdout   4.13054  best   4.13054     61s
+    step   3000  train   4.27123  holdout   4.06042  best   4.06042     73s
+    step   3500  train   4.22319  holdout   4.00008  best   4.00008     86s
+    step   4000  train   4.19144  holdout   3.97795  best   3.97795     98s
+    step   4500  train   4.15126  holdout   3.93763  best   3.93763    110s
+    step   5000  train   4.11652  holdout   3.91739  best   3.91739    122s
+    step   5500  train   4.10377  holdout   3.90531  best   3.90531    135s
+    step   6000  train   4.07891  holdout   3.88857  best   3.88857    147s
+    step   6500  train   4.06221  holdout   3.88133  best   3.88133    159s
+    step   7000  train   4.05014  holdout   3.87982  best   3.87982    171s
+    step   7500  train   4.04406  holdout   3.86899  best   3.86899    183s
+    step   8000  train   4.03036  holdout   3.86412  best   3.86412    196s
+    step   8500  train   4.02869  holdout   3.86051  best   3.86051    208s
+    step   9000  train   4.02004  holdout   3.85364  best   3.85364    220s
+    step   9500  train   4.01626  holdout   3.85321  best   3.85321    232s
+    step  10000  train   4.00973  holdout   3.85895  best   3.85321    244s
+    MoFlow stage 2: IMLE student on teacher samples (34879, 20, 12, 2)
+    step    500  train   6.93982  holdout   4.41249  best   4.41249    231s
+    step   1000  train   2.10393  holdout   1.64664  best   1.64664    461s
+    step   1500  train   1.71029  holdout   1.22811  best   1.22811    692s
+    step   2000  train   1.53204  holdout   1.08771  best   1.08771    923s
+    step   2500  train   1.44437  holdout   1.03026  best   1.03026   1154s
+    step   3000  train   1.41732  holdout   1.01259  best   1.01259   1384s
+  forecast hotel  dmmn       s0: minADE 0.718  minFDE 1.651
+  forecast hotel  dmmn       s1: minADE 0.547  minFDE 1.183
+  forecast hotel  dmmn       s2: minADE 0.811  minFDE 1.888
+  forecast hotel  dmmn_gauss s0: minADE 0.379  minFDE 0.737
+  forecast hotel  dmmn_gauss s1: minADE 0.346  minFDE 0.645
+  forecast hotel  dmmn_gauss s2: minADE 0.429  minFDE 0.854
+Traceback (most recent call last):
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/ethucy/train.py", line 155, in <module>
+    main()
+  File "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/ethucy/train.py", line 149, in main
+    fc_rows += score_split(cfg, args.out_dir, split, models, seeds, log)
+  File "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/ethucy/train.py", line 93, in score_split
+    m = load_model(cfg, out_dir, split, model, seed)
+  File "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/fair_retrain/evaluate.py", line 103, in load_model
+    return (ResidualCFMMotionModel if model == "m4" else GaussianResidualMotionModel).load(path, mean)
+  File "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/cfm_variants/residual_model.py", line 89, in load
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 1368, in load
+    return _load(
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 1856, in _load
+    result = unpickler.load()
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 1820, in persistent_load
+    typed_storage = load_tensor(
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 1792, in load_tensor
+    wrap_storage=restore_location(storage, location),
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 1693, in restore_location
+    return default_restore_location(storage, map_location)
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 601, in default_restore_location
+    result = fn(storage, location)
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 539, in _deserialize
+    device = _validate_device(location, backend_name)
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 518, in _validate_device
+    raise RuntimeError(
+RuntimeError: Attempting to deserialize object on CUDA device 0 but torch.cuda.device_count() is 0. Please use torch.load with map_location to map your storages to an existing device.

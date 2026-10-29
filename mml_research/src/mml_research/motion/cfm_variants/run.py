@@ -49,7 +49,8 @@ from mml_research.motion.cfm_variants.methods import (
 
 _CACHE = None
 # Relative cost, so the slow jobs start first.
-_COST = {"m3": 3.0, "m1": 1.3, "m4": 1.6, "gauss": 0.8, "cfm": 1.0, "cfm_as": 1.0, "nf": 1.0, "dmmn": 0.6}
+_COST = {"m3": 3.0, "m1": 1.3, "m4": 1.6, "gauss": 0.8, "cfm": 1.0, "cfm_as": 1.0, "nf": 1.0, "dmmn": 0.6,
+         "tcfm": 36.0, "trajflow": 8.0, "moflow": 3.5, "enff": 0.4, "cv": 0.1, "diffpf": 0.2}
 
 
 def _job(cfg_path, models_dir, out_dir, name, seed, q, run, n_steps, keep_clouds):
@@ -95,6 +96,17 @@ def write_csv(path, rows):
         w.writerows(rows)
 
 
+def merge_rows(path, new_rows, methods):
+    """Existing CSV rows of other methods + new_rows, in ALL_METHODS order (stable within a method)."""
+    with open(path, newline="") as f:
+        old = [r for r in csv.DictReader(f) if r["method"] not in methods]
+    order = {n: k for k, n in enumerate(ALL_METHODS)}
+    rows = old + new_rows
+    rows.sort(key=lambda r: order[r["method"]])
+    fields = list(dict.fromkeys(k for r in rows for k in r))
+    return [{k: r.get(k, "") for k in fields} for r in rows]
+
+
 def write_steps(out, steps):
     by_method = {}
     for name, seed, run, s in steps:
@@ -129,6 +141,8 @@ def main():
     p.add_argument("--models-dir", dest="models_dir", default=DEFAULT_MODELS_DIR)
     p.add_argument("--out-dir", dest="out_dir", default=DEFAULT_OUT_DIR)
     p.add_argument("--tag", default="", help="Suffix for the output folder")
+    p.add_argument("--merge", action="store_true",
+                   help="Add these methods to the folder's existing results (their old rows are replaced)")
     args = p.parse_args()
     cfg = load_config(args.config)
     seeds = cfg["training"]["seeds"]
@@ -143,6 +157,11 @@ def main():
         if not os.path.exists(lock_path):
             sys.exit("locked.json missing: run calibrate.py (validation) before the test split")
         locked = read_json(lock_path)
+        add_path = os.path.join(args.out_dir, "locked_addendum.json")
+        if any(METHODS[m][1] == "addendum" for m in args.methods) and not os.path.exists(add_path):
+            sys.exit("locked_addendum.json missing: run lock_addendum.py before testing the open-source methods")
+        if os.path.exists(add_path):
+            locked["checkpoints"] = {**read_json(add_path)["checkpoints"], **locked["checkpoints"]}
         changed = [k for k, h in hashes.items() if k in locked["checkpoints"] and locked["checkpoints"][k] != h]
         missing = [k for k in hashes if k not in locked["checkpoints"]]
         if changed or missing:
@@ -164,12 +183,21 @@ def main():
     for rows in (run_rows, event_rows):
         for r in rows:
             r["split"] = args.split
+    manifest = "manifest.json"
+    if args.merge and os.path.exists(os.path.join(out, "episodes.csv")):
+        run_rows = merge_rows(os.path.join(out, "episodes.csv"), run_rows, args.methods)
+        event_rows = merge_rows(os.path.join(out, "events.csv"), event_rows, args.methods)
+        old = os.path.join(out, "clouds.npz")
+        if os.path.exists(old):
+            kept = [c for c in np.load(old, allow_pickle=True)["clouds"] if c["method"] not in args.methods]
+            clouds = kept + clouds
+        manifest = f"manifest_merge_{time.strftime('%Y%m%d_%H%M%S')}.json"
     write_csv(os.path.join(out, "episodes.csv"), run_rows)
     write_csv(os.path.join(out, "events.csv"), event_rows)
     write_steps(out, steps)
     if clouds:
         np.savez_compressed(os.path.join(out, "clouds.npz"), clouds=np.array(clouds, dtype=object))
-    write_json(os.path.join(out, "manifest.json"), {
+    write_json(os.path.join(out, manifest), {
         "commit": git_commit(), "command": " ".join(sys.argv), "config": cfg,
         "config_sha256": sha256(args.config), "checkpoints": files, "checkpoint_sha256": hashes,
         "split": args.split, "runs": runs, "n_steps": args.n_steps,

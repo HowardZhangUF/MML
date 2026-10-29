@@ -1,0 +1,32 @@
+{
+  "commit": "ebd0038d1fc44cd33492ab61de49c413798c8d0b-dirty",
+  "methods": [
+    "PF+CV",
+    "PF+TrajFlow",
+    "PF+MoFlow",
+    "PF+TCFM",
+    "EnFF",
+    "DiffPF"
+  ],
+  "selection": "exit benchmark validation sweep, runs 100..119, lowest mean RMSE (all steps)",
+  "sweep_file": "/blue/jshin2/zhangzihao/MML/artifacts/motion/exit_benchmark/noise_sweep/chosen_noise.txt",
+  "sweep_sha256": "a8e782d4b0af04860fbc98fdf232b170941dda5a5c0e6dcde48bf663d2c5fd79",
+  "process_noise": {
+    "PF+CV": 0.005,
+    "PF+TrajFlow": 0.07,
+    "PF+MoFlow": 0.02,
+    "PF+TCFM": 0.07,
+    "EnFF": 0.005
+  },
+  "enff": {
+    "lambda": 0.00025,
+    "sigma_min": 0.01,
+    "steps": 5
+  },
+  "checkpoints": {
+    "trajflow": "8672af24f7e59929f49496dbac19591a485e13924f8c329825dd46371b100990",
+    "moflow": "1689ac7d29aeea819aa61f68509d8383912de73b120ee55003640eadee2e2907",
+    "tcfm": "c20c9d417b92054bacc4cef066633949cdb46e32eeca9652a6549a1706748d0b",
+    "diffpf": "ccad0fc90c75c5c1f33ff231ebb00cb7179502bc038db58750a7feeb01a0e3fb"
+  }
+}

@@ -122,8 +122,8 @@ class TrajectoryMotionModel:
         self.h_norm = MinMax(**ckpt["h_norm"])
         self.q_norm = MinMax(**ckpt["q_norm"])
         self.device = torch.device(device)
-        self.block_size = N_TH
-        self.dt = DT
+        self.block_size = int(self.config.get("block_size", N_TH))   # absent in simulator checkpoints
+        self.dt = float(self.config.get("dt", DT))
         self.model = self.build(ckpt).to(self.device).eval()
         self.n_params = count_parameters(self.model)
         print(f"[{type(self).__name__}] loaded <- {checkpoint_path}  ({self.n_params:,} params, "

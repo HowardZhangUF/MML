@@ -41,7 +41,7 @@ EV_METRICS = ["success", "majority", "p_correct", "brier", "exit_nll", "zero_mas
 PAIRED = ["rmse_all", "rmse_occluded", "es_mean", "success", "p_correct", "brier", "exit_nll"]
 
 # Reference palette (dataviz skill, light mode), fixed order; controls are drawn in gray.
-SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100"]
+SERIES = ["#2a78d6", "#eb6834", "#1baf7a", "#eda100", "#e87ba4", "#008300"]
 GRAY = "#8a8985"
 INK, INK2 = "#0b0b0b", "#52514e"
 PANELS = [  # (title, control, methods)
@@ -49,6 +49,7 @@ PANELS = [  # (title, control, methods)
     ("M2 Calibrated-CFM / AS", "PF+CFM", ["M2-zero", "M2-calibrated", "PF+CFM-AS"]),
     ("M3 Observation-CFM", "PF+CFM", ["M3", "M3-joint"]),
     ("M4 DMMN-CFM", "PF+DMMN", ["DMMN+Gauss", "M4"]),
+    ("Open-source ports", "PF+CFM", ["PF+TrajFlow", "PF+MoFlow", "PF+TCFM", "EnFF"]),
 ]
 
 
@@ -68,10 +69,10 @@ def episode_table(ep, ev):
     return t
 
 
-def summarize(ep, ev, n_boot, rng):
+def summarize(ep, ev, n_boot, rng, order=None):
     t = episode_table(ep, ev)
     rows, seed_rows = [], []
-    for m in [x for x in ALL_METHODS if x in set(ep.method)]:
+    for m in [x for x in (order or ALL_METHODS) if x in set(ep.method)]:
         tm = t[t.method == m]
         per_ep = tm.groupby("run").mean(numeric_only=True)          # seed-averaged per episode
         em = ev[ev.method == m]
@@ -107,10 +108,10 @@ def summarize(ep, ev, n_boot, rng):
     return pd.DataFrame(rows), pd.DataFrame(seed_rows), t
 
 
-def paired(t, ev, n_boot, rng):
+def paired(t, ev, n_boot, rng, comparisons=None):
     rows = []
     col = {k: (k if k in EP_METRICS else f"ev_{k}") for k in PAIRED}
-    for m, c in COMPARISONS:
+    for m, c in (comparisons or COMPARISONS):
         if m not in set(t.method) or c not in set(t.method):
             continue
         a = t[t.method == m].groupby("run").mean(numeric_only=True)
@@ -189,8 +190,11 @@ def _style(ax):
 def plot_occlusion(ev, out):
     bins = np.array([0, 20, 30, 40, 50, 70, 1000])
     centers = ["<20", "20-29", "30-39", "40-49", "50-69", "70+"]
-    fig, axes = plt.subplots(1, len(PANELS), figsize=(16, 3.6), sharey=True)
-    for ax, (title, ctrl, ms) in zip(axes, PANELS):
+    panels = [pn for pn in PANELS if set(pn[2]) & set(ev.method)]
+    if not panels:          # e.g. the dev split: controls only
+        return
+    fig, axes = plt.subplots(1, len(panels), figsize=(4 * len(panels), 3.6), sharey=True, squeeze=False)
+    for ax, (title, ctrl, ms) in zip(axes[0], panels):
         for i, m in enumerate([ctrl] + ms):
             e = ev[ev.method == m]
             if e.empty:
@@ -203,7 +207,7 @@ def plot_occlusion(ev, out):
         ax.set_xlabel("occlusion length (steps)", fontsize=8, color=INK2)
         _style(ax)
         ax.legend(fontsize=7, frameon=False)
-    axes[0].set_ylabel("RMSE during the occlusion (m)", fontsize=8, color=INK2)
+    axes[0, 0].set_ylabel("RMSE during the occlusion (m)", fontsize=8, color=INK2)
     fig.tight_layout()
     fig.savefig(os.path.join(out, "rmse_vs_occlusion.png"), dpi=150)
     plt.close(fig)
@@ -213,8 +217,11 @@ def plot_reliability(ev, out):
     """Predicted mass on each exit label vs how often the target actually exits there (all labels pooled)."""
     labels = ["N", "E", "S", "W"]
     edges = np.linspace(0, 1, 11)
-    fig, axes = plt.subplots(1, len(PANELS), figsize=(16, 3.8), sharey=True)
-    for ax, (title, ctrl, ms) in zip(axes, PANELS):
+    panels = [pn for pn in PANELS if set(pn[2]) & set(ev.method)]
+    if not panels:          # e.g. the dev split: controls only
+        return
+    fig, axes = plt.subplots(1, len(panels), figsize=(4 * len(panels), 3.8), sharey=True, squeeze=False)
+    for ax, (title, ctrl, ms) in zip(axes[0], panels):
         ax.plot([0, 1], [0, 1], color=GRAY, lw=0.8, ls=":")
         for i, m in enumerate([ctrl] + ms):
             e = ev[ev.method == m]
@@ -231,7 +238,7 @@ def plot_reliability(ev, out):
         ax.set_xlabel("predicted exit mass", fontsize=8, color=INK2)
         _style(ax)
         ax.legend(fontsize=7, frameon=False, loc="upper left")
-    axes[0].set_ylabel("observed exit frequency", fontsize=8, color=INK2)
+    axes[0, 0].set_ylabel("observed exit frequency", fontsize=8, color=INK2)
     fig.tight_layout()
     fig.savefig(os.path.join(out, "exit_reliability.png"), dpi=150)
     plt.close(fig)
@@ -242,7 +249,9 @@ def plot_runtime(s, out):
     fig, axes = plt.subplots(1, 2, figsize=(12, 4.2))
     for ax, (key, label) in zip(axes, [("p_correct", "P(correct exit)  (higher is better)"),
                                        ("rmse_occluded_mean", "RMSE occluded (m)  (lower is better)")]):
-        ax.scatter(s.ms_per_step_mean, s[key], s=40, color=SERIES[0], edgecolor="white", linewidth=1.5, zorder=3)
+        color = {m: c for _, c, ms in FAMILIES for m in ms}
+        ax.scatter(s.ms_per_step_mean, s[key], s=40, color=[color.get(m, SERIES[0]) for m in s.method],
+                   edgecolor="white", linewidth=1.5, zorder=3)
         for _, r in s.iterrows():
             ax.annotate(r.method, (r.ms_per_step_mean, r[key]), textcoords="offset points", xytext=(5, 3),
                         fontsize=7, color=INK2)
@@ -275,6 +284,71 @@ def regression(ep, ev, old_dir):
                      "events_compared": len(common),
                      "events_disagree": int((ea.loc[common] != eb.loc[common]).sum())})
     return pd.DataFrame(rows)
+
+
+FAMILIES = [  # (label, color, methods) — color by experiment, fixed order
+    ("Baselines", GRAY, ["PF+CFM", "PF+CFM-AS", "PF+DMMN", "PF+NF"]),
+    ("M1 Context-CFM", SERIES[0], ["M1-control", "M1-mask", "M1-time", "M1-full"]),
+    ("M2 Calibrated-CFM", SERIES[1], ["M2-zero", "M2-calibrated"]),
+    ("M3 Observation-CFM", SERIES[2], ["M3", "M3-joint"]),
+    ("M4 DMMN-CFM", SERIES[3], ["DMMN+Gauss", "M4"]),
+    ("Open-source ports", SERIES[4], ["PF+TrajFlow", "PF+MoFlow", "PF+TCFM", "EnFF"]),
+    ("Classical / DiffPF", SERIES[5], ["PF+CV", "DiffPF"]),
+]
+
+
+def plot_overview(s, lane, out):
+    """All methods x six metrics as horizontal bars, colored by experiment family."""
+    order = [m for _, _, ms in FAMILIES for m in ms if m in set(s.method)]
+    color = {m: c for _, c, ms in FAMILIES for m in ms}
+    s = s.set_index("method").loc[order]
+    y = np.arange(len(order))[::-1]
+    panels = [
+        ("rmse_all_mean", "RMSE all steps (m) ↓", ("rmse_all_ci_lo", "rmse_all_ci_hi"), "{:.3f}"),
+        ("rmse_occluded_mean", "RMSE occluded (m) ↓", ("rmse_occluded_ci_lo", "rmse_occluded_ci_hi"), "{:.3f}"),
+        ("exit_success_rate", "Exit success, top-1 ↑", None, "{:.1%}"),
+        ("p_correct", "P(correct exit) ↑", ("p_correct_ci_lo", "p_correct_ci_hi"), "{:.3f}"),
+        ("brier", "Exit Brier score ↓", None, "{:.3f}"),
+        ("ms_per_step_mean", "Runtime (ms / step) ↓", None, "{:.1f}"),
+    ]
+    fig, axes = plt.subplots(2, 3, figsize=(16, 4 + 0.36 * len(order)), sharey=True)
+    for ax, (key, title, ci, fmt) in zip(axes.flat, panels):
+        vals = s[key].to_numpy()
+        ax.barh(y, vals, height=0.7, color=[color[m] for m in order], edgecolor="white", linewidth=2)
+        ends = vals
+        if ci:
+            lo, hi = s[ci[0]].to_numpy(), s[ci[1]].to_numpy()
+            ax.errorbar(vals, y, xerr=[vals - lo, hi - vals], fmt="none", ecolor=INK2, elinewidth=1, capsize=2)
+            ends = np.maximum(vals, hi)
+        for yi, v, e in zip(y, vals, ends):   # label past the whisker so they never overlap
+            ax.text(e, yi, "  " + fmt.format(v), va="center", fontsize=7, color=INK2)
+        if key == "exit_success_rate":
+            ref = lane[0] / max(lane[1], 1)
+            ax.axvline(ref, color=INK, lw=1, ls="--")
+            ax.text(ref, y[0] + 0.9, f"lane cue {ref:.1%}", fontsize=7, color=INK, ha="right")
+        if key == "ms_per_step_mean" and vals.max() > 20 * vals.min():
+            ax.set_xscale("log")      # TCFM's ~0.5 s/step would flatten every other bar
+            ax.set_xlim(vals.min() / 2, vals.max() * 4)
+            title = title.replace("↓", "(log) ↓")
+        else:
+            ax.set_xlim(0, vals.max() * 1.25)
+        ax.set_title(title, fontsize=10)
+        _style(ax)
+        ax.grid(axis="y", visible=False)
+    for ax in axes[:, 0]:
+        ax.set_yticks(y)
+        ax.set_yticklabels([f"{m} ×{int(s.loc[m, 'seeds'])}" if s.loc[m, "seeds"] > 1 else m for m in order],
+                           fontsize=8, color=INK)
+    handles = [plt.Rectangle((0, 0), 1, 1, color=c) for _, c, _ in FAMILIES]
+    fig.legend(handles, [f for f, _, _ in FAMILIES], loc="lower center", ncol=len(FAMILIES), frameon=False,
+               fontsize=9)
+    n_ev = int(s["exit_events"].iloc[0])
+    fig.suptitle(f"CFM variants and baselines in the particle filter — locked test set, {int(s['episodes'].iloc[0])} episodes, "
+                 f"{n_ev} exit events (bars: mean, whiskers: 95% episode-bootstrap CI; ×3 = mean of 3 seeds)",
+                 fontsize=11, color=INK)
+    fig.tight_layout(rect=(0, 0.04, 1, 0.97))
+    fig.savefig(os.path.join(out, "overview_all_methods.png"), dpi=150)
+    plt.close(fig)
 
 
 def main():
@@ -311,6 +385,7 @@ def main():
     plot_occlusion(ev, plots)
     plot_reliability(ev, plots)
     plot_runtime(s, plots)
+    plot_overview(s, lane, plots)
     if args.old_results:
         reg = regression(ep, ev, args.old_results)
         reg.to_csv(os.path.join(d, "regression_vs_old.csv"), index=False)

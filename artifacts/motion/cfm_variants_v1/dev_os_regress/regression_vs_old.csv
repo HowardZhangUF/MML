@@ -1,0 +1,7 @@
+method,episodes,max_abs_d_rmse_all,max_abs_d_rmse_occluded,old_exit_success,new_exit_success,events_compared,events_disagree
+DiffPF,10,0.0,0.0,32,32,72,0
+EnFF,10,0.0,0.0,3,3,72,0
+PF+CV,10,0.0,0.0,1,1,72,0
+PF+MoFlow,10,0.002806380874610409,0.00785148379004369,35,35,72,0
+PF+TCFM,10,9.71445146547012e-17,0.0,65,65,72,0
+PF+TrajFlow,10,0.0,0.0,52,52,72,0

@@ -11,7 +11,8 @@ from mml_baselines.trajflow.model import TrajFlow, TrajFlowNet
 
 def build_trajflow(config: dict, intention_points, q_norm: MinMax) -> TrajFlow:
     net = TrajFlowNet(config["horizon"], np.asarray(intention_points), d_model=config["d_model"],
-                      heads=config["heads"], depth=config["depth"], dropout=config["dropout"])
+                      heads=config["heads"], depth=config["depth"], dropout=config["dropout"],
+                      n_th=config.get("block_size", 5))
     return TrajFlow(net, q_norm, num_motion_modes=config["num_motion_modes"],
                     nms_dist=config["nms_dist"], num_inter_layers=config["num_inter_layers"],
                     sampling_steps=config["sampling_steps"])

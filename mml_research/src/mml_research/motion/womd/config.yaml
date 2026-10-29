@@ -1,0 +1,78 @@
+# Waymo Open Motion Dataset benchmark (fixed 2026-10-27, before any womd_v1 result existed).
+# TrajFlow's benchmark (v1.3.0, Scenario protos). Single-agent, map-free version: every model sees
+# only the target agent's own past positions (no map, no other agents, no agent type), so scores are
+# not comparable to the leaderboard (TrajFlow: minADE 0.57 m with map + interactions). Every model is
+# retrained on the same rows under the fair_retrain protocol.
+experiment: womd_v1
+base: ../fair_retrain/config.yaml      # optimizers, architectures, cfm_variants settings
+
+data:
+  root: /orange/jshin2/waymo/motion_v1_3_0/scenario
+  train_list: training_shards.txt      # the downloaded training shards (first 100 of 1000, sorted)
+  holdout_shards: 10                   # last 10 listed training shards: checkpoint selection + q calibration
+obs: 11                                # 1.1 s history incl. the current frame (index 10), the official input
+horizon: 80                            # 8 s future at 10 Hz, the official target
+frame_dt: 0.1
+# Model units: positions translated to the current (last observed) point, rotated so the history's
+# first->last displacement points along +x (no rotation when it is < canon_min_disp m), divided by
+# `scale`. The frame comes from positions only, so the tracking filter can apply the same one to
+# every particle. Scale 25 keeps speeds below the 1.5 unit/s clip of the mml_core models (37.5 m/s).
+scale: 25.0
+canon_min_disp: 0.5
+
+# Training rows: every tracks_to_predict agent of the training shards whose 91 frames are all valid
+# (the losses have no masks); one row per agent at the official current frame 10.
+models: [cfm, nf, dmmn, dmmn_gauss, m4, trajflow, moflow, tcfm]
+training_free: [PF+CV, EnFF]
+training:
+  seeds: [0, 1, 2]
+  steps: 20000                         # fair_retrain budget
+  batch: 1024
+  eval_every: 1000
+  holdout_rows: 20000
+  moflow_student_steps: 4000
+
+arch:
+  cfm: {block_size: 11}
+  nf: {block_size: 11}
+  dmmn: {block_size: 11}
+  # TrajFlow's WOMD setting: 64 intention points, NMS to 6 modes; 2.5 m NMS radius = 0.1 model units
+  trajflow: {num_query: 64, num_motion_modes: 6, nms_dist: 0.1}
+  moflow: {num_query: 6}               # the IMLE set = the 6 predictions
+
+# Forecasting track: the official validation split (our test set; the official test labels are
+# hidden), every tracks_to_predict agent. Missing history frames are filled (linear interpolation,
+# constant-velocity back-extrapolation before the first valid frame). K = 6 trajectories:
+#   one-step models   6 autoregressive rollouts, v ~ p(v | last 11 positions), 80 steps
+#   TrajFlow          its 6 NMS modes; MoFlow its 6-member IMLE set; TCFM 6 draws
+# Metrics = the official definitions (motion_metrics config of the challenge): 2 Hz samples,
+# measurement steps 3 / 5 / 8 s, minADE up to the step, minFDE at the step, miss rate with the
+# lateral / longitudinal thresholds below scaled by current speed; each metric averaged over the
+# three steps, then over vehicle / pedestrian / cyclist. mAP / Soft mAP are not computed (they need
+# the trajectory-type buckets and confidence calibration of the official TF op).
+forecast:
+  k: 6
+  measurement_seconds: [3, 5, 8]
+  miss_thresholds:                     # (lateral, longitudinal) m at 3 / 5 / 8 s
+    - [1.0, 2.0]
+    - [1.8, 3.6]
+    - [3.0, 6.0]
+  speed_scale: {lower: 0.5, upper: 1.0, speed_lower: 1.4, speed_upper: 11.0}
+
+# Tracking track: the particle filter on whole 9.1 s tracks (all 91 frames valid) with simulated
+# noise and occlusions. Tracks drawn per type with a fixed seed: test from the validation split,
+# calibration from the holdout training shards.
+tracking:
+  test_per_type: 200
+  calibration_per_type: 100
+  selection_seed: 0
+  meas_noise: 0.10                     # m
+  filter_sigma: 0.20                   # m, 2x the noise as in the ETH-UCY and simulator benchmarks
+  particles: 500
+  init_spread: 0.10                    # m
+  # first `obs` frames visible, then alternating visible U{5..15} / occluded U{5..20} frames (0.5-2 s)
+  visible_run: [5, 15]
+  occluded_run: [5, 20]
+  grid_m: [0.0, 0.02, 0.05, 0.1, 0.2, 0.3, 0.5, 0.8]   # q per step in metres (model units = / scale)
+  rmse_tolerance: 0.10                 # M2 rule, as fair_retrain
+  energy_every: 5

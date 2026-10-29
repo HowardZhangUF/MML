@@ -7,6 +7,9 @@
 #        --export=ALL,STAGES="audit prepare train verify" $S)
 #   sbatch --dependency=afterok:$A --qos=jshin2-b --cpus-per-task=32 \
 #        --export=ALL,STAGES="calibrate test dev summarize" $S
+# Open-source / earlier baselines on the same test episodes (after the study above):
+#   sbatch --qos=jshin2-b --cpus-per-task=48 --mem=160gb --time=2-00:00:00 \
+#        --export=ALL,STAGES="addendum regress_os test_os summarize" $S
 # Env overrides: STAGES="train verify" OUT=... WORKERS=16
 #SBATCH --job-name=cfm_variants
 #SBATCH --account=jshin2
@@ -47,6 +50,16 @@ for s in $STAGES; do
     calibrate) run calibrate python -m $PKG.calibrate --models-dir $M --out-dir $OUT --workers $W ;;
     test)      run test      python -m $PKG.run --split test --models-dir $M --out-dir $OUT --workers $W ;;
     dev)       run dev       python -m $PKG.run --split dev --methods PF+CFM PF+DMMN PF+NF \
+                               --models-dir $M --out-dir $OUT --workers $W ;;
+    addendum)  run addendum  python -m $PKG.lock_addendum --models-dir $M --out-dir $OUT \
+                               --sweep artifacts/motion/exit_benchmark/noise_sweep/chosen_noise.txt ;;
+    regress_os) run regress_os python -m $PKG.run --split dev --n_runs 10 --tag os_regress \
+                               --methods PF+CV PF+TrajFlow PF+MoFlow PF+TCFM EnFF DiffPF \
+                               --models-dir $M --out-dir $OUT --workers $W
+               run regress_os-summary python -m $PKG.summarize --split dev_os_regress --out-dir $OUT \
+                               --old-results artifacts/motion/exit_benchmark/results ;;
+    test_os)   run test_os   python -m $PKG.run --split test --merge \
+                               --methods PF+CV PF+TrajFlow PF+MoFlow PF+TCFM EnFF DiffPF \
                                --models-dir $M --out-dir $OUT --workers $W ;;
     summarize) run summarize python -m $PKG.summarize --split test --out-dir $OUT
                run summarize-dev python -m $PKG.summarize --split dev --out-dir $OUT \

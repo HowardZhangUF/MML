@@ -1,0 +1,79 @@
+# Fair retraining protocol (fixed 2026-10-26, before any fair_v1 result existed).
+#
+# Every learned motion model is retrained from scratch on the SAME rows of the
+# SAME training episodes, with the same optimizer-step / batch budget, the same
+# three seeds, the same checkpoint-selection rule and the same process-noise
+# selection rule. Two data recipes are crossed with every architecture, so the
+# recipe effect (which drove M1's RMSE gain) is separated from the
+# architecture effect.
+experiment: fair_v1
+
+# Filter, evaluation and episode streams are those of cfm_variants (config.yaml there).
+variants_config: ../cfm_variants/config.yaml
+
+recipes:
+  R0: >-
+    measurement histories: 5 consecutive noisy visible measurements (window span <= MAX_GAP),
+    targets = per-interval velocities to the next 12 visible measurements (the original CSV
+    recipe, rebuilt on the train episodes)
+  R1: >-
+    PF rollout histories (cfm_variants rollouts.npz, unchanged rows), targets = true physical
+    velocities of the next 12 steps (M1's recipe; step 1 is M1's target)
+horizon: 12                       # future steps for the trajectory forecasters
+train_runs: [200, 248]            # episodes (half-open); 240..247 = holdout for checkpoint selection
+
+training:
+  seeds: [0, 1, 2]
+  steps: 20000                    # optimizer steps per model (MoFlow: its flow-matching teacher)
+  batch: 1024
+  # MoFlow's IMLE student draws 30 noise vectors per row (1.2 s/step at batch 1024, ~7 GPU-h per
+  # run at 20k steps); its distillation stage gets 4k steps = 4.1M rows, above the port's own
+  # student budget (30k x 128 = 3.8M). The only budget deviation.
+  moflow_student_steps: 4000
+  eval_every: 1000                # checkpoint selection: lowest holdout loss of the model's own objective
+  holdout_rows: 20000             # fixed holdout subset, fixed noise draws per evaluation
+
+# Native optimizer of each method (its upstream / original recipe); only data, budget,
+# seeds and selection are shared.
+optim:
+  cfm:      {opt: adam,  lr: 5.0e-4, wd: 0.0,  clip: null,   ema: 0.0,   schedule: cosine, warmup: 0}
+  nf:       {opt: adam,  lr: 5.0e-4, wd: 0.0,  clip: 10.0,   ema: 0.0,   schedule: cosine, warmup: 0}
+  dmmn:     {opt: adam,  lr: 1.0e-3, wd: 0.0,  clip: null,   ema: 0.0,   schedule: const,  warmup: 0}
+  m1:       {opt: adam,  lr: 5.0e-4, wd: 0.0,  clip: null,   ema: 0.0,   schedule: cosine, warmup: 0}
+  m4:       {opt: adam,  lr: 5.0e-4, wd: 0.0,  clip: null,   ema: 0.0,   schedule: cosine, warmup: 0}
+  trajflow: {opt: adamw, lr: 1.0e-4, wd: 0.01, clip: 1000.0, ema: 0.999, schedule: const,  warmup: 0}
+  moflow:   {opt: adamw, lr: 1.0e-4, wd: 0.01, clip: 1.0,    ema: 0.995, schedule: cosine, warmup: 0.05}
+  tcfm:     {opt: adamw, lr: 2.0e-4, wd: 0.0,  clip: null,   ema: 0.0,   schedule: const,  warmup: 0}
+
+# Architectures: the sizes of the exit-benchmark checkpoints.
+arch:
+  cfm: {input_dim: 2, block_size: 5, n_embed: 32, n_head: 8, n_layer: 2, vel_hidden: 64, N_FE: 10,
+        dropout: 0.1, anchor_sigma: 1.0}
+  nf: {input_dim: 2, block_size: 5, n_embed: 32, n_head: 8, n_layer: 2, n_flows: 2, flow_hidden: 32,
+       dropout: 0.1}
+  dmmn: {input_dim: 2, block_size: 5, n_embed: 20, n_head: 8, n_layer: 2, hidden_dim: 20}
+  trajflow: {d_model: 32, heads: 4, depth: 4, dropout: 0.1, num_motion_modes: 6, nms_dist: 0.05,
+             num_inter_layers: 2, sampling_steps: 1, num_query: 16}
+  moflow: {num_query: 20, d_model: 32, social_hidden: 64, enc_layers: 2, dec_blocks: 2, heads: 4,
+           dropout: 0.1, sampling_steps: 10, num_to_gen: 30}
+  tcfm: {dim: 8, dim_mults: [1, 2, 4], lstm_out_dim: 32, n_timesteps: 10}
+  # M1 / M4 use cfm_variants training.arch and m1 / m4 settings.
+
+# Methods evaluated. Learned: one per (recipe, model); the M1 feature variants need the
+# rollout context, so they exist for R1 only. Training-free: PF+CV, EnFF (q retuned by the
+# same rule; EnFF lambda / sigma_min stay at the exit benchmark's validated values).
+models:
+  R0: [cfm, nf, dmmn, dmmn_gauss, m4, trajflow, moflow, tcfm]
+  R1: [cfm, nf, dmmn, dmmn_gauss, m4, trajflow, moflow, tcfm, m1_control, m1_mask, m1_time, m1_full]
+training_free: [PF+CV, EnFF]
+enff: {lambda: 2.5e-4, sigma_min: 0.01, steps: 5}
+
+calibration:
+  runs: [100, 120]                # validation episodes (half-open), seed-0 checkpoints
+  grid: [0.0, 0.005, 0.01, 0.02, 0.032, 0.045, 0.07, 0.1]
+  # M2's preregistered rule, now applied to every method: lowest mean validation energy
+  # score among grid values whose mean RMSE (all steps) is within 10% of the method's best
+  # grid RMSE; ties -> smaller q.
+  rmse_tolerance: 0.10
+
+test_runs: [1000, 1100]           # the cfm_variants locked test episodes

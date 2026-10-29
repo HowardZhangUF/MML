@@ -120,6 +120,8 @@ class OfflineDMMNMotionModel:
         }
         self.n_embed = 20
         self.n_head = 8
+        # History length = rows of the positional table (5 for every simulator checkpoint).
+        self.block_size = int(state["position_embedding_table.weight"].shape[0])
         self.head_size = self.n_embed // self.n_head
         self.n_layer = 2
         self._attention_weights = {}

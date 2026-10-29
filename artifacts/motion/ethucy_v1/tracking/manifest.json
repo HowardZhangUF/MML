@@ -1,0 +1,558 @@
+{
+  "commit": "ebd0038d1fc44cd33492ab61de49c413798c8d0b-dirty",
+  "command": "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/ethucy/evaluate.py test --out-dir artifacts/motion/ethucy_v1 --workers 96",
+  "config": {
+    "experiment": "ethucy_v1",
+    "variants_config": "../cfm_variants/config.yaml",
+    "recipes": {
+      "R0": "measurement histories: 5 consecutive noisy visible measurements (window span <= MAX_GAP), targets = per-interval velocities to the next 12 visible measurements (the original CSV recipe, rebuilt on the train episodes)",
+      "R1": "PF rollout histories (cfm_variants rollouts.npz, unchanged rows), targets = true physical velocities of the next 12 steps (M1's recipe; step 1 is M1's target)"
+    },
+    "horizon": 12,
+    "train_runs": [
+      200,
+      248
+    ],
+    "training": {
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "steps": 10000,
+      "batch": 256,
+      "moflow_student_steps": 3000,
+      "eval_every": 500,
+      "holdout_rows": 20000
+    },
+    "optim": {
+      "cfm": {
+        "opt": "adam",
+        "lr": 0.0005,
+        "wd": 0.0,
+        "clip": null,
+        "ema": 0.0,
+        "schedule": "cosine",
+        "warmup": 0
+      },
+      "nf": {
+        "opt": "adam",
+        "lr": 0.0005,
+        "wd": 0.0,
+        "clip": 10.0,
+        "ema": 0.0,
+        "schedule": "cosine",
+        "warmup": 0
+      },
+      "dmmn": {
+        "opt": "adam",
+        "lr": 0.001,
+        "wd": 0.0,
+        "clip": null,
+        "ema": 0.0,
+        "schedule": "const",
+        "warmup": 0
+      },
+      "m1": {
+        "opt": "adam",
+        "lr": 0.0005,
+        "wd": 0.0,
+        "clip": null,
+        "ema": 0.0,
+        "schedule": "cosine",
+        "warmup": 0
+      },
+      "m4": {
+        "opt": "adam",
+        "lr": 0.0005,
+        "wd": 0.0,
+        "clip": null,
+        "ema": 0.0,
+        "schedule": "cosine",
+        "warmup": 0
+      },
+      "trajflow": {
+        "opt": "adamw",
+        "lr": 0.0001,
+        "wd": 0.01,
+        "clip": 1000.0,
+        "ema": 0.999,
+        "schedule": "const",
+        "warmup": 0
+      },
+      "moflow": {
+        "opt": "adamw",
+        "lr": 0.0001,
+        "wd": 0.01,
+        "clip": 1.0,
+        "ema": 0.995,
+        "schedule": "cosine",
+        "warmup": 0.05
+      },
+      "tcfm": {
+        "opt": "adamw",
+        "lr": 0.0002,
+        "wd": 0.0,
+        "clip": null,
+        "ema": 0.0,
+        "schedule": "const",
+        "warmup": 0
+      }
+    },
+    "arch": {
+      "cfm": {
+        "input_dim": 2,
+        "block_size": 8,
+        "n_embed": 32,
+        "n_head": 8,
+        "n_layer": 2,
+        "vel_hidden": 64,
+        "N_FE": 10,
+        "dropout": 0.1,
+        "anchor_sigma": 1.0
+      },
+      "nf": {
+        "input_dim": 2,
+        "block_size": 8,
+        "n_embed": 32,
+        "n_head": 8,
+        "n_layer": 2,
+        "n_flows": 2,
+        "flow_hidden": 32,
+        "dropout": 0.1
+      },
+      "dmmn": {
+        "input_dim": 2,
+        "block_size": 8,
+        "n_embed": 20,
+        "n_head": 8,
+        "n_layer": 2,
+        "hidden_dim": 20
+      },
+      "trajflow": {
+        "d_model": 32,
+        "heads": 4,
+        "depth": 4,
+        "dropout": 0.1,
+        "num_motion_modes": 20,
+        "nms_dist": 0.05,
+        "num_inter_layers": 2,
+        "sampling_steps": 1,
+        "num_query": 32
+      },
+      "moflow": {
+        "num_query": 20,
+        "d_model": 32,
+        "social_hidden": 64,
+        "enc_layers": 2,
+        "dec_blocks": 2,
+        "heads": 4,
+        "dropout": 0.1,
+        "sampling_steps": 10,
+        "num_to_gen": 30
+      },
+      "tcfm": {
+        "dim": 8,
+        "dim_mults": [
+          1,
+          2,
+          4
+        ],
+        "lstm_out_dim": 32,
+        "n_timesteps": 10
+      }
+    },
+    "models": [
+      "cfm",
+      "nf",
+      "dmmn",
+      "dmmn_gauss",
+      "m4",
+      "trajflow",
+      "moflow",
+      "tcfm"
+    ],
+    "training_free": [
+      "PF+CV",
+      "EnFF"
+    ],
+    "enff": {
+      "lambda": 0.00025,
+      "sigma_min": 0.01,
+      "steps": 5
+    },
+    "calibration": {
+      "runs": [
+        100,
+        120
+      ],
+      "grid": [
+        0.0,
+        0.005,
+        0.01,
+        0.02,
+        0.032,
+        0.045,
+        0.07,
+        0.1
+      ],
+      "rmse_tolerance": 0.1
+    },
+    "test_runs": [
+      1000,
+      1100
+    ],
+    "variants": {
+      "experiment": "cfm_four_variants_v1",
+      "filter": {
+        "particles": 500,
+        "history_steps": 5,
+        "dt_seconds": 0.033,
+        "sensor_noise_std": 0.02,
+        "measurement_sigma": 0.05,
+        "init_spread": 0.05,
+        "resampler": "systematic",
+        "ess_fraction": 0.5,
+        "baseline_process_noise": 0.045,
+        "nf_process_noise": 0.032
+      },
+      "cfm": {
+        "checkpoint": "cfm_motion_model_anchor1.0.pth",
+        "ode_solver": "euler",
+        "ode_steps": 10,
+        "source_std": 1.0,
+        "max_speed": 1.5,
+        "adaptive_gain": 0.05,
+        "sigma_max": 2.5
+      },
+      "dmmn_checkpoint": "dmmn_scratch_transformer.pth",
+      "nf_checkpoint": "nf_motion_model.pth",
+      "prepare": {
+        "rollout_trackers": [
+          [
+            "cfm",
+            0.045
+          ],
+          [
+            "dmmn",
+            0.045
+          ],
+          [
+            "cfm",
+            0.01
+          ],
+          [
+            "dmmn",
+            0.01
+          ]
+        ],
+        "every": 2,
+        "per_step": 16
+      },
+      "training": {
+        "seeds": [
+          0,
+          1,
+          2
+        ],
+        "batch": 2048,
+        "steps": 20000,
+        "lr": 0.0005,
+        "arch": {
+          "n_embed": 32,
+          "n_head": 8,
+          "n_layer": 2,
+          "vel_hidden": 64,
+          "dropout": 0.1
+        }
+      },
+      "m1": {
+        "variants": {
+          "m1_control": [],
+          "m1_mask": [
+            "mask"
+          ],
+          "m1_time": [
+            "mask",
+            "time"
+          ],
+          "m1_full": [
+            "mask",
+            "time",
+            "cov"
+          ]
+        },
+        "target": "true_physical_velocity"
+      },
+      "m2": {
+        "grid": [
+          0.0,
+          0.005,
+          0.01,
+          0.02,
+          0.032,
+          0.045,
+          0.07
+        ],
+        "selection_split": "val",
+        "rmse_tolerance": 0.1
+      },
+      "m3": {
+        "proposal_family": "gaussian_full_cov",
+        "scale_floor": 0.05,
+        "hidden": 128,
+        "train_process_noise": 0.045
+      },
+      "m4": {
+        "residual_scale_floor": 0.05,
+        "residual_source": "standard_normal"
+      },
+      "evaluation": {
+        "energy_score_every": 10,
+        "recovery_threshold": 0.3,
+        "recovery_consecutive": 5,
+        "recovery_horizon": 100,
+        "exit_nll_floor": 0.001,
+        "bootstrap_resamples": 2000,
+        "clouds_saved_per_method": 20
+      }
+    },
+    "splits": [
+      "eth",
+      "hotel",
+      "univ",
+      "zara1",
+      "zara2"
+    ],
+    "obs": 8,
+    "frame_dt": 0.4,
+    "scale": 2.0,
+    "forecast": {
+      "k": 20,
+      "max_windows": null
+    },
+    "tracking": {
+      "min_track_len": 20,
+      "meas_noise": 0.05,
+      "filter_sigma": 0.1,
+      "particles": 500,
+      "init_spread": 0.05,
+      "visible_run": [
+        4,
+        10
+      ],
+      "occluded_run": [
+        3,
+        8
+      ],
+      "calibration_tracks": 300,
+      "grid": [
+        0.0,
+        0.01,
+        0.02,
+        0.05,
+        0.1,
+        0.15,
+        0.2,
+        0.3
+      ],
+      "rmse_tolerance": 0.1,
+      "energy_every": 2
+    },
+    "dt": 0.4
+  },
+  "lock": {
+    "process_noise_model_units": {
+      "eth/CFM": 0.05,
+      "eth/NF": 0.05,
+      "eth/DMMN": 0.05,
+      "eth/DMMN+Gauss": 0.05,
+      "eth/M4": 0.05,
+      "eth/TrajFlow": 0.05,
+      "eth/MoFlow": 0.05,
+      "eth/TCFM": 0.01,
+      "eth/PF+CV": 0.05,
+      "eth/EnFF": 0.1,
+      "hotel/CFM": 0.05,
+      "hotel/NF": 0.05,
+      "hotel/DMMN": 0.1,
+      "hotel/DMMN+Gauss": 0.1,
+      "hotel/M4": 0.1,
+      "hotel/TrajFlow": 0.1,
+      "hotel/MoFlow": 0.1,
+      "hotel/TCFM": 0.05,
+      "hotel/PF+CV": 0.05,
+      "hotel/EnFF": 0.15,
+      "univ/CFM": 0.1,
+      "univ/NF": 0.1,
+      "univ/DMMN": 0.1,
+      "univ/DMMN+Gauss": 0.1,
+      "univ/M4": 0.1,
+      "univ/TrajFlow": 0.1,
+      "univ/MoFlow": 0.1,
+      "univ/TCFM": 0.0,
+      "univ/PF+CV": 0.1,
+      "univ/EnFF": 0.1,
+      "zara1/CFM": 0.05,
+      "zara1/NF": 0.1,
+      "zara1/DMMN": 0.1,
+      "zara1/DMMN+Gauss": 0.1,
+      "zara1/M4": 0.1,
+      "zara1/TrajFlow": 0.1,
+      "zara1/MoFlow": 0.1,
+      "zara1/TCFM": 0.05,
+      "zara1/PF+CV": 0.05,
+      "zara1/EnFF": 0.1,
+      "zara2/CFM": 0.05,
+      "zara2/NF": 0.05,
+      "zara2/DMMN": 0.1,
+      "zara2/DMMN+Gauss": 0.1,
+      "zara2/M4": 0.1,
+      "zara2/TrajFlow": 0.1,
+      "zara2/MoFlow": 0.1,
+      "zara2/TCFM": 0.1,
+      "zara2/PF+CV": 0.05,
+      "zara2/EnFF": 0.1
+    },
+    "scale": 2.0,
+    "rule": "fair_retrain M2 rule on the first calibration_tracks val tracks, seed-0 checkpoints",
+    "checkpoints": {
+      "eth_cfm_s0": "306dcdbfae0323f60ecde1e62c822226b57bd0fc170e99aaf08521d8df26f7bd",
+      "eth_cfm_s1": "ed05d9a3c7d28423b302cbf4831fdb3a45ebd6efe707cae86409416a015a1365",
+      "eth_cfm_s2": "95d9303132a7ee877458f8b5d3dfe1c0ff7b834a868d9e3ffdd661a1dc9846f5",
+      "eth_nf_s0": "25a5bf2c7db01fa27f1978142a8ad5ce1391eb983b18464a810151a00f4694f4",
+      "eth_nf_s1": "2047f5fdb4073879f4f1d7c1799add5cc09dacb72c176fa5e7190d210b84a42e",
+      "eth_nf_s2": "f69446ba6084b1f9145d1f7241dfe00a391a6cdef5cd3509b47d656fc7a00918",
+      "eth_dmmn_s0": "53a1f54ef77f7e5d8cbfee697a6baa15a1ad037628255d84707061394b126e56",
+      "eth_dmmn_s1": "dcabed584ac7cfb18accf30953c6b7d14db578156b7aeb36b5db91f167a12646",
+      "eth_dmmn_s2": "f418d4bdf62df15063c3d99e1d62fe4b4a7a173a6fa042e6a7b4951f8099b0de",
+      "eth_dmmn_gauss_s0": "76025df875b01f5b008f7241f7b6c6b839e1952b8722fcec7632bfd7b9db3d0d",
+      "eth_dmmn_gauss_s1": "7f3c243f8ac65fb29ed64dbdaf6188ec645ce22c2bc2337524d7e6860e7bcbdf",
+      "eth_dmmn_gauss_s2": "f1017a52700c1a2ab8f7ccc74f9cefcc8975d67c2b55c93d08a618efc766c648",
+      "eth_m4_s0": "017e3cd9681b45f7a4325fa3414e5af5ffe89d58b4edd63eb7b3ac9495a9b643",
+      "eth_m4_s1": "dfed7e36519f26317a8e55f1c4fa8e87935b5a73c27a59b36ab73eea1429603e",
+      "eth_m4_s2": "2173c5bab5ce5df5731bfdf2e1cb5c88ed1a6b9b8f035e36bc1cbd90b6aa14e9",
+      "eth_trajflow_s0": "08a1e4b769dc0ad1960442524233ea736269ef725560cd824993b46c0217f0c2",
+      "eth_trajflow_s1": "e938f2e2d9554ad499951f3ac5d044181ccae4c5b56e2dff5ff56de581b8d91f",
+      "eth_trajflow_s2": "797a316b729b9db98bb9e454696a6fa8ae8160f0c8e6b7311f1f24397f82c889",
+      "eth_moflow_s0": "9c51c4ff03fc881e06a7bffdc4c47013a9ae90760664b210cc42b2378e606c4b",
+      "eth_moflow_s1": "d3985fd138d1b99d1962f3cac9fa97060573a81d2c4b8bcaadf4c60e9ee861c3",
+      "eth_moflow_s2": "8d6efc06b8e232f655e1749af6c004e469ef28fd890ce7ecf7ab8b6f3a9d478b",
+      "eth_tcfm_s0": "2d3319fe282b64195010d27adb2d3716a9288e6e4a499ec641ca16aebc10f832",
+      "eth_tcfm_s1": "482f16608700483190c0fad196d81dee2d285851f060b6f1a80932ff49601554",
+      "eth_tcfm_s2": "9e0f2e2c7b168348350ed0d619dda3b3a59f39fa5655ed9d8a59aa451d0ec098",
+      "hotel_cfm_s0": "7bc4eb0cbc2a61123195aba39bf1af6e1a7efba1c1dfea1594d9002d2bd59c5d",
+      "hotel_cfm_s1": "d7215ab3a5c2f454d2c70556407dffed23789fbdc46bcc45e2ee688a816c0caf",
+      "hotel_cfm_s2": "0a9d759f3bae6b2fa9eff607babb521fb47f816d1e2bfaa8c09928a8e58f19db",
+      "hotel_nf_s0": "7846a95e7a8b883ff3456cdf7a772401c51e4c109dca2e3f6be508faa634cc12",
+      "hotel_nf_s1": "c384b3d7f470451f2eb4f3dec98d437668a52233d08a3e53a6c7dd4ab3162cd1",
+      "hotel_nf_s2": "cb5ad586c2a67424135b301026000c375541c39ce42ef091fef139478453d9c2",
+      "hotel_dmmn_s0": "ac684239d7c882c9882d34876055c8f3687bb230cef95a9d07b4cc38502f4287",
+      "hotel_dmmn_s1": "957c82104199dea23a9e48a6f26c428b71254b70e61fd4ffb5255939bdc8e49a",
+      "hotel_dmmn_s2": "bca2d80537d318873af69092f19a2c2d96fd19d42fba1f5d0ef5f464ba5a4256",
+      "hotel_dmmn_gauss_s0": "3c1a06908ee85b9e1218a733c17d8e258cc702beb452c32548213104c01615b1",
+      "hotel_dmmn_gauss_s1": "f029872507a5c3f79d57d0acb81f0d2b63373bddfabe877daa78cadbfd9dc456",
+      "hotel_dmmn_gauss_s2": "6dbe4c697ce7daccf9bca0c9ae438f84e8864cafc853b84ecdf0f810be55420f",
+      "hotel_m4_s0": "1e54fbbfd9a32daee0709a41dd5ae2942529189f76b7c566a670dbed25d3d1c5",
+      "hotel_m4_s1": "997b048fa5ca855667334537ae1143a794e726cd3cd5d23b1eb0b03072167dfc",
+      "hotel_m4_s2": "e8d6bf575f07ea44b7da47886408676c46882a98d4d028eca312f33d874f4ac2",
+      "hotel_trajflow_s0": "4d6ab2d1e65cba83a62dc1511cea0edc6c2035eeffd28dc8709488bc17e75535",
+      "hotel_trajflow_s1": "33dd6baf4e0c735368f981a439de3b3fb0b8939e2e6aad4c43b20be0d727910e",
+      "hotel_trajflow_s2": "59f9f75042875a3c5d4b19fa602b799bda522a22d30c337d200cda67375d2333",
+      "hotel_moflow_s0": "5fc878a0a11858e719b839ba61b2ac477f26a32d7a473a4327ac943fe0ab7090",
+      "hotel_moflow_s1": "05ccaca13e935441cdadf4349b00432a321a1d2f44c5636102751765670436a2",
+      "hotel_moflow_s2": "3878df6bb1cb9d03127eaf57eccfddaf034e5e8ae48586175b43e96ce14b163f",
+      "hotel_tcfm_s0": "cfdaef4d7d67094c47dec0400d63e8f2a4013f33a0abbf3b9b472aec78792429",
+      "hotel_tcfm_s1": "be7c7ca0ef984fc33c310233185f15cee8c062cddb3a20b4432936a2ced8aa37",
+      "hotel_tcfm_s2": "a76b7b0e49a443c95cc1be394a42a995db29cd28e4d5ad0616b34eb98ed7b9e9",
+      "univ_cfm_s0": "e10b5ed01460c5904f2ecc2e12a39a67c1b0f47af67d571ef30100391b864cfd",
+      "univ_cfm_s1": "fb9d2529f0e16a43413eae8c38700d7db9f5b1d4e7bf7559c19b20abdb93d828",
+      "univ_cfm_s2": "7cc1963e24592709018e3daeeee3e60403849542829666fa79218098d0a53cbe",
+      "univ_nf_s0": "30d2e8e2c728be2a28abc4106bd5b9b597930d3353369de1ca769f2bb2334a4d",
+      "univ_nf_s1": "e3e1e5f433881be3fac20b5d3ee3ec7066ec28b5b4c240e92a3a9434ecfac362",
+      "univ_nf_s2": "2b837f08762a57354376c3ec30de80662d26d7282a85e2100d7de696ccea4f41",
+      "univ_dmmn_s0": "4593fae8dbcfb3954403996a2485fe6c9a5d497fd9a2276d93b6436a31fa9804",
+      "univ_dmmn_s1": "febe70d1d0aeb84d1769e069a9389a5fb806b3669d3f43d2c34ef88805f89acd",
+      "univ_dmmn_s2": "f93d63e2afa5ed719e5047587deb8e1e29dbfd5c8419489330465798bac3bf6c",
+      "univ_dmmn_gauss_s0": "ffacdfb228f3b15067f2807877acc7fbb9441628b81db0641b07071ae7a01e07",
+      "univ_dmmn_gauss_s1": "5a6f424a1ed50784e010d269e952bf07746d5e992e9194048b2ee5a527c34fe8",
+      "univ_dmmn_gauss_s2": "922c625f9fe8dc5d5b75ea829b7a16b1e813f717f79decd57307bcf9bff44819",
+      "univ_m4_s0": "0fd25a466dc76edaac090a197d0f258efac78947dae9cccb435115c24ece4b82",
+      "univ_m4_s1": "26d64fe702d0badd8a6b0160c2c0978b0c6cf8a06967f26952adafd44a33b032",
+      "univ_m4_s2": "e549a5f5d14003cdfb680be4276e582fa6d6f262d20592f2d2af07cb57671221",
+      "univ_trajflow_s0": "3d55a45492247697a2e4956363f6c146e53bd8f18f07e06cf621179355b7a972",
+      "univ_trajflow_s1": "fc27abeb64ff686407f1cdaa5aa878b331b62d372972de276da3f7d5b9c72781",
+      "univ_trajflow_s2": "8e28d59b2bad3ba16b013505f9b0b6294750d34fbc45e6ecb01e977e777c1f19",
+      "univ_moflow_s0": "00699cf722640b09bd11c78ad0b02547b600b2dd0200d18578df85eb295de7a1",
+      "univ_moflow_s1": "cf8411ff627330f1da6fce47b074a2c7f1f25062acad6fe889e8d21bf0d62ebf",
+      "univ_moflow_s2": "484bd1e06dcda597035331159b961438c809474e6db9c435d6addd08225f21dd",
+      "univ_tcfm_s0": "73eb92220757b568d0f160704ace31e24c5b07c899136bd1837c07a5fe3e6993",
+      "univ_tcfm_s1": "665dcd18f01d88e0075079a64bfef0bd3363ae97f7596db8d4ddcc33880e8115",
+      "univ_tcfm_s2": "a15ef90eb3266f1d421116014c95cb69759062ee28972208c5e04bc92f20cf6e",
+      "zara1_cfm_s0": "4bab8ae4fd58f99a78d935ad893f47afd86aa912650f9121838fdd62d2646a1f",
+      "zara1_cfm_s1": "16dc79882f27c2d3d16a41efae74d67ca5a2f5640c2f7c41c7facf73cfd0122c",
+      "zara1_cfm_s2": "03ca6b3baaf707acc4fd74d9dd2b99e6f4e057c2fac1e4505d80be0d678d18fc",
+      "zara1_nf_s0": "3c7e1ed68d4532eaab536469d5d21ff2a49bd2edf8766108924a7eddc2e05cee",
+      "zara1_nf_s1": "add7b6af1ecba47e7b56f1bc61644d7e49f7d4287ce2708dca314b33930cbec8",
+      "zara1_nf_s2": "3df2a5145bd9654ad1c1247871b5552a3bf6fba1b0c4e344b05d6974ca543b6a",
+      "zara1_dmmn_s0": "4676192040075a1218aeeaa3da3c0568392fe39a28899b45395045a180a9b193",
+      "zara1_dmmn_s1": "b29ce7c474440a0ad2f433f7ba515b0bea3af3286882681ce86de147673cc7dd",
+      "zara1_dmmn_s2": "45a33cd8e02cf32e0652516f89e14efbcd3a3ecd122e91863ebf7d208205ead9",
+      "zara1_dmmn_gauss_s0": "c51f7427a76f4636ccca04bb0ce4c86943ff376512d225f559f12f43aa839a76",
+      "zara1_dmmn_gauss_s1": "434e825e3855a6b933487309511e16a82e5d145eb0953a67d0c60c2b898113a9",
+      "zara1_dmmn_gauss_s2": "d89375897d14bcd614319bb7e2d120e08c3bba34b3c497dbdffe05bd3a86a7f8",
+      "zara1_m4_s0": "81ccd99479b4bf6618690c920f439f459a067ee8ca93091d53311c1281c83730",
+      "zara1_m4_s1": "bbebad63190a89e87a0e04b099cddc66879fa318996b731ba51e6accac0a9e69",
+      "zara1_m4_s2": "81696522e8876e942affb2052a3177df8260ebdb0c05b86f4585fcd9680a4300",
+      "zara1_trajflow_s0": "83af2ddc8f948b17445c6828a13cbce6f323a67e2db422a5f8dfcab56a9c6283",
+      "zara1_trajflow_s1": "ba70026b70c8f79ad4b053364362f12802f7d0b5e5f2c1272ddc2d5bb1195d11",
+      "zara1_trajflow_s2": "bcdb1a3a4462b21a14db46202bd3f71ac38a6eadc000a7eec3c3bcec87bd85cb",
+      "zara1_moflow_s0": "4554494943abaf00ba32a87329596fd62367188c22e757e1ce3f65d2c9d7933c",
+      "zara1_moflow_s1": "5ae9c236cd2d5a7576067476d8573d28eee4d1ba0516c36eba6fabb0ad637ea8",
+      "zara1_moflow_s2": "f4e3affecb9f4bbbd04563004e0cca221a112a7433a367bfcbcc67928c97170d",
+      "zara1_tcfm_s0": "da6a4ef3a137894cd6fbb1fd3fe9495fb3cf20b755a1828c19df33bbc864efb6",
+      "zara1_tcfm_s1": "88521ef3ece4d68f28c7ebfb5269fb3242f023201273a85f25ce54575e21f63e",
+      "zara1_tcfm_s2": "63adcdd2be308e8ca401777a94edfc12bcd4a94c59f94158e3f77de03ac80e40",
+      "zara2_cfm_s0": "a59af9fd0ad20454f6ce0c99791895cf5b6bfb3a5bd705fef3d9027447f4abb6",
+      "zara2_cfm_s1": "9c23fb083181661316831ecaaa8e83747da812043d1fd57781edeb0dda5570e0",
+      "zara2_cfm_s2": "919a9e22c0dcbc654512624f7f8ea03a8018edca22b38c7fe2106a6aec664c52",
+      "zara2_nf_s0": "e54aef41cc5b584696974ec6dd66aa2d2b01c41da332314201633266f2d0f213",
+      "zara2_nf_s1": "9dc5dfe52eaaec22453bf18dfe8e5e9efc1d5818874d2ed182c37c60d701695f",
+      "zara2_nf_s2": "c4f8e16bac28540201c6479da0c56ec0239f4fd45eb2d10ef4ca92068050b204",
+      "zara2_dmmn_s0": "68e38093fdb8af92e221bc2638b4d1fb66b2207eca51c194bd32fac1559b60c3",
+      "zara2_dmmn_s1": "1c9e062d666e3c1f96828fd2bfa6e92735acc682fc3eb6b7c4d034ec88d8bf7c",
+      "zara2_dmmn_s2": "04cd569f967036019c85c8a4603b006d7f38c64ebc5757ed6be00ab7dcb11f86",
+      "zara2_dmmn_gauss_s0": "7cc7f5c593b23026b4dea5fe2017d6446ae4534a4207e89ed2d43bfb682e4fa4",
+      "zara2_dmmn_gauss_s1": "42b7ccaec2d2593d0f7b07bff0e21356860c2faa98fde1c4a911cbcaebe1f67f",
+      "zara2_dmmn_gauss_s2": "a226341e393cf6294c13760535775eb8b135a722475e46cb5eb9ae29ff11cccb",
+      "zara2_m4_s0": "a5d26fd0a27ae6103e36a17d57f86ef45c32370e1f4ba8cfbccafbe44d721e0a",
+      "zara2_m4_s1": "7840977e4956aaf5ece8d29619f2928b9499b63059a0d21f7863b532791945dc",
+      "zara2_m4_s2": "ee9634709484f7f5cbe1b842476cdcec363d807867b6d73e98fe26db4a0f043e",
+      "zara2_trajflow_s0": "c84fb946c03b4e914dd7f65975a77f347bc21d7964072d1390f025c92b4a3a6b",
+      "zara2_trajflow_s1": "2dea2c85c68aee0f45597bc66b37d30bd04e19fa0a60b3aba5dd637d4edeb745",
+      "zara2_trajflow_s2": "a6c54592b7256d2bf8d354be7a3750a1392fc3219f01e443bb976af31fe5f7ef",
+      "zara2_moflow_s0": "1ec60be43bdeae06706b9434becbf489b7e19dffae5037e9f5271ae7365c8a5a",
+      "zara2_moflow_s1": "9c45d6dd98ece8ea71ab1a9d1e9fdd69bf7df9d1daca9709b39ae6a7122eb536",
+      "zara2_moflow_s2": "36e598a4dea71a0ef3c92e22eed2791bfebe38cc34f1cfbbfbcd305b4bc64c13",
+      "zara2_tcfm_s0": "31f7b4b930d280bfc7a09684c55f5ba8dabd22b6d7c930062b78854e87326d03",
+      "zara2_tcfm_s1": "b4ea6114d4039a07421df6eb3a1654005703210063a814107d5e0646e3eb36ca",
+      "zara2_tcfm_s2": "b03b574cde1de30e0d32e07f32541389dc1c0dfa0feb8a6ddeea5a92da82ba21"
+    },
+    "config_sha256": "653ff11a0593af1032404d88d81d2580617d732e392b229cfff71af1c6381519",
+    "commit": "ebd0038d1fc44cd33492ab61de49c413798c8d0b-dirty",
+    "locked_at": "2026-10-28 14:06:44"
+  },
+  "environment": {
+    "python": "3.10.19",
+    "torch": "2.5.1.post303",
+    "numpy": "2.2.6",
+    "platform": "Linux-5.14.0-687.39.1.el9_8.x86_64-x86_64-with-glibc2.34",
+    "cpu_count": 128,
+    "torch_threads_per_worker": 1,
+    "device": "cpu",
+    "precision": "float32 networks, float64 weights",
+    "slurm_job": "48038807",
+    "host": "c0707a-s15.ufhpc"
+  },
+  "wall_seconds": 6266.1000435352325
+}

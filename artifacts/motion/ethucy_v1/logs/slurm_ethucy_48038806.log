@@ -1,0 +1,336 @@
+job 48038806 on c0603a-s20.ufhpc, stages: train, workers 8, commit ebd0038d1fc44cd33492ab61de49c413798c8d0b
+GPU 0: NVIDIA L4 (UUID: GPU-e2173060-9131-1f17-87dc-358c92fbaa4d)
+
+===== train (2026-10-28 09:47:07) =====
+
+### eth: 30307 train / 5422 val windows; models ['dmmn', 'dmmn_gauss', 'm4', 'cfm', 'nf', 'trajflow', 'tcfm', 'moflow']
+== eth dmmn seed 0: trained, skipping
+== eth dmmn seed 1: trained, skipping
+== eth dmmn seed 2: trained, skipping
+== eth dmmn_gauss seed 0: trained, skipping
+== eth dmmn_gauss seed 1: trained, skipping
+== eth dmmn_gauss seed 2: trained, skipping
+== eth m4 seed 0: trained, skipping
+== eth m4 seed 1: trained, skipping
+== eth m4 seed 2: trained, skipping
+== eth cfm seed 0: trained, skipping
+== eth cfm seed 1: trained, skipping
+== eth cfm seed 2: trained, skipping
+== eth nf seed 0: trained, skipping
+== eth nf seed 1: trained, skipping
+== eth nf seed 2: trained, skipping
+== eth trajflow seed 0: trained, skipping
+== eth trajflow seed 1: trained, skipping
+== eth trajflow seed 2: trained, skipping
+== eth tcfm seed 0: trained, skipping
+== eth tcfm seed 1: trained, skipping
+== eth tcfm seed 2: trained, skipping
+== eth moflow seed 0: trained, skipping
+== eth moflow seed 1: trained, skipping
+== eth moflow seed 2: trained, skipping
+  forecast eth    dmmn       s0: minADE 1.337  minFDE 2.756
+  forecast eth    dmmn       s1: minADE 1.243  minFDE 2.552
+  forecast eth    dmmn       s2: minADE 1.115  minFDE 2.236
+  forecast eth    dmmn_gauss s0: minADE 0.859  minFDE 1.570
+  forecast eth    dmmn_gauss s1: minADE 0.841  minFDE 1.553
+  forecast eth    dmmn_gauss s2: minADE 0.773  minFDE 1.409
+  forecast eth    m4         s0: minADE 0.739  minFDE 1.245
+  forecast eth    m4         s1: minADE 0.781  minFDE 1.356
+  forecast eth    m4         s2: minADE 0.789  minFDE 1.427
+[CFMMotionModel] loaded ← artifacts/motion/ethucy_v1/models/eth_cfm_s0.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.4)
+  forecast eth    cfm        s0: minADE 0.770  minFDE 1.417
+[CFMMotionModel] loaded ← artifacts/motion/ethucy_v1/models/eth_cfm_s1.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.4)
+  forecast eth    cfm        s1: minADE 0.780  minFDE 1.458
+[CFMMotionModel] loaded ← artifacts/motion/ethucy_v1/models/eth_cfm_s2.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.4)
+  forecast eth    cfm        s2: minADE 0.773  minFDE 1.418
+[NFMotionModel] loaded ← artifacts/motion/ethucy_v1/models/eth_nf_s0.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.4)
+  forecast eth    nf         s0: minADE 0.614  minFDE 1.009
+[NFMotionModel] loaded ← artifacts/motion/ethucy_v1/models/eth_nf_s1.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.4)
+  forecast eth    nf         s1: minADE 0.675  minFDE 1.188
+[NFMotionModel] loaded ← artifacts/motion/ethucy_v1/models/eth_nf_s2.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.4)
+  forecast eth    nf         s2: minADE 0.649  minFDE 1.092
+[TrajFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/eth_trajflow_s0.pth  (160,696 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 20, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 32})
+  forecast eth    trajflow   s0: minADE 0.674  minFDE 1.162
+[TrajFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/eth_trajflow_s1.pth  (160,696 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 20, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 32})
+  forecast eth    trajflow   s1: minADE 0.707  minFDE 1.166
+[TrajFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/eth_trajflow_s2.pth  (160,696 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 20, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 32})
+  forecast eth    trajflow   s2: minADE 0.667  minFDE 1.087
+[TCFMMotionModel] loaded <- artifacts/motion/ethucy_v1/models/eth_tcfm_s0.pth  (53,810 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast eth    tcfm       s0: minADE 1.103  minFDE 1.391
+[TCFMMotionModel] loaded <- artifacts/motion/ethucy_v1/models/eth_tcfm_s1.pth  (53,810 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast eth    tcfm       s1: minADE 1.042  minFDE 1.295
+[TCFMMotionModel] loaded <- artifacts/motion/ethucy_v1/models/eth_tcfm_s2.pth  (53,810 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast eth    tcfm       s2: minADE 1.153  minFDE 1.632
+[MoFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/eth_moflow_s0.pth  (149,912 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast eth    moflow     s0: minADE 0.637  minFDE 0.958
+[MoFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/eth_moflow_s1.pth  (149,912 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast eth    moflow     s1: minADE 0.640  minFDE 0.964
+[MoFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/eth_moflow_s2.pth  (149,912 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast eth    moflow     s2: minADE 0.647  minFDE 0.969
+  forecast eth    PF+CV      s0: minADE 1.073  minFDE 2.278
+
+### hotel: 29676 train / 5203 val windows; models ['dmmn', 'dmmn_gauss', 'm4', 'cfm', 'nf', 'trajflow', 'tcfm', 'moflow']
+== hotel dmmn seed 0: trained, skipping
+== hotel dmmn seed 1: trained, skipping
+== hotel dmmn seed 2: trained, skipping
+== hotel dmmn_gauss seed 0: trained, skipping
+== hotel dmmn_gauss seed 1: trained, skipping
+== hotel dmmn_gauss seed 2: trained, skipping
+== hotel m4 seed 0: trained, skipping
+== hotel m4 seed 1: trained, skipping
+== hotel m4 seed 2: trained, skipping
+== hotel cfm seed 0: trained, skipping
+== hotel cfm seed 1: trained, skipping
+== hotel cfm seed 2: trained, skipping
+== hotel nf seed 0: trained, skipping
+== hotel nf seed 1: trained, skipping
+== hotel nf seed 2: trained, skipping
+== hotel trajflow seed 0: trained, skipping
+== hotel trajflow seed 1: trained, skipping
+== hotel trajflow seed 2: trained, skipping
+== hotel tcfm seed 0: trained, skipping
+== hotel tcfm seed 1: trained, skipping
+== hotel tcfm seed 2: trained, skipping
+== hotel moflow seed 0: trained, skipping
+== hotel moflow seed 1: trained, skipping
+== hotel moflow seed 2: trained, skipping
+  forecast hotel  dmmn       s0: minADE 0.718  minFDE 1.651
+  forecast hotel  dmmn       s1: minADE 0.547  minFDE 1.183
+  forecast hotel  dmmn       s2: minADE 0.811  minFDE 1.888
+  forecast hotel  dmmn_gauss s0: minADE 0.379  minFDE 0.737
+  forecast hotel  dmmn_gauss s1: minADE 0.346  minFDE 0.645
+  forecast hotel  dmmn_gauss s2: minADE 0.429  minFDE 0.854
+  forecast hotel  m4         s0: minADE 0.287  minFDE 0.532
+  forecast hotel  m4         s1: minADE 0.305  minFDE 0.556
+  forecast hotel  m4         s2: minADE 0.301  minFDE 0.542
+[CFMMotionModel] loaded ← artifacts/motion/ethucy_v1/models/hotel_cfm_s0.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.4)
+  forecast hotel  cfm        s0: minADE 0.246  minFDE 0.454
+[CFMMotionModel] loaded ← artifacts/motion/ethucy_v1/models/hotel_cfm_s1.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.4)
+  forecast hotel  cfm        s1: minADE 0.222  minFDE 0.393
+[CFMMotionModel] loaded ← artifacts/motion/ethucy_v1/models/hotel_cfm_s2.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.4)
+  forecast hotel  cfm        s2: minADE 0.245  minFDE 0.447
+[NFMotionModel] loaded ← artifacts/motion/ethucy_v1/models/hotel_nf_s0.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.4)
+  forecast hotel  nf         s0: minADE 0.343  minFDE 0.701
+[NFMotionModel] loaded ← artifacts/motion/ethucy_v1/models/hotel_nf_s1.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.4)
+  forecast hotel  nf         s1: minADE 0.235  minFDE 0.414
+[NFMotionModel] loaded ← artifacts/motion/ethucy_v1/models/hotel_nf_s2.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.4)
+  forecast hotel  nf         s2: minADE 0.314  minFDE 0.652
+[TrajFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/hotel_trajflow_s0.pth  (160,696 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 20, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 32})
+  forecast hotel  trajflow   s0: minADE 0.332  minFDE 0.699
+[TrajFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/hotel_trajflow_s1.pth  (160,696 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 20, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 32})
+  forecast hotel  trajflow   s1: minADE 0.340  minFDE 0.673
+[TrajFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/hotel_trajflow_s2.pth  (160,696 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 20, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 32})
+  forecast hotel  trajflow   s2: minADE 0.325  minFDE 0.689
+[TCFMMotionModel] loaded <- artifacts/motion/ethucy_v1/models/hotel_tcfm_s0.pth  (53,810 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast hotel  tcfm       s0: minADE 0.782  minFDE 1.174
+[TCFMMotionModel] loaded <- artifacts/motion/ethucy_v1/models/hotel_tcfm_s1.pth  (53,810 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast hotel  tcfm       s1: minADE 0.735  minFDE 1.119
+[TCFMMotionModel] loaded <- artifacts/motion/ethucy_v1/models/hotel_tcfm_s2.pth  (53,810 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast hotel  tcfm       s2: minADE 0.968  minFDE 1.539
+[MoFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/hotel_moflow_s0.pth  (149,912 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast hotel  moflow     s0: minADE 0.282  minFDE 0.527
+[MoFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/hotel_moflow_s1.pth  (149,912 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast hotel  moflow     s1: minADE 0.301  minFDE 0.563
+[MoFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/hotel_moflow_s2.pth  (149,912 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast hotel  moflow     s2: minADE 0.313  minFDE 0.569
+  forecast hotel  PF+CV      s0: minADE 0.319  minFDE 0.614
+
+### univ: 9874 train / 2800 val windows; models ['dmmn', 'dmmn_gauss', 'm4', 'cfm', 'nf', 'trajflow', 'tcfm', 'moflow']
+== univ dmmn seed 0: trained, skipping
+== univ dmmn seed 1: trained, skipping
+== univ dmmn seed 2: trained, skipping
+== univ dmmn_gauss seed 0: trained, skipping
+== univ dmmn_gauss seed 1: trained, skipping
+== univ dmmn_gauss seed 2: trained, skipping
+== univ m4 seed 0: trained, skipping
+== univ m4 seed 1: trained, skipping
+== univ m4 seed 2: trained, skipping
+== univ cfm seed 0: trained, skipping
+== univ cfm seed 1: trained, skipping
+== univ cfm seed 2: trained, skipping
+== univ nf seed 0: trained, skipping
+== univ nf seed 1: trained, skipping
+== univ nf seed 2: trained, skipping
+== univ trajflow seed 0: trained, skipping
+== univ trajflow seed 1: trained, skipping
+== univ trajflow seed 2: trained, skipping
+== univ tcfm seed 0: trained, skipping
+== univ tcfm seed 1: trained, skipping
+== univ tcfm seed 2: trained, skipping
+== univ moflow seed 0: trained, skipping
+== univ moflow seed 1: trained, skipping
+== univ moflow seed 2: trained, skipping
+  forecast univ   dmmn       s0: minADE 0.664  minFDE 1.477
+  forecast univ   dmmn       s1: minADE 0.644  minFDE 1.439
+  forecast univ   dmmn       s2: minADE 0.617  minFDE 1.360
+  forecast univ   dmmn_gauss s0: minADE 0.340  minFDE 0.649
+  forecast univ   dmmn_gauss s1: minADE 0.340  minFDE 0.644
+  forecast univ   dmmn_gauss s2: minADE 0.322  minFDE 0.602
+  forecast univ   m4         s0: minADE 0.335  minFDE 0.652
+  forecast univ   m4         s1: minADE 0.330  minFDE 0.643
+  forecast univ   m4         s2: minADE 0.318  minFDE 0.607
+[CFMMotionModel] loaded ← artifacts/motion/ethucy_v1/models/univ_cfm_s0.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.4)
+  forecast univ   cfm        s0: minADE 0.351  minFDE 0.711
+[CFMMotionModel] loaded ← artifacts/motion/ethucy_v1/models/univ_cfm_s1.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.4)
+  forecast univ   cfm        s1: minADE 0.355  minFDE 0.729
+[CFMMotionModel] loaded ← artifacts/motion/ethucy_v1/models/univ_cfm_s2.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.4)
+  forecast univ   cfm        s2: minADE 0.325  minFDE 0.632
+[NFMotionModel] loaded ← artifacts/motion/ethucy_v1/models/univ_nf_s0.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.4)
+  forecast univ   nf         s0: minADE 0.427  minFDE 0.862
+[NFMotionModel] loaded ← artifacts/motion/ethucy_v1/models/univ_nf_s1.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.4)
+  forecast univ   nf         s1: minADE 0.340  minFDE 0.652
+[NFMotionModel] loaded ← artifacts/motion/ethucy_v1/models/univ_nf_s2.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.4)
+  forecast univ   nf         s2: minADE 0.314  minFDE 0.576
+[TrajFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/univ_trajflow_s0.pth  (160,696 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 20, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 32})
+  forecast univ   trajflow   s0: minADE 0.341  minFDE 0.654
+[TrajFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/univ_trajflow_s1.pth  (160,696 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 20, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 32})
+  forecast univ   trajflow   s1: minADE 0.329  minFDE 0.635
+[TrajFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/univ_trajflow_s2.pth  (160,696 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 20, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 32})
+  forecast univ   trajflow   s2: minADE 0.500  minFDE 0.999
+[TCFMMotionModel] loaded <- artifacts/motion/ethucy_v1/models/univ_tcfm_s0.pth  (53,810 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast univ   tcfm       s0: minADE 0.940  minFDE 1.082
+[TCFMMotionModel] loaded <- artifacts/motion/ethucy_v1/models/univ_tcfm_s1.pth  (53,810 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast univ   tcfm       s1: minADE 0.950  minFDE 1.204
+[TCFMMotionModel] loaded <- artifacts/motion/ethucy_v1/models/univ_tcfm_s2.pth  (53,810 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast univ   tcfm       s2: minADE 0.673  minFDE 0.893
+[MoFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/univ_moflow_s0.pth  (149,912 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast univ   moflow     s0: minADE 0.287  minFDE 0.520
+[MoFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/univ_moflow_s1.pth  (149,912 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast univ   moflow     s1: minADE 0.295  minFDE 0.539
+[MoFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/univ_moflow_s2.pth  (149,912 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast univ   moflow     s2: minADE 0.294  minFDE 0.534
+  forecast univ   PF+CV      s0: minADE 0.524  minFDE 1.165
+
+### zara1: 28577 train / 5184 val windows; models ['dmmn', 'dmmn_gauss', 'm4', 'cfm', 'nf', 'trajflow', 'tcfm', 'moflow']
+== zara1 dmmn seed 0: trained, skipping
+== zara1 dmmn seed 1: trained, skipping
+== zara1 dmmn seed 2: trained, skipping
+== zara1 dmmn_gauss seed 0: trained, skipping
+== zara1 dmmn_gauss seed 1: trained, skipping
+== zara1 dmmn_gauss seed 2: trained, skipping
+== zara1 m4 seed 0: trained, skipping
+== zara1 m4 seed 1: trained, skipping
+== zara1 m4 seed 2: trained, skipping
+== zara1 cfm seed 0: trained, skipping
+== zara1 cfm seed 1: trained, skipping
+== zara1 cfm seed 2: trained, skipping
+== zara1 nf seed 0: trained, skipping
+== zara1 nf seed 1: trained, skipping
+== zara1 nf seed 2: trained, skipping
+== zara1 trajflow seed 0: trained, skipping
+== zara1 trajflow seed 1: trained, skipping
+== zara1 trajflow seed 2: trained, skipping
+== zara1 tcfm seed 0: trained, skipping
+== zara1 tcfm seed 1: trained, skipping
+== zara1 tcfm seed 2: trained, skipping
+== zara1 moflow seed 0: trained, skipping
+== zara1 moflow seed 1: trained, skipping
+== zara1 moflow seed 2: trained, skipping
+  forecast zara1  dmmn       s0: minADE 0.679  minFDE 1.647
+  forecast zara1  dmmn       s1: minADE 0.607  minFDE 1.417
+  forecast zara1  dmmn       s2: minADE 0.613  minFDE 1.480
+  forecast zara1  dmmn_gauss s0: minADE 0.293  minFDE 0.539
+  forecast zara1  dmmn_gauss s1: minADE 0.293  minFDE 0.556
+  forecast zara1  dmmn_gauss s2: minADE 0.267  minFDE 0.476
+  forecast zara1  m4         s0: minADE 0.221  minFDE 0.389
+  forecast zara1  m4         s1: minADE 0.219  minFDE 0.384
+  forecast zara1  m4         s2: minADE 0.218  minFDE 0.385
+[CFMMotionModel] loaded ← artifacts/motion/ethucy_v1/models/zara1_cfm_s0.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.4)
+  forecast zara1  cfm        s0: minADE 0.265  minFDE 0.517
+[CFMMotionModel] loaded ← artifacts/motion/ethucy_v1/models/zara1_cfm_s1.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.4)
+  forecast zara1  cfm        s1: minADE 0.281  minFDE 0.574
+[CFMMotionModel] loaded ← artifacts/motion/ethucy_v1/models/zara1_cfm_s2.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.4)
+  forecast zara1  cfm        s2: minADE 0.265  minFDE 0.533
+[NFMotionModel] loaded ← artifacts/motion/ethucy_v1/models/zara1_nf_s0.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.4)
+  forecast zara1  nf         s0: minADE 0.241  minFDE 0.395
+[NFMotionModel] loaded ← artifacts/motion/ethucy_v1/models/zara1_nf_s1.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.4)
+  forecast zara1  nf         s1: minADE 0.257  minFDE 0.448
+[NFMotionModel] loaded ← artifacts/motion/ethucy_v1/models/zara1_nf_s2.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.4)
+  forecast zara1  nf         s2: minADE 0.339  minFDE 0.658
+[TrajFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara1_trajflow_s0.pth  (160,696 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 20, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 32})
+  forecast zara1  trajflow   s0: minADE 0.225  minFDE 0.399
+[TrajFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara1_trajflow_s1.pth  (160,696 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 20, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 32})
+  forecast zara1  trajflow   s1: minADE 0.226  minFDE 0.412
+[TrajFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara1_trajflow_s2.pth  (160,696 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 20, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 32})
+  forecast zara1  trajflow   s2: minADE 0.214  minFDE 0.388
+[TCFMMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara1_tcfm_s0.pth  (53,810 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast zara1  tcfm       s0: minADE 0.593  minFDE 0.791
+[TCFMMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara1_tcfm_s1.pth  (53,810 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast zara1  tcfm       s1: minADE 0.951  minFDE 1.365
+[TCFMMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara1_tcfm_s2.pth  (53,810 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast zara1  tcfm       s2: minADE 0.764  minFDE 1.098
+[MoFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara1_moflow_s0.pth  (149,912 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast zara1  moflow     s0: minADE 0.190  minFDE 0.322
+[MoFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara1_moflow_s1.pth  (149,912 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast zara1  moflow     s1: minADE 0.191  minFDE 0.316
+[MoFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara1_moflow_s2.pth  (149,912 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast zara1  moflow     s2: minADE 0.195  minFDE 0.329
+  forecast zara1  PF+CV      s0: minADE 0.427  minFDE 0.952
+
+### zara2: 26076 train / 4262 val windows; models ['dmmn', 'dmmn_gauss', 'm4', 'cfm', 'nf', 'trajflow', 'tcfm', 'moflow']
+== zara2 dmmn seed 0: trained, skipping
+== zara2 dmmn seed 1: trained, skipping
+== zara2 dmmn seed 2: trained, skipping
+== zara2 dmmn_gauss seed 0: trained, skipping
+== zara2 dmmn_gauss seed 1: trained, skipping
+== zara2 dmmn_gauss seed 2: trained, skipping
+== zara2 m4 seed 0: trained, skipping
+== zara2 m4 seed 1: trained, skipping
+== zara2 m4 seed 2: trained, skipping
+== zara2 cfm seed 0: trained, skipping
+== zara2 cfm seed 1: trained, skipping
+== zara2 cfm seed 2: trained, skipping
+== zara2 nf seed 0: trained, skipping
+== zara2 nf seed 1: trained, skipping
+== zara2 nf seed 2: trained, skipping
+== zara2 trajflow seed 0: trained, skipping
+== zara2 trajflow seed 1: trained, skipping
+== zara2 trajflow seed 2: trained, skipping
+== zara2 tcfm seed 0: trained, skipping
+== zara2 tcfm seed 1: trained, skipping
+== zara2 tcfm seed 2: trained, skipping
+== zara2 moflow seed 0: trained, skipping
+== zara2 moflow seed 1: trained, skipping
+== zara2 moflow seed 2: trained, skipping
+  forecast zara2  dmmn       s0: minADE 0.573  minFDE 1.378
+  forecast zara2  dmmn       s1: minADE 0.430  minFDE 0.992
+  forecast zara2  dmmn       s2: minADE 0.418  minFDE 0.980
+  forecast zara2  dmmn_gauss s0: minADE 0.268  minFDE 0.479
+  forecast zara2  dmmn_gauss s1: minADE 0.259  minFDE 0.453
+  forecast zara2  dmmn_gauss s2: minADE 0.266  minFDE 0.472
+  forecast zara2  m4         s0: minADE 0.177  minFDE 0.324
+  forecast zara2  m4         s1: minADE 0.181  minFDE 0.332
+  forecast zara2  m4         s2: minADE 0.183  minFDE 0.336
+[CFMMotionModel] loaded ← artifacts/motion/ethucy_v1/models/zara2_cfm_s0.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.4)
+  forecast zara2  cfm        s0: minADE 0.208  minFDE 0.405
+[CFMMotionModel] loaded ← artifacts/motion/ethucy_v1/models/zara2_cfm_s1.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.4)
+  forecast zara2  cfm        s1: minADE 0.225  minFDE 0.459
+[CFMMotionModel] loaded ← artifacts/motion/ethucy_v1/models/zara2_cfm_s2.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.4)
+  forecast zara2  cfm        s2: minADE 0.283  minFDE 0.605
+[NFMotionModel] loaded ← artifacts/motion/ethucy_v1/models/zara2_nf_s0.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.4)
+  forecast zara2  nf         s0: minADE 0.204  minFDE 0.383
+[NFMotionModel] loaded ← artifacts/motion/ethucy_v1/models/zara2_nf_s1.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.4)
+  forecast zara2  nf         s1: minADE 0.196  minFDE 0.354
+[NFMotionModel] loaded ← artifacts/motion/ethucy_v1/models/zara2_nf_s2.pth  (input_dim=2, block_size=8, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.4)
+  forecast zara2  nf         s2: minADE 0.187  minFDE 0.340
+[TrajFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara2_trajflow_s0.pth  (160,696 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 20, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 32})
+  forecast zara2  trajflow   s0: minADE 0.154  minFDE 0.281
+[TrajFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara2_trajflow_s1.pth  (160,696 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 20, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 32})
+  forecast zara2  trajflow   s1: minADE 0.178  minFDE 0.357
+[TrajFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara2_trajflow_s2.pth  (160,696 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 20, "nms_dist": 0.05, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 32})
+  forecast zara2  trajflow   s2: minADE 0.160  minFDE 0.298
+[TCFMMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara2_tcfm_s0.pth  (53,810 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast zara2  tcfm       s0: minADE 0.521  minFDE 0.651
+[TCFMMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara2_tcfm_s1.pth  (53,810 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast zara2  tcfm       s1: minADE 0.938  minFDE 1.313
+[TCFMMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara2_tcfm_s2.pth  (53,810 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast zara2  tcfm       s2: minADE 0.941  minFDE 1.390
+[MoFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara2_moflow_s0.pth  (149,912 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast zara2  moflow     s0: minADE 0.152  minFDE 0.258
+[MoFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara2_moflow_s1.pth  (149,912 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast zara2  moflow     s1: minADE 0.150  minFDE 0.259
+[MoFlowMotionModel] loaded <- artifacts/motion/ethucy_v1/models/zara2_moflow_s2.pth  (149,912 params, config={"horizon": 12, "block_size": 8, "dt": 0.4, "num_query": 20, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast zara2  moflow     s2: minADE 0.153  minFDE 0.261
+  forecast zara2  PF+CV      s0: minADE 0.324  minFDE 0.724
+done
+all stages done 2026-10-28 10:01:08

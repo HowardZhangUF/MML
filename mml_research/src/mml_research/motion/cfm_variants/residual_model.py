@@ -31,7 +31,7 @@ class DMMNMean:
 
     def __init__(self, checkpoint: str, dt: float):
         self.dmmn = OfflineDMMNMotionModel(checkpoint, dt=dt)
-        self.block_size, self.dt = 5, dt
+        self.block_size, self.dt = self.dmmn.block_size, dt
 
     def __call__(self, c_flat: np.ndarray, chunk: int = 65536) -> np.ndarray:
         c_flat = np.asarray(c_flat, np.float32)
@@ -43,7 +43,7 @@ class ResidualCFMMotionModel:
     def __init__(self, dmmn: DMMNMean, dt: float = 0.033, N_FE: int = 10, scale_floor: float = 0.05,
                  arch: dict | None = None):
         self.dmmn = dmmn
-        self.block_size, self.dt, self.N_FE = 5, float(dt), int(N_FE)
+        self.block_size, self.dt, self.N_FE = dmmn.block_size, float(dt), int(N_FE)
         self.scale_floor = float(scale_floor)
         self.arch = dict(arch or {})
         self.net = ConditionalCFMNet(2, self.block_size, 2, **self.arch).to(device)
@@ -101,7 +101,7 @@ class ResidualCFMMotionModel:
 class GaussianResidualMotionModel:
     def __init__(self, dmmn: DMMNMean, b=None, cov=None, dt: float = 0.033):
         self.dmmn = dmmn
-        self.block_size, self.dt = 5, float(dt)
+        self.block_size, self.dt = dmmn.block_size, float(dt)
         self.b = np.zeros(2, np.float32) if b is None else np.asarray(b, np.float32)
         self.cov = np.eye(2, dtype=np.float32) if cov is None else np.asarray(cov, np.float32)
         self.L = np.linalg.cholesky(self.cov).astype(np.float32)

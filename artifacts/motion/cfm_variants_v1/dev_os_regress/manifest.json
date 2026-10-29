@@ -1,0 +1,172 @@
+{
+  "commit": "ebd0038d1fc44cd33492ab61de49c413798c8d0b-dirty",
+  "command": "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/cfm_variants/run.py --split dev --n_runs 10 --tag os_regress --methods PF+CV PF+TrajFlow PF+MoFlow PF+TCFM EnFF DiffPF --models-dir artifacts/motion/exit_benchmark/models --out-dir artifacts/motion/cfm_variants_v1 --workers 48",
+  "config": {
+    "experiment": "cfm_four_variants_v1",
+    "filter": {
+      "particles": 500,
+      "history_steps": 5,
+      "dt_seconds": 0.033,
+      "sensor_noise_std": 0.02,
+      "measurement_sigma": 0.05,
+      "init_spread": 0.05,
+      "resampler": "systematic",
+      "ess_fraction": 0.5,
+      "baseline_process_noise": 0.045,
+      "nf_process_noise": 0.032
+    },
+    "cfm": {
+      "checkpoint": "cfm_motion_model_anchor1.0.pth",
+      "ode_solver": "euler",
+      "ode_steps": 10,
+      "source_std": 1.0,
+      "max_speed": 1.5,
+      "adaptive_gain": 0.05,
+      "sigma_max": 2.5
+    },
+    "dmmn_checkpoint": "dmmn_scratch_transformer.pth",
+    "nf_checkpoint": "nf_motion_model.pth",
+    "prepare": {
+      "rollout_trackers": [
+        [
+          "cfm",
+          0.045
+        ],
+        [
+          "dmmn",
+          0.045
+        ],
+        [
+          "cfm",
+          0.01
+        ],
+        [
+          "dmmn",
+          0.01
+        ]
+      ],
+      "every": 2,
+      "per_step": 16
+    },
+    "training": {
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "batch": 2048,
+      "steps": 20000,
+      "lr": 0.0005,
+      "arch": {
+        "n_embed": 32,
+        "n_head": 8,
+        "n_layer": 2,
+        "vel_hidden": 64,
+        "dropout": 0.1
+      }
+    },
+    "m1": {
+      "variants": {
+        "m1_control": [],
+        "m1_mask": [
+          "mask"
+        ],
+        "m1_time": [
+          "mask",
+          "time"
+        ],
+        "m1_full": [
+          "mask",
+          "time",
+          "cov"
+        ]
+      },
+      "target": "true_physical_velocity"
+    },
+    "m2": {
+      "grid": [
+        0.0,
+        0.005,
+        0.01,
+        0.02,
+        0.032,
+        0.045,
+        0.07
+      ],
+      "selection_split": "val",
+      "rmse_tolerance": 0.1
+    },
+    "m3": {
+      "proposal_family": "gaussian_full_cov",
+      "scale_floor": 0.05,
+      "hidden": 128,
+      "train_process_noise": 0.045
+    },
+    "m4": {
+      "residual_scale_floor": 0.05,
+      "residual_source": "standard_normal"
+    },
+    "evaluation": {
+      "energy_score_every": 10,
+      "recovery_threshold": 0.3,
+      "recovery_consecutive": 5,
+      "recovery_horizon": 100,
+      "exit_nll_floor": 0.001,
+      "bootstrap_resamples": 2000,
+      "clouds_saved_per_method": 20
+    }
+  },
+  "config_sha256": "3c20df31e486bc88acb1487e31c0bb679f0f920e504c7aae56aea963d2eed463",
+  "checkpoints": {
+    "trajflow": "artifacts/motion/exit_benchmark/models/trajflow_motion_model.pth",
+    "moflow": "artifacts/motion/exit_benchmark/models/moflow_motion_model.pth",
+    "tcfm": "artifacts/motion/exit_benchmark/models/tcfm_motion_model.pth",
+    "diffpf": "artifacts/motion/exit_benchmark/models/diffpf_tracker.pth"
+  },
+  "checkpoint_sha256": {
+    "trajflow": "8672af24f7e59929f49496dbac19591a485e13924f8c329825dd46371b100990",
+    "moflow": "1689ac7d29aeea819aa61f68509d8383912de73b120ee55003640eadee2e2907",
+    "tcfm": "c20c9d417b92054bacc4cef066633949cdb46e32eeca9652a6549a1706748d0b",
+    "diffpf": "ccad0fc90c75c5c1f33ff231ebb00cb7179502bc038db58750a7feeb01a0e3fb"
+  },
+  "split": "dev",
+  "runs": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "n_steps": 2000,
+  "seed_streams": {
+    "trajectory": "1000+run",
+    "measurement": "5000+run",
+    "filter_global_np_and_torch": "9000+run"
+  },
+  "process_noise": {
+    "PF+CV": 0.005,
+    "PF+TrajFlow": 0.07,
+    "PF+MoFlow": 0.02,
+    "PF+TCFM": 0.07,
+    "EnFF": 0.005,
+    "DiffPF": 0.0
+  },
+  "environment": {
+    "python": "3.10.19",
+    "torch": "2.5.1.post303",
+    "numpy": "2.2.6",
+    "platform": "Linux-5.14.0-687.46.1.el9_8.x86_64-x86_64-with-glibc2.34",
+    "cpu_count": 128,
+    "torch_threads_per_worker": 1,
+    "device": "cpu",
+    "precision": "float32 networks, float64 weights",
+    "slurm_job": "47896236",
+    "host": "c0702a-s5.ufhpc"
+  },
+  "wall_seconds": 1793.0212128162384
+}

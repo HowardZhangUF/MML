@@ -1,0 +1,547 @@
+job 48038804 on c0602a-s4.ufhpc, stages: train, workers 8, commit ebd0038d1fc44cd33492ab61de49c413798c8d0b
+GPU 0: NVIDIA L4 (UUID: GPU-4747b02c-db80-67a7-a429-2ac91cfc298c)
+
+===== train (2026-10-28 05:31:20) =====
+
+### zara1: 28577 train / 5184 val windows; models ['dmmn', 'dmmn_gauss', 'm4', 'cfm', 'nf', 'trajflow', 'tcfm', 'moflow']
+
+== zara1 dmmn seed 0
+Transformer input_dim:  2
+Transformer block_size:  8
+    step    500  train   0.00938  holdout   0.00376  best   0.00376      3s
+    step   1000  train   0.00396  holdout   0.00380  best   0.00376      6s
+    step   1500  train   0.00355  holdout   0.00313  best   0.00313      9s
+    step   2000  train   0.00332  holdout   0.00326  best   0.00313     12s
+    step   2500  train   0.00314  holdout   0.00283  best   0.00283     14s
+    step   3000  train   0.00300  holdout   0.00276  best   0.00276     17s
+    step   3500  train   0.00291  holdout   0.00260  best   0.00260     20s
+    step   4000  train   0.00286  holdout   0.00269  best   0.00260     22s
+    step   4500  train   0.00284  holdout   0.00275  best   0.00260     25s
+    step   5000  train   0.00284  holdout   0.00267  best   0.00260     28s
+    step   5500  train   0.00274  holdout   0.00263  best   0.00260     31s
+    step   6000  train   0.00279  holdout   0.00246  best   0.00246     33s
+    step   6500  train   0.00271  holdout   0.00258  best   0.00246     36s
+    step   7000  train   0.00269  holdout   0.00299  best   0.00246     39s
+    step   7500  train   0.00268  holdout   0.00257  best   0.00246     41s
+    step   8000  train   0.00267  holdout   0.00251  best   0.00246     44s
+    step   8500  train   0.00267  holdout   0.00243  best   0.00243     47s
+    step   9000  train   0.00264  holdout   0.00267  best   0.00243     50s
+    step   9500  train   0.00266  holdout   0.00262  best   0.00243     52s
+    step  10000  train   0.00264  holdout   0.00247  best   0.00243     55s
+
+== zara1 dmmn seed 1
+Transformer input_dim:  2
+Transformer block_size:  8
+    step    500  train   0.00835  holdout   0.00382  best   0.00382      3s
+    step   1000  train   0.00372  holdout   0.00338  best   0.00338      5s
+    step   1500  train   0.00343  holdout   0.00289  best   0.00289      8s
+    step   2000  train   0.00324  holdout   0.00294  best   0.00289     11s
+    step   2500  train   0.00307  holdout   0.00273  best   0.00273     14s
+    step   3000  train   0.00295  holdout   0.00272  best   0.00272     16s
+    step   3500  train   0.00290  holdout   0.00268  best   0.00268     20s
+    step   4000  train   0.00290  holdout   0.00268  best   0.00268     23s
+    step   4500  train   0.00288  holdout   0.00292  best   0.00268     27s
+    step   5000  train   0.00278  holdout   0.00252  best   0.00252     30s
+    step   5500  train   0.00284  holdout   0.00270  best   0.00252     33s
+    step   6000  train   0.00268  holdout   0.00255  best   0.00252     36s
+    step   6500  train   0.00272  holdout   0.00275  best   0.00252     38s
+    step   7000  train   0.00269  holdout   0.00254  best   0.00252     41s
+    step   7500  train   0.00268  holdout   0.00285  best   0.00252     44s
+    step   8000  train   0.00265  holdout   0.00262  best   0.00252     47s
+    step   8500  train   0.00262  holdout   0.00281  best   0.00252     49s
+    step   9000  train   0.00257  holdout   0.00261  best   0.00252     52s
+    step   9500  train   0.00260  holdout   0.00249  best   0.00249     55s
+    step  10000  train   0.00261  holdout   0.00259  best   0.00249     58s
+
+== zara1 dmmn seed 2
+Transformer input_dim:  2
+Transformer block_size:  8
+    step    500  train   0.00901  holdout   0.00369  best   0.00369      3s
+    step   1000  train   0.00385  holdout   0.00348  best   0.00348      6s
+    step   1500  train   0.00342  holdout   0.00301  best   0.00301      8s
+    step   2000  train   0.00319  holdout   0.00294  best   0.00294     11s
+    step   2500  train   0.00309  holdout   0.00321  best   0.00294     14s
+    step   3000  train   0.00303  holdout   0.00287  best   0.00287     17s
+    step   3500  train   0.00292  holdout   0.00317  best   0.00287     19s
+    step   4000  train   0.00283  holdout   0.00314  best   0.00287     22s
+    step   4500  train   0.00285  holdout   0.00259  best   0.00259     25s
+    step   5000  train   0.00278  holdout   0.00291  best   0.00259     28s
+    step   5500  train   0.00279  holdout   0.00266  best   0.00259     31s
+    step   6000  train   0.00275  holdout   0.00272  best   0.00259     33s
+    step   6500  train   0.00269  holdout   0.00267  best   0.00259     36s
+    step   7000  train   0.00273  holdout   0.00275  best   0.00259     39s
+    step   7500  train   0.00269  holdout   0.00302  best   0.00259     42s
+    step   8000  train   0.00265  holdout   0.00261  best   0.00259     44s
+    step   8500  train   0.00266  holdout   0.00255  best   0.00255     47s
+    step   9000  train   0.00264  holdout   0.00259  best   0.00255     50s
+    step   9500  train   0.00266  holdout   0.00253  best   0.00253     53s
+    step  10000  train   0.00260  holdout   0.00269  best   0.00253     55s
+
+== zara1 dmmn_gauss seed 0
+
+== zara1 dmmn_gauss seed 1
+
+== zara1 dmmn_gauss seed 2
+
+== zara1 m4 seed 0
+    step    500  train   1.75925  holdout   1.67335  best   1.67335      3s
+    step   1000  train   1.35333  holdout   1.35636  best   1.35636      6s
+    step   1500  train   1.20571  holdout   1.26294  best   1.26294      9s
+    step   2000  train   1.19382  holdout   1.26250  best   1.26250     12s
+    step   2500  train   1.19109  holdout   1.25751  best   1.25751     14s
+    step   3000  train   1.16151  holdout   1.20803  best   1.20803     17s
+    step   3500  train   1.16162  holdout   1.18067  best   1.18067     20s
+    step   4000  train   1.15188  holdout   1.19501  best   1.18067     23s
+    step   4500  train   1.16311  holdout   1.20337  best   1.18067     26s
+    step   5000  train   1.15975  holdout   1.21893  best   1.18067     29s
+    step   5500  train   1.13995  holdout   1.22388  best   1.18067     32s
+    step   6000  train   1.15138  holdout   1.14747  best   1.14747     35s
+    step   6500  train   1.14169  holdout   1.19601  best   1.14747     37s
+    step   7000  train   1.13215  holdout   1.18662  best   1.14747     40s
+    step   7500  train   1.13648  holdout   1.13296  best   1.13296     43s
+    step   8000  train   1.12916  holdout   1.16866  best   1.13296     46s
+    step   8500  train   1.12718  holdout   1.15130  best   1.13296     49s
+    step   9000  train   1.13713  holdout   1.15788  best   1.13296     52s
+    step   9500  train   1.12410  holdout   1.18968  best   1.13296     55s
+    step  10000  train   1.14026  holdout   1.21540  best   1.13296     58s
+
+== zara1 m4 seed 1
+    step    500  train   1.78575  holdout   1.76231  best   1.76231      3s
+    step   1000  train   1.39954  holdout   1.32746  best   1.32746      6s
+    step   1500  train   1.22376  holdout   1.28398  best   1.28398      9s
+    step   2000  train   1.20061  holdout   1.21707  best   1.21707     12s
+    step   2500  train   1.18234  holdout   1.25824  best   1.21707     14s
+    step   3000  train   1.15238  holdout   1.25024  best   1.21707     17s
+    step   3500  train   1.14956  holdout   1.15344  best   1.15344     20s
+    step   4000  train   1.14598  holdout   1.19907  best   1.15344     23s
+    step   4500  train   1.13938  holdout   1.19860  best   1.15344     26s
+    step   5000  train   1.12707  holdout   1.20286  best   1.15344     29s
+    step   5500  train   1.14510  holdout   1.19296  best   1.15344     32s
+    step   6000  train   1.10845  holdout   1.19714  best   1.15344     35s
+    step   6500  train   1.11447  holdout   1.16781  best   1.15344     38s
+    step   7000  train   1.10540  holdout   1.15968  best   1.15344     40s
+    step   7500  train   1.11354  holdout   1.17298  best   1.15344     43s
+    step   8000  train   1.09810  holdout   1.21607  best   1.15344     46s
+    step   8500  train   1.08951  holdout   1.20370  best   1.15344     49s
+    step   9000  train   1.09793  holdout   1.10573  best   1.10573     52s
+    step   9500  train   1.10992  holdout   1.16884  best   1.10573     55s
+    step  10000  train   1.10940  holdout   1.13501  best   1.10573     58s
+
+== zara1 m4 seed 2
+    step    500  train   1.78883  holdout   1.73526  best   1.73526      3s
+    step   1000  train   1.41337  holdout   1.32240  best   1.32240      6s
+    step   1500  train   1.23759  holdout   1.23189  best   1.23189      9s
+    step   2000  train   1.20688  holdout   1.27820  best   1.23189     12s
+    step   2500  train   1.18182  holdout   1.22915  best   1.22915     14s
+    step   3000  train   1.19998  holdout   1.23542  best   1.22915     17s
+    step   3500  train   1.16562  holdout   1.19722  best   1.19722     20s
+    step   4000  train   1.15716  holdout   1.25099  best   1.19722     23s
+    step   4500  train   1.15023  holdout   1.21719  best   1.19722     26s
+    step   5000  train   1.14483  holdout   1.22509  best   1.19722     29s
+    step   5500  train   1.15105  holdout   1.22684  best   1.19722     32s
+    step   6000  train   1.13738  holdout   1.19458  best   1.19458     35s
+    step   6500  train   1.13229  holdout   1.18069  best   1.18069     37s
+    step   7000  train   1.13846  holdout   1.16840  best   1.16840     40s
+    step   7500  train   1.12055  holdout   1.15592  best   1.15592     43s
+    step   8000  train   1.12483  holdout   1.20295  best   1.15592     46s
+    step   8500  train   1.11884  holdout   1.21306  best   1.15592     49s
+    step   9000  train   1.12551  holdout   1.12120  best   1.12120     52s
+    step   9500  train   1.14397  holdout   1.17194  best   1.12120     55s
+    step  10000  train   1.12309  holdout   1.15940  best   1.12120     58s
+
+== zara1 cfm seed 0
+    step    500  train   0.39244  holdout   0.19067  best   0.19067      3s
+    step   1000  train   0.15668  holdout   0.12028  best   0.12028      6s
+    step   1500  train   0.10697  holdout   0.10507  best   0.10507      9s
+    step   2000  train   0.10098  holdout   0.09073  best   0.09073     12s
+    step   2500  train   0.09479  holdout   0.08491  best   0.08491     14s
+    step   3000  train   0.08989  holdout   0.09218  best   0.08491     17s
+    step   3500  train   0.08821  holdout   0.07748  best   0.07748     20s
+    step   4000  train   0.08712  holdout   0.07594  best   0.07594     23s
+    step   4500  train   0.08412  holdout   0.08183  best   0.07594     26s
+    step   5000  train   0.08255  holdout   0.07424  best   0.07424     29s
+    step   5500  train   0.08073  holdout   0.07882  best   0.07424     32s
+    step   6000  train   0.08096  holdout   0.07134  best   0.07134     35s
+    step   6500  train   0.07901  holdout   0.07130  best   0.07130     37s
+    step   7000  train   0.07784  holdout   0.08415  best   0.07130     40s
+    step   7500  train   0.07852  holdout   0.07361  best   0.07130     43s
+    step   8000  train   0.07726  holdout   0.07329  best   0.07130     46s
+    step   8500  train   0.07516  holdout   0.06863  best   0.06863     49s
+    step   9000  train   0.07881  holdout   0.07190  best   0.06863     52s
+    step   9500  train   0.07704  holdout   0.07350  best   0.06863     55s
+    step  10000  train   0.07766  holdout   0.07092  best   0.06863     58s
+[CFMMotionModel] saved → artifacts/motion/ethucy_v1/models/zara1_cfm_s0.pth
+
+== zara1 cfm seed 1
+    step    500  train   0.40364  holdout   0.19730  best   0.19730      3s
+    step   1000  train   0.14717  holdout   0.11380  best   0.11380      6s
+    step   1500  train   0.10774  holdout   0.09654  best   0.09654      9s
+    step   2000  train   0.09803  holdout   0.09675  best   0.09654     11s
+    step   2500  train   0.09107  holdout   0.08458  best   0.08458     14s
+    step   3000  train   0.08892  holdout   0.08193  best   0.08193     17s
+    step   3500  train   0.08590  holdout   0.08146  best   0.08146     20s
+    step   4000  train   0.08350  holdout   0.08243  best   0.08146     23s
+    step   4500  train   0.08217  holdout   0.07821  best   0.07821     26s
+    step   5000  train   0.08227  holdout   0.08360  best   0.07821     29s
+    step   5500  train   0.08006  holdout   0.08396  best   0.07821     32s
+    step   6000  train   0.07882  holdout   0.07205  best   0.07205     34s
+    step   6500  train   0.07780  holdout   0.07980  best   0.07205     37s
+    step   7000  train   0.07646  holdout   0.08040  best   0.07205     40s
+    step   7500  train   0.07482  holdout   0.07240  best   0.07205     43s
+    step   8000  train   0.07427  holdout   0.06881  best   0.06881     46s
+    step   8500  train   0.07489  holdout   0.07545  best   0.06881     49s
+    step   9000  train   0.07494  holdout   0.07061  best   0.06881     52s
+    step   9500  train   0.07517  holdout   0.07369  best   0.06881     55s
+    step  10000  train   0.07555  holdout   0.07216  best   0.06881     58s
+[CFMMotionModel] saved → artifacts/motion/ethucy_v1/models/zara1_cfm_s1.pth
+
+== zara1 cfm seed 2
+    step    500  train   0.37779  holdout   0.19462  best   0.19462      3s
+    step   1000  train   0.15736  holdout   0.13060  best   0.13060      6s
+    step   1500  train   0.11129  holdout   0.10083  best   0.10083      9s
+    step   2000  train   0.10002  holdout   0.08134  best   0.08134     12s
+    step   2500  train   0.09362  holdout   0.08546  best   0.08134     14s
+    step   3000  train   0.08798  holdout   0.08141  best   0.08134     17s
+    step   3500  train   0.08627  holdout   0.08130  best   0.08130     20s
+    step   4000  train   0.08284  holdout   0.08362  best   0.08130     23s
+    step   4500  train   0.08179  holdout   0.07147  best   0.07147     26s
+    step   5000  train   0.08095  holdout   0.07372  best   0.07147     29s
+    step   5500  train   0.07863  holdout   0.07648  best   0.07147     32s
+    step   6000  train   0.07898  holdout   0.07093  best   0.07093     35s
+    step   6500  train   0.07798  holdout   0.07021  best   0.07021     37s
+    step   7000  train   0.07686  holdout   0.07407  best   0.07021     40s
+    step   7500  train   0.07408  holdout   0.06595  best   0.06595     43s
+    step   8000  train   0.07401  holdout   0.07281  best   0.06595     46s
+    step   8500  train   0.07461  holdout   0.06611  best   0.06595     49s
+    step   9000  train   0.07093  holdout   0.07112  best   0.06595     52s
+    step   9500  train   0.07403  holdout   0.06309  best   0.06309     55s
+    step  10000  train   0.07347  holdout   0.07711  best   0.06309     58s
+[CFMMotionModel] saved → artifacts/motion/ethucy_v1/models/zara1_cfm_s2.pth
+
+== zara1 nf seed 0
+    step    500  train  -2.74139  holdout  -3.05033  best  -3.05033      4s
+    step   1000  train  -3.18175  holdout  -3.39142  best  -3.39142      8s
+    step   1500  train  -3.38592  holdout  -3.73949  best  -3.73949     12s
+    step   2000  train  -3.51104  holdout  -3.39056  best  -3.73949     16s
+    step   2500  train  -3.56356  holdout  -3.55480  best  -3.73949     20s
+    step   3000  train  -3.62686  holdout  -3.47609  best  -3.73949     23s
+    step   3500  train  -3.72883  holdout  -3.55744  best  -3.73949     27s
+    step   4000  train  -3.76987  holdout  -2.36587  best  -3.73949     31s
+    step   4500  train  -3.83917  holdout  -3.23537  best  -3.73949     35s
+    step   5000  train  -3.87494  holdout  -2.98801  best  -3.73949     39s
+    step   5500  train  -3.98254  holdout  -1.91871  best  -3.73949     43s
+    step   6000  train  -4.00899  holdout  -2.24472  best  -3.73949     47s
+    step   6500  train  -4.08178  holdout  -1.77741  best  -3.73949     50s
+    step   7000  train  -4.11880  holdout  -3.22616  best  -3.73949     54s
+    step   7500  train  -4.09668  holdout  -0.08651  best  -3.73949     58s
+    step   8000  train  -4.15295  holdout  -1.34665  best  -3.73949     62s
+    step   8500  train  -4.16989  holdout  -1.87397  best  -3.73949     66s
+    step   9000  train  -4.21199  holdout  -2.57716  best  -3.73949     70s
+    step   9500  train  -4.21104  holdout  -1.76781  best  -3.73949     74s
+    step  10000  train  -4.24620  holdout  -2.11280  best  -3.73949     78s
+[NFMotionModel] saved → artifacts/motion/ethucy_v1/models/zara1_nf_s0.pth
+
+== zara1 nf seed 1
+    step    500  train  -2.72747  holdout  -3.18587  best  -3.18587      4s
+    step   1000  train  -3.22266  holdout  -3.19412  best  -3.19412      8s
+    step   1500  train  -3.34067  holdout  -3.64582  best  -3.64582     12s
+    step   2000  train  -3.48994  holdout  -3.50666  best  -3.64582     15s
+    step   2500  train  -3.64470  holdout  -3.13376  best  -3.64582     19s
+    step   3000  train  -3.74645  holdout  -3.69088  best  -3.69088     23s
+    step   3500  train  -3.85062  holdout  -1.99922  best  -3.69088     27s
+    step   4000  train  -3.88713  holdout  -3.03092  best  -3.69088     31s
+    step   4500  train  -3.93938  holdout  -2.23957  best  -3.69088     35s
+    step   5000  train  -3.97075  holdout  -3.10433  best  -3.69088     39s
+    step   5500  train  -3.97841  holdout  -2.46252  best  -3.69088     42s
+    step   6000  train  -4.15874  holdout  -1.85767  best  -3.69088     46s
+    step   6500  train  -4.05147  holdout  -3.23185  best  -3.69088     50s
+    step   7000  train  -4.19654  holdout  -2.72513  best  -3.69088     54s
+    step   7500  train  -4.19878  holdout  -3.48101  best  -3.69088     58s
+    step   8000  train  -4.29869  holdout  -0.65770  best  -3.69088     62s
+    step   8500  train  -4.31636  holdout  -0.75882  best  -3.69088     66s
+    step   9000  train  -4.35992  holdout  -1.17135  best  -3.69088     69s
+    step   9500  train  -4.30511  holdout  -0.16544  best  -3.69088     73s
+    step  10000  train  -4.31218  holdout   0.15193  best  -3.69088     77s
+[NFMotionModel] saved → artifacts/motion/ethucy_v1/models/zara1_nf_s1.pth
+
+== zara1 nf seed 2
+    step    500  train  -2.75107  holdout  -3.03963  best  -3.03963      4s
+    step   1000  train  -3.24340  holdout  -3.59412  best  -3.59412      8s
+    step   1500  train  -3.44887  holdout  -3.44177  best  -3.59412     12s
+    step   2000  train  -3.46259  holdout  -3.66163  best  -3.66163     15s
+    step   2500  train  -3.62677  holdout  -3.54968  best  -3.66163     19s
+    step   3000  train  -3.69910  holdout  -3.68615  best  -3.68615     23s
+    step   3500  train  -3.79645  holdout  -2.78212  best  -3.68615     27s
+    step   4000  train  -3.82299  holdout  -2.82124  best  -3.68615     31s
+    step   4500  train  -3.95102  holdout  -2.88794  best  -3.68615     35s
+    step   5000  train  -3.95173  holdout  -1.87435  best  -3.68615     38s
+    step   5500  train  -4.04762  holdout  -2.36201  best  -3.68615     42s
+    step   6000  train  -4.11244  holdout  -2.74583  best  -3.68615     46s
+    step   6500  train  -4.12387  holdout  -2.51890  best  -3.68615     50s
+    step   7000  train  -4.16648  holdout  -2.79344  best  -3.68615     54s
+    step   7500  train  -4.26324  holdout  -2.87089  best  -3.68615     57s
+    step   8000  train  -4.26981  holdout  -1.79908  best  -3.68615     61s
+    step   8500  train  -4.32187  holdout  -1.98318  best  -3.68615     65s
+    step   9000  train  -4.36717  holdout  -1.47205  best  -3.68615     69s
+    step   9500  train  -4.36929  holdout  -1.01384  best  -3.68615     73s
+    step  10000  train  -4.38835  holdout  -0.85115  best  -3.68615     77s
+[NFMotionModel] saved → artifacts/motion/ethucy_v1/models/zara1_nf_s2.pth
+
+== zara1 trajflow seed 0
+    step    500  train   6.94843  holdout  25.83085  best  25.83085     22s
+    step   1000  train -23.22559  holdout   7.68135  best   7.68135     46s
+    step   1500  train -37.84896  holdout  -6.16128  best  -6.16128     71s
+    step   2000  train -43.53087  holdout -18.65956  best -18.65956     97s
+    step   2500  train -47.64250  holdout -30.29432  best -30.29432    122s
+    step   3000  train -50.16383  holdout -39.92497  best -39.92497    148s
+    step   3500  train -53.01575  holdout -46.51546  best -46.51546    174s
+    step   4000  train -55.18645  holdout -51.07223  best -51.07223    200s
+    step   4500  train -55.95715  holdout -54.16277  best -54.16277    226s
+    step   5000  train -60.13072  holdout -56.41480  best -56.41480    252s
+    step   5500  train -60.83166  holdout -58.06968  best -58.06968    276s
+    step   6000  train -61.78287  holdout -59.02584  best -59.02584    301s
+    step   6500  train -63.08230  holdout -58.67107  best -59.02584    326s
+    step   7000  train -64.21993  holdout -56.64843  best -59.02584    350s
+    step   7500  train -65.47919  holdout -52.74290  best -59.02584    375s
+    step   8000  train -66.72484  holdout -46.89241  best -59.02584    400s
+    step   8500  train -67.86503  holdout -39.66570  best -59.02584    424s
+    step   9000  train -66.06356  holdout -31.38318  best -59.02584    448s
+    step   9500  train -68.71780  holdout -26.39290  best -59.02584    473s
+    step  10000  train -70.10120  holdout -19.08188  best -59.02584    498s
+
+== zara1 trajflow seed 1
+    step    500  train   9.64749  holdout  30.93746  best  30.93746     22s
+    step   1000  train -22.56227  holdout  11.74598  best  11.74598     45s
+    step   1500  train -36.70318  holdout  -7.17274  best  -7.17274     68s
+    step   2000  train -42.27534  holdout -19.82441  best -19.82441     92s
+    step   2500  train -46.24310  holdout -29.49222  best -29.49222    117s
+    step   3000  train -50.01470  holdout -37.52334  best -37.52334    142s
+    step   3500  train -51.75043  holdout -43.93529  best -43.93529    168s
+    step   4000  train -53.63676  holdout -48.54950  best -48.54950    193s
+    step   4500  train -55.33923  holdout -51.50180  best -51.50180    218s
+    step   5000  train -55.08804  holdout -53.33823  best -53.33823    242s
+    step   5500  train -56.59649  holdout -54.62914  best -54.62914    267s
+    step   6000  train -59.56998  holdout -55.40057  best -55.40057    291s
+    step   6500  train -60.76261  holdout -55.65988  best -55.65988    316s
+    step   7000  train -62.17387  holdout -55.41362  best -55.65988    341s
+    step   7500  train -62.63308  holdout -54.05539  best -55.65988    366s
+    step   8000  train -66.68415  holdout -51.36808  best -55.65988    391s
+    step   8500  train -67.76183  holdout -48.68945  best -55.65988    417s
+    step   9000  train -66.01297  holdout -43.54509  best -55.65988    441s
+    step   9500  train -67.18922  holdout -36.80391  best -55.65988    466s
+    step  10000  train -66.79887  holdout -30.29176  best -55.65988    491s
+
+== zara1 trajflow seed 2
+    step    500  train   7.48801  holdout  30.10278  best  30.10278     22s
+    step   1000  train -22.40642  holdout  12.67560  best  12.67560     45s
+    step   1500  train -36.42119  holdout  -2.09717  best  -2.09717     68s
+    step   2000  train -43.55105  holdout -14.54984  best -14.54984     93s
+    step   2500  train -45.67486  holdout -25.18449  best -25.18449    117s
+    step   3000  train -48.40295  holdout -34.60171  best -34.60171    143s
+    step   3500  train -49.91989  holdout -41.75119  best -41.75119    167s
+    step   4000  train -52.79607  holdout -46.88838  best -46.88838    192s
+    step   4500  train -54.97707  holdout -50.93656  best -50.93656    217s
+    step   5000  train -56.45548  holdout -53.82643  best -53.82643    242s
+    step   5500  train -60.90051  holdout -55.71308  best -55.71308    267s
+    step   6000  train -62.60389  holdout -56.08302  best -56.08302    292s
+    step   6500  train -63.15465  holdout -55.80934  best -56.08302    317s
+    step   7000  train -64.25336  holdout -54.23461  best -56.08302    342s
+    step   7500  train -65.31473  holdout -50.13501  best -56.08302    366s
+    step   8000  train -68.82330  holdout -43.97912  best -56.08302    391s
+    step   8500  train -66.39657  holdout -36.61435  best -56.08302    416s
+    step   9000  train -68.22221  holdout -28.87811  best -56.08302    440s
+    step   9500  train -70.09486  holdout -20.90366  best -56.08302    466s
+    step  10000  train -68.92742  holdout -13.22661  best -56.08302    490s
+
+== zara1 tcfm seed 0
+    step    500  train   0.72816  holdout   0.45943  best   0.45943      5s
+    step   1000  train   0.32975  holdout   0.24744  best   0.24744      8s
+    step   1500  train   0.22274  holdout   0.20427  best   0.20427     12s
+    step   2000  train   0.19355  holdout   0.19131  best   0.19131     15s
+    step   2500  train   0.17977  holdout   0.17909  best   0.17909     19s
+    step   3000  train   0.17176  holdout   0.16992  best   0.16992     22s
+    step   3500  train   0.16634  holdout   0.16920  best   0.16920     25s
+    step   4000  train   0.16098  holdout   0.16008  best   0.16008     29s
+    step   4500  train   0.15532  holdout   0.15614  best   0.15614     32s
+    step   5000  train   0.14852  holdout   0.15079  best   0.15079     36s
+    step   5500  train   0.14380  holdout   0.14208  best   0.14208     39s
+    step   6000  train   0.13908  holdout   0.14058  best   0.14058     43s
+    step   6500  train   0.13535  holdout   0.13866  best   0.13866     46s
+    step   7000  train   0.13114  holdout   0.13012  best   0.13012     50s
+    step   7500  train   0.12373  holdout   0.11898  best   0.11898     53s
+    step   8000  train   0.11580  holdout   0.10934  best   0.10934     57s
+    step   8500  train   0.10665  holdout   0.10490  best   0.10490     60s
+    step   9000  train   0.10120  holdout   0.09770  best   0.09770     63s
+    step   9500  train   0.09684  holdout   0.09448  best   0.09448     67s
+    step  10000  train   0.09305  holdout   0.09465  best   0.09448     70s
+
+== zara1 tcfm seed 1
+    step    500  train   0.73191  holdout   0.50990  best   0.50990      3s
+    step   1000  train   0.31696  holdout   0.22580  best   0.22580      7s
+    step   1500  train   0.20379  holdout   0.19155  best   0.19155     10s
+    step   2000  train   0.18269  holdout   0.17945  best   0.17945     14s
+    step   2500  train   0.17290  holdout   0.17247  best   0.17247     17s
+    step   3000  train   0.16813  holdout   0.16829  best   0.16829     21s
+    step   3500  train   0.16238  holdout   0.16620  best   0.16620     24s
+    step   4000  train   0.15778  holdout   0.15608  best   0.15608     28s
+    step   4500  train   0.15237  holdout   0.15324  best   0.15324     31s
+    step   5000  train   0.14680  holdout   0.14274  best   0.14274     35s
+    step   5500  train   0.14372  holdout   0.13903  best   0.13903     38s
+    step   6000  train   0.13899  holdout   0.14484  best   0.13903     42s
+    step   6500  train   0.13814  holdout   0.13638  best   0.13638     45s
+    step   7000  train   0.13525  holdout   0.13831  best   0.13638     49s
+    step   7500  train   0.13406  holdout   0.13463  best   0.13463     52s
+    step   8000  train   0.13223  holdout   0.13486  best   0.13463     55s
+    step   8500  train   0.13083  holdout   0.13254  best   0.13254     59s
+    step   9000  train   0.12984  holdout   0.12893  best   0.12893     62s
+    step   9500  train   0.12862  holdout   0.12629  best   0.12629     66s
+    step  10000  train   0.12679  holdout   0.12708  best   0.12629     69s
+
+== zara1 tcfm seed 2
+    step    500  train   0.79298  holdout   0.50687  best   0.50687      3s
+    step   1000  train   0.33504  holdout   0.23529  best   0.23529      7s
+    step   1500  train   0.20488  holdout   0.18975  best   0.18975     10s
+    step   2000  train   0.18220  holdout   0.17821  best   0.17821     14s
+    step   2500  train   0.17286  holdout   0.17379  best   0.17379     17s
+    step   3000  train   0.16699  holdout   0.16667  best   0.16667     21s
+    step   3500  train   0.16384  holdout   0.16760  best   0.16667     24s
+    step   4000  train   0.15878  holdout   0.15891  best   0.15891     28s
+    step   4500  train   0.15511  holdout   0.15442  best   0.15442     31s
+    step   5000  train   0.14882  holdout   0.14751  best   0.14751     35s
+    step   5500  train   0.14419  holdout   0.14527  best   0.14527     38s
+    step   6000  train   0.14067  holdout   0.14456  best   0.14456     42s
+    step   6500  train   0.13730  holdout   0.13708  best   0.13708     45s
+    step   7000  train   0.13536  holdout   0.13750  best   0.13708     49s
+    step   7500  train   0.13392  holdout   0.13037  best   0.13037     52s
+    step   8000  train   0.13162  holdout   0.13487  best   0.13037     55s
+    step   8500  train   0.13049  holdout   0.13164  best   0.13037     59s
+    step   9000  train   0.12905  holdout   0.12759  best   0.12759     62s
+    step   9500  train   0.12475  holdout   0.12188  best   0.12188     66s
+    step  10000  train   0.11886  holdout   0.11802  best   0.11802     69s
+
+== zara1 moflow seed 0
+    MoFlow stage 1: flow-matching teacher
+    step    500  train  10.00700  holdout   7.84703  best   7.84703     12s
+    step   1000  train   4.64434  holdout   4.42787  best   4.42787     24s
+    step   1500  train   4.41314  holdout   4.18458  best   4.18458     36s
+    step   2000  train   4.31576  holdout   4.09228  best   4.09228     49s
+    step   2500  train   4.25319  holdout   4.05457  best   4.05457     61s
+    step   3000  train   4.21245  holdout   4.01326  best   4.01326     73s
+    step   3500  train   4.17313  holdout   4.00653  best   4.00653     85s
+    step   4000  train   4.14383  holdout   3.98320  best   3.98320     97s
+    step   4500  train   4.11330  holdout   3.96921  best   3.96921    109s
+    step   5000  train   4.10598  holdout   3.95664  best   3.95664    122s
+    step   5500  train   4.07058  holdout   3.93800  best   3.93800    134s
+    step   6000  train   4.07344  holdout   3.93819  best   3.93800    146s
+    step   6500  train   4.05821  holdout   3.92678  best   3.92678    158s
+    step   7000  train   4.04338  holdout   3.91418  best   3.91418    170s
+    step   7500  train   4.02854  holdout   3.91029  best   3.91029    182s
+    step   8000  train   4.02694  holdout   3.91196  best   3.91029    195s
+    step   8500  train   4.02205  holdout   3.90965  best   3.90965    207s
+    step   9000  train   4.02784  holdout   3.90884  best   3.90884    219s
+    step   9500  train   4.01784  holdout   3.90964  best   3.90884    231s
+    step  10000  train   4.02474  holdout   3.90146  best   3.90146    243s
+    MoFlow stage 2: IMLE student on teacher samples (33761, 20, 12, 2)
+    step    500  train   7.48532  holdout   4.80129  best   4.80129    232s
+    step   1000  train   2.23463  holdout   1.86903  best   1.86903    464s
+    step   1500  train   1.77915  holdout   1.34325  best   1.34325    696s
+    step   2000  train   1.57795  holdout   1.17129  best   1.17129    928s
+    step   2500  train   1.47853  holdout   1.09280  best   1.09280   1160s
+    step   3000  train   1.44380  holdout   1.06412  best   1.06412   1392s
+
+== zara1 moflow seed 1
+    MoFlow stage 1: flow-matching teacher
+    step    500  train   9.51967  holdout   7.37968  best   7.37968     12s
+    step   1000  train   4.73193  holdout   4.46453  best   4.46453     24s
+    step   1500  train   4.48458  holdout   4.22911  best   4.22911     37s
+    step   2000  train   4.38158  holdout   4.15843  best   4.15843     49s
+    step   2500  train   4.32318  holdout   4.08934  best   4.08934     61s
+    step   3000  train   4.26754  holdout   4.04864  best   4.04864     73s
+    step   3500  train   4.23638  holdout   3.99460  best   3.99460     85s
+    step   4000  train   4.18783  holdout   3.96328  best   3.96328     97s
+    step   4500  train   4.16420  holdout   3.98911  best   3.96328    109s
+    step   5000  train   4.15345  holdout   3.97452  best   3.96328    122s
+    step   5500  train   4.12577  holdout   3.94991  best   3.94991    134s
+    step   6000  train   4.10325  holdout   3.94237  best   3.94237    146s
+    step   6500  train   4.09203  holdout   3.93650  best   3.93650    158s
+    step   7000  train   4.08563  holdout   3.92714  best   3.92714    170s
+    step   7500  train   4.06956  holdout   3.92246  best   3.92246    183s
+    step   8000  train   4.06107  holdout   3.90988  best   3.90988    195s
+    step   8500  train   4.04830  holdout   3.91994  best   3.90988    207s
+    step   9000  train   4.04261  holdout   3.90614  best   3.90614    219s
+    step   9500  train   4.04372  holdout   3.91317  best   3.90614    231s
+    step  10000  train   4.04580  holdout   3.91279  best   3.90614    243s
+    MoFlow stage 2: IMLE student on teacher samples (33761, 20, 12, 2)
+    step    500  train   7.32846  holdout   4.84640  best   4.84640    232s
+    step   1000  train   2.12293  holdout   1.76989  best   1.76989    464s
+    step   1500  train   1.76041  holdout   1.36179  best   1.36179    696s
+    step   2000  train   1.58901  holdout   1.19615  best   1.19615    928s
+    step   2500  train   1.51449  holdout   1.13250  best   1.13250   1161s
+    step   3000  train   1.48482  holdout   1.11419  best   1.11419   1393s
+
+== zara1 moflow seed 2
+    MoFlow stage 1: flow-matching teacher
+    step    500  train   9.71617  holdout   7.40703  best   7.40703     12s
+    step   1000  train   4.75803  holdout   4.49751  best   4.49751     24s
+    step   1500  train   4.51092  holdout   4.27814  best   4.27814     36s
+    step   2000  train   4.38401  holdout   4.15709  best   4.15709     49s
+    step   2500  train   4.28937  holdout   4.05982  best   4.05982     61s
+    step   3000  train   4.23246  holdout   4.01617  best   4.01617     73s
+    step   3500  train   4.19803  holdout   3.97489  best   3.97489     85s
+    step   4000  train   4.15498  holdout   3.94591  best   3.94591     97s
+    step   4500  train   4.13068  holdout   3.92961  best   3.92961    109s
+    step   5000  train   4.09529  holdout   3.91907  best   3.91907    122s
+    step   5500  train   4.09252  holdout   3.90617  best   3.90617    134s
+    step   6000  train   4.07249  holdout   3.89488  best   3.89488    146s
+    step   6500  train   4.06797  holdout   3.89533  best   3.89488    158s
+    step   7000  train   4.05397  holdout   3.87932  best   3.87932    170s
+    step   7500  train   4.02832  holdout   3.87025  best   3.87025    182s
+    step   8000  train   4.01500  holdout   3.85383  best   3.85383    195s
+    step   8500  train   4.01045  holdout   3.84781  best   3.84781    207s
+    step   9000  train   4.01047  holdout   3.84748  best   3.84748    219s
+    step   9500  train   4.01021  holdout   3.84384  best   3.84384    231s
+    step  10000  train   3.99860  holdout   3.84228  best   3.84228    243s
+    MoFlow stage 2: IMLE student on teacher samples (33761, 20, 12, 2)
+    step    500  train   6.98765  holdout   4.41962  best   4.41962    232s
+    step   1000  train   2.23198  holdout   1.87095  best   1.87095    464s
+    step   1500  train   1.82746  holdout   1.41954  best   1.41954    696s
+    step   2000  train   1.64217  holdout   1.26911  best   1.26911    928s
+    step   2500  train   1.55925  holdout   1.21014  best   1.21014   1160s
+    step   3000  train   1.52929  holdout   1.19027  best   1.19027   1392s
+  forecast zara1  dmmn       s0: minADE 0.679  minFDE 1.647
+  forecast zara1  dmmn       s1: minADE 0.607  minFDE 1.417
+  forecast zara1  dmmn       s2: minADE 0.613  minFDE 1.480
+  forecast zara1  dmmn_gauss s0: minADE 0.293  minFDE 0.539
+  forecast zara1  dmmn_gauss s1: minADE 0.293  minFDE 0.556
+  forecast zara1  dmmn_gauss s2: minADE 0.267  minFDE 0.476
+Traceback (most recent call last):
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/ethucy/train.py", line 155, in <module>
+    main()
+  File "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/ethucy/train.py", line 149, in main
+    fc_rows += score_split(cfg, args.out_dir, split, models, seeds, log)
+  File "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/ethucy/train.py", line 93, in score_split
+    m = load_model(cfg, out_dir, split, model, seed)
+  File "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/fair_retrain/evaluate.py", line 103, in load_model
+    return (ResidualCFMMotionModel if model == "m4" else GaussianResidualMotionModel).load(path, mean)
+  File "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/cfm_variants/residual_model.py", line 89, in load
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 1368, in load
+    return _load(
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 1856, in _load
+    result = unpickler.load()
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 1820, in persistent_load
+    typed_storage = load_tensor(
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 1792, in load_tensor
+    wrap_storage=restore_location(storage, location),
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 1693, in restore_location
+    return default_restore_location(storage, map_location)
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 601, in default_restore_location
+    result = fn(storage, location)
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 539, in _deserialize
+    device = _validate_device(location, backend_name)
+  File "/blue/jshin2/zhangzihao/conda/envs/zhz14/lib/python3.10/site-packages/torch/serialization.py", line 518, in _validate_device
+    raise RuntimeError(
+RuntimeError: Attempting to deserialize object on CUDA device 0 but torch.cuda.device_count() is 0. Please use torch.load with map_location to map your storages to an existing device.
