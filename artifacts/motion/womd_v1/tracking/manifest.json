@@ -1,0 +1,447 @@
+{
+  "commit": "f7c9e3c702848c7f49f42cbb33ad5d22b40e70cd",
+  "command": "/blue/jshin2/zhangzihao/MML/mml_research/src/mml_research/motion/womd/evaluate.py test --out-dir artifacts/motion/womd_v1 --workers 96",
+  "config": {
+    "experiment": "womd_v1",
+    "variants_config": "../cfm_variants/config.yaml",
+    "recipes": {
+      "R0": "measurement histories: 5 consecutive noisy visible measurements (window span <= MAX_GAP), targets = per-interval velocities to the next 12 visible measurements (the original CSV recipe, rebuilt on the train episodes)",
+      "R1": "PF rollout histories (cfm_variants rollouts.npz, unchanged rows), targets = true physical velocities of the next 12 steps (M1's recipe; step 1 is M1's target)"
+    },
+    "horizon": 80,
+    "train_runs": [
+      200,
+      248
+    ],
+    "training": {
+      "seeds": [
+        0,
+        1,
+        2
+      ],
+      "steps": 20000,
+      "batch": 1024,
+      "moflow_student_steps": 4000,
+      "eval_every": 1000,
+      "holdout_rows": 20000
+    },
+    "optim": {
+      "cfm": {
+        "opt": "adam",
+        "lr": 0.0005,
+        "wd": 0.0,
+        "clip": null,
+        "ema": 0.0,
+        "schedule": "cosine",
+        "warmup": 0
+      },
+      "nf": {
+        "opt": "adam",
+        "lr": 0.0005,
+        "wd": 0.0,
+        "clip": 10.0,
+        "ema": 0.0,
+        "schedule": "cosine",
+        "warmup": 0
+      },
+      "dmmn": {
+        "opt": "adam",
+        "lr": 0.001,
+        "wd": 0.0,
+        "clip": null,
+        "ema": 0.0,
+        "schedule": "const",
+        "warmup": 0
+      },
+      "m1": {
+        "opt": "adam",
+        "lr": 0.0005,
+        "wd": 0.0,
+        "clip": null,
+        "ema": 0.0,
+        "schedule": "cosine",
+        "warmup": 0
+      },
+      "m4": {
+        "opt": "adam",
+        "lr": 0.0005,
+        "wd": 0.0,
+        "clip": null,
+        "ema": 0.0,
+        "schedule": "cosine",
+        "warmup": 0
+      },
+      "trajflow": {
+        "opt": "adamw",
+        "lr": 0.0001,
+        "wd": 0.01,
+        "clip": 1000.0,
+        "ema": 0.999,
+        "schedule": "const",
+        "warmup": 0
+      },
+      "moflow": {
+        "opt": "adamw",
+        "lr": 0.0001,
+        "wd": 0.01,
+        "clip": 1.0,
+        "ema": 0.995,
+        "schedule": "cosine",
+        "warmup": 0.05
+      },
+      "tcfm": {
+        "opt": "adamw",
+        "lr": 0.0002,
+        "wd": 0.0,
+        "clip": null,
+        "ema": 0.0,
+        "schedule": "const",
+        "warmup": 0
+      }
+    },
+    "arch": {
+      "cfm": {
+        "input_dim": 2,
+        "block_size": 11,
+        "n_embed": 32,
+        "n_head": 8,
+        "n_layer": 2,
+        "vel_hidden": 64,
+        "N_FE": 10,
+        "dropout": 0.1,
+        "anchor_sigma": 1.0
+      },
+      "nf": {
+        "input_dim": 2,
+        "block_size": 11,
+        "n_embed": 32,
+        "n_head": 8,
+        "n_layer": 2,
+        "n_flows": 2,
+        "flow_hidden": 32,
+        "dropout": 0.1
+      },
+      "dmmn": {
+        "input_dim": 2,
+        "block_size": 11,
+        "n_embed": 20,
+        "n_head": 8,
+        "n_layer": 2,
+        "hidden_dim": 20
+      },
+      "trajflow": {
+        "d_model": 32,
+        "heads": 4,
+        "depth": 4,
+        "dropout": 0.1,
+        "num_motion_modes": 6,
+        "nms_dist": 0.1,
+        "num_inter_layers": 2,
+        "sampling_steps": 1,
+        "num_query": 64
+      },
+      "moflow": {
+        "num_query": 6,
+        "d_model": 32,
+        "social_hidden": 64,
+        "enc_layers": 2,
+        "dec_blocks": 2,
+        "heads": 4,
+        "dropout": 0.1,
+        "sampling_steps": 10,
+        "num_to_gen": 30
+      },
+      "tcfm": {
+        "dim": 8,
+        "dim_mults": [
+          1,
+          2,
+          4
+        ],
+        "lstm_out_dim": 32,
+        "n_timesteps": 10
+      }
+    },
+    "models": [
+      "cfm",
+      "nf",
+      "dmmn",
+      "dmmn_gauss",
+      "m4",
+      "trajflow",
+      "moflow",
+      "tcfm"
+    ],
+    "training_free": [
+      "PF+CV",
+      "EnFF"
+    ],
+    "enff": {
+      "lambda": 0.00025,
+      "sigma_min": 0.01,
+      "steps": 5
+    },
+    "calibration": {
+      "runs": [
+        100,
+        120
+      ],
+      "grid": [
+        0.0,
+        0.005,
+        0.01,
+        0.02,
+        0.032,
+        0.045,
+        0.07,
+        0.1
+      ],
+      "rmse_tolerance": 0.1
+    },
+    "test_runs": [
+      1000,
+      1100
+    ],
+    "variants": {
+      "experiment": "cfm_four_variants_v1",
+      "filter": {
+        "particles": 500,
+        "history_steps": 5,
+        "dt_seconds": 0.033,
+        "sensor_noise_std": 0.02,
+        "measurement_sigma": 0.05,
+        "init_spread": 0.05,
+        "resampler": "systematic",
+        "ess_fraction": 0.5,
+        "baseline_process_noise": 0.045,
+        "nf_process_noise": 0.032
+      },
+      "cfm": {
+        "checkpoint": "cfm_motion_model_anchor1.0.pth",
+        "ode_solver": "euler",
+        "ode_steps": 10,
+        "source_std": 1.0,
+        "max_speed": 1.5,
+        "adaptive_gain": 0.05,
+        "sigma_max": 2.5
+      },
+      "dmmn_checkpoint": "dmmn_scratch_transformer.pth",
+      "nf_checkpoint": "nf_motion_model.pth",
+      "prepare": {
+        "rollout_trackers": [
+          [
+            "cfm",
+            0.045
+          ],
+          [
+            "dmmn",
+            0.045
+          ],
+          [
+            "cfm",
+            0.01
+          ],
+          [
+            "dmmn",
+            0.01
+          ]
+        ],
+        "every": 2,
+        "per_step": 16
+      },
+      "training": {
+        "seeds": [
+          0,
+          1,
+          2
+        ],
+        "batch": 2048,
+        "steps": 20000,
+        "lr": 0.0005,
+        "arch": {
+          "n_embed": 32,
+          "n_head": 8,
+          "n_layer": 2,
+          "vel_hidden": 64,
+          "dropout": 0.1
+        }
+      },
+      "m1": {
+        "variants": {
+          "m1_control": [],
+          "m1_mask": [
+            "mask"
+          ],
+          "m1_time": [
+            "mask",
+            "time"
+          ],
+          "m1_full": [
+            "mask",
+            "time",
+            "cov"
+          ]
+        },
+        "target": "true_physical_velocity"
+      },
+      "m2": {
+        "grid": [
+          0.0,
+          0.005,
+          0.01,
+          0.02,
+          0.032,
+          0.045,
+          0.07
+        ],
+        "selection_split": "val",
+        "rmse_tolerance": 0.1
+      },
+      "m3": {
+        "proposal_family": "gaussian_full_cov",
+        "scale_floor": 0.05,
+        "hidden": 128,
+        "train_process_noise": 0.045
+      },
+      "m4": {
+        "residual_scale_floor": 0.05,
+        "residual_source": "standard_normal"
+      },
+      "evaluation": {
+        "energy_score_every": 10,
+        "recovery_threshold": 0.3,
+        "recovery_consecutive": 5,
+        "recovery_horizon": 100,
+        "exit_nll_floor": 0.001,
+        "bootstrap_resamples": 2000,
+        "clouds_saved_per_method": 20
+      }
+    },
+    "data": {
+      "root": "/orange/jshin2/waymo/motion_v1_3_0/scenario",
+      "train_list": "training_shards.txt",
+      "holdout_shards": 10
+    },
+    "obs": 11,
+    "frame_dt": 0.1,
+    "scale": 25.0,
+    "canon_min_disp": 0.5,
+    "forecast": {
+      "k": 6,
+      "measurement_seconds": [
+        3,
+        5,
+        8
+      ],
+      "miss_thresholds": [
+        [
+          1.0,
+          2.0
+        ],
+        [
+          1.8,
+          3.6
+        ],
+        [
+          3.0,
+          6.0
+        ]
+      ],
+      "speed_scale": {
+        "lower": 0.5,
+        "upper": 1.0,
+        "speed_lower": 1.4,
+        "speed_upper": 11.0
+      }
+    },
+    "tracking": {
+      "test_per_type": 200,
+      "calibration_per_type": 100,
+      "selection_seed": 0,
+      "meas_noise": 0.1,
+      "filter_sigma": 0.2,
+      "particles": 500,
+      "init_spread": 0.1,
+      "visible_run": [
+        5,
+        15
+      ],
+      "occluded_run": [
+        5,
+        20
+      ],
+      "grid_m": [
+        0.0,
+        0.02,
+        0.05,
+        0.1,
+        0.2,
+        0.3,
+        0.5,
+        0.8
+      ],
+      "rmse_tolerance": 0.1,
+      "energy_every": 5
+    },
+    "dt": 0.1
+  },
+  "lock": {
+    "process_noise_m": {
+      "CFM": 0.1,
+      "NF": 0.1,
+      "DMMN": 0.2,
+      "DMMN+Gauss": 0.2,
+      "M4": 0.1,
+      "TrajFlow": 0.2,
+      "MoFlow": 0.3,
+      "TCFM": 0.3,
+      "PF+CV": 0.1,
+      "EnFF": 0.1
+    },
+    "scale": 25.0,
+    "rule": "fair_retrain M2 rule on the calibration tracks (holdout training shards), seed-0 checkpoints",
+    "checkpoints": {
+      "womd_cfm_s0": "154ed8231001d73e9545ab5308594e6c72f13cf473611464d7db4de25f7ba38f",
+      "womd_cfm_s1": "56e6701d4d41b49d4e5b2ef19a01daa2b15e54a5cf75907c7f909567d2a16219",
+      "womd_cfm_s2": "b0f466589d1a8d5b68d66f79a9a925af5da3fcf6b1596063fedb569f68639124",
+      "womd_nf_s0": "66efbd94f7e5f562f3607a132856291eadabc1f0e94aa2c62bf45964c535a29c",
+      "womd_nf_s1": "d433e77123bc5e8358ddd3e3fe2aa7e2578f55e8ea9f57425f2b0ca0a8de8268",
+      "womd_nf_s2": "e686cb3c88dcee1e3e1cc49dea1c97984cf942f0f6c26e72e725fc2ec0b4b4fd",
+      "womd_dmmn_s0": "612af04f3d7b3d6298c3bce7666126cb2374f803d64181d9d5ba8e43442360d4",
+      "womd_dmmn_s1": "862936079903d75b112f331934336885a20473c77e1a1f32716a4a246cc1f6a4",
+      "womd_dmmn_s2": "34464e7492f5ac4ef157b06381cc450403fc615e39a095750fa691ee6c42046f",
+      "womd_dmmn_gauss_s0": "ac7e8b7dd4677dc5937ca7b292cd488af9ad8a2d71f86f196d633f86ac8bc822",
+      "womd_dmmn_gauss_s1": "ad7a59cd56549e22ca333901f4b9fe099da2ff79929e31714ba8a6a6ae3ea7c8",
+      "womd_dmmn_gauss_s2": "1a581cc338e0821609f836d3d41314aa6e4e1d082a84b9e69bba22c5ddcbf225",
+      "womd_m4_s0": "ca27d6435d08e8d5b009cfbfe4b2aafb11af4492cfeacb86d51201b3961a288a",
+      "womd_m4_s1": "daa2dc3c919d627fa066e10ad4944dff0042f611a98230988121d75ed3d8bd8e",
+      "womd_m4_s2": "e65c28fc2e7427f143613849df90dc106d612a7648f52606a4b7a1e996a2444d",
+      "womd_trajflow_s0": "54141fec7a38359865fec115b4eeb97c0a995a0123be322791138dfca6a02818",
+      "womd_trajflow_s1": "ceb2596db9643310dd7cc98b79838b54035ea9fb3cc49be45609ca1cee74f319",
+      "womd_trajflow_s2": "6d5ce69885bbd66930abd6950d1ae57f49b5acc45f1fddd3cbfa8dfbebe35e1a",
+      "womd_moflow_s0": "1678299e238d24726479e0ebef2b87ca1a6b9a323a7e7b4868517a295ffe70db",
+      "womd_moflow_s1": "3edcc91ba8e62cc5fdb2be1b5dc87ab0ec83fa4ac38efa90f87d9f9248a6f762",
+      "womd_moflow_s2": "6cc2560dc6a5b2b9bf0eb67e90eb58a6840b6304290731c2867b306e888994eb",
+      "womd_tcfm_s0": "1ab9202481159a7e3bc451b0c510c45f7509e2e16655476b01b2241b8a1d9046",
+      "womd_tcfm_s1": "edb2d7de181d0e443fa07d3300878aaae4ae3f2abfc0814a356e635358176b6b",
+      "womd_tcfm_s2": "98a34cce9ac10886d8e487b5b1c2c3ff2545e3e53a5e38af6a36d65824289b0a"
+    },
+    "config_sha256": "c8c235b606f4121ed17fae9d550ec7bbde7b81f1e235514b623409dd5c603698",
+    "tracks_sha256": "85ec22e5440f66c85a12f5ec86638b14b793a99b2e8ec25f02efb38616ea1317",
+    "commit": "f7c9e3c702848c7f49f42cbb33ad5d22b40e70cd",
+    "locked_at": "2026-10-29 07:43:30"
+  },
+  "environment": {
+    "python": "3.10.19",
+    "torch": "2.5.1.post303",
+    "numpy": "2.2.6",
+    "platform": "Linux-5.14.0-687.42.1.el9_8.x86_64-x86_64-with-glibc2.34",
+    "cpu_count": 128,
+    "torch_threads_per_worker": 1,
+    "device": "cpu",
+    "precision": "float32 networks, float64 weights",
+    "slurm_job": "47961707",
+    "host": "c0700a-s27.ufhpc"
+  },
+  "wall_seconds": 26029.07406926155
+}

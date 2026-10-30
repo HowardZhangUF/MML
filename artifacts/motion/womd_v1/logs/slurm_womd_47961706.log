@@ -1,0 +1,569 @@
+job 47961706 on c0603a-s20.ufhpc, stages: train, workers 8, commit ebd0038d1fc44cd33492ab61de49c413798c8d0b
+GPU 0: NVIDIA L4 (UUID: GPU-e2173060-9131-1f17-87dc-358c92fbaa4d)
+
+===== train (2026-10-28 10:01:15) =====
+### 122764 train / 13630 holdout rows; models ['dmmn', 'dmmn_gauss', 'm4', 'cfm', 'nf', 'trajflow', 'tcfm', 'moflow']; budget 20000 x 1024
+
+== dmmn seed 0
+Transformer input_dim:  2
+Transformer block_size:  11
+    step   1000  train   0.00370  holdout   0.00032  best   0.00032      8s
+    step   2000  train   0.00125  holdout   0.00043  best   0.00032     15s
+    step   3000  train   0.00125  holdout   0.00031  best   0.00031     22s
+    step   4000  train   0.00216  holdout   0.00097  best   0.00031     29s
+    step   5000  train   0.00162  holdout   0.00033  best   0.00031     36s
+    step   6000  train   0.00198  holdout   0.00029  best   0.00029     43s
+    step   7000  train   0.00153  holdout   0.00031  best   0.00029     51s
+    step   8000  train   0.00132  holdout   0.00039  best   0.00029     58s
+    step   9000  train   0.00226  holdout   0.00032  best   0.00029     65s
+    step  10000  train   0.00175  holdout   0.00025  best   0.00025     72s
+    step  11000  train   0.00132  holdout   0.00025  best   0.00025     79s
+    step  12000  train   0.00147  holdout   0.00022  best   0.00022     86s
+    step  13000  train   0.00131  holdout   0.00020  best   0.00020     94s
+    step  14000  train   0.00140  holdout   0.00017  best   0.00017    101s
+    step  15000  train   0.00135  holdout   0.00021  best   0.00017    108s
+    step  16000  train   0.00149  holdout   0.00020  best   0.00017    115s
+    step  17000  train   0.00069  holdout   0.00022  best   0.00017    122s
+    step  18000  train   0.00187  holdout   0.00025  best   0.00017    129s
+    step  19000  train   0.00118  holdout   0.00021  best   0.00017    136s
+    step  20000  train   0.00135  holdout   0.00050  best   0.00017    142s
+   saved artifacts/motion/womd_v1/models/womd_dmmn_s0.pth (144s)
+
+== dmmn seed 1
+Transformer input_dim:  2
+Transformer block_size:  11
+    step   1000  train   0.00368  holdout   0.00032  best   0.00032      7s
+    step   2000  train   0.00225  holdout   0.00080  best   0.00032     13s
+    step   3000  train   0.00135  holdout   0.00028  best   0.00028     20s
+    step   4000  train   0.00189  holdout   0.00029  best   0.00028     27s
+    step   5000  train   0.00123  holdout   0.00025  best   0.00025     34s
+    step   6000  train   0.00116  holdout   0.00025  best   0.00025     40s
+    step   7000  train   0.00149  holdout   0.00040  best   0.00025     47s
+    step   8000  train   0.00117  holdout   0.00021  best   0.00021     54s
+    step   9000  train   0.00160  holdout   0.00017  best   0.00017     60s
+    step  10000  train   0.00150  holdout   0.00022  best   0.00017     67s
+    step  11000  train   0.00136  holdout   0.00021  best   0.00017     74s
+    step  12000  train   0.00123  holdout   0.00018  best   0.00017     81s
+    step  13000  train   0.00112  holdout   0.00015  best   0.00015     87s
+    step  14000  train   0.00136  holdout   0.00016  best   0.00015     94s
+    step  15000  train   0.00145  holdout   0.00020  best   0.00015    101s
+    step  16000  train   0.00207  holdout   0.00020  best   0.00015    107s
+    step  17000  train   0.00106  holdout   0.00018  best   0.00015    114s
+    step  18000  train   0.00126  holdout   0.00018  best   0.00015    121s
+    step  19000  train   0.00188  holdout   0.00016  best   0.00015    128s
+    step  20000  train   0.00151  holdout   0.00015  best   0.00015    134s
+   saved artifacts/motion/womd_v1/models/womd_dmmn_s1.pth (134s)
+
+== dmmn seed 2
+Transformer input_dim:  2
+Transformer block_size:  11
+    step   1000  train   0.00404  holdout   0.00043  best   0.00043      7s
+    step   2000  train   0.00155  holdout   0.00032  best   0.00032     13s
+    step   3000  train   0.00114  holdout   0.00033  best   0.00032     20s
+    step   4000  train   0.00147  holdout   0.00028  best   0.00028     27s
+    step   5000  train   0.00206  holdout   0.00030  best   0.00028     33s
+    step   6000  train   0.00142  holdout   0.00027  best   0.00027     40s
+    step   7000  train   0.00168  holdout   0.00029  best   0.00027     47s
+    step   8000  train   0.00232  holdout   0.00018  best   0.00018     53s
+    step   9000  train   0.00116  holdout   0.00016  best   0.00016     60s
+    step  10000  train   0.00135  holdout   0.00016  best   0.00016     67s
+    step  11000  train   0.00143  holdout   0.00020  best   0.00016     74s
+    step  12000  train   0.00132  holdout   0.00018  best   0.00016     80s
+    step  13000  train   0.00153  holdout   0.00017  best   0.00016     87s
+    step  14000  train   0.00158  holdout   0.00020  best   0.00016     94s
+    step  15000  train   0.00171  holdout   0.00017  best   0.00016    100s
+    step  16000  train   0.00161  holdout   0.00019  best   0.00016    107s
+    step  17000  train   0.00121  holdout   0.00016  best   0.00016    114s
+    step  18000  train   0.00136  holdout   0.00023  best   0.00016    120s
+    step  19000  train   0.00155  holdout   0.00015  best   0.00015    127s
+    step  20000  train   0.00160  holdout   0.00015  best   0.00015    134s
+   saved artifacts/motion/womd_v1/models/womd_dmmn_s2.pth (134s)
+
+== dmmn_gauss seed 0
+   saved artifacts/motion/womd_v1/models/womd_dmmn_gauss_s0.pth (3s)
+
+== dmmn_gauss seed 1
+   saved artifacts/motion/womd_v1/models/womd_dmmn_gauss_s1.pth (3s)
+
+== dmmn_gauss seed 2
+   saved artifacts/motion/womd_v1/models/womd_dmmn_gauss_s2.pth (3s)
+
+== m4 seed 0
+    step   1000  train   1.01688  holdout   0.36789  best   0.36789      8s
+    step   2000  train   0.67724  holdout   0.33680  best   0.33680     15s
+    step   3000  train   0.60542  holdout   0.32096  best   0.32096     23s
+    step   4000  train   0.69881  holdout   0.31552  best   0.31552     31s
+    step   5000  train   0.42121  holdout   0.28353  best   0.28353     38s
+    step   6000  train   0.57999  holdout   0.28130  best   0.28130     46s
+    step   7000  train   0.47047  holdout   0.28472  best   0.28130     53s
+    step   8000  train   0.45598  holdout   0.27991  best   0.27991     61s
+    step   9000  train   0.59644  holdout   0.28005  best   0.27991     69s
+    step  10000  train   0.48240  holdout   0.26700  best   0.26700     76s
+    step  11000  train   0.40757  holdout   0.26169  best   0.26169     84s
+    step  12000  train   0.46725  holdout   0.26295  best   0.26169     91s
+    step  13000  train   0.41508  holdout   0.25850  best   0.25850     99s
+    step  14000  train   0.42841  holdout   0.25893  best   0.25850    107s
+    step  15000  train   0.33226  holdout   0.25615  best   0.25615    114s
+    step  16000  train   0.39355  holdout   0.25673  best   0.25615    122s
+    step  17000  train   0.35167  holdout   0.25584  best   0.25584    129s
+    step  18000  train   0.46552  holdout   0.25499  best   0.25499    137s
+    step  19000  train   0.37645  holdout   0.25498  best   0.25498    145s
+    step  20000  train   0.36090  holdout   0.25455  best   0.25455    152s
+   saved artifacts/motion/womd_v1/models/womd_m4_s0.pth (155s)
+
+== m4 seed 1
+    step   1000  train   0.91671  holdout   0.35775  best   0.35775      8s
+    step   2000  train   0.93048  holdout   0.31699  best   0.31699     15s
+    step   3000  train   0.46425  holdout   0.29091  best   0.29091     23s
+    step   4000  train   0.48776  holdout   0.28387  best   0.28387     30s
+    step   5000  train   0.43800  holdout   0.27098  best   0.27098     38s
+    step   6000  train   0.37705  holdout   0.26176  best   0.26176     46s
+    step   7000  train   0.44485  holdout   0.26806  best   0.26176     53s
+    step   8000  train   0.37871  holdout   0.26464  best   0.26176     61s
+    step   9000  train   0.40914  holdout   0.25538  best   0.25538     68s
+    step  10000  train   0.45809  holdout   0.25450  best   0.25450     76s
+    step  11000  train   0.38072  holdout   0.25167  best   0.25167     83s
+    step  12000  train   0.43400  holdout   0.25809  best   0.25167     91s
+    step  13000  train   0.36764  holdout   0.25224  best   0.25167     98s
+    step  14000  train   0.37481  holdout   0.25176  best   0.25167    106s
+    step  15000  train   0.43870  holdout   0.25052  best   0.25052    114s
+    step  16000  train   0.43955  holdout   0.24900  best   0.24900    121s
+    step  17000  train   0.33034  holdout   0.24889  best   0.24889    129s
+    step  18000  train   0.34300  holdout   0.24766  best   0.24766    136s
+    step  19000  train   0.45774  holdout   0.24844  best   0.24766    144s
+    step  20000  train   0.43300  holdout   0.24855  best   0.24766    151s
+   saved artifacts/motion/womd_v1/models/womd_m4_s1.pth (154s)
+
+== m4 seed 2
+    step   1000  train   1.10493  holdout   0.36882  best   0.36882      8s
+    step   2000  train   0.66936  holdout   0.34715  best   0.34715     15s
+    step   3000  train   0.41097  holdout   0.30780  best   0.30780     23s
+    step   4000  train   0.45740  holdout   0.29347  best   0.29347     30s
+    step   5000  train   0.45959  holdout   0.27627  best   0.27627     38s
+    step   6000  train   0.44518  holdout   0.27012  best   0.27012     45s
+    step   7000  train   0.44407  holdout   0.26451  best   0.26451     53s
+    step   8000  train   0.52311  holdout   0.29353  best   0.26451     60s
+    step   9000  train   0.35742  holdout   0.26418  best   0.26418     68s
+    step  10000  train   0.36166  holdout   0.26629  best   0.26418     76s
+    step  11000  train   0.39985  holdout   0.26019  best   0.26019     83s
+    step  12000  train   0.40879  holdout   0.25701  best   0.25701     91s
+    step  13000  train   0.38382  holdout   0.25739  best   0.25701     98s
+    step  14000  train   0.40571  holdout   0.25544  best   0.25544    106s
+    step  15000  train   0.42900  holdout   0.25967  best   0.25544    113s
+    step  16000  train   0.42026  holdout   0.25389  best   0.25389    121s
+    step  17000  train   0.36134  holdout   0.25440  best   0.25389    128s
+    step  18000  train   0.38341  holdout   0.25997  best   0.25389    136s
+    step  19000  train   0.39378  holdout   0.25363  best   0.25363    144s
+    step  20000  train   0.40815  holdout   0.25305  best   0.25305    151s
+   saved artifacts/motion/womd_v1/models/womd_m4_s2.pth (154s)
+
+== cfm seed 0
+    step   1000  train   0.22063  holdout   0.07157  best   0.07157      8s
+    step   2000  train   0.05987  holdout   0.04618  best   0.04618     15s
+    step   3000  train   0.04297  holdout   0.03448  best   0.03448     23s
+    step   4000  train   0.03693  holdout   0.02758  best   0.02758     30s
+    step   5000  train   0.03201  holdout   0.02590  best   0.02590     38s
+    step   6000  train   0.02966  holdout   0.02479  best   0.02479     45s
+    step   7000  train   0.02802  holdout   0.02663  best   0.02479     53s
+    step   8000  train   0.02634  holdout   0.02345  best   0.02345     60s
+    step   9000  train   0.02646  holdout   0.02171  best   0.02171     68s
+    step  10000  train   0.02503  holdout   0.02062  best   0.02062     76s
+    step  11000  train   0.02400  holdout   0.02029  best   0.02029     83s
+    step  12000  train   0.02329  holdout   0.02034  best   0.02029     91s
+    step  13000  train   0.02231  holdout   0.02088  best   0.02029     98s
+    step  14000  train   0.02194  holdout   0.01926  best   0.01926    106s
+    step  15000  train   0.02184  holdout   0.01971  best   0.01926    113s
+    step  16000  train   0.02135  holdout   0.01989  best   0.01926    121s
+    step  17000  train   0.02015  holdout   0.01854  best   0.01854    129s
+    step  18000  train   0.02120  holdout   0.01890  best   0.01854    136s
+    step  19000  train   0.02028  holdout   0.01864  best   0.01854    144s
+    step  20000  train   0.02063  holdout   0.01823  best   0.01823    151s
+[CFMMotionModel] saved → artifacts/motion/womd_v1/models/womd_cfm_s0.pth
+   saved artifacts/motion/womd_v1/models/womd_cfm_s0.pth (151s)
+
+== cfm seed 1
+    step   1000  train   0.22307  holdout   0.06891  best   0.06891      8s
+    step   2000  train   0.06114  holdout   0.04635  best   0.04635     16s
+    step   3000  train   0.04581  holdout   0.03878  best   0.03878     24s
+    step   4000  train   0.04195  holdout   0.03536  best   0.03536     32s
+    step   5000  train   0.03405  holdout   0.03018  best   0.03018     40s
+    step   6000  train   0.03176  holdout   0.02836  best   0.02836     48s
+    step   7000  train   0.02996  holdout   0.02602  best   0.02602     56s
+    step   8000  train   0.02830  holdout   0.02359  best   0.02359     64s
+    step   9000  train   0.02838  holdout   0.02407  best   0.02359     71s
+    step  10000  train   0.02712  holdout   0.02295  best   0.02295     79s
+    step  11000  train   0.02595  holdout   0.02211  best   0.02211     86s
+    step  12000  train   0.02428  holdout   0.02286  best   0.02211     94s
+    step  13000  train   0.02397  holdout   0.02090  best   0.02090    101s
+    step  14000  train   0.02375  holdout   0.02105  best   0.02090    109s
+    step  15000  train   0.02301  holdout   0.02059  best   0.02059    117s
+    step  16000  train   0.02383  holdout   0.02025  best   0.02025    124s
+    step  17000  train   0.02179  holdout   0.01972  best   0.01972    132s
+    step  18000  train   0.02202  holdout   0.02036  best   0.01972    139s
+    step  19000  train   0.02255  holdout   0.01970  best   0.01970    147s
+    step  20000  train   0.02205  holdout   0.01950  best   0.01950    154s
+[CFMMotionModel] saved → artifacts/motion/womd_v1/models/womd_cfm_s1.pth
+   saved artifacts/motion/womd_v1/models/womd_cfm_s1.pth (154s)
+
+== cfm seed 2
+    step   1000  train   0.23396  holdout   0.07563  best   0.07563      8s
+    step   2000  train   0.06082  holdout   0.04706  best   0.04706     15s
+    step   3000  train   0.04542  holdout   0.03816  best   0.03816     23s
+    step   4000  train   0.03829  holdout   0.03157  best   0.03157     30s
+    step   5000  train   0.03561  holdout   0.02796  best   0.02796     38s
+    step   6000  train   0.03021  holdout   0.03295  best   0.02796     45s
+    step   7000  train   0.02917  holdout   0.02503  best   0.02503     53s
+    step   8000  train   0.02907  holdout   0.02285  best   0.02285     60s
+    step   9000  train   0.02607  holdout   0.02287  best   0.02285     68s
+    step  10000  train   0.02463  holdout   0.02088  best   0.02088     75s
+    step  11000  train   0.02455  holdout   0.02072  best   0.02072     83s
+    step  12000  train   0.02341  holdout   0.02042  best   0.02042     90s
+    step  13000  train   0.02279  holdout   0.01979  best   0.01979     98s
+    step  14000  train   0.02236  holdout   0.02095  best   0.01979    106s
+    step  15000  train   0.02201  holdout   0.02010  best   0.01979    113s
+    step  16000  train   0.02176  holdout   0.02018  best   0.01979    121s
+    step  17000  train   0.02073  holdout   0.02040  best   0.01979    128s
+    step  18000  train   0.02076  holdout   0.01946  best   0.01946    136s
+    step  19000  train   0.02099  holdout   0.01983  best   0.01946    143s
+    step  20000  train   0.02085  holdout   0.02036  best   0.01946    151s
+[CFMMotionModel] saved → artifacts/motion/womd_v1/models/womd_cfm_s2.pth
+   saved artifacts/motion/womd_v1/models/womd_cfm_s2.pth (151s)
+
+== nf seed 0
+    step   1000  train  -3.39888  holdout  -5.30849  best  -5.30849      9s
+    step   2000  train  -4.64597  holdout  -5.59839  best  -5.59839     17s
+    step   3000  train  -5.99828  holdout  -6.71118  best  -6.71118     26s
+    step   4000  train  -6.48957  holdout  -6.37100  best  -6.71118     35s
+    step   5000  train  -6.64209  holdout  -6.81974  best  -6.81974     43s
+    step   6000  train  -6.72449  holdout  -6.85386  best  -6.85386     52s
+    step   7000  train  -6.84479  holdout  -6.95176  best  -6.95176     60s
+    step   8000  train  -6.91723  holdout  -7.08310  best  -7.08310     69s
+    step   9000  train  -6.97189  holdout  -7.05656  best  -7.08310     78s
+    step  10000  train  -7.04412  holdout  -7.04090  best  -7.08310     86s
+    step  11000  train  -7.06855  holdout  -7.23808  best  -7.23808     95s
+    step  12000  train  -7.13306  holdout  -7.24191  best  -7.24191    103s
+    step  13000  train  -7.15706  holdout  -7.21872  best  -7.24191    112s
+    step  14000  train  -7.18672  holdout  -7.29146  best  -7.29146    121s
+    step  15000  train  -7.22364  holdout  -7.23771  best  -7.29146    129s
+    step  16000  train  -7.24837  holdout  -7.20962  best  -7.29146    138s
+    step  17000  train  -7.27172  holdout  -7.28700  best  -7.29146    146s
+    step  18000  train  -7.28609  holdout  -7.24714  best  -7.29146    155s
+    step  19000  train  -7.29007  holdout  -7.27748  best  -7.29146    163s
+    step  20000  train  -7.29445  holdout  -7.25989  best  -7.29146    172s
+[NFMotionModel] saved → artifacts/motion/womd_v1/models/womd_nf_s0.pth
+   saved artifacts/motion/womd_v1/models/womd_nf_s0.pth (172s)
+
+== nf seed 1
+    step   1000  train  -4.41818  holdout  -4.94962  best  -4.94962      9s
+    step   2000  train  -5.55035  holdout  -6.41850  best  -6.41850     17s
+    step   3000  train  -6.41457  holdout  -6.66800  best  -6.66800     26s
+    step   4000  train  -6.60933  holdout  -6.79894  best  -6.79894     34s
+    step   5000  train  -6.74022  holdout  -6.38118  best  -6.79894     43s
+    step   6000  train  -6.85130  holdout  -6.31501  best  -6.79894     52s
+    step   7000  train  -6.88461  holdout  -7.01445  best  -7.01445     60s
+    step   8000  train  -6.96863  holdout  -6.88822  best  -7.01445     69s
+    step   9000  train  -7.01046  holdout  -7.12380  best  -7.12380     78s
+    step  10000  train  -7.07252  holdout  -7.14854  best  -7.14854     87s
+    step  11000  train  -7.11433  holdout  -7.29555  best  -7.29555     96s
+    step  12000  train  -7.15718  holdout  -7.11980  best  -7.29555    104s
+    step  13000  train  -7.20013  holdout  -7.32584  best  -7.32584    113s
+    step  14000  train  -7.24927  holdout  -7.31584  best  -7.32584    122s
+    step  15000  train  -7.27164  holdout  -7.32106  best  -7.32584    131s
+    step  16000  train  -7.30899  holdout  -7.39492  best  -7.39492    140s
+    step  17000  train  -7.33430  holdout  -7.38173  best  -7.39492    148s
+    step  18000  train  -7.34619  holdout  -7.37942  best  -7.39492    157s
+    step  19000  train  -7.35421  holdout  -7.38018  best  -7.39492    166s
+    step  20000  train  -7.36218  holdout  -7.37957  best  -7.39492    175s
+[NFMotionModel] saved → artifacts/motion/womd_v1/models/womd_nf_s1.pth
+   saved artifacts/motion/womd_v1/models/womd_nf_s1.pth (175s)
+
+== nf seed 2
+    step   1000  train  -4.16062  holdout  -5.65979  best  -5.65979      9s
+    step   2000  train  -5.95561  holdout  -6.56933  best  -6.56933     18s
+    step   3000  train  -6.38837  holdout  -6.57558  best  -6.57558     26s
+    step   4000  train  -6.58275  holdout  -6.79838  best  -6.79838     35s
+    step   5000  train  -6.64606  holdout  -6.52261  best  -6.79838     44s
+    step   6000  train  -6.76267  holdout  -6.21763  best  -6.79838     53s
+    step   7000  train  -6.82728  holdout  -6.78856  best  -6.79838     62s
+    step   8000  train  -6.88380  holdout  -7.12761  best  -7.12761     71s
+    step   9000  train  -6.95552  holdout  -7.05953  best  -7.12761     79s
+    step  10000  train  -7.01495  holdout  -7.08767  best  -7.12761     88s
+    step  11000  train  -7.06044  holdout  -7.15947  best  -7.15947     97s
+    step  12000  train  -7.09530  holdout  -7.16810  best  -7.16810    106s
+    step  13000  train  -7.13832  holdout  -7.24347  best  -7.24347    115s
+    step  14000  train  -7.17700  holdout  -7.18388  best  -7.24347    123s
+    step  15000  train  -7.21517  holdout  -7.30249  best  -7.30249    132s
+    step  16000  train  -7.23636  holdout  -7.26315  best  -7.30249    141s
+    step  17000  train  -7.26523  holdout  -7.29877  best  -7.30249    150s
+    step  18000  train  -7.27716  holdout  -7.28798  best  -7.30249    159s
+    step  19000  train  -7.28583  holdout  -7.29219  best  -7.30249    167s
+    step  20000  train  -7.27945  holdout  -7.29611  best  -7.30249    176s
+[NFMotionModel] saved → artifacts/motion/womd_v1/models/womd_nf_s2.pth
+   saved artifacts/motion/womd_v1/models/womd_nf_s2.pth (176s)
+
+== trajflow seed 0
+    step   1000  train  -3.70638  holdout  78.72810  best  78.72810    252s
+    step   2000  train -193.30077  holdout -65.72714  best -65.72714    508s
+    step   3000  train -281.73502  holdout -176.17091  best -176.17091    764s
+    step   4000  train -362.12918  holdout -285.35227  best -285.35227   1027s
+    step   5000  train -410.25412  holdout -369.07826  best -369.07826   1291s
+    step   6000  train -440.67381  holdout -423.36116  best -423.36116   1556s
+    step   7000  train -472.27681  holdout -460.61552  best -460.61552   1823s
+    step   8000  train -501.75966  holdout -491.11896  best -491.11896   2093s
+    step   9000  train -514.75572  holdout -515.88891  best -515.88891   2361s
+    step  10000  train -542.43756  holdout -534.81837  best -534.81837   2633s
+    step  11000  train -556.69364  holdout -548.43863  best -548.43863   2908s
+    step  12000  train -552.39738  holdout -559.58090  best -559.58090   3174s
+    step  13000  train -563.62758  holdout -568.33258  best -568.33258   3443s
+    step  14000  train -569.85357  holdout -575.19296  best -575.19296   3712s
+    step  15000  train -580.23280  holdout -580.58454  best -580.58454   3984s
+    step  16000  train -583.94609  holdout -585.94736  best -585.94736   4253s
+    step  17000  train -580.07318  holdout -590.96469  best -590.96469   4520s
+    step  18000  train -591.48817  holdout -595.39974  best -595.39974   4793s
+    step  19000  train -594.63768  holdout -599.48886  best -599.48886   5064s
+    step  20000  train -590.77520  holdout -603.28266  best -603.28266   5332s
+   saved artifacts/motion/womd_v1/models/womd_trajflow_s0.pth (5345s)
+
+== trajflow seed 1
+    step   1000  train -10.75240  holdout  85.69006  best  85.69006    252s
+    step   2000  train -216.52141  holdout -22.12199  best -22.12199    504s
+    step   3000  train -311.31102  holdout -134.90611  best -134.90611    767s
+    step   4000  train -379.36897  holdout -277.78532  best -277.78532   1037s
+    step   5000  train -406.78065  holdout -367.95986  best -367.95986   1303s
+    step   6000  train -434.50164  holdout -413.29235  best -413.29235   1572s
+    step   7000  train -461.80877  holdout -437.82976  best -437.82976   1845s
+    step   8000  train -489.16540  holdout -463.47997  best -463.47997   2121s
+    step   9000  train -505.54502  holdout -484.08760  best -484.08760   2397s
+    step  10000  train -509.76073  holdout -500.60124  best -500.60124   2665s
+    step  11000  train -529.47243  holdout -517.44545  best -517.44545   2934s
+    step  12000  train -536.39183  holdout -532.10007  best -532.10007   3202s
+    step  13000  train -541.71452  holdout -542.98870  best -542.98870   3469s
+    step  14000  train -548.61000  holdout -550.17919  best -550.17919   3738s
+    step  15000  train -552.86984  holdout -554.76055  best -554.76055   4006s
+    step  16000  train -552.49873  holdout -558.10127  best -558.10127   4272s
+    step  17000  train -564.86617  holdout -560.56836  best -560.56836   4540s
+    step  18000  train -559.31829  holdout -561.97354  best -561.97354   4804s
+    step  19000  train -572.13243  holdout -562.08299  best -562.08299   5074s
+    step  20000  train -577.31601  holdout -562.30101  best -562.30101   5344s
+   saved artifacts/motion/womd_v1/models/womd_trajflow_s1.pth (5358s)
+
+== trajflow seed 2
+    step   1000  train  -6.15989  holdout  89.06565  best  89.06565    252s
+    step   2000  train -172.33386  holdout -30.59205  best -30.59205    505s
+    step   3000  train -281.65317  holdout -92.58616  best -92.58616    765s
+    step   4000  train -368.24423  holdout -239.57371  best -239.57371   1030s
+    step   5000  train -405.38658  holdout -352.24306  best -352.24306   1294s
+    step   6000  train -444.74230  holdout -414.07711  best -414.07711   1566s
+    step   7000  train -463.72748  holdout -449.73183  best -449.73183   1834s
+    step   8000  train -488.62716  holdout -475.34577  best -475.34577   2103s
+    step   9000  train -496.51293  holdout -495.66999  best -495.66999   2368s
+    step  10000  train -516.62473  holdout -510.82866  best -510.82866   2636s
+    step  11000  train -529.26226  holdout -524.29130  best -524.29130   2906s
+    step  12000  train -533.13602  holdout -535.03953  best -535.03953   3175s
+    step  13000  train -539.43728  holdout -542.53858  best -542.53858   3441s
+    step  14000  train -560.47456  holdout -547.85965  best -547.85965   3713s
+    step  15000  train -552.80691  holdout -550.14276  best -550.14276   3980s
+    step  16000  train -556.19935  holdout -551.48862  best -551.48862   4247s
+    step  17000  train -557.33223  holdout -553.58789  best -553.58789   4511s
+    step  18000  train -567.53146  holdout -554.70365  best -554.70365   4779s
+    step  19000  train -562.45921  holdout -555.42678  best -555.42678   5044s
+    step  20000  train -577.01625  holdout -556.45917  best -556.45917   5312s
+   saved artifacts/motion/womd_v1/models/womd_trajflow_s2.pth (5325s)
+
+== tcfm seed 0
+    step   1000  train   0.29151  holdout   0.07282  best   0.07282     34s
+    step   2000  train   0.05690  holdout   0.04991  best   0.04991     67s
+    step   3000  train   0.04497  holdout   0.04254  best   0.04254     99s
+    step   4000  train   0.03996  holdout   0.03921  best   0.03921    132s
+    step   5000  train   0.03744  holdout   0.03721  best   0.03721    165s
+    step   6000  train   0.03577  holdout   0.03589  best   0.03589    198s
+    step   7000  train   0.03461  holdout   0.03470  best   0.03470    231s
+    step   8000  train   0.03367  holdout   0.03401  best   0.03401    263s
+    step   9000  train   0.03285  holdout   0.03314  best   0.03314    296s
+    step  10000  train   0.03217  holdout   0.03244  best   0.03244    329s
+    step  11000  train   0.03167  holdout   0.03188  best   0.03188    362s
+    step  12000  train   0.03123  holdout   0.03150  best   0.03150    395s
+    step  13000  train   0.03089  holdout   0.03128  best   0.03128    428s
+    step  14000  train   0.03053  holdout   0.03098  best   0.03098    461s
+    step  15000  train   0.03025  holdout   0.03060  best   0.03060    494s
+    step  16000  train   0.02990  holdout   0.03011  best   0.03011    527s
+    step  17000  train   0.02942  holdout   0.02990  best   0.02990    560s
+    step  18000  train   0.02922  holdout   0.02959  best   0.02959    593s
+    step  19000  train   0.02901  holdout   0.02942  best   0.02942    626s
+    step  20000  train   0.02881  holdout   0.02931  best   0.02931    659s
+   saved artifacts/motion/womd_v1/models/womd_tcfm_s0.pth (660s)
+
+== tcfm seed 1
+    step   1000  train   0.27599  holdout   0.07408  best   0.07408     33s
+    step   2000  train   0.05702  holdout   0.04816  best   0.04816     66s
+    step   3000  train   0.04339  holdout   0.04158  best   0.04158     99s
+    step   4000  train   0.03911  holdout   0.03849  best   0.03849    132s
+    step   5000  train   0.03683  holdout   0.03695  best   0.03695    165s
+    step   6000  train   0.03540  holdout   0.03547  best   0.03547    198s
+    step   7000  train   0.03438  holdout   0.03459  best   0.03459    231s
+    step   8000  train   0.03356  holdout   0.03432  best   0.03432    264s
+    step   9000  train   0.03298  holdout   0.03347  best   0.03347    297s
+    step  10000  train   0.03239  holdout   0.03275  best   0.03275    330s
+    step  11000  train   0.03192  holdout   0.03234  best   0.03234    363s
+    step  12000  train   0.03126  holdout   0.03151  best   0.03151    396s
+    step  13000  train   0.03067  holdout   0.03109  best   0.03109    429s
+    step  14000  train   0.03018  holdout   0.03068  best   0.03068    462s
+    step  15000  train   0.02980  holdout   0.03018  best   0.03018    495s
+    step  16000  train   0.02926  holdout   0.02954  best   0.02954    528s
+    step  17000  train   0.02890  holdout   0.02939  best   0.02939    561s
+    step  18000  train   0.02850  holdout   0.02920  best   0.02920    594s
+    step  19000  train   0.02818  holdout   0.02852  best   0.02852    628s
+    step  20000  train   0.02778  holdout   0.02824  best   0.02824    661s
+   saved artifacts/motion/womd_v1/models/womd_tcfm_s1.pth (661s)
+
+== tcfm seed 2
+    step   1000  train   0.36397  holdout   0.08082  best   0.08082     33s
+    step   2000  train   0.05552  holdout   0.04795  best   0.04795     66s
+    step   3000  train   0.04325  holdout   0.04129  best   0.04129     99s
+    step   4000  train   0.03909  holdout   0.03859  best   0.03859    132s
+    step   5000  train   0.03697  holdout   0.03709  best   0.03709    165s
+    step   6000  train   0.03564  holdout   0.03577  best   0.03577    198s
+    step   7000  train   0.03469  holdout   0.03473  best   0.03473    231s
+    step   8000  train   0.03384  holdout   0.03411  best   0.03411    264s
+    step   9000  train   0.03315  holdout   0.03396  best   0.03396    297s
+    step  10000  train   0.03264  holdout   0.03303  best   0.03303    330s
+    step  11000  train   0.03210  holdout   0.03258  best   0.03258    363s
+    step  12000  train   0.03153  holdout   0.03183  best   0.03183    396s
+    step  13000  train   0.03105  holdout   0.03165  best   0.03165    429s
+    step  14000  train   0.03060  holdout   0.03098  best   0.03098    462s
+    step  15000  train   0.03015  holdout   0.03089  best   0.03089    495s
+    step  16000  train   0.02984  holdout   0.03028  best   0.03028    528s
+    step  17000  train   0.02963  holdout   0.03010  best   0.03010    561s
+    step  18000  train   0.02937  holdout   0.02983  best   0.02983    594s
+    step  19000  train   0.02920  holdout   0.03008  best   0.02983    627s
+    step  20000  train   0.02901  holdout   0.02945  best   0.02945    660s
+   saved artifacts/motion/womd_v1/models/womd_tcfm_s2.pth (661s)
+
+== moflow seed 0
+    MoFlow stage 1: flow-matching teacher
+    step   1000  train  72.40597  holdout  26.04500  best  26.04500     34s
+    step   2000  train  20.83346  holdout  19.38886  best  19.38886     67s
+    step   3000  train  19.54512  holdout  18.87807  best  18.87807    101s
+    step   4000  train  19.14685  holdout  18.67041  best  18.67041    135s
+    step   5000  train  18.89792  holdout  18.38798  best  18.38798    169s
+    step   6000  train  18.56048  holdout  17.86268  best  17.86268    202s
+    step   7000  train  15.75192  holdout  13.49603  best  13.49603    236s
+    step   8000  train  13.51275  holdout  12.27000  best  12.27000    270s
+    step   9000  train  13.11351  holdout  11.95865  best  11.95865    303s
+    step  10000  train  12.77018  holdout  11.72358  best  11.72358    337s
+    step  11000  train  12.56761  holdout  11.57716  best  11.57716    371s
+    step  12000  train  12.35358  holdout  11.45745  best  11.45745    404s
+    step  13000  train  12.24765  holdout  11.37988  best  11.37988    438s
+    step  14000  train  12.16098  holdout  11.32148  best  11.32148    472s
+    step  15000  train  12.05595  holdout  11.27439  best  11.27439    506s
+    step  16000  train  11.97930  holdout  11.23195  best  11.23195    539s
+    step  17000  train  11.94012  holdout  11.20923  best  11.20923    573s
+    step  18000  train  11.90855  holdout  11.19614  best  11.19614    607s
+    step  19000  train  11.88040  holdout  11.18302  best  11.18302    641s
+    step  20000  train  11.85899  holdout  11.17791  best  11.17791    674s
+    MoFlow stage 2: IMLE student on teacher samples (136394, 6, 80, 2)
+    step   1000  train  77.34458  holdout  27.99713  best  27.99713    636s
+    step   2000  train  24.94960  holdout  23.38526  best  23.38526   1272s
+    step   3000  train  24.06659  holdout  23.06374  best  23.06374   1941s
+    step   4000  train  23.58671  holdout  22.73364  best  22.73364   2577s
+   saved artifacts/motion/womd_v1/models/womd_moflow_s0.pth (3266s)
+
+== moflow seed 1
+    MoFlow stage 1: flow-matching teacher
+    step   1000  train  78.66755  holdout  28.47384  best  28.47384     34s
+    step   2000  train  20.75702  holdout  19.34820  best  19.34820     68s
+    step   3000  train  19.47112  holdout  18.86486  best  18.86486    101s
+    step   4000  train  19.11172  holdout  18.72457  best  18.72457    135s
+    step   5000  train  18.89130  holdout  18.51985  best  18.51985    169s
+    step   6000  train  18.64994  holdout  18.09941  best  18.09941    202s
+    step   7000  train  16.88669  holdout  14.89987  best  14.89987    236s
+    step   8000  train  14.27182  holdout  13.01383  best  13.01383    270s
+    step   9000  train  13.39115  holdout  12.25993  best  12.25993    304s
+    step  10000  train  12.91657  holdout  11.88527  best  11.88527    337s
+    step  11000  train  12.61910  holdout  11.69216  best  11.69216    371s
+    step  12000  train  12.40598  holdout  11.54686  best  11.54686    405s
+    step  13000  train  12.24655  holdout  11.43585  best  11.43585    438s
+    step  14000  train  12.14585  holdout  11.36182  best  11.36182    472s
+    step  15000  train  12.04047  holdout  11.31341  best  11.31341    506s
+    step  16000  train  11.97497  holdout  11.28017  best  11.28017    540s
+    step  17000  train  11.91771  holdout  11.25238  best  11.25238    573s
+    step  18000  train  11.88421  holdout  11.24414  best  11.24414    608s
+    step  19000  train  11.86152  holdout  11.23129  best  11.23129    641s
+    step  20000  train  11.83912  holdout  11.22733  best  11.22733    675s
+    MoFlow stage 2: IMLE student on teacher samples (136394, 6, 80, 2)
+    step   1000  train  75.23818  holdout  27.42608  best  27.42608    636s
+    step   2000  train  24.44707  holdout  22.46671  best  22.46671   1272s
+    step   3000  train  23.39373  holdout  22.18702  best  22.18702   1908s
+    step   4000  train  23.08289  holdout  22.10224  best  22.10224   2544s
+   saved artifacts/motion/womd_v1/models/womd_moflow_s1.pth (3234s)
+
+== moflow seed 2
+    MoFlow stage 1: flow-matching teacher
+    step   1000  train  69.41344  holdout  25.40054  best  25.40054     33s
+    step   2000  train  20.38582  holdout  19.12117  best  19.12117     67s
+    step   3000  train  19.29175  holdout  18.71921  best  18.71921    100s
+    step   4000  train  18.94409  holdout  18.41223  best  18.41223    134s
+    step   5000  train  18.74500  holdout  18.26617  best  18.26617    168s
+    step   6000  train  18.62872  holdout  18.19960  best  18.19960    202s
+    step   7000  train  18.53150  holdout  18.16387  best  18.16387    235s
+    step   8000  train  18.49512  holdout  18.09972  best  18.09972    269s
+    step   9000  train  18.28979  holdout  17.96259  best  17.96259    302s
+    step  10000  train  18.13151  holdout  17.84687  best  17.84687    336s
+    step  11000  train  18.11085  holdout  17.80538  best  17.80538    370s
+    step  12000  train  18.03253  holdout  17.78056  best  17.78056    403s
+    step  13000  train  17.99776  holdout  17.76432  best  17.76432    437s
+    step  14000  train  17.93512  holdout  17.74670  best  17.74670    471s
+    step  15000  train  17.86887  holdout  17.72934  best  17.72934    504s
+    step  16000  train  17.87361  holdout  17.71959  best  17.71959    538s
+    step  17000  train  17.81956  holdout  17.71536  best  17.71536    572s
+    step  18000  train  17.79132  holdout  17.70650  best  17.70650    606s
+    step  19000  train  17.81301  holdout  17.70474  best  17.70474    639s
+    step  20000  train  17.80830  holdout  17.70295  best  17.70295    673s
+    MoFlow stage 2: IMLE student on teacher samples (136394, 6, 80, 2)
+    step   1000  train  62.63458  holdout  10.98619  best  10.98619    636s
+    step   2000  train   6.81264  holdout   4.22231  best   4.22231   1271s
+    step   3000  train   5.45553  holdout   3.92785  best   3.92785   1907s
+    step   4000  train   5.08284  holdout   3.85846  best   3.85846   2542s
+   saved artifacts/motion/womd_v1/models/womd_moflow_s2.pth (3229s)
+  forecast dmmn       s0: minADE 4.800  minFDE 12.588  MR 0.889  (1400s)
+  forecast dmmn       s1: minADE 5.534  minFDE 14.678  MR 0.857  (1477s)
+  forecast dmmn       s2: minADE 5.346  minFDE 15.035  MR 0.949  (1507s)
+  forecast dmmn_gauss s0: minADE 4.843  minFDE 11.558  MR 0.955  (1463s)
+  forecast dmmn_gauss s1: minADE 5.277  minFDE 12.354  MR 0.958  (1398s)
+  forecast dmmn_gauss s2: minADE 4.541  minFDE 10.396  MR 0.950  (1400s)
+  forecast m4         s0: minADE 2.142  minFDE 5.249  MR 0.612  (1558s)
+  forecast m4         s1: minADE 2.130  minFDE 5.258  MR 0.624  (1660s)
+  forecast m4         s2: minADE 2.376  minFDE 5.646  MR 0.708  (1795s)
+[CFMMotionModel] loaded ← artifacts/motion/womd_v1/models/womd_cfm_s0.pth  (input_dim=2, block_size=11, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.1)
+  forecast cfm        s0: minADE 3.577  minFDE 9.512  MR 0.866  (238s)
+[CFMMotionModel] loaded ← artifacts/motion/womd_v1/models/womd_cfm_s1.pth  (input_dim=2, block_size=11, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.1)
+  forecast cfm        s1: minADE 5.389  minFDE 14.800  MR 0.960  (240s)
+[CFMMotionModel] loaded ← artifacts/motion/womd_v1/models/womd_cfm_s2.pth  (input_dim=2, block_size=11, n_embed=32, n_head=8, n_layer=2, vel_hidden=64, N_FE=10, anchor_sigma=1.0, dt=0.1)
+  forecast cfm        s2: minADE 4.286  minFDE 11.453  MR 0.819  (240s)
+[NFMotionModel] loaded ← artifacts/motion/womd_v1/models/womd_nf_s0.pth  (input_dim=2, block_size=11, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.1)
+  forecast nf         s0: minADE 2.781  minFDE 6.943  MR 0.781  (234s)
+[NFMotionModel] loaded ← artifacts/motion/womd_v1/models/womd_nf_s1.pth  (input_dim=2, block_size=11, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.1)
+  forecast nf         s1: minADE 2.624  minFDE 6.522  MR 0.743  (234s)
+[NFMotionModel] loaded ← artifacts/motion/womd_v1/models/womd_nf_s2.pth  (input_dim=2, block_size=11, n_embed=32, n_head=8, n_layer=2, n_flows=2, flow_hidden=32, dt=0.1)
+  forecast nf         s2: minADE 3.026  minFDE 7.694  MR 0.824  (234s)
+[TrajFlowMotionModel] loaded <- artifacts/motion/womd_v1/models/womd_trajflow_s0.pth  (227,976 params, config={"horizon": 80, "block_size": 11, "dt": 0.1, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 6, "nms_dist": 0.1, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 64})
+  forecast trajflow   s0: minADE 1.754  minFDE 4.290  MR 0.517  (14s)
+[TrajFlowMotionModel] loaded <- artifacts/motion/womd_v1/models/womd_trajflow_s1.pth  (227,976 params, config={"horizon": 80, "block_size": 11, "dt": 0.1, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 6, "nms_dist": 0.1, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 64})
+  forecast trajflow   s1: minADE 1.790  minFDE 4.410  MR 0.527  (14s)
+[TrajFlowMotionModel] loaded <- artifacts/motion/womd_v1/models/womd_trajflow_s2.pth  (227,976 params, config={"horizon": 80, "block_size": 11, "dt": 0.1, "d_model": 32, "heads": 4, "depth": 4, "dropout": 0.1, "num_motion_modes": 6, "nms_dist": 0.1, "num_inter_layers": 2, "sampling_steps": 1, "num_query": 64})
+  forecast trajflow   s2: minADE 1.854  minFDE 4.563  MR 0.526  (14s)
+[TCFMMotionModel] loaded <- artifacts/motion/womd_v1/models/womd_tcfm_s0.pth  (53,810 params, config={"horizon": 80, "block_size": 11, "dt": 0.1, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast tcfm       s0: minADE 10.561  minFDE 15.745  MR 0.985  (238s)
+[TCFMMotionModel] loaded <- artifacts/motion/womd_v1/models/womd_tcfm_s1.pth  (53,810 params, config={"horizon": 80, "block_size": 11, "dt": 0.1, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast tcfm       s1: minADE 9.122  minFDE 14.326  MR 0.982  (238s)
+[TCFMMotionModel] loaded <- artifacts/motion/womd_v1/models/womd_tcfm_s2.pth  (53,810 params, config={"horizon": 80, "block_size": 11, "dt": 0.1, "dim": 8, "dim_mults": [1, 2, 4], "lstm_out_dim": 32, "n_timesteps": 10})
+  forecast tcfm       s2: minADE 10.839  minFDE 15.586  MR 0.985  (238s)
+[MoFlowMotionModel] loaded <- artifacts/motion/womd_v1/models/womd_moflow_s0.pth  (159,456 params, config={"horizon": 80, "block_size": 11, "dt": 0.1, "num_query": 6, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast moflow     s0: minADE 3.111  minFDE 6.543  MR 0.737  (8s)
+[MoFlowMotionModel] loaded <- artifacts/motion/womd_v1/models/womd_moflow_s1.pth  (159,456 params, config={"horizon": 80, "block_size": 11, "dt": 0.1, "num_query": 6, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast moflow     s1: minADE 2.986  minFDE 6.399  MR 0.713  (8s)
+[MoFlowMotionModel] loaded <- artifacts/motion/womd_v1/models/womd_moflow_s2.pth  (159,456 params, config={"horizon": 80, "block_size": 11, "dt": 0.1, "num_query": 6, "d_model": 32, "social_hidden": 64, "enc_layers": 2, "dec_blocks": 2, "heads": 4, "dropout": 0.1, "sampling_steps": 10, "num_to_gen": 30})
+  forecast moflow     s2: minADE 2.685  minFDE 5.631  MR 0.661  (7s)
+  forecast PF+CV      s0: minADE 3.251  minFDE 8.088  MR 0.737  (71s)
+done
+all stages done 2026-10-28 22:40:18
